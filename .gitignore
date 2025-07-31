@@ -5,6 +5,9 @@
 .vs/
 packages/
 LVS.Utils/
+LVS.Api/.gitignore
+LVS.Api/bin/
+LVS.Api/obj/
 # User-specific files
 *.suo
 *.user
