@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "eb128a21-af0b-4c88-aadc-5bc435a4fbe8": {
+      "ProjectGuid": "eb128a21-af0b-4c88-aadc-5bc435a4fbe8",
+      "DisplayName": "BLSP.Api",
+      "ColorIndex": 0
+    },
+    "0ddfd8a5-2298-4aa1-882a-34b4e19af960": {
+      "ProjectGuid": "0ddfd8a5-2298-4aa1-882a-34b4e19af960",
+      "DisplayName": "BLSP.Model",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    },
+    "cfa05a7f-e59c-47fa-a0de-ff929d6c92ad": {
+      "ProjectGuid": "cfa05a7f-e59c-47fa-a0de-ff929d6c92ad",
+      "DisplayName": "BLSP.Dtos",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

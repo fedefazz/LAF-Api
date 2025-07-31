@@ -1,0 +1,2845 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LAFScrapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Action">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ControllerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ActionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Role" Relationship="Self.RoleAction" FromRole="Action" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="APPGridActionParams">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GridActionId" Type="Int32" Nullable="false" />
+    <Property Name="ParamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ParamHasFixedValue" Type="Boolean" Nullable="false" />
+    <Property Name="ParamValueField" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="APPGridActions" Relationship="Self.FK_AFSGridActionParams_AFSGridActions" FromRole="APPGridActionParams" ToRole="APPGridActions" />
+  </EntityType>
+  <EntityType Name="APPGridActions">
+    <Key>
+      <PropertyRef Name="ActionId" />
+    </Key>
+    <Property Name="ActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GridObject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ref" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImgSource" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NewPage" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="APPGridActionParams" Relationship="Self.FK_AFSGridActionParams_AFSGridActions" FromRole="APPGridActions" ToRole="APPGridActionParams" />
+  </EntityType>
+  <EntityType Name="APPMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImgClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ref" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FatherId" Type="Int32" Nullable="false" />
+    <Property Name="Nivel" Type="Int32" Nullable="false" />
+    <Property Name="HasChilds" Type="Boolean" Nullable="false" />
+    <Property Name="Objeto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APPParametros">
+    <Key>
+      <PropertyRef Name="IDParam" />
+    </Key>
+    <Property Name="IDParam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ParamValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APPWebPrintDirectFiles">
+    <Key>
+      <PropertyRef Name="RegId" />
+    </Key>
+    <Property Name="RegId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobtrackName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaReg" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Impreso" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_Visual" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RespDefaultComercial" Type="Int32" Nullable="false" />
+    <Property Name="RespDefaultCustomer" Type="Int32" Nullable="false" />
+    <Property Name="RespDefaultLibTecnica" Type="Int32" Nullable="false" />
+    <Property Name="RespDefaultPreprensa" Type="Int32" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GPEstadosPrePrensa">
+    <Key>
+      <PropertyRef Name="IdEstadoPrePrensa" />
+    </Key>
+    <Property Name="IdEstadoPrePrensa" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Orden" Type="Int32" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GPEstadosProductos">
+    <Key>
+      <PropertyRef Name="IDEstadoProducto" />
+    </Key>
+    <Property Name="IDEstadoProducto" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GPImpresoras">
+    <Key>
+      <PropertyRef Name="IdImpresora" />
+    </Key>
+    <Property Name="IdImpresora" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoImpresora" Type="Int32" Nullable="false" />
+    <Property Name="NombreImpresora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="GPPerfilesPrePrensa" Relationship="Self.FK_GPPerfilesPrePrensa_GPImpresoras" FromRole="GPImpresoras" ToRole="GPPerfilesPrePrensa" />
+  </EntityType>
+  <EntityType Name="GPModulosProductos">
+    <Key>
+      <PropertyRef Name="IdModulo" />
+    </Key>
+    <Property Name="IdModulo" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="GPModulosResponsables" Relationship="Self.FK_GPModulosResponsables_GPModulosProductos" FromRole="GPModulosProductos" ToRole="GPModulosResponsables" />
+  </EntityType>
+  <EntityType Name="GPModulosResponsables">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="IdModuloProducto" Type="Int32" Nullable="false" />
+    <Property Name="IdResponsable" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="GPModulosProductos" Relationship="Self.FK_GPModulosResponsables_GPModulosProductos" FromRole="GPModulosResponsables" ToRole="GPModulosProductos" />
+    <NavigationProperty Name="GPResponsables" Relationship="Self.FK_GPModulosResponsables_GPResponsables" FromRole="GPModulosResponsables" ToRole="GPResponsables" />
+    <NavigationProperty Name="GPProductos" Relationship="Self.FK_GPProductos_GPModulosResponsables" FromRole="GPModulosResponsables" ToRole="GPProductos" />
+  </EntityType>
+  <EntityType Name="GPPerfilesPrePrensa">
+    <Key>
+      <PropertyRef Name="IdPerfilPrePrensa" />
+    </Key>
+    <Property Name="IdPerfilPrePrensa" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdImpresora" Type="Int32" Nullable="false" />
+    <Property Name="IdProveedor" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoMaterial" Type="Int32" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="GPImpresoras" Relationship="Self.FK_GPPerfilesPrePrensa_GPImpresoras" FromRole="GPPerfilesPrePrensa" ToRole="GPImpresoras" />
+    <NavigationProperty Name="GPTipoMaterial" Relationship="Self.FK_GPPerfilesPrePrensa_GPTipoMaterial" FromRole="GPPerfilesPrePrensa" ToRole="GPTipoMaterial" />
+  </EntityType>
+  <EntityType Name="GPProductos">
+    <Key>
+      <PropertyRef Name="Cod_Producto" />
+    </Key>
+    <Property Name="Cod_Producto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Unid_Medida" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Tipo_Adm" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Reemplazo_Prod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cilindros" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Referencia_Item" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Liberacion" Type="Int32" />
+    <Property Name="Fecha_Liberacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Nro_Pedido_Original" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Pedido_Original" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OC_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Producto_Cliente" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Deseada_Cliente" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ResponsableComercial" Type="Int32" Nullable="false" />
+    <Property Name="ResponsableCustomer" Type="Int32" Nullable="false" />
+    <Property Name="Categoria" Type="Int32" Nullable="false" />
+    <Property Name="ResponsableConfeccionIng" Type="Int32" Nullable="false" />
+    <Property Name="FechaConfeccionIng" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdentificadorCierreIng" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HabilitaCierreLet" Type="Boolean" Nullable="false" />
+    <Property Name="ResponsableLiberacionLet" Type="Int32" Nullable="false" />
+    <Property Name="FechaLiberacionLet" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ResponsableLiberacionFinalIng" Type="Int32" Nullable="false" />
+    <Property Name="FechaLiberacionFinalIng" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ObservacionesIng" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CerradoIng" Type="Boolean" Nullable="false" />
+    <Property Name="RushOrder" Type="Boolean" Nullable="false" />
+    <Property Name="ReChequeoProducto" Type="Boolean" Nullable="false" />
+    <Property Name="TipoImpresora" Type="Int32" Nullable="false" />
+    <Property Name="Impresora" Type="Int32" Nullable="false" />
+    <Property Name="Proveedor" Type="Int32" Nullable="false" />
+    <Property Name="ResponsablePrePrensa" Type="Int32" Nullable="false" />
+    <Property Name="EstadoPrePrensa" Type="Int32" Nullable="false" />
+    <Property Name="ObservacionesPrePrensa" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaRecepcionArte" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaEnvioArte_ET" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaPDFModulo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaAprobacionPDFCliente" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaEnvioCromalin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaAprobacionCromalin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaPDFArmado" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaLiberadoAGrabado" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaSacaPrueba" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaAprobacionSacaPrueba" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TipoMaterialPerfil" Type="Int32" />
+    <Property Name="PerfilImpresion" Type="Int32" Nullable="false" />
+    <Property Name="Colores" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ComentariosColores" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CerradoPrePrensa" Type="Boolean" Nullable="false" />
+    <Property Name="FechaDocumento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <Property Name="FechaStandBy" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ObsProducto" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaFinStandBy" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastRefreshDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ObsPerfiles" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ArteModificado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaArteOriginal" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipoCilindros" Type="Int32" Nullable="false" />
+    <Property Name="FechaEntregaNuevosCilindros" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CodigosCilindros" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaRecepcionCodigosCilindros" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaPreparacionCilindros" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaLiberacionMontaje" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaRetiroCilindro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaPromesaProveedorGrabado" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaRecepcionHerramental" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ObsHerramental" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NoUsaPrePrensa" Type="Boolean" Nullable="false" />
+    <Property Name="AcuerdoDirectoProveedor" Type="Boolean" Nullable="false" />
+    <Property Name="OC_Proveedor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="GPModulosResponsables" Relationship="Self.FK_GPProductos_GPModulosResponsables" FromRole="GPProductos" ToRole="GPModulosResponsables" />
+    <NavigationProperty Name="GPTrabajosCilindros" Relationship="Self.FK_GPTrabajosCilindros_GPProductos" FromRole="GPProductos" ToRole="GPTrabajosCilindros" />
+  </EntityType>
+  <EntityType Name="GPResponsables">
+    <Key>
+      <PropertyRef Name="IdResponsable" />
+    </Key>
+    <Property Name="IdResponsable" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="GPModulosResponsables" Relationship="Self.FK_GPModulosResponsables_GPResponsables" FromRole="GPResponsables" ToRole="GPModulosResponsables" />
+  </EntityType>
+  <EntityType Name="GPTipoMaterial">
+    <Key>
+      <PropertyRef Name="IdTipoMaterial" />
+    </Key>
+    <Property Name="IdTipoMaterial" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="GPPerfilesPrePrensa" Relationship="Self.FK_GPPerfilesPrePrensa_GPTipoMaterial" FromRole="GPTipoMaterial" ToRole="GPPerfilesPrePrensa" />
+  </EntityType>
+  <EntityType Name="GPTrabajosCilindros">
+    <Key>
+      <PropertyRef Name="Cod_Producto" />
+      <PropertyRef Name="Nro_Version" />
+    </Key>
+    <Property Name="IdTrabajo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cod_Producto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nro_Version" Type="Int32" Nullable="false" />
+    <Property Name="OT_Bolsapel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EnvioHabilitado" Type="Boolean" Nullable="false" />
+    <Property Name="Solicitado" Type="Boolean" Nullable="false" />
+    <Property Name="Enviado" Type="Boolean" Nullable="false" />
+    <Property Name="OrdCompra" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaPreparacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaEnvioAProveedor" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RemitoRetiro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaDeseada" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaCompromiso" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaRealEntrega" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RemitoEntrada" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Recibo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Facturacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Notas" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OT_Proveedor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <Property Name="CantColores" Type="Int32" Nullable="false" />
+    <Property Name="Fotocromista" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Causa" Type="Int32" />
+    <Property Name="Anexos" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaReprogramacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="GPProductos" Relationship="Self.FK_GPTrabajosCilindros_GPProductos" FromRole="GPTrabajosCilindros" ToRole="GPProductos" />
+  </EntityType>
+  <EntityType Name="Metrics_Indicadores_Historico_Totales_OP">
+    <Key>
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="Fecha" />
+    </Key>
+    <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PRODUCCION_MTS" Type="Int32" />
+    <Property Name="PRODUCCION_KGS" Type="Double" />
+    <Property Name="SCRAP_KGS" Type="Double" />
+    <Property Name="PORCENTAJE" Type="Double" />
+    <Property Name="SCRAP_CONSIDERADO_PRD" Type="Double" />
+    <Property Name="SCRAP_NO_CONSIDERADO_PRD" Type="Double" />
+  </EntityType>
+  <EntityType Name="Metrics_Recursos_Habilitados">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PSSMotivosScrapVinculos" Relationship="Self.FK_PSSMotivosScrapVinculos_Metrics_Recursos_Habilitados" FromRole="Metrics_Recursos_Habilitados" ToRole="PSSMotivosScrapVinculos" />
+  </EntityType>
+  <EntityType Name="PSS_CIERRE_MENSUAL_HIST">
+    <Key>
+      <PropertyRef Name="PERIODO" />
+    </Key>
+    <Property Name="PERIODO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SCRAP" Type="Double" Nullable="false" />
+    <Property Name="PRODUCCION" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PSSActividades">
+    <Key>
+      <PropertyRef Name="IdActividad" />
+    </Key>
+    <Property Name="IdActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="Habilitada" Type="Boolean" />
+    <NavigationProperty Name="PSSScrap" Relationship="Self.FK_PSSScrap_PSSActividades" FromRole="PSSActividades" ToRole="PSSScrap" />
+    <NavigationProperty Name="PSSMaquinas" Relationship="Self.PSSActividadesMaquinas" FromRole="PSSActividades" ToRole="PSSMaquinas" />
+  </EntityType>
+  <EntityType Name="PSSAreas">
+    <Key>
+      <PropertyRef Name="IDArea" />
+    </Key>
+    <Property Name="IDArea" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PSSMaquinas" Relationship="Self.FK_PSSMaquinas_PSSAreas" FromRole="PSSAreas" ToRole="PSSMaquinas" />
+  </EntityType>
+  <EntityType Name="PSSEtiquetas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_etiqueta" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PSSJobTrack">
+    <Key>
+      <PropertyRef Name="IDJobTrack" />
+    </Key>
+    <Property Name="IDJobTrack" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="JobTrack" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <Property Name="PrinterDefault" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PrinterEtiquetas" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PSSJobtrackModulos" Relationship="Self.FK_PSSJobtrackModulos_PSSJobTrack" FromRole="PSSJobTrack" ToRole="PSSJobtrackModulos" />
+    <NavigationProperty Name="PSSMaquinas" Relationship="Self.PSSJobTrackMaquinas" FromRole="PSSJobTrack" ToRole="PSSMaquinas" />
+  </EntityType>
+  <EntityType Name="PSSJobtrackModulos">
+    <Key>
+      <PropertyRef Name="IdJobtrack" />
+      <PropertyRef Name="IdModuloApp" />
+    </Key>
+    <Property Name="IdJobtrack" Type="Int32" Nullable="false" />
+    <Property Name="IdModuloApp" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PSSJobTrack" Relationship="Self.FK_PSSJobtrackModulos_PSSJobTrack" FromRole="PSSJobtrackModulos" ToRole="PSSJobTrack" />
+  </EntityType>
+  <EntityType Name="PSSMaquinas">
+    <Key>
+      <PropertyRef Name="IDMaq" />
+    </Key>
+    <Property Name="IDMaq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Recurso" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IDArea" Type="Int32" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PSSAreas" Relationship="Self.FK_PSSMaquinas_PSSAreas" FromRole="PSSMaquinas" ToRole="PSSAreas" />
+    <NavigationProperty Name="PSSMotivosScrapVinculos" Relationship="Self.FK_PSSMotivosScrapVinculos_PSSMaquinas" FromRole="PSSMaquinas" ToRole="PSSMotivosScrapVinculos" />
+    <NavigationProperty Name="PSSScrap" Relationship="Self.FK_PSSScrap_PSSMaquinas" FromRole="PSSMaquinas" ToRole="PSSScrap" />
+    <NavigationProperty Name="PSSActividades" Relationship="Self.PSSActividadesMaquinas" FromRole="PSSMaquinas" ToRole="PSSActividades" />
+    <NavigationProperty Name="PSSJobTrack" Relationship="Self.PSSJobTrackMaquinas" FromRole="PSSMaquinas" ToRole="PSSJobTrack" />
+    <NavigationProperty Name="PSSOperadores" Relationship="Self.PSSMaquinasOperadores" FromRole="PSSMaquinas" ToRole="PSSOperadores" />
+    <NavigationProperty Name="PSSOrigenesScrap" Relationship="Self.PSSOrigenesScrapMaquinas" FromRole="PSSMaquinas" ToRole="PSSOrigenesScrap" />
+    <NavigationProperty Name="PSSTiposMaterial" Relationship="Self.PSSTiposMaterialMaquinas" FromRole="PSSMaquinas" ToRole="PSSTiposMaterial" />
+  </EntityType>
+  <EntityType Name="PSSMotivosScrap">
+    <Key>
+      <PropertyRef Name="Id_Motivo" />
+    </Key>
+    <Property Name="Id_Motivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <Property Name="PorcentajeSimulacionMejora" Type="Double" />
+    <NavigationProperty Name="PSSMotivosScrapObjetivos" Relationship="Self.FK_PSSMotivosScrapObjetivos_PSSMotivosScrap" FromRole="PSSMotivosScrap" ToRole="PSSMotivosScrapObjetivos" />
+    <NavigationProperty Name="PSSMotivosScrapVinculos" Relationship="Self.FK_PSSMotivosScrapVinculos_PSSMotivosScrap" FromRole="PSSMotivosScrap" ToRole="PSSMotivosScrapVinculos" />
+  </EntityType>
+  <EntityType Name="PSSMotivosScrapObjetivos">
+    <Key>
+      <PropertyRef Name="Id_Objetivo" />
+    </Key>
+    <Property Name="Id_Objetivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Motivo" Type="Int32" Nullable="false" />
+    <Property Name="Indicador_Inicio" Type="Double" Nullable="false" />
+    <Property Name="Indicador_Objetivo" Type="Double" Nullable="false" />
+    <Property Name="Vigencia_Desde" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Vigencia_Hasta" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="PSSMotivosScrap" Relationship="Self.FK_PSSMotivosScrapObjetivos_PSSMotivosScrap" FromRole="PSSMotivosScrapObjetivos" ToRole="PSSMotivosScrap" />
+  </EntityType>
+  <EntityType Name="PSSMotivosScrapVinculos">
+    <Key>
+      <PropertyRef Name="Id_Motivo" />
+      <PropertyRef Name="Id_Recurso" />
+      <PropertyRef Name="Id_Origen" />
+      <PropertyRef Name="Id_MaquinaImpute" />
+      <PropertyRef Name="Id_TipoMaterial" />
+    </Key>
+    <Property Name="Id_Motivo" Type="Int32" Nullable="false" />
+    <Property Name="Id_Recurso" Type="Int32" Nullable="false" />
+    <Property Name="Id_Origen" Type="Int32" Nullable="false" />
+    <Property Name="Id_MaquinaImpute" Type="Int32" Nullable="false" />
+    <Property Name="Id_TipoMaterial" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Metrics_Recursos_Habilitados" Relationship="Self.FK_PSSMotivosScrapVinculos_Metrics_Recursos_Habilitados" FromRole="PSSMotivosScrapVinculos" ToRole="Metrics_Recursos_Habilitados" />
+    <NavigationProperty Name="PSSMaquinas" Relationship="Self.FK_PSSMotivosScrapVinculos_PSSMaquinas" FromRole="PSSMotivosScrapVinculos" ToRole="PSSMaquinas" />
+    <NavigationProperty Name="PSSMotivosScrap" Relationship="Self.FK_PSSMotivosScrapVinculos_PSSMotivosScrap" FromRole="PSSMotivosScrapVinculos" ToRole="PSSMotivosScrap" />
+    <NavigationProperty Name="PSSOrigenesScrap" Relationship="Self.FK_PSSMotivosScrapVinculos_PSSOrigenesScrap" FromRole="PSSMotivosScrapVinculos" ToRole="PSSOrigenesScrap" />
+    <NavigationProperty Name="PSSTiposMaterial" Relationship="Self.FK_PSSMotivosScrapVinculos_PSSTiposMaterial" FromRole="PSSMotivosScrapVinculos" ToRole="PSSTiposMaterial" />
+  </EntityType>
+  <EntityType Name="PSSOperadores">
+    <Key>
+      <PropertyRef Name="IdOperador" />
+    </Key>
+    <Property Name="IdOperador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <Property Name="Legajo" Type="Int32" />
+    <NavigationProperty Name="PSSScrap" Relationship="Self.FK_PSSScrap_PSSOperadores" FromRole="PSSOperadores" ToRole="PSSScrap" />
+    <NavigationProperty Name="PSSMaquinas" Relationship="Self.PSSMaquinasOperadores" FromRole="PSSOperadores" ToRole="PSSMaquinas" />
+  </EntityType>
+  <EntityType Name="PSSOrigenesScrap">
+    <Key>
+      <PropertyRef Name="IDOrigen" />
+    </Key>
+    <Property Name="IDOrigen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdMaquina" Type="Int32" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PSSMotivosScrapVinculos" Relationship="Self.FK_PSSMotivosScrapVinculos_PSSOrigenesScrap" FromRole="PSSOrigenesScrap" ToRole="PSSMotivosScrapVinculos" />
+    <NavigationProperty Name="PSSScrap" Relationship="Self.FK_PSSScrap_PSSOrigenesScrap" FromRole="PSSOrigenesScrap" ToRole="PSSScrap" />
+    <NavigationProperty Name="PSSMaquinas" Relationship="Self.PSSOrigenesScrapMaquinas" FromRole="PSSOrigenesScrap" ToRole="PSSMaquinas" />
+    <NavigationProperty Name="PSSTiposMaterial" Relationship="Self.PSSOrigenesTipos" FromRole="PSSOrigenesScrap" ToRole="PSSTiposMaterial" />
+  </EntityType>
+  <EntityType Name="PSSProductos">
+    <Key>
+      <PropertyRef Name="CodProducto" />
+    </Key>
+    <Property Name="CodProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TiempoColdSeal" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PSSRomaneo">
+    <Key>
+      <PropertyRef Name="IdRomaneo" />
+    </Key>
+    <Property Name="IdRomaneo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NroOf" Type="Int32" Nullable="false" />
+    <Property Name="CodProducto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DescProducto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NroPallet" Type="Int32" Nullable="false" />
+    <Property Name="TipoRomaneo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Legajo" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Turno" Type="Int32" Nullable="false" />
+    <Property Name="Obs" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PesoBruto" Type="Double" Nullable="false" />
+    <Property Name="PesoNeto" Type="Double" Nullable="false" />
+    <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NomCliente" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TaraBuje" Type="Double" Nullable="false" />
+    <Property Name="DistTacos" Type="Double" Nullable="false" />
+    <Property Name="Ancho" Type="Double" Nullable="false" />
+    <NavigationProperty Name="PSSRomaneoItems" Relationship="Self.FK_PSSRomaneoItems_PSSRomaneo" FromRole="PSSRomaneo" ToRole="PSSRomaneoItems" />
+  </EntityType>
+  <EntityType Name="PSSRomaneoItems">
+    <Key>
+      <PropertyRef Name="IdRomaneo" />
+      <PropertyRef Name="NroBulto" />
+    </Key>
+    <Property Name="IdRomaneo" Type="Int32" Nullable="false" />
+    <Property Name="NroBulto" Type="Int32" Nullable="false" />
+    <Property Name="Unidades" Type="Int32" Nullable="false" />
+    <Property Name="Bobinas" Type="Int32" Nullable="false" />
+    <Property Name="Mts" Type="Double" Nullable="false" />
+    <Property Name="PesoBruto" Type="Double" Nullable="false" />
+    <Property Name="PesoNeto" Type="Double" Nullable="false" />
+    <Property Name="EtiquetasXBobina" Type="Int32" Nullable="false" />
+    <Property Name="Mts2" Type="Double" Nullable="false" />
+    <NavigationProperty Name="PSSRomaneo" Relationship="Self.FK_PSSRomaneoItems_PSSRomaneo" FromRole="PSSRomaneoItems" ToRole="PSSRomaneo" />
+  </EntityType>
+  <EntityType Name="PSSScrap">
+    <Key>
+      <PropertyRef Name="IdRegScrap" />
+    </Key>
+    <Property Name="IdRegScrap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NumOP" Type="Int32" Nullable="false" />
+    <Property Name="IdMaq" Type="Int32" Nullable="false" />
+    <Property Name="IdOperador" Type="Int32" Nullable="false" />
+    <Property Name="IdActividad" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoMat" Type="Int32" Nullable="false" />
+    <Property Name="IdOrigenScrap" Type="Int32" Nullable="false" />
+    <Property Name="Peso" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdMaqImputaScrap" Type="Int32" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PSSActividades" Relationship="Self.FK_PSSScrap_PSSActividades" FromRole="PSSScrap" ToRole="PSSActividades" />
+    <NavigationProperty Name="PSSMaquinas" Relationship="Self.FK_PSSScrap_PSSMaquinas" FromRole="PSSScrap" ToRole="PSSMaquinas" />
+    <NavigationProperty Name="PSSOperadores" Relationship="Self.FK_PSSScrap_PSSOperadores" FromRole="PSSScrap" ToRole="PSSOperadores" />
+    <NavigationProperty Name="PSSOrigenesScrap" Relationship="Self.FK_PSSScrap_PSSOrigenesScrap" FromRole="PSSScrap" ToRole="PSSOrigenesScrap" />
+    <NavigationProperty Name="PSSTiposMaterial" Relationship="Self.FK_PSSScrap_PSSTiposMaterial" FromRole="PSSScrap" ToRole="PSSTiposMaterial" />
+  </EntityType>
+  <EntityType Name="PSSScrapValoresPorPeriodoMensual">
+    <Key>
+      <PropertyRef Name="Ano" />
+      <PropertyRef Name="Mes" />
+    </Key>
+    <Property Name="Ano" Type="Int32" Nullable="false" />
+    <Property Name="Mes" Type="Int32" Nullable="false" />
+    <Property Name="TonsProducidas" Type="Double" Nullable="false" />
+    <Property Name="ScrapNoRegistrado" Type="Double" Nullable="false" />
+    <Property Name="Record_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="PSSTabacoBobinas">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NroOF" Type="Int32" Nullable="false" />
+    <Property Name="CodProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DescProducto" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodItemPMI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Legajo" Type="Int32" Nullable="false" />
+    <Property Name="FechaProd" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaVto" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Largo" Type="Double" Nullable="false" />
+    <Property Name="NroBobina" Type="Int32" Nullable="false" />
+    <Property Name="Obs" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="D_E_L_E_T_E_D" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PSSTabacoPallets">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NroOf" Type="Int32" Nullable="false" />
+    <Property Name="CodProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DescProducto" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NroOrdenPMI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NroIdentificador" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodItemPMI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Legajo" Type="Int32" Nullable="false" />
+    <Property Name="FechaProd" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaVto" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NroPallet" Type="Int32" Nullable="false" />
+    <Property Name="TotalPallets" Type="Int32" Nullable="false" />
+    <Property Name="CantBobinas" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PesoBruto" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="PesoNeto" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="Obs" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="D_E_L_E_T_E_D" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PSSTiposMaterial">
+    <Key>
+      <PropertyRef Name="IDTipoMat" />
+    </Key>
+    <Property Name="IDTipoMat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PSSMotivosScrapVinculos" Relationship="Self.FK_PSSMotivosScrapVinculos_PSSTiposMaterial" FromRole="PSSTiposMaterial" ToRole="PSSMotivosScrapVinculos" />
+    <NavigationProperty Name="PSSScrap" Relationship="Self.FK_PSSScrap_PSSTiposMaterial" FromRole="PSSTiposMaterial" ToRole="PSSScrap" />
+    <NavigationProperty Name="PSSOrigenesScrap" Relationship="Self.PSSOrigenesTipos" FromRole="PSSTiposMaterial" ToRole="PSSOrigenesScrap" />
+    <NavigationProperty Name="PSSMaquinas" Relationship="Self.PSSTiposMaterialMaquinas" FromRole="PSSTiposMaterial" ToRole="PSSMaquinas" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.UserRole" FromRole="Role" ToRole="User" />
+    <NavigationProperty Name="Action" Relationship="Self.RoleAction" FromRole="Role" ToRole="Action" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Trazabilidad">
+    <Key>
+      <PropertyRef Name="IdTrazabilidad" />
+    </Key>
+    <Property Name="IdTrazabilidad" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NroOP" Type="Int32" Nullable="false" />
+    <Property Name="TipoTrazabilidad" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Legajo" Type="Int32" Nullable="false" />
+    <Property Name="CantidadGenerada" Type="Int32" Nullable="false" />
+    <Property Name="Desde" Type="Int32" Nullable="false" />
+    <Property Name="Hasta" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CantidadElementos" Type="Int32" Nullable="false" />
+    <Property Name="Metros" Type="Double" Nullable="false" />
+    <Property Name="Muestra" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trazabilidad_Det">
+    <Key>
+      <PropertyRef Name="IdTrazabilidad" />
+      <PropertyRef Name="NroImpresion" />
+    </Key>
+    <Property Name="IdTrazabilidad" Type="Int32" Nullable="false" />
+    <Property Name="NroImpresion" Type="Int32" Nullable="false" />
+    <Property Name="IndicadorElemento" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" />
+    <Property Name="AccessFailedCount" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CellPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsEnabled" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreationUser" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModificationUser" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LastModificationDate" Type="DateTime" Precision="3" />
+    <Property Name="ProfileImagePath" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="MigrationId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserClaim" Relationship="Self.FK_UserClaim_User" FromRole="User" ToRole="UserClaim" />
+    <NavigationProperty Name="UserLogin" Relationship="Self.FK_UserLogin_User" FromRole="User" ToRole="UserLogin" />
+    <NavigationProperty Name="Role" Relationship="Self.UserRole" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Metrics_Indicadores_Scrap">
+    <Key>
+      <PropertyRef Name="SCRAPKG" />
+    </Key>
+    <Property Name="CODRECURSO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IDArea" Type="Int32" />
+    <Property Name="DTPRODUCAO" Type="DateTime" Precision="3" />
+    <Property Name="PRODUCCION_MTS" Type="Int32" />
+    <Property Name="PRODUCCION_KGS" Type="Double" />
+    <Property Name="SCRAPKG" Type="Decimal" Precision="38" Scale="4" Nullable="false" />
+    <Property Name="INCIDENCIA" Type="Decimal" Precision="38" Scale="4" />
+  </EntityType>
+  <EntityType Name="Metrics_Indicadores_Scrap_Laminadoras">
+    <Key>
+      <PropertyRef Name="SCRAPKG" />
+    </Key>
+    <Property Name="CODRECURSO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IDArea" Type="Int32" />
+    <Property Name="DTPRODUCAO" Type="DateTime" Precision="3" />
+    <Property Name="PRODUCCION_MTS" Type="Int32" />
+    <Property Name="PRODUCCION_KGS" Type="Double" />
+    <Property Name="SCRAPKG" Type="Decimal" Precision="38" Scale="4" Nullable="false" />
+    <Property Name="INCIDENCIA" Type="Decimal" Precision="38" Scale="4" />
+  </EntityType>
+  <EntityType Name="Metrics_Indicadores_Scrap_OP_Cerradas">
+    <Key>
+      <PropertyRef Name="SCRAPKG" />
+    </Key>
+    <Property Name="CODRECURSO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IDArea" Type="Int32" />
+    <Property Name="DTPRODUCAO" Type="DateTime" Precision="3" />
+    <Property Name="PRODUCCION_MTS" Type="Int32" />
+    <Property Name="PRODUCCION_KGS" Type="Double" />
+    <Property Name="SCRAPKG" Type="Decimal" Precision="38" Scale="4" Nullable="false" />
+    <Property Name="INCIDENCIA" Type="Decimal" Precision="38" Scale="4" />
+  </EntityType>
+  <EntityType Name="PSSJobtracksActivePallets">
+    <Key>
+      <PropertyRef Name="IdJobtrack" />
+      <PropertyRef Name="NumOf" />
+      <PropertyRef Name="NumPallet" />
+      <PropertyRef Name="TimeStamp" />
+      <PropertyRef Name="D_E_L_E_T_" />
+    </Key>
+    <Property Name="IdJobtrack" Type="Int32" Nullable="false" />
+    <Property Name="NumOf" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumPallet" Type="Int32" Nullable="false" />
+    <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="D_E_L_E_T_" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserClaim_User" FromRole="UserClaim" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserLogin_User" FromRole="UserLogin" ToRole="User" />
+  </EntityType>
+  <EntityType Name="VIEW_USR_M3_ORDATIVIDADES_AC_test">
+    <Key>
+      <PropertyRef Name="NumOrdem" />
+      <PropertyRef Name="idAtiv" />
+      <PropertyRef Name="Idprocesso" />
+      <PropertyRef Name="obs" />
+      <PropertyRef Name="Titulo" />
+      <PropertyRef Name="QtdPlanejada" />
+      <PropertyRef Name="QtdProduzida" />
+      <PropertyRef Name="QtdRepeticoes" />
+      <PropertyRef Name="QtdEntradas" />
+      <PropertyRef Name="GrupoAtivOP" />
+      <PropertyRef Name="ProducaoHora" />
+      <PropertyRef Name="PerdaFixa" />
+      <PropertyRef Name="PerdaPorEntrada" />
+    </Key>
+    <Property Name="NumOrdem" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NomeCliente" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="idAtiv" Type="Int32" Nullable="false" />
+    <Property Name="Idprocesso" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="obs" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QtdPlanejada" Type="Double" Nullable="false" />
+    <Property Name="QtdProduzida" Type="Double" Nullable="false" />
+    <Property Name="QtdRepeticoes" Type="Int32" Nullable="false" />
+    <Property Name="QtdEntradas" Type="Int32" Nullable="false" />
+    <Property Name="GrupoAtivOP" Type="Int32" Nullable="false" />
+    <Property Name="ProducaoHora" Type="Double" Nullable="false" />
+    <Property Name="CodAtiv" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PerdaFixa" Type="Int32" Nullable="false" />
+    <Property Name="PerdaPorEntrada" Type="Int32" Nullable="false" />
+    <Property Name="CodRecurso" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FatorPeso" Type="Double" />
+    <Property Name="FatorComprimento" Type="Double" />
+    <Property Name="FatorUnidade" Type="Double" />
+  </EntityType>
+  <EntityType Name="CV_LLENA_DATOS_LAMINADORAS">
+    <Key>
+      <PropertyRef Name="SCRAP_KGS" />
+    </Key>
+    <Property Name="IDArea" Type="Int32" />
+    <Property Name="CodRecurso" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DTPRODUCAO" Type="DateTime" Precision="3" />
+    <Property Name="PRODUCCION_MTS" Type="Int32" />
+    <Property Name="PRODUCCION_KGS" Type="Double" />
+    <Property Name="SCRAP_KGS" Type="Decimal" Precision="38" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CV_LLENA_DATOS_LAMINADORAS_OP_CERRADAS">
+    <Key>
+      <PropertyRef Name="SCRAP_KGS" />
+    </Key>
+    <Property Name="IDArea" Type="Int32" />
+    <Property Name="CodRecurso" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DTPRODUCAO" Type="DateTime" Precision="3" />
+    <Property Name="PRODUCCION_MTS" Type="Int32" />
+    <Property Name="PRODUCCION_KGS" Type="Double" />
+    <Property Name="SCRAP_KGS" Type="Decimal" Precision="38" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CV_METRICS_MAX_CANT_UNIDADES_X_ORDEN">
+    <Key>
+      <PropertyRef Name="numordem" />
+    </Key>
+    <Property Name="numordem" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAXFATORUN" Type="Double" />
+  </EntityType>
+  <EntityType Name="CV_METRICS_OP_ACTIVIDADES">
+    <Key>
+      <PropertyRef Name="NumOrdem" />
+      <PropertyRef Name="CodEstrutura" />
+      <PropertyRef Name="Processo" />
+      <PropertyRef Name="FatorComprimentoProducao" />
+      <PropertyRef Name="FatorPesoProducao" />
+    </Key>
+    <Property Name="NumOrdem" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TituloOP" Type="String" MaxLength="105" FixedLength="false" Unicode="false" />
+    <Property Name="NombreCliente" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="CodEstrutura" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="105" FixedLength="false" Unicode="false" />
+    <Property Name="CodAtiv" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Processo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GramajeFInal" Type="Double" />
+    <Property Name="CodGrupoProd" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="QtdPlanejadaMT" Type="Double" />
+    <Property Name="QtdPlanejadaKG" Type="Decimal" Precision="13" Scale="3" />
+    <Property Name="QtdProduzidoMT" Type="Double" />
+    <Property Name="ScrapProductionMT" Type="Double" />
+    <Property Name="ScrapMakeReadyMT" Type="Double" />
+    <Property Name="QtdProduzidoKG" Type="Decimal" Precision="13" Scale="3" />
+    <Property Name="ScrapProductionKG" Type="Decimal" Precision="13" Scale="3" />
+    <Property Name="ScrapMakeReadyKG" Type="Decimal" Precision="13" Scale="3" />
+    <Property Name="FatorKG" Type="Double" />
+    <Property Name="FatorMT" Type="Double" />
+    <Property Name="FatorUN" Type="Double" />
+    <Property Name="Unidade" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="SeqProcesso" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="SeqDefault" Type="Int32" />
+    <Property Name="FatorComprimentoProducao" Type="Double" Nullable="false" />
+    <Property Name="FatorPesoProducao" Type="Double" Nullable="false" />
+    <Property Name="USR_DistaeTacosmm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="USR_DistaeTacos1m" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS">
+    <Key>
+      <PropertyRef Name="PRODUCCION_KGS" />
+    </Key>
+    <Property Name="NUMORDEM" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="PRODUCCION_MTS" Type="Int32" />
+    <Property Name="PRODUCCION_KGS" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS_CERRADAS">
+    <Key>
+      <PropertyRef Name="PRODUCCION_KGS" />
+    </Key>
+    <Property Name="NUMORDEM" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="PRODUCCION_MTS" Type="Int32" />
+    <Property Name="PRODUCCION_KGS" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CV_METRICS_VIEW_REL_RECURSOS_ACTIVIDADES">
+    <Key>
+      <PropertyRef Name="IdAtivProcess" />
+    </Key>
+    <Property Name="NumOrdem" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="IdAtiv" Type="Int32" />
+    <Property Name="IdAtivProcess" Type="Int32" Nullable="false" />
+    <Property Name="CodAtiv" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="CodRecurso" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="BONS" Type="Double" />
+  </EntityType>
+  <EntityType Name="CV_METRICSPROD_DATOSPESO_X_ATIV">
+    <Key>
+      <PropertyRef Name="NumOrdem" />
+      <PropertyRef Name="idativ" />
+      <PropertyRef Name="Idprocesso" />
+    </Key>
+    <Property Name="NumOrdem" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idativ" Type="Int32" Nullable="false" />
+    <Property Name="Idprocesso" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodAtiv" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="fatorpeso" Type="Double" />
+    <Property Name="FatorComprimento" Type="Double" />
+    <Property Name="FatorUnidade" Type="Double" />
+  </EntityType>
+  <EntityType Name="CV_METRICSPROD_LISTAR_MAXIDATIV">
+    <Key>
+      <PropertyRef Name="MaxIdAtiv" />
+    </Key>
+    <Property Name="NUMORDEM" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="MaxIdAtiv" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_IMPUTE_X_FECHA">
+    <Key>
+      <PropertyRef Name="IdMaqImputaScrap" />
+    </Key>
+    <Property Name="IdMaqImputaScrap" Type="Int32" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Precision="0" />
+    <Property Name="PESO" Type="Decimal" Precision="38" Scale="4" />
+  </EntityType>
+  <EntityType Name="CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_X_FECHA">
+    <Key>
+      <PropertyRef Name="IdMaq" />
+    </Key>
+    <Property Name="IdMaq" Type="Int32" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Precision="0" />
+    <Property Name="PESO" Type="Decimal" Precision="38" Scale="4" />
+  </EntityType>
+  <EntityType Name="CV_PSSSCRAP_TOTAL_SCRAP_X_OP">
+    <Key>
+      <PropertyRef Name="NumOP" />
+    </Key>
+    <Property Name="NumOP" Type="Int32" Nullable="false" />
+    <Property Name="KGSCRAP" Type="Decimal" Precision="38" Scale="4" />
+    <Property Name="KGSCRAP_CONSIDERADO_PRD" Type="Decimal" Precision="38" Scale="4" />
+  </EntityType>
+  <EntityType Name="CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS">
+    <Key>
+      <PropertyRef Name="NumOP" />
+    </Key>
+    <Property Name="NumOP" Type="Int32" Nullable="false" />
+    <Property Name="IDArea" Type="Int32" />
+    <Property Name="KGSCRAP" Type="Decimal" Precision="38" Scale="4" />
+  </EntityType>
+  <EntityType Name="CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS_CERRADAS">
+    <Key>
+      <PropertyRef Name="NumOP" />
+    </Key>
+    <Property Name="NumOP" Type="Int32" Nullable="false" />
+    <Property Name="IDArea" Type="Int32" />
+    <Property Name="KGSCRAP" Type="Decimal" Precision="38" Scale="4" />
+  </EntityType>
+  <EntityType Name="CV_PSSSCRAP_TOTAL_X_ORDEN_X_ACTIVIDAD">
+    <Key>
+      <PropertyRef Name="NUMOP" />
+    </Key>
+    <Property Name="NUMOP" Type="Int32" Nullable="false" />
+    <Property Name="Actividad" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="Recurso" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="PESO" Type="Decimal" Precision="38" Scale="4" />
+  </EntityType>
+  <EntityType Name="CV_SCRAP_PORCENTAJE_TOTAL_X_OP">
+    <Key>
+      <PropertyRef Name="KGTOTALSCRAP" />
+    </Key>
+    <Property Name="NUMORDEM" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="IdAtiv" Type="Int32" />
+    <Property Name="DescripcionOP" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CodAtiv" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="QtdProduzidaMts" Type="Double" />
+    <Property Name="QtdProduzidaKg" Type="Double" />
+    <Property Name="KGTOTALSCRAP" Type="Decimal" Precision="38" Scale="4" Nullable="false" />
+    <Property Name="porcentajescrap" Type="Double" />
+  </EntityType>
+  <EntityType Name="V_SCRAP_MOTIVOS_TBL1">
+    <Key>
+      <PropertyRef Name="C1" />
+      <PropertyRef Name="C2" />
+      <PropertyRef Name="C3" />
+      <PropertyRef Name="C4" />
+      <PropertyRef Name="C5" />
+      <PropertyRef Name="C6" />
+      <PropertyRef Name="C7" />
+      <PropertyRef Name="C8" />
+      <PropertyRef Name="C9" />
+      <PropertyRef Name="C10" />
+      <PropertyRef Name="C11" />
+      <PropertyRef Name="C12" />
+      <PropertyRef Name="TOTAL_GENERAL" />
+    </Key>
+    <Property Name="ID_MOTIVO" Type="Int32" />
+    <Property Name="DESC_MOTIVO_SCRAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="C1" Type="Double" Nullable="false" />
+    <Property Name="C2" Type="Double" Nullable="false" />
+    <Property Name="C3" Type="Double" Nullable="false" />
+    <Property Name="C4" Type="Double" Nullable="false" />
+    <Property Name="C5" Type="Double" Nullable="false" />
+    <Property Name="C6" Type="Double" Nullable="false" />
+    <Property Name="C7" Type="Double" Nullable="false" />
+    <Property Name="C8" Type="Double" Nullable="false" />
+    <Property Name="C9" Type="Double" Nullable="false" />
+    <Property Name="C10" Type="Double" Nullable="false" />
+    <Property Name="C11" Type="Double" Nullable="false" />
+    <Property Name="C12" Type="Double" Nullable="false" />
+    <Property Name="TOTAL_GENERAL" Type="Double" Nullable="false" />
+    <Property Name="PORCENTAJESIMULACIONMEJORA" Type="Double" />
+  </EntityType>
+  <EntityType Name="V_SCRAP_MOTIVOS_TBL1_AÑO_ANT">
+    <Key>
+      <PropertyRef Name="C1" />
+      <PropertyRef Name="C2" />
+      <PropertyRef Name="C3" />
+      <PropertyRef Name="C4" />
+      <PropertyRef Name="C5" />
+      <PropertyRef Name="C6" />
+      <PropertyRef Name="C7" />
+      <PropertyRef Name="C8" />
+      <PropertyRef Name="C9" />
+      <PropertyRef Name="C10" />
+      <PropertyRef Name="C11" />
+      <PropertyRef Name="C12" />
+      <PropertyRef Name="TOTAL_GENERAL" />
+    </Key>
+    <Property Name="ID_MOTIVO" Type="Int32" />
+    <Property Name="DESC_MOTIVO_SCRAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="C1" Type="Double" Nullable="false" />
+    <Property Name="C2" Type="Double" Nullable="false" />
+    <Property Name="C3" Type="Double" Nullable="false" />
+    <Property Name="C4" Type="Double" Nullable="false" />
+    <Property Name="C5" Type="Double" Nullable="false" />
+    <Property Name="C6" Type="Double" Nullable="false" />
+    <Property Name="C7" Type="Double" Nullable="false" />
+    <Property Name="C8" Type="Double" Nullable="false" />
+    <Property Name="C9" Type="Double" Nullable="false" />
+    <Property Name="C10" Type="Double" Nullable="false" />
+    <Property Name="C11" Type="Double" Nullable="false" />
+    <Property Name="C12" Type="Double" Nullable="false" />
+    <Property Name="TOTAL_GENERAL" Type="Double" Nullable="false" />
+    <Property Name="PORCENTAJESIMULACIONMEJORA" Type="Double" />
+  </EntityType>
+  <EntityType Name="V_SCRAP_NO_CONSIDERADO_TBL1">
+    <Key>
+      <PropertyRef Name="ID_MOTIVO" />
+      <PropertyRef Name="DESCR" />
+      <PropertyRef Name="C1" />
+      <PropertyRef Name="C2" />
+      <PropertyRef Name="C3" />
+      <PropertyRef Name="C4" />
+      <PropertyRef Name="C5" />
+      <PropertyRef Name="C6" />
+      <PropertyRef Name="C7" />
+      <PropertyRef Name="C8" />
+      <PropertyRef Name="C9" />
+      <PropertyRef Name="C10" />
+      <PropertyRef Name="C11" />
+      <PropertyRef Name="C12" />
+      <PropertyRef Name="TOTAL" />
+    </Key>
+    <Property Name="ID_MOTIVO" Type="Int32" Nullable="false" />
+    <Property Name="DESCR" Type="String" MaxLength="19" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="C1" Type="Double" Nullable="false" />
+    <Property Name="C2" Type="Double" Nullable="false" />
+    <Property Name="C3" Type="Double" Nullable="false" />
+    <Property Name="C4" Type="Double" Nullable="false" />
+    <Property Name="C5" Type="Double" Nullable="false" />
+    <Property Name="C6" Type="Double" Nullable="false" />
+    <Property Name="C7" Type="Double" Nullable="false" />
+    <Property Name="C8" Type="Double" Nullable="false" />
+    <Property Name="C9" Type="Double" Nullable="false" />
+    <Property Name="C10" Type="Double" Nullable="false" />
+    <Property Name="C11" Type="Double" Nullable="false" />
+    <Property Name="C12" Type="Double" Nullable="false" />
+    <Property Name="TOTAL" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="V_SCRAP_NO_CONSIDERADO_TBL1_AÑO_ANT">
+    <Key>
+      <PropertyRef Name="ID_MOTIVO" />
+      <PropertyRef Name="DESCR" />
+      <PropertyRef Name="C1" />
+      <PropertyRef Name="C2" />
+      <PropertyRef Name="C3" />
+      <PropertyRef Name="C4" />
+      <PropertyRef Name="C5" />
+      <PropertyRef Name="C6" />
+      <PropertyRef Name="C7" />
+      <PropertyRef Name="C8" />
+      <PropertyRef Name="C9" />
+      <PropertyRef Name="C10" />
+      <PropertyRef Name="C11" />
+      <PropertyRef Name="C12" />
+      <PropertyRef Name="TOTAL" />
+    </Key>
+    <Property Name="ID_MOTIVO" Type="Int32" Nullable="false" />
+    <Property Name="DESCR" Type="String" MaxLength="19" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="C1" Type="Double" Nullable="false" />
+    <Property Name="C2" Type="Double" Nullable="false" />
+    <Property Name="C3" Type="Double" Nullable="false" />
+    <Property Name="C4" Type="Double" Nullable="false" />
+    <Property Name="C5" Type="Double" Nullable="false" />
+    <Property Name="C6" Type="Double" Nullable="false" />
+    <Property Name="C7" Type="Double" Nullable="false" />
+    <Property Name="C8" Type="Double" Nullable="false" />
+    <Property Name="C9" Type="Double" Nullable="false" />
+    <Property Name="C10" Type="Double" Nullable="false" />
+    <Property Name="C11" Type="Double" Nullable="false" />
+    <Property Name="C12" Type="Double" Nullable="false" />
+    <Property Name="TOTAL" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="V_TONS_PRODUCIDAS_TBL1">
+    <Key>
+      <PropertyRef Name="ID_MOTIVO" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="C1" />
+      <PropertyRef Name="C2" />
+      <PropertyRef Name="C3" />
+      <PropertyRef Name="C4" />
+      <PropertyRef Name="C5" />
+      <PropertyRef Name="C6" />
+      <PropertyRef Name="C7" />
+      <PropertyRef Name="C8" />
+      <PropertyRef Name="C9" />
+      <PropertyRef Name="C10" />
+      <PropertyRef Name="C11" />
+      <PropertyRef Name="C12" />
+      <PropertyRef Name="TOTAL" />
+    </Key>
+    <Property Name="ID_MOTIVO" Type="Int32" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="17" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="C1" Type="Double" Nullable="false" />
+    <Property Name="C2" Type="Double" Nullable="false" />
+    <Property Name="C3" Type="Double" Nullable="false" />
+    <Property Name="C4" Type="Double" Nullable="false" />
+    <Property Name="C5" Type="Double" Nullable="false" />
+    <Property Name="C6" Type="Double" Nullable="false" />
+    <Property Name="C7" Type="Double" Nullable="false" />
+    <Property Name="C8" Type="Double" Nullable="false" />
+    <Property Name="C9" Type="Double" Nullable="false" />
+    <Property Name="C10" Type="Double" Nullable="false" />
+    <Property Name="C11" Type="Double" Nullable="false" />
+    <Property Name="C12" Type="Double" Nullable="false" />
+    <Property Name="TOTAL" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="V_TONS_PRODUCIDAS_TBL1_AÑO_ANT">
+    <Key>
+      <PropertyRef Name="ID_MOTIVO" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="C1" />
+      <PropertyRef Name="C2" />
+      <PropertyRef Name="C3" />
+      <PropertyRef Name="C4" />
+      <PropertyRef Name="C5" />
+      <PropertyRef Name="C6" />
+      <PropertyRef Name="C7" />
+      <PropertyRef Name="C8" />
+      <PropertyRef Name="C9" />
+      <PropertyRef Name="C10" />
+      <PropertyRef Name="C11" />
+      <PropertyRef Name="C12" />
+      <PropertyRef Name="TOTAL" />
+    </Key>
+    <Property Name="ID_MOTIVO" Type="Int32" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="17" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="C1" Type="Double" Nullable="false" />
+    <Property Name="C2" Type="Double" Nullable="false" />
+    <Property Name="C3" Type="Double" Nullable="false" />
+    <Property Name="C4" Type="Double" Nullable="false" />
+    <Property Name="C5" Type="Double" Nullable="false" />
+    <Property Name="C6" Type="Double" Nullable="false" />
+    <Property Name="C7" Type="Double" Nullable="false" />
+    <Property Name="C8" Type="Double" Nullable="false" />
+    <Property Name="C9" Type="Double" Nullable="false" />
+    <Property Name="C10" Type="Double" Nullable="false" />
+    <Property Name="C11" Type="Double" Nullable="false" />
+    <Property Name="C12" Type="Double" Nullable="false" />
+    <Property Name="TOTAL" Type="Double" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AFSGridActionParams_AFSGridActions">
+    <End Role="APPGridActions" Type="Self.APPGridActions" Multiplicity="1" />
+    <End Role="APPGridActionParams" Type="Self.APPGridActionParams" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APPGridActions">
+        <PropertyRef Name="ActionId" />
+      </Principal>
+      <Dependent Role="APPGridActionParams">
+        <PropertyRef Name="GridActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GPPerfilesPrePrensa_GPImpresoras">
+    <End Role="GPImpresoras" Type="Self.GPImpresoras" Multiplicity="1" />
+    <End Role="GPPerfilesPrePrensa" Type="Self.GPPerfilesPrePrensa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPImpresoras">
+        <PropertyRef Name="IdImpresora" />
+      </Principal>
+      <Dependent Role="GPPerfilesPrePrensa">
+        <PropertyRef Name="IdImpresora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GPModulosResponsables_GPModulosProductos">
+    <End Role="GPModulosProductos" Type="Self.GPModulosProductos" Multiplicity="1" />
+    <End Role="GPModulosResponsables" Type="Self.GPModulosResponsables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPModulosProductos">
+        <PropertyRef Name="IdModulo" />
+      </Principal>
+      <Dependent Role="GPModulosResponsables">
+        <PropertyRef Name="IdModuloProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GPModulosResponsables_GPResponsables">
+    <End Role="GPResponsables" Type="Self.GPResponsables" Multiplicity="1" />
+    <End Role="GPModulosResponsables" Type="Self.GPModulosResponsables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPResponsables">
+        <PropertyRef Name="IdResponsable" />
+      </Principal>
+      <Dependent Role="GPModulosResponsables">
+        <PropertyRef Name="IdResponsable" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GPProductos_GPModulosResponsables">
+    <End Role="GPModulosResponsables" Type="Self.GPModulosResponsables" Multiplicity="0..1" />
+    <End Role="GPProductos" Type="Self.GPProductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPModulosResponsables">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GPProductos">
+        <PropertyRef Name="Liberacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GPPerfilesPrePrensa_GPTipoMaterial">
+    <End Role="GPTipoMaterial" Type="Self.GPTipoMaterial" Multiplicity="1" />
+    <End Role="GPPerfilesPrePrensa" Type="Self.GPPerfilesPrePrensa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPTipoMaterial">
+        <PropertyRef Name="IdTipoMaterial" />
+      </Principal>
+      <Dependent Role="GPPerfilesPrePrensa">
+        <PropertyRef Name="IdTipoMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GPTrabajosCilindros_GPProductos">
+    <End Role="GPProductos" Type="Self.GPProductos" Multiplicity="1" />
+    <End Role="GPTrabajosCilindros" Type="Self.GPTrabajosCilindros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPProductos">
+        <PropertyRef Name="Cod_Producto" />
+      </Principal>
+      <Dependent Role="GPTrabajosCilindros">
+        <PropertyRef Name="Cod_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSMotivosScrapVinculos_Metrics_Recursos_Habilitados">
+    <End Role="Metrics_Recursos_Habilitados" Type="Self.Metrics_Recursos_Habilitados" Multiplicity="1" />
+    <End Role="PSSMotivosScrapVinculos" Type="Self.PSSMotivosScrapVinculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metrics_Recursos_Habilitados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PSSMotivosScrapVinculos">
+        <PropertyRef Name="Id_Recurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSScrap_PSSActividades">
+    <End Role="PSSActividades" Type="Self.PSSActividades" Multiplicity="1" />
+    <End Role="PSSScrap" Type="Self.PSSScrap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSActividades">
+        <PropertyRef Name="IdActividad" />
+      </Principal>
+      <Dependent Role="PSSScrap">
+        <PropertyRef Name="IdActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSMaquinas_PSSAreas">
+    <End Role="PSSAreas" Type="Self.PSSAreas" Multiplicity="1" />
+    <End Role="PSSMaquinas" Type="Self.PSSMaquinas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSAreas">
+        <PropertyRef Name="IDArea" />
+      </Principal>
+      <Dependent Role="PSSMaquinas">
+        <PropertyRef Name="IDArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSJobtrackModulos_PSSJobTrack">
+    <End Role="PSSJobTrack" Type="Self.PSSJobTrack" Multiplicity="1" />
+    <End Role="PSSJobtrackModulos" Type="Self.PSSJobtrackModulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSJobTrack">
+        <PropertyRef Name="IDJobTrack" />
+      </Principal>
+      <Dependent Role="PSSJobtrackModulos">
+        <PropertyRef Name="IdJobtrack" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSMotivosScrapVinculos_PSSMaquinas">
+    <End Role="PSSMaquinas" Type="Self.PSSMaquinas" Multiplicity="1" />
+    <End Role="PSSMotivosScrapVinculos" Type="Self.PSSMotivosScrapVinculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSMaquinas">
+        <PropertyRef Name="IDMaq" />
+      </Principal>
+      <Dependent Role="PSSMotivosScrapVinculos">
+        <PropertyRef Name="Id_MaquinaImpute" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSScrap_PSSMaquinas">
+    <End Role="PSSMaquinas" Type="Self.PSSMaquinas" Multiplicity="1" />
+    <End Role="PSSScrap" Type="Self.PSSScrap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSMaquinas">
+        <PropertyRef Name="IDMaq" />
+      </Principal>
+      <Dependent Role="PSSScrap">
+        <PropertyRef Name="IdMaq" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSMotivosScrapObjetivos_PSSMotivosScrap">
+    <End Role="PSSMotivosScrap" Type="Self.PSSMotivosScrap" Multiplicity="1" />
+    <End Role="PSSMotivosScrapObjetivos" Type="Self.PSSMotivosScrapObjetivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSMotivosScrap">
+        <PropertyRef Name="Id_Motivo" />
+      </Principal>
+      <Dependent Role="PSSMotivosScrapObjetivos">
+        <PropertyRef Name="Id_Motivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSMotivosScrapVinculos_PSSMotivosScrap">
+    <End Role="PSSMotivosScrap" Type="Self.PSSMotivosScrap" Multiplicity="1" />
+    <End Role="PSSMotivosScrapVinculos" Type="Self.PSSMotivosScrapVinculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSMotivosScrap">
+        <PropertyRef Name="Id_Motivo" />
+      </Principal>
+      <Dependent Role="PSSMotivosScrapVinculos">
+        <PropertyRef Name="Id_Motivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSMotivosScrapVinculos_PSSOrigenesScrap">
+    <End Role="PSSOrigenesScrap" Type="Self.PSSOrigenesScrap" Multiplicity="1" />
+    <End Role="PSSMotivosScrapVinculos" Type="Self.PSSMotivosScrapVinculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSOrigenesScrap">
+        <PropertyRef Name="IDOrigen" />
+      </Principal>
+      <Dependent Role="PSSMotivosScrapVinculos">
+        <PropertyRef Name="Id_Origen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSMotivosScrapVinculos_PSSTiposMaterial">
+    <End Role="PSSTiposMaterial" Type="Self.PSSTiposMaterial" Multiplicity="1" />
+    <End Role="PSSMotivosScrapVinculos" Type="Self.PSSMotivosScrapVinculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSTiposMaterial">
+        <PropertyRef Name="IDTipoMat" />
+      </Principal>
+      <Dependent Role="PSSMotivosScrapVinculos">
+        <PropertyRef Name="Id_TipoMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSScrap_PSSOperadores">
+    <End Role="PSSOperadores" Type="Self.PSSOperadores" Multiplicity="1" />
+    <End Role="PSSScrap" Type="Self.PSSScrap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSOperadores">
+        <PropertyRef Name="IdOperador" />
+      </Principal>
+      <Dependent Role="PSSScrap">
+        <PropertyRef Name="IdOperador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSScrap_PSSOrigenesScrap">
+    <End Role="PSSOrigenesScrap" Type="Self.PSSOrigenesScrap" Multiplicity="1" />
+    <End Role="PSSScrap" Type="Self.PSSScrap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSOrigenesScrap">
+        <PropertyRef Name="IDOrigen" />
+      </Principal>
+      <Dependent Role="PSSScrap">
+        <PropertyRef Name="IdOrigenScrap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSRomaneoItems_PSSRomaneo">
+    <End Role="PSSRomaneo" Type="Self.PSSRomaneo" Multiplicity="1" />
+    <End Role="PSSRomaneoItems" Type="Self.PSSRomaneoItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSRomaneo">
+        <PropertyRef Name="IdRomaneo" />
+      </Principal>
+      <Dependent Role="PSSRomaneoItems">
+        <PropertyRef Name="IdRomaneo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSSScrap_PSSTiposMaterial">
+    <End Role="PSSTiposMaterial" Type="Self.PSSTiposMaterial" Multiplicity="1" />
+    <End Role="PSSScrap" Type="Self.PSSScrap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PSSTiposMaterial">
+        <PropertyRef Name="IDTipoMat" />
+      </Principal>
+      <Dependent Role="PSSScrap">
+        <PropertyRef Name="IdTipoMat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserClaim_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserClaim" Type="Self.UserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PSSActividadesMaquinas">
+    <End Role="PSSActividades" Type="Self.PSSActividades" Multiplicity="*" />
+    <End Role="PSSMaquinas" Type="Self.PSSMaquinas" Multiplicity="*" />
+  </Association>
+  <Association Name="PSSJobTrackMaquinas">
+    <End Role="PSSJobTrack" Type="Self.PSSJobTrack" Multiplicity="*" />
+    <End Role="PSSMaquinas" Type="Self.PSSMaquinas" Multiplicity="*" />
+  </Association>
+  <Association Name="PSSMaquinasOperadores">
+    <End Role="PSSMaquinas" Type="Self.PSSMaquinas" Multiplicity="*" />
+    <End Role="PSSOperadores" Type="Self.PSSOperadores" Multiplicity="*" />
+  </Association>
+  <Association Name="PSSOrigenesScrapMaquinas">
+    <End Role="PSSMaquinas" Type="Self.PSSMaquinas" Multiplicity="*" />
+    <End Role="PSSOrigenesScrap" Type="Self.PSSOrigenesScrap" Multiplicity="*" />
+  </Association>
+  <Association Name="PSSOrigenesTipos">
+    <End Role="PSSOrigenesScrap" Type="Self.PSSOrigenesScrap" Multiplicity="*" />
+    <End Role="PSSTiposMaterial" Type="Self.PSSTiposMaterial" Multiplicity="*" />
+  </Association>
+  <Association Name="PSSTiposMaterialMaquinas">
+    <End Role="PSSMaquinas" Type="Self.PSSMaquinas" Multiplicity="*" />
+    <End Role="PSSTiposMaterial" Type="Self.PSSTiposMaterial" Multiplicity="*" />
+  </Association>
+  <Association Name="UserRole">
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+  </Association>
+  <Association Name="RoleAction">
+    <End Role="Action" Type="Self.Action" Multiplicity="*" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="LAFScrapEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Action" EntityType="Self.Action" />
+    <EntitySet Name="APPGridActionParams" EntityType="Self.APPGridActionParams" />
+    <EntitySet Name="APPGridActions" EntityType="Self.APPGridActions" />
+    <EntitySet Name="APPMenu" EntityType="Self.APPMenu" />
+    <EntitySet Name="APPParametros" EntityType="Self.APPParametros" />
+    <EntitySet Name="APPWebPrintDirectFiles" EntityType="Self.APPWebPrintDirectFiles" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+    <EntitySet Name="GPEstadosPrePrensa" EntityType="Self.GPEstadosPrePrensa" />
+    <EntitySet Name="GPEstadosProductos" EntityType="Self.GPEstadosProductos" />
+    <EntitySet Name="GPImpresoras" EntityType="Self.GPImpresoras" />
+    <EntitySet Name="GPModulosProductos" EntityType="Self.GPModulosProductos" />
+    <EntitySet Name="GPModulosResponsables" EntityType="Self.GPModulosResponsables" />
+    <EntitySet Name="GPPerfilesPrePrensa" EntityType="Self.GPPerfilesPrePrensa" />
+    <EntitySet Name="GPProductos" EntityType="Self.GPProductos" />
+    <EntitySet Name="GPResponsables" EntityType="Self.GPResponsables" />
+    <EntitySet Name="GPTipoMaterial" EntityType="Self.GPTipoMaterial" />
+    <EntitySet Name="GPTrabajosCilindros" EntityType="Self.GPTrabajosCilindros" />
+    <EntitySet Name="Metrics_Indicadores_Historico_Totales_OP" EntityType="Self.Metrics_Indicadores_Historico_Totales_OP" />
+    <EntitySet Name="Metrics_Recursos_Habilitados" EntityType="Self.Metrics_Recursos_Habilitados" />
+    <EntitySet Name="PSS_CIERRE_MENSUAL_HIST" EntityType="Self.PSS_CIERRE_MENSUAL_HIST" />
+    <EntitySet Name="PSSActividades" EntityType="Self.PSSActividades" />
+    <EntitySet Name="PSSAreas" EntityType="Self.PSSAreas" />
+    <EntitySet Name="PSSEtiquetas" EntityType="Self.PSSEtiquetas" />
+    <EntitySet Name="PSSJobTrack" EntityType="Self.PSSJobTrack" />
+    <EntitySet Name="PSSJobtrackModulos" EntityType="Self.PSSJobtrackModulos" />
+    <EntitySet Name="PSSMaquinas" EntityType="Self.PSSMaquinas" />
+    <EntitySet Name="PSSMotivosScrap" EntityType="Self.PSSMotivosScrap" />
+    <EntitySet Name="PSSMotivosScrapObjetivos" EntityType="Self.PSSMotivosScrapObjetivos" />
+    <EntitySet Name="PSSMotivosScrapVinculos" EntityType="Self.PSSMotivosScrapVinculos" />
+    <EntitySet Name="PSSOperadores" EntityType="Self.PSSOperadores" />
+    <EntitySet Name="PSSOrigenesScrap" EntityType="Self.PSSOrigenesScrap" />
+    <EntitySet Name="PSSProductos" EntityType="Self.PSSProductos" />
+    <EntitySet Name="PSSRomaneo" EntityType="Self.PSSRomaneo" />
+    <EntitySet Name="PSSRomaneoItems" EntityType="Self.PSSRomaneoItems" />
+    <EntitySet Name="PSSScrap" EntityType="Self.PSSScrap" />
+    <EntitySet Name="PSSScrapValoresPorPeriodoMensual" EntityType="Self.PSSScrapValoresPorPeriodoMensual" />
+    <EntitySet Name="PSSTabacoBobinas" EntityType="Self.PSSTabacoBobinas" />
+    <EntitySet Name="PSSTabacoPallets" EntityType="Self.PSSTabacoPallets" />
+    <EntitySet Name="PSSTiposMaterial" EntityType="Self.PSSTiposMaterial" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Trazabilidad" EntityType="Self.Trazabilidad" />
+    <EntitySet Name="Trazabilidad_Det" EntityType="Self.Trazabilidad_Det" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="Metrics_Indicadores_Scrap" EntityType="Self.Metrics_Indicadores_Scrap" />
+    <EntitySet Name="Metrics_Indicadores_Scrap_Laminadoras" EntityType="Self.Metrics_Indicadores_Scrap_Laminadoras" />
+    <EntitySet Name="Metrics_Indicadores_Scrap_OP_Cerradas" EntityType="Self.Metrics_Indicadores_Scrap_OP_Cerradas" />
+    <EntitySet Name="PSSJobtracksActivePallets" EntityType="Self.PSSJobtracksActivePallets" />
+    <EntitySet Name="UserClaim" EntityType="Self.UserClaim" />
+    <EntitySet Name="UserLogin" EntityType="Self.UserLogin" />
+    <EntitySet Name="VIEW_USR_M3_ORDATIVIDADES_AC_test" EntityType="Self.VIEW_USR_M3_ORDATIVIDADES_AC_test" />
+    <EntitySet Name="CV_LLENA_DATOS_LAMINADORAS" EntityType="Self.CV_LLENA_DATOS_LAMINADORAS" />
+    <EntitySet Name="CV_LLENA_DATOS_LAMINADORAS_OP_CERRADAS" EntityType="Self.CV_LLENA_DATOS_LAMINADORAS_OP_CERRADAS" />
+    <EntitySet Name="CV_METRICS_MAX_CANT_UNIDADES_X_ORDEN" EntityType="Self.CV_METRICS_MAX_CANT_UNIDADES_X_ORDEN" />
+    <EntitySet Name="CV_METRICS_OP_ACTIVIDADES" EntityType="Self.CV_METRICS_OP_ACTIVIDADES" />
+    <EntitySet Name="CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS" EntityType="Self.CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS" />
+    <EntitySet Name="CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS_CERRADAS" EntityType="Self.CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS_CERRADAS" />
+    <EntitySet Name="CV_METRICS_VIEW_REL_RECURSOS_ACTIVIDADES" EntityType="Self.CV_METRICS_VIEW_REL_RECURSOS_ACTIVIDADES" />
+    <EntitySet Name="CV_METRICSPROD_DATOSPESO_X_ATIV" EntityType="Self.CV_METRICSPROD_DATOSPESO_X_ATIV" />
+    <EntitySet Name="CV_METRICSPROD_LISTAR_MAXIDATIV" EntityType="Self.CV_METRICSPROD_LISTAR_MAXIDATIV" />
+    <EntitySet Name="CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_IMPUTE_X_FECHA" EntityType="Self.CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_IMPUTE_X_FECHA" />
+    <EntitySet Name="CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_X_FECHA" EntityType="Self.CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_X_FECHA" />
+    <EntitySet Name="CV_PSSSCRAP_TOTAL_SCRAP_X_OP" EntityType="Self.CV_PSSSCRAP_TOTAL_SCRAP_X_OP" />
+    <EntitySet Name="CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS" EntityType="Self.CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS" />
+    <EntitySet Name="CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS_CERRADAS" EntityType="Self.CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS_CERRADAS" />
+    <EntitySet Name="CV_PSSSCRAP_TOTAL_X_ORDEN_X_ACTIVIDAD" EntityType="Self.CV_PSSSCRAP_TOTAL_X_ORDEN_X_ACTIVIDAD" />
+    <EntitySet Name="CV_SCRAP_PORCENTAJE_TOTAL_X_OP" EntityType="Self.CV_SCRAP_PORCENTAJE_TOTAL_X_OP" />
+    <EntitySet Name="V_SCRAP_MOTIVOS_TBL1" EntityType="Self.V_SCRAP_MOTIVOS_TBL1" />
+    <EntitySet Name="V_SCRAP_MOTIVOS_TBL1_AÑO_ANT" EntityType="Self.V_SCRAP_MOTIVOS_TBL1_AÑO_ANT" />
+    <EntitySet Name="V_SCRAP_NO_CONSIDERADO_TBL1" EntityType="Self.V_SCRAP_NO_CONSIDERADO_TBL1" />
+    <EntitySet Name="V_SCRAP_NO_CONSIDERADO_TBL1_AÑO_ANT" EntityType="Self.V_SCRAP_NO_CONSIDERADO_TBL1_AÑO_ANT" />
+    <EntitySet Name="V_TONS_PRODUCIDAS_TBL1" EntityType="Self.V_TONS_PRODUCIDAS_TBL1" />
+    <EntitySet Name="V_TONS_PRODUCIDAS_TBL1_AÑO_ANT" EntityType="Self.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT" />
+    <AssociationSet Name="FK_AFSGridActionParams_AFSGridActions" Association="Self.FK_AFSGridActionParams_AFSGridActions">
+      <End Role="APPGridActions" EntitySet="APPGridActions" />
+      <End Role="APPGridActionParams" EntitySet="APPGridActionParams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPPerfilesPrePrensa_GPImpresoras" Association="Self.FK_GPPerfilesPrePrensa_GPImpresoras">
+      <End Role="GPImpresoras" EntitySet="GPImpresoras" />
+      <End Role="GPPerfilesPrePrensa" EntitySet="GPPerfilesPrePrensa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPModulosResponsables_GPModulosProductos" Association="Self.FK_GPModulosResponsables_GPModulosProductos">
+      <End Role="GPModulosProductos" EntitySet="GPModulosProductos" />
+      <End Role="GPModulosResponsables" EntitySet="GPModulosResponsables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPModulosResponsables_GPResponsables" Association="Self.FK_GPModulosResponsables_GPResponsables">
+      <End Role="GPResponsables" EntitySet="GPResponsables" />
+      <End Role="GPModulosResponsables" EntitySet="GPModulosResponsables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPProductos_GPModulosResponsables" Association="Self.FK_GPProductos_GPModulosResponsables">
+      <End Role="GPModulosResponsables" EntitySet="GPModulosResponsables" />
+      <End Role="GPProductos" EntitySet="GPProductos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPPerfilesPrePrensa_GPTipoMaterial" Association="Self.FK_GPPerfilesPrePrensa_GPTipoMaterial">
+      <End Role="GPTipoMaterial" EntitySet="GPTipoMaterial" />
+      <End Role="GPPerfilesPrePrensa" EntitySet="GPPerfilesPrePrensa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPTrabajosCilindros_GPProductos" Association="Self.FK_GPTrabajosCilindros_GPProductos">
+      <End Role="GPProductos" EntitySet="GPProductos" />
+      <End Role="GPTrabajosCilindros" EntitySet="GPTrabajosCilindros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSMotivosScrapVinculos_Metrics_Recursos_Habilitados" Association="Self.FK_PSSMotivosScrapVinculos_Metrics_Recursos_Habilitados">
+      <End Role="Metrics_Recursos_Habilitados" EntitySet="Metrics_Recursos_Habilitados" />
+      <End Role="PSSMotivosScrapVinculos" EntitySet="PSSMotivosScrapVinculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSScrap_PSSActividades" Association="Self.FK_PSSScrap_PSSActividades">
+      <End Role="PSSActividades" EntitySet="PSSActividades" />
+      <End Role="PSSScrap" EntitySet="PSSScrap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSMaquinas_PSSAreas" Association="Self.FK_PSSMaquinas_PSSAreas">
+      <End Role="PSSAreas" EntitySet="PSSAreas" />
+      <End Role="PSSMaquinas" EntitySet="PSSMaquinas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSJobtrackModulos_PSSJobTrack" Association="Self.FK_PSSJobtrackModulos_PSSJobTrack">
+      <End Role="PSSJobTrack" EntitySet="PSSJobTrack" />
+      <End Role="PSSJobtrackModulos" EntitySet="PSSJobtrackModulos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSMotivosScrapVinculos_PSSMaquinas" Association="Self.FK_PSSMotivosScrapVinculos_PSSMaquinas">
+      <End Role="PSSMaquinas" EntitySet="PSSMaquinas" />
+      <End Role="PSSMotivosScrapVinculos" EntitySet="PSSMotivosScrapVinculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSScrap_PSSMaquinas" Association="Self.FK_PSSScrap_PSSMaquinas">
+      <End Role="PSSMaquinas" EntitySet="PSSMaquinas" />
+      <End Role="PSSScrap" EntitySet="PSSScrap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSMotivosScrapObjetivos_PSSMotivosScrap" Association="Self.FK_PSSMotivosScrapObjetivos_PSSMotivosScrap">
+      <End Role="PSSMotivosScrap" EntitySet="PSSMotivosScrap" />
+      <End Role="PSSMotivosScrapObjetivos" EntitySet="PSSMotivosScrapObjetivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSMotivosScrapVinculos_PSSMotivosScrap" Association="Self.FK_PSSMotivosScrapVinculos_PSSMotivosScrap">
+      <End Role="PSSMotivosScrap" EntitySet="PSSMotivosScrap" />
+      <End Role="PSSMotivosScrapVinculos" EntitySet="PSSMotivosScrapVinculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSMotivosScrapVinculos_PSSOrigenesScrap" Association="Self.FK_PSSMotivosScrapVinculos_PSSOrigenesScrap">
+      <End Role="PSSOrigenesScrap" EntitySet="PSSOrigenesScrap" />
+      <End Role="PSSMotivosScrapVinculos" EntitySet="PSSMotivosScrapVinculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSMotivosScrapVinculos_PSSTiposMaterial" Association="Self.FK_PSSMotivosScrapVinculos_PSSTiposMaterial">
+      <End Role="PSSTiposMaterial" EntitySet="PSSTiposMaterial" />
+      <End Role="PSSMotivosScrapVinculos" EntitySet="PSSMotivosScrapVinculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSScrap_PSSOperadores" Association="Self.FK_PSSScrap_PSSOperadores">
+      <End Role="PSSOperadores" EntitySet="PSSOperadores" />
+      <End Role="PSSScrap" EntitySet="PSSScrap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSScrap_PSSOrigenesScrap" Association="Self.FK_PSSScrap_PSSOrigenesScrap">
+      <End Role="PSSOrigenesScrap" EntitySet="PSSOrigenesScrap" />
+      <End Role="PSSScrap" EntitySet="PSSScrap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSRomaneoItems_PSSRomaneo" Association="Self.FK_PSSRomaneoItems_PSSRomaneo">
+      <End Role="PSSRomaneo" EntitySet="PSSRomaneo" />
+      <End Role="PSSRomaneoItems" EntitySet="PSSRomaneoItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSSScrap_PSSTiposMaterial" Association="Self.FK_PSSScrap_PSSTiposMaterial">
+      <End Role="PSSTiposMaterial" EntitySet="PSSTiposMaterial" />
+      <End Role="PSSScrap" EntitySet="PSSScrap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserClaim_User" Association="Self.FK_UserClaim_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserClaim" EntitySet="UserClaim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_User" Association="Self.FK_UserLogin_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserLogin" EntitySet="UserLogin" />
+    </AssociationSet>
+    <AssociationSet Name="PSSActividadesMaquinas" Association="Self.PSSActividadesMaquinas">
+      <End Role="PSSActividades" EntitySet="PSSActividades" />
+      <End Role="PSSMaquinas" EntitySet="PSSMaquinas" />
+    </AssociationSet>
+    <AssociationSet Name="PSSJobTrackMaquinas" Association="Self.PSSJobTrackMaquinas">
+      <End Role="PSSJobTrack" EntitySet="PSSJobTrack" />
+      <End Role="PSSMaquinas" EntitySet="PSSMaquinas" />
+    </AssociationSet>
+    <AssociationSet Name="PSSMaquinasOperadores" Association="Self.PSSMaquinasOperadores">
+      <End Role="PSSMaquinas" EntitySet="PSSMaquinas" />
+      <End Role="PSSOperadores" EntitySet="PSSOperadores" />
+    </AssociationSet>
+    <AssociationSet Name="PSSOrigenesScrapMaquinas" Association="Self.PSSOrigenesScrapMaquinas">
+      <End Role="PSSMaquinas" EntitySet="PSSMaquinas" />
+      <End Role="PSSOrigenesScrap" EntitySet="PSSOrigenesScrap" />
+    </AssociationSet>
+    <AssociationSet Name="PSSOrigenesTipos" Association="Self.PSSOrigenesTipos">
+      <End Role="PSSOrigenesScrap" EntitySet="PSSOrigenesScrap" />
+      <End Role="PSSTiposMaterial" EntitySet="PSSTiposMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="PSSTiposMaterialMaquinas" Association="Self.PSSTiposMaterialMaquinas">
+      <End Role="PSSMaquinas" EntitySet="PSSMaquinas" />
+      <End Role="PSSTiposMaterial" EntitySet="PSSTiposMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="UserRole" Association="Self.UserRole">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="RoleAction" Association="Self.RoleAction">
+      <End Role="Action" EntitySet="Action" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <FunctionImport Name="CPS_TRAZABILIDAD_INSERT">
+      <Parameter Name="NROOP" Mode="In" Type="Int32" />
+      <Parameter Name="TIPO" Mode="In" Type="Int32" />
+      <Parameter Name="LEGAJO" Mode="In" Type="Int32" />
+      <Parameter Name="CANT_GENERADA" Mode="In" Type="Int32" />
+      <Parameter Name="DESDE" Mode="In" Type="Int32" />
+      <Parameter Name="HASTA" Mode="In" Type="Int32" />
+      <Parameter Name="CANT_ELEMENTOS" Mode="In" Type="Int32" />
+      <Parameter Name="METROS" Mode="In" Type="Double" />
+      <Parameter Name="MUESTRA" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_APP_WEBPRINTDIRECTFILES_INSERT">
+      <Parameter Name="PJOBTRACKNAME" Mode="In" Type="String" />
+      <Parameter Name="PFILENAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_APPGRIDACTIONPARAMS_X_ACTIONID" ReturnType="Collection(LAFScrapModel.CSP_APPGRIDACTIONPARAMS_X_ACTIONID_Result)">
+      <Parameter Name="PACTIONID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_APPGRIDACTIONS_X_GRIDOBJECTNAME" ReturnType="Collection(LAFScrapModel.CSP_APPGRIDACTIONS_X_GRIDOBJECTNAME_Result)">
+      <Parameter Name="PGRIDOBJNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_APPMENU_LISTAR" ReturnType="Collection(LAFScrapModel.CSP_APPMENU_LISTAR_Result)" />
+    <FunctionImport Name="CSP_APPPARAMS_GET_VALUE" ReturnType="Collection(LAFScrapModel.CSP_APPPARAMS_GET_VALUE_Result)">
+      <Parameter Name="P_IDPARAM" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_CHEQUEA_PALLET_GENERADO" ReturnType="Collection(LAFScrapModel.CSP_CHEQUEA_PALLET_GENERADO_Result)">
+      <Parameter Name="PNROOF" Mode="In" Type="String" />
+      <Parameter Name="PRNOPALLET" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_DASHBOARD_SLA_PRODUCTOS" ReturnType="Collection(LAFScrapModel.CSP_DASHBOARD_SLA_PRODUCTOS_Result)" />
+    <FunctionImport Name="CSP_DASHBOARD_SLA_PRODUCTOS_TOTAL" ReturnType="Collection(LAFScrapModel.CSP_DASHBOARD_SLA_PRODUCTOS_TOTAL_Result)" />
+    <FunctionImport Name="CSP_GET_ALL_TREE_NODES" />
+    <FunctionImport Name="CSP_GET_CUSTOMER_OC_BY_NUMOF" ReturnType="Collection(LAFScrapModel.CSP_GET_CUSTOMER_OC_BY_NUMOF_Result)">
+      <Parameter Name="NUMOF" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_GET_MAQUINAS_X_AREA" ReturnType="Collection(LAFScrapModel.CSP_GET_MAQUINAS_X_AREA_Result)">
+      <Parameter Name="PIDAREA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_GET_ORIGENESSCRAP_X_MAQUINA" ReturnType="Collection(LAFScrapModel.CSP_GET_ORIGENESSCRAP_X_MAQUINA_Result)">
+      <Parameter Name="PIDMAQ" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_GET_SEGUIMIENTO_PRODUCTO_X_CODIGO" ReturnType="Collection(LAFScrapModel.CSP_GET_SEGUIMIENTO_PRODUCTO_X_CODIGO_Result)">
+      <Parameter Name="COD_PRODUCTO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_GET_TIPOSMATERIAL_X_MAQUINA" ReturnType="Collection(LAFScrapModel.CSP_GET_TIPOSMATERIAL_X_MAQUINA_Result)">
+      <Parameter Name="PIDMAQ" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_GET_TIPOSMATERIAL_X_MAQUINA_X_ORIGENSCRAP" ReturnType="Collection(LAFScrapModel.CSP_GET_TIPOSMATERIAL_X_MAQUINA_X_ORIGENSCRAP_Result)">
+      <Parameter Name="PIDMAQ" Mode="In" Type="Int32" />
+      <Parameter Name="PIDORIGEN" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_GPPRODUCTOS_EXCEL_EXPORT" ReturnType="Collection(LAFScrapModel.CSP_GPPRODUCTOS_EXCEL_EXPORT_Result)">
+      <Parameter Name="FECHA_INICIO" Mode="In" Type="DateTime" />
+      <Parameter Name="FECHA_FIN" Mode="In" Type="DateTime" />
+      <Parameter Name="ESTADO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_GPPRODUCTOS_EXCEL_GRABADOS_EXPORT" ReturnType="Collection(LAFScrapModel.CSP_GPPRODUCTOS_EXCEL_GRABADOS_EXPORT_Result)" />
+    <FunctionImport Name="CSP_GPPRODUCTOS_INSERT_NEW_PRODUCTS" />
+    <FunctionImport Name="CSP_GPPRODUCTOS_KPI_INGENIERIA_GENERAL" ReturnType="Collection(LAFScrapModel.CSP_GPPRODUCTOS_KPI_INGENIERIA_GENERAL_Result)" />
+    <FunctionImport Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_DIAS_ENVIOET" ReturnType="Collection(LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_DIAS_ENVIOET_Result)" />
+    <FunctionImport Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_PROVEEDOR" ReturnType="Collection(LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_PROVEEDOR_Result)" />
+    <FunctionImport Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_TIPOIMPRESORA" ReturnType="Collection(LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_TIPOIMPRESORA_Result)" />
+    <FunctionImport Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_PROVEEDOR" ReturnType="Collection(LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_PROVEEDOR_Result)" />
+    <FunctionImport Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_RESPONSABLE" ReturnType="Collection(LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_RESPONSABLE_Result)" />
+    <FunctionImport Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_TIPOIMPRESORA" ReturnType="Collection(LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_TIPOIMPRESORA_Result)" />
+    <FunctionImport Name="CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION" />
+    <FunctionImport Name="CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT" ReturnType="Collection(LAFScrapModel.CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT_Result)" />
+    <FunctionImport Name="CSP_HISTORIZA_CIERRE_MES_OP" ReturnType="Collection(DateTime)" />
+    <FunctionImport Name="CSP_INDICADOR_TOTAL_SCRAP_X_OP" ReturnType="Collection(LAFScrapModel.CSP_INDICADOR_TOTAL_SCRAP_X_OP_Result)">
+      <Parameter Name="NUMORDEM" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_INDICADORES_IMPRESORAS_ULT7_DIAS" />
+    <FunctionImport Name="CSP_INDICADORES_IMPRESORAS_X_MES" ReturnType="Collection(LAFScrapModel.CSP_INDICADORES_IMPRESORAS_X_MES_Result)" />
+    <FunctionImport Name="CSP_INDICADORES_LAMINADORAS_ULT7_DIAS" ReturnType="Collection(LAFScrapModel.CSP_INDICADORES_LAMINADORAS_ULT7_DIAS_Result)" />
+    <FunctionImport Name="CSP_INDICADORES_LAMINADORAS_X_MES" ReturnType="Collection(LAFScrapModel.CSP_INDICADORES_LAMINADORAS_X_MES_Result)" />
+    <FunctionImport Name="CSP_INDICADORES_PORCENTAJE_POR_AREA" ReturnType="Collection(LAFScrapModel.CSP_INDICADORES_PORCENTAJE_POR_AREA_Result)">
+      <Parameter Name="PIDAREA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA" ReturnType="Collection(LAFScrapModel.CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA_Result)" />
+    <FunctionImport Name="CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA_OP_CERRADAS" ReturnType="Collection(LAFScrapModel.CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA_OP_CERRADAS_Result)" />
+    <FunctionImport Name="CSP_INDICADORES_SCRAP_PRODUCCION" ReturnType="Collection(LAFScrapModel.CSP_INDICADORES_SCRAP_PRODUCCION_Result)" />
+    <FunctionImport Name="CSP_INDICADORES_TOTALES_OP_X_MES" ReturnType="Collection(LAFScrapModel.CSP_INDICADORES_TOTALES_OP_X_MES_Result)" />
+    <FunctionImport Name="CSP_LISTAR_REGISTROS_SCRAP_X_AREA" ReturnType="Collection(LAFScrapModel.CSP_LISTAR_REGISTROS_SCRAP_X_AREA_Result)">
+      <Parameter Name="PAREA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_LISTAR_SEGUMIENTO_PRODUCTO" ReturnType="Collection(LAFScrapModel.CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result)" />
+    <FunctionImport Name="CSP_LLENA_METRICS_INDICADORES_SCRAP_DIA_ANTERIOR" />
+    <FunctionImport Name="CSP_LLENA_METRICS_INDICADORES_SCRAP_OP_CERRADAS_DIA_ANTERIOR" />
+    <FunctionImport Name="CSP_METRICS_JOB_LLENA_TABLA_HISTORICO_OP" />
+    <FunctionImport Name="CSP_METRICS_ORDENDESPRODUCCION_GETALL" />
+    <FunctionImport Name="CSP_METRICS_ORDENDESPRODUCCION_GETALL_ABIERTAS" />
+    <FunctionImport Name="CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO" ReturnType="Collection(LAFScrapModel.CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO_Result)">
+      <Parameter Name="PNROOP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_METRICS_ORDENDESPRODUCCION_GetProductListXOP" ReturnType="Collection(LAFScrapModel.CSP_METRICS_ORDENDESPRODUCCION_GetProductListXOP_Result)">
+      <Parameter Name="PNROOP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_METRICS_SCRAP_ULT_7_DIAS_X_AREA" ReturnType="Collection(LAFScrapModel.CSP_METRICS_SCRAP_ULT_7_DIAS_X_AREA_Result)">
+      <Parameter Name="PIDAREA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_METRICS_TRAE_ACTIVIDADES_ORDEN" ReturnType="Collection(LAFScrapModel.CSP_METRICS_TRAE_ACTIVIDADES_ORDEN_Result)">
+      <Parameter Name="PNUMORDEM" Mode="In" Type="String" />
+      <Parameter Name="PNOMJOBTRACK" Mode="In" Type="String" />
+      <Parameter Name="PIDMAQUINA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_METRIS_GET_PRODUCT_PARAMS" ReturnType="Collection(LAFScrapModel.CSP_METRIS_GET_PRODUCT_PARAMS_Result)">
+      <Parameter Name="pCodEstrutura" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_METRIS_GET_PRODUCT_PARAMS_X_OP" ReturnType="Collection(LAFScrapModel.CSP_METRIS_GET_PRODUCT_PARAMS_X_OP_Result)">
+      <Parameter Name="pNroOp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_METRIS_GET_PRODUCT_PARAMS_X_STRUCT" ReturnType="Collection(LAFScrapModel.CSP_METRIS_GET_PRODUCT_PARAMS_X_STRUCT_Result)">
+      <Parameter Name="pCodEstruct" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSACTIVIDADES_TRAE_ACTIVIDAD_REPROCESO" ReturnType="Collection(LAFScrapModel.CSP_PSSACTIVIDADES_TRAE_ACTIVIDAD_REPROCESO_Result)" />
+    <FunctionImport Name="CSP_PSSACTIVIDADESMAQUINAS_CHECK_REPROCESO_ENABLED" ReturnType="Collection(LAFScrapModel.CSP_PSSACTIVIDADESMAQUINAS_CHECK_REPROCESO_ENABLED_Result)">
+      <Parameter Name="P_Id_Maquina" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSJOBTRACK_ACTIVE_PALLETS_CLEAN_JOBTRACK">
+      <Parameter Name="JOBTRACKNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSJOBTRACK_ACTIVE_PALLETS_INSERT">
+      <Parameter Name="JOBTRACKNAME" Mode="In" Type="String" />
+      <Parameter Name="NUMOF" Mode="In" Type="String" />
+      <Parameter Name="NUMPALLET" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSJOBTRACK_DISABLE_PALLETS">
+      <Parameter Name="JOBTRACKNAME" Mode="In" Type="String" />
+      <Parameter Name="NUMOF" Mode="In" Type="String" />
+      <Parameter Name="NUMPALLET" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET" ReturnType="Collection(LAFScrapModel.CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET_Result)">
+      <Parameter Name="JOBTRACKNAME" Mode="In" Type="String" />
+      <Parameter Name="NUMOF" Mode="In" Type="Int32" />
+      <Parameter Name="NUMPALLET" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSJOBTRACKS_GET_PRINTERS" ReturnType="Collection(LAFScrapModel.CSP_PSSJOBTRACKS_GET_PRINTERS_Result)">
+      <Parameter Name="pJobtrackDNSName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSMAQUINAS_LISTAR_X_JOBTRACK_X_OPERADOR" ReturnType="Collection(LAFScrapModel.CSP_PSSMAQUINAS_LISTAR_X_JOBTRACK_X_OPERADOR_Result)">
+      <Parameter Name="PNOMJOBTRACK" Mode="In" Type="String" />
+      <Parameter Name="POPERADOR" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSOPERADORES_GET_DETALLE" ReturnType="Collection(LAFScrapModel.CSP_PSSOPERADORES_GET_DETALLE_Result)">
+      <Parameter Name="PIDOPERADOR" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSOPERADORES_GET_DETALLE_X_LEGAJO" ReturnType="Collection(LAFScrapModel.CSP_PSSOPERADORES_GET_DETALLE_X_LEGAJO_Result)">
+      <Parameter Name="PLEGAJO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSOPERADORES_GETALL" ReturnType="Collection(LAFScrapModel.CSP_PSSOPERADORES_GETALL_Result)" />
+    <FunctionImport Name="CSP_PSSOPERARIOS_HABILITADOS_EMPAQUE_X_MAQUINA" ReturnType="Collection(LAFScrapModel.CSP_PSSOPERARIOS_HABILITADOS_EMPAQUE_X_MAQUINA_Result)">
+      <Parameter Name="PJOBTRACK" Mode="In" Type="String" />
+      <Parameter Name="pLEGAJO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSORDENDESPRODUCCION_GETALL" />
+    <FunctionImport Name="CSP_PSSORDENDESPRODUCCION_GetOPxNUMERO">
+      <Parameter Name="PNROOP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSORIGENSCRAP_REPROCESO" ReturnType="Collection(LAFScrapModel.CSP_PSSORIGENSCRAP_REPROCESO_Result)" />
+    <FunctionImport Name="CSP_PSSROMANEO_INSERT" ReturnType="Collection(Decimal)">
+      <Parameter Name="pNroOF" Mode="In" Type="Int32" />
+      <Parameter Name="pCodProducto" Mode="In" Type="String" />
+      <Parameter Name="pDescProducto" Mode="In" Type="String" />
+      <Parameter Name="pNroPallet" Mode="In" Type="Int32" />
+      <Parameter Name="pTipoRomaneo" Mode="In" Type="String" />
+      <Parameter Name="pLegajo" Mode="In" Type="Int32" />
+      <Parameter Name="pFecha" Mode="In" Type="DateTime" />
+      <Parameter Name="pTurno" Mode="In" Type="Int32" />
+      <Parameter Name="pObs" Mode="In" Type="String" />
+      <Parameter Name="pPesoBruto" Mode="In" Type="Double" />
+      <Parameter Name="pPesoNeto" Mode="In" Type="Double" />
+      <Parameter Name="pCodCliente" Mode="In" Type="String" />
+      <Parameter Name="pNomCliente" Mode="In" Type="String" />
+      <Parameter Name="pTaraBuje" Mode="In" Type="Double" />
+      <Parameter Name="pDistTacos" Mode="In" Type="Double" />
+      <Parameter Name="pAncho" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSROMANEO_PRINT_CARTEL" ReturnType="Collection(LAFScrapModel.CSP_PSSROMANEO_PRINT_CARTEL_Result)" />
+    <FunctionImport Name="CSP_PSSROMANEO_PRINT_CARTEL_ALIMENTO" ReturnType="Collection(LAFScrapModel.CSP_PSSROMANEO_PRINT_CARTEL_ALIMENTO_Result)">
+      <Parameter Name="Alimento" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSROMANEO_PRINT_COLDSEAL" ReturnType="Collection(LAFScrapModel.CSP_PSSROMANEO_PRINT_COLDSEAL_Result)">
+      <Parameter Name="PProducto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSROMANEOITEMS_INSERT">
+      <Parameter Name="pIdRomaneo" Mode="In" Type="Int32" />
+      <Parameter Name="pNroBulto" Mode="In" Type="Int32" />
+      <Parameter Name="pBobinas" Mode="In" Type="Int32" />
+      <Parameter Name="pUnidades" Mode="In" Type="Double" />
+      <Parameter Name="pMts" Mode="In" Type="Double" />
+      <Parameter Name="pPesoBruto" Mode="In" Type="Double" />
+      <Parameter Name="pPesoNeto" Mode="In" Type="Double" />
+      <Parameter Name="pEtiquetasBobina" Mode="In" Type="Int32" />
+      <Parameter Name="pMts2" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSRROMANEO_DELETE_X_OF_X_PALLET" ReturnType="Collection(LAFScrapModel.CSP_PSSRROMANEO_DELETE_X_OF_X_PALLET_Result)">
+      <Parameter Name="pNroOF" Mode="In" Type="Int32" />
+      <Parameter Name="pNroPallet" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSRROMANEO_GET_LAST_OF_PRINTED" ReturnType="Collection(Int32)">
+      <Parameter Name="pTipoRomaneo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSRROMANEO_GET_NEXT_PALLET_NUMBER" ReturnType="Collection(Int32)">
+      <Parameter Name="pNroOf" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSRROMANEO_GET_NEXT_PALLET_NUMBER_BK_20221028" ReturnType="Collection(Int32)">
+      <Parameter Name="pNroOf" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSSCRAP_DELETE">
+      <Parameter Name="PREGID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSSCRAP_LISTAR_X_JOBTRACK" ReturnType="Collection(LAFScrapModel.CSP_PSSSCRAP_LISTAR_X_JOBTRACK_Result)">
+      <Parameter Name="PJOBTRACKNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSTABACOBOBINAS_GET_PROX_BOBINA_X_OF" ReturnType="Collection(Int32)">
+      <Parameter Name="PNROOF" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSTABACOBOBINAS_GET_PROX_PALLET_X_OF" ReturnType="Collection(Int32)">
+      <Parameter Name="PNROOF" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSTABACOBOBINAS_INSERT">
+      <Parameter Name="NROOF" Mode="In" Type="Int32" />
+      <Parameter Name="CODPRODUCTO" Mode="In" Type="String" />
+      <Parameter Name="DESCPRODUCTO" Mode="In" Type="String" />
+      <Parameter Name="CODITEMPMI" Mode="In" Type="String" />
+      <Parameter Name="LEGAJO" Mode="In" Type="Int32" />
+      <Parameter Name="FECHAPROD" Mode="In" Type="DateTime" />
+      <Parameter Name="FECHAREG" Mode="In" Type="DateTime" />
+      <Parameter Name="FECHAVTO" Mode="In" Type="DateTime" />
+      <Parameter Name="LARGO" Mode="In" Type="Double" />
+      <Parameter Name="NROBOBINA" Mode="In" Type="Int32" />
+      <Parameter Name="OBS" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSTABACOPALLETS_GET_LASTTOTALPALLETNUMBER" ReturnType="Collection(Int32)">
+      <Parameter Name="NROOF" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_PSSTABACOPALLETS_INSERT">
+      <Parameter Name="NROOF" Mode="In" Type="Int32" />
+      <Parameter Name="CODPRODUCTO" Mode="In" Type="String" />
+      <Parameter Name="DESCPRODUCTO" Mode="In" Type="String" />
+      <Parameter Name="NROORDENPMI" Mode="In" Type="String" />
+      <Parameter Name="NROIDENTIFICADOR" Mode="In" Type="String" />
+      <Parameter Name="CODITEMPMI" Mode="In" Type="String" />
+      <Parameter Name="LEGAJO" Mode="In" Type="Int32" />
+      <Parameter Name="FECHAPROD" Mode="In" Type="DateTime" />
+      <Parameter Name="FECHAREG" Mode="In" Type="DateTime" />
+      <Parameter Name="FECHAVTO" Mode="In" Type="DateTime" />
+      <Parameter Name="NRO_PALLET" Mode="In" Type="Int32" />
+      <Parameter Name="TOTAL_PALLETS" Mode="In" Type="Int32" />
+      <Parameter Name="CANT_BOBINAS" Mode="In" Type="Int32" />
+      <Parameter Name="PESO_BRUTO" Mode="In" Type="Decimal" />
+      <Parameter Name="PESO_NETO" Mode="In" Type="Decimal" />
+      <Parameter Name="OBS" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_REPORTE_EFICIENCIA_X_FECHAS_NUMOREDEN_CERRADAS" ReturnType="Collection(LAFScrapModel.CSP_REPORTE_EFICIENCIA_X_FECHAS_NUMOREDEN_CERRADAS_Result)">
+      <Parameter Name="PFECHADESDE" Mode="In" Type="DateTime" />
+      <Parameter Name="PFECHAHASTA" Mode="In" Type="DateTime" />
+      <Parameter Name="PESTADOOP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_REPORTE_EFICIENCIA_X_NUMORDEN_CERRADA" ReturnType="Collection(LAFScrapModel.CSP_REPORTE_EFICIENCIA_X_NUMORDEN_CERRADA_Result)">
+      <Parameter Name="NUMOP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_REPORTE_ROMANEO" ReturnType="Collection(LAFScrapModel.CSP_REPORTE_ROMANEO_Result)">
+      <Parameter Name="PNroOf" Mode="In" Type="Int32" />
+      <Parameter Name="PCodProducto" Mode="In" Type="String" />
+      <Parameter Name="PFechaDesde" Mode="In" Type="DateTime" />
+      <Parameter Name="PFechaHasta" Mode="In" Type="DateTime" />
+      <Parameter Name="PTurno" Mode="In" Type="Int32" />
+      <Parameter Name="PTipoRomaneo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_REPORTE_SCRAP" ReturnType="Collection(LAFScrapModel.CSP_REPORTE_SCRAP_Result)">
+      <Parameter Name="FECHA_INI" Mode="In" Type="DateTime" />
+      <Parameter Name="FECHA_FIN" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_RPT_SCRAP_IMPRESORA" ReturnType="Collection(LAFScrapModel.CSP_RPT_SCRAP_IMPRESORA_Result)">
+      <Parameter Name="PIDREGSCRAP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_SCRAP_INSERT" ReturnType="Collection(Decimal)">
+      <Parameter Name="PFECHA" Mode="In" Type="DateTime" />
+      <Parameter Name="PNUMOP" Mode="In" Type="Int32" />
+      <Parameter Name="PIDMAQ" Mode="In" Type="Int32" />
+      <Parameter Name="PIDOPERADOR" Mode="In" Type="Int32" />
+      <Parameter Name="PIDACTIVIDAD" Mode="In" Type="Int32" />
+      <Parameter Name="PIDTIPOMAQ" Mode="In" Type="Int32" />
+      <Parameter Name="PIDORISCRAP" Mode="In" Type="Int32" />
+      <Parameter Name="PPESO" Mode="In" Type="Decimal" />
+      <Parameter Name="POBS" Mode="In" Type="String" />
+      <Parameter Name="PHABILITADO" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_SCRAP_MOTIVOS_TABLE_TOTAL_AÑO_ANT" />
+    <FunctionImport Name="CSP_SCRAP_MOTIVOS_TABLE1" ReturnType="Collection(LAFScrapModel.CSP_SCRAP_MOTIVOS_TABLE1_Result)" />
+    <FunctionImport Name="CSP_SCRAP_MOTIVOS_TABLE2" ReturnType="Collection(LAFScrapModel.CSP_SCRAP_MOTIVOS_TABLE2_Result)" />
+    <FunctionImport Name="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP" ReturnType="Collection(LAFScrapModel.CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result)">
+      <Parameter Name="pNroOf" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_TABACO_GET_VISUAL_OC_INFO">
+      <Parameter Name="PO_REF" Mode="In" Type="String" />
+      <Parameter Name="PART_ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CSP_TRAZABILIDAD_GET_PROX_DESDE" ReturnType="Collection(Int32)">
+      <Parameter Name="NROOF" Mode="In" Type="Int32" />
+      <Parameter Name="TIPO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(LAFScrapModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(LAFScrapModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" ReturnType="Collection(Guid)" />
+  </EntityContainer>
+  <ComplexType Name="CSP_APPGRIDACTIONPARAMS_X_ACTIONID_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="GridActionId" Nullable="false" />
+    <Property Type="String" Name="ParamName" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="ParamHasFixedValue" Nullable="false" />
+    <Property Type="String" Name="ParamValueField" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="CSP_APPGRIDACTIONS_X_GRIDOBJECTNAME_Result">
+    <Property Type="Int32" Name="ActionId" Nullable="false" />
+    <Property Type="String" Name="GridObject" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Ref" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ImgSource" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="NewPage" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CSP_APPMENU_LISTAR_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Detalle" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ImgClass" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Ref" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="FatherId" Nullable="false" />
+    <Property Type="Int32" Name="Nivel" Nullable="false" />
+    <Property Type="Boolean" Name="HasChilds" Nullable="false" />
+    <Property Type="String" Name="Objeto" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="CSP_APPPARAMS_GET_VALUE_Result">
+    <Property Type="String" Name="IDParam" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="ParamValue" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="CSP_CHEQUEA_PALLET_GENERADO_Result">
+    <Property Type="Int32" Name="NroOf" Nullable="false" />
+    <Property Type="Int32" Name="NroPallet" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="CSP_DASHBOARD_SLA_PRODUCTOS_Result">
+    <Property Type="String" Name="TipoImpresora" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="PERIODO" Nullable="true" MaxLength="7" />
+    <Property Type="Int32" Name="SLA_SNP" Nullable="true" />
+    <Property Type="Int32" Name="QTY_SNP" Nullable="true" />
+    <Property Type="Int32" Name="BEST_SNP" Nullable="true" />
+    <Property Type="Int32" Name="WORST_SNP" Nullable="true" />
+    <Property Type="Int32" Name="SLA_SND" Nullable="true" />
+    <Property Type="Int32" Name="QTY_SND" Nullable="true" />
+    <Property Type="Int32" Name="BEST_SND" Nullable="true" />
+    <Property Type="Int32" Name="WORST_SND" Nullable="true" />
+    <Property Type="Int32" Name="SLA_SNPS" Nullable="true" />
+    <Property Type="Int32" Name="QTY_SNPS" Nullable="true" />
+    <Property Type="Int32" Name="BEST_SNPS" Nullable="true" />
+    <Property Type="Int32" Name="WORST_SNPS" Nullable="true" />
+    <Property Type="Int32" Name="SLA_SCP" Nullable="true" />
+    <Property Type="Int32" Name="QTY_SCP" Nullable="true" />
+    <Property Type="Int32" Name="BEST_SCP" Nullable="true" />
+    <Property Type="Int32" Name="WORST_SCP" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_DASHBOARD_SLA_PRODUCTOS_TOTAL_Result">
+    <Property Type="String" Name="PERIODO" Nullable="true" MaxLength="7" />
+    <Property Type="Int32" Name="SLA_FLEXO" Nullable="true" />
+    <Property Type="Int32" Name="QTY_FLEXO" Nullable="true" />
+    <Property Type="Int32" Name="BEST_FLEXO" Nullable="true" />
+    <Property Type="Int32" Name="WORST_FLEXO" Nullable="true" />
+    <Property Type="Int32" Name="SLA_HUECO" Nullable="true" />
+    <Property Type="Int32" Name="QTY_HUECO" Nullable="true" />
+    <Property Type="Int32" Name="BEST_HUECO" Nullable="true" />
+    <Property Type="Int32" Name="WORST_HUECO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_GET_CUSTOMER_OC_BY_NUMOF_Result">
+    <Property Type="String" Name="NumOrdemCompra" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NumOrcamento" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="NumOrdem" Nullable="false" MaxLength="14" />
+  </ComplexType>
+  <ComplexType Name="CSP_GET_MAQUINAS_X_AREA_Result">
+    <Property Type="Int32" Name="IDMaq" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Recurso" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="IDArea" Nullable="false" />
+    <Property Type="Boolean" Name="Habilitado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CSP_GET_ORIGENESSCRAP_X_MAQUINA_Result">
+    <Property Type="Int32" Name="IDMAQ" Nullable="false" />
+    <Property Type="Int32" Name="IDOrigen" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Habilitado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_GET_SEGUIMIENTO_PRODUCTO_X_CODIGO_Result">
+    <Property Type="String" Name="Cod_Producto" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="300" />
+    <Property Type="String" Name="Tipo_Adm" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="SemaforoCustomer" Nullable="true" />
+    <Property Type="Int32" Name="DiasCustomer" Nullable="true" />
+    <Property Type="Int32" Name="SemaforoIngenieria" Nullable="true" />
+    <Property Type="Int32" Name="DiasIngenieria" Nullable="true" />
+    <Property Type="Int32" Name="SemaforoPreprensa" Nullable="true" />
+    <Property Type="Int32" Name="DiasPrePrensa" Nullable="true" />
+    <Property Type="Int32" Name="SemaforoHerramental" Nullable="true" />
+    <Property Type="Int32" Name="DiasHerramental" Nullable="true" />
+    <Property Type="Int32" Name="SemaforoGeneral" Nullable="true" />
+    <Property Type="Int32" Name="DiasGeneral" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_GET_TIPOSMATERIAL_X_MAQUINA_Result">
+    <Property Type="Int32" Name="IDMAQ" Nullable="false" />
+    <Property Type="Int32" Name="IDTIPOMAT" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="CSP_GET_TIPOSMATERIAL_X_MAQUINA_X_ORIGENSCRAP_Result">
+    <Property Type="Int32" Name="IdTipoMat" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="CSP_GPPRODUCTOS_EXCEL_EXPORT_Result">
+    <Property Type="String" Name="Cod_Producto" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="300" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ObsProducto" Nullable="false" MaxLength="2000" />
+    <Property Type="DateTime" Name="FechaStandBy" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaFinStandBy" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Unid_Medida" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="CodCliente" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Nombre_Cliente" Nullable="false" MaxLength="200" />
+    <Property Type="DateTime" Name="Fecha_Creacion" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Nro_Pedido_Original" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Fecha_Pedido_Original" Nullable="false" Precision="23" />
+    <Property Type="String" Name="OC_Cliente" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Cod_Producto_Cliente" Nullable="false" MaxLength="200" />
+    <Property Type="DateTime" Name="Fecha_Deseada_Cliente" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ResponsableComercial" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="ResponsableCustomer" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="Tipo_Adm" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Reemplazo_Prod" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Referencia_Item" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Cilindros" Nullable="false" MaxLength="300" />
+    <Property Type="Boolean" Name="RushOrder" Nullable="false" />
+    <Property Type="Boolean" Name="ReChequeoProducto" Nullable="false" />
+    <Property Type="DateTime" Name="LastRefreshDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaDocumento" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Fecha_Liberacion" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Liberacion" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="Categoria" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="ResponsableConfeccionIng" Nullable="true" MaxLength="101" />
+    <Property Type="DateTime" Name="FechaConfeccionIng" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="HabilitaCierreLet" Nullable="false" />
+    <Property Type="String" Name="ResponsableLiberacionLet" Nullable="true" MaxLength="101" />
+    <Property Type="DateTime" Name="FechaLiberacionLet" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ResponsableLiberacionFinalIng" Nullable="true" MaxLength="101" />
+    <Property Type="DateTime" Name="FechaLiberacionFinalIng" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ObservacionesIng" Nullable="false" MaxLength="2000" />
+    <Property Type="Boolean" Name="CerradoIng" Nullable="false" />
+    <Property Type="Boolean" Name="NoUsaPrePrensa" Nullable="false" />
+    <Property Type="String" Name="TipoImpresora" Nullable="false" MaxLength="11" />
+    <Property Type="Int32" Name="Impresora" Nullable="false" />
+    <Property Type="String" Name="Proveedor" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="ResponsablePrePrensa" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="TipoMaterial" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PerfilImpresion" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EstadoPrePrensa" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Colores" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="ArteModificado" Nullable="false" />
+    <Property Type="DateTime" Name="FechaArteOriginal" Nullable="false" Precision="23" />
+    <Property Type="String" Name="AcuerdoDirectoProveedor" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="OC_PROVEEDOR" Nullable="false" MaxLength="30" />
+    <Property Type="DateTime" Name="FechaRecepcionArte" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaEnvioArte_ET" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaPDFModulo" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaAprobacionPDFCliente" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaEnvioCromalin" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaAprobacionCromalin" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaPDFArmado" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaLiberadoAGrabado" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ObsPerfiles" Nullable="false" MaxLength="2000" />
+    <Property Type="String" Name="ComentariosColores" Nullable="false" MaxLength="2000" />
+    <Property Type="String" Name="ObservacionesPrePrensa" Nullable="false" MaxLength="2000" />
+    <Property Type="Boolean" Name="CerradoPrePrensa" Nullable="false" />
+    <Property Type="String" Name="OT" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TipoCilindros" Nullable="false" MaxLength="8" />
+    <Property Type="DateTime" Name="FechaEntregaNuevosCilindros" Nullable="false" Precision="23" />
+    <Property Type="String" Name="CodigosCilindros" Nullable="false" MaxLength="2000" />
+    <Property Type="Int32" Name="CantCodigosCilindros" Nullable="false" />
+    <Property Type="DateTime" Name="FechaRecepcionCodigosCilindros" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaPreparacionCilindros" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaLiberacionMontaje" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaRetiroCilindro" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaPromesaProveedorGrabado" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaSacaPrueba" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaAprobacionSacaPrueba" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaRecepcionHerramental" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ObsHerramental" Nullable="false" MaxLength="2000" />
+    <Property Type="Int32" Name="Dif_FechaCreacion_FechaPedido" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaPedido_FechaDocumento" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaDocumento_FechaLiberacion" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaLiberacion_FechaConfeccion" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaLiberacion_FechaLibFinal" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaDocArte_FechaEnvioET" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaPDF_FechaRespCliente" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaEnvCroma_FechaAprobCroma" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaAprobCroma_FechaPDFArmado" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaPDFArmado_FechaLibGrabado" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaLibGrabado_FechaHerramental" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaSacaPrueba_FechaAprobSacaPrueba" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaPrepCil_FechaLibMonaje" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaLibMontaje_FechaRetiro" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaPromesaProv_FechaRecepHerra" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaPedido_FechaRecepHerra" Nullable="true" />
+    <Property Type="Int32" Name="Dif_FechaArte_FechaRecepHerra" Nullable="true" />
+    <Property Type="Int32" Name="Dif_Nivel_Servicio" Nullable="true" />
+    <Property Type="Int32" Name="Dif_LiberacionLet_FechaPedido" Nullable="true" />
+    <Property Type="Int32" Name="Dif_LiberadoAGrabado_FechaArte" Nullable="true" />
+    <Property Type="Int32" Name="Dif_RecepcionHerramental_LiberadoAGrabado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_GPPRODUCTOS_EXCEL_GRABADOS_EXPORT_Result">
+    <Property Type="String" Name="Cod_Producto" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="300" />
+    <Property Type="String" Name="Producto_Entregado" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="Pedido_Pendiente" Nullable="false" MaxLength="2" />
+    <Property Type="Int32" Name="Apariciones" Nullable="false" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Pedido" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Fecha_Pedido" Nullable="false" Precision="23" />
+    <Property Type="String" Name="TipoImpresora" Nullable="false" MaxLength="5" />
+    <Property Type="Int32" Name="Cant_Almas" Nullable="false" />
+    <Property Type="Int32" Name="Cant_Colores" Nullable="true" />
+    <Property Type="Int32" Name="Cant_Colores_Facturados" Nullable="false" />
+    <Property Type="Decimal" Name="Valor_Unit_Grabado_Cilindro" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Valor_Unit_Fotopolimero_Color" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="Se_Factura" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="OC_NRO" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nro_Factura" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="Observaciones" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="Comentarios" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="CSP_GPPRODUCTOS_KPI_INGENIERIA_GENERAL_Result">
+    <Property Type="String" Name="PERIODO" Nullable="true" MaxLength="7" />
+    <Property Type="Int32" Name="AVG_DAYS_DocumentoVSPedido" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_DocumentoVSPedido" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_DocumentoVSPedido" Nullable="true" />
+    <Property Type="Int32" Name="QTY_DocumentoVSPedido" Nullable="true" />
+    <Property Type="Int32" Name="AVG_DAYS_FechaConfeccionVSLiberacionTec" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_FechaConfeccionVSLiberacionTec" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_FechaConfeccionVSLiberacionTec" Nullable="true" />
+    <Property Type="Int32" Name="QTY_FechaConfeccionVSLiberacionTec" Nullable="true" />
+    <Property Type="Int32" Name="AVG_DAYS_LiberacionTecVsDocumento" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_LiberacionTecVsDocumento" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_LiberacionTecVsDocumento" Nullable="true" />
+    <Property Type="Int32" Name="QTY_LiberacionTecVsDocumento" Nullable="true" />
+    <Property Type="Int32" Name="AVG_DAYS_LiberacionFinalVsLiberacionTec" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_LiberacionFinalVsLiberacionTec" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_LiberacionFinalVsLiberacionTec" Nullable="true" />
+    <Property Type="Int32" Name="QTY_LiberacionFinalVsLiberacionTec" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_DIAS_ENVIOET_Result">
+    <Property Type="String" Name="Periodo" Nullable="true" MaxLength="7" />
+    <Property Type="Int32" Name="QTY_DIAS_EnvioArteET" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_PROVEEDOR_Result">
+    <Property Type="String" Name="PERIODO" Nullable="true" MaxLength="7" />
+    <Property Type="Int32" Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_TIPOIMPRESORA_Result">
+    <Property Type="String" Name="PERIODO" Nullable="true" MaxLength="7" />
+    <Property Type="Int32" Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" Nullable="true" />
+    <Property Type="Int32" Name="QTY_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" Nullable="true" />
+    <Property Type="Int32" Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Hueco" Nullable="true" />
+    <Property Type="Int32" Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Hueco" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_PROVEEDOR_Result">
+    <Property Type="String" Name="PERIODO" Nullable="true" MaxLength="7" />
+    <Property Type="Int32" Name="QTY_SinAsignar" Nullable="true" />
+    <Property Type="Int32" Name="QTY_Bosisio" Nullable="true" />
+    <Property Type="Int32" Name="QTY_Lynch" Nullable="true" />
+    <Property Type="Int32" Name="QTY_Longo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_RESPONSABLE_Result">
+    <Property Type="String" Name="PERIODO" Nullable="true" MaxLength="7" />
+    <Property Type="Int32" Name="QTY_17" Nullable="true" />
+    <Property Type="Int32" Name="SLA_DAYS_17" Nullable="false" />
+    <Property Type="Int32" Name="MAX_DAYS_17" Nullable="false" />
+    <Property Type="Int32" Name="MIN_DAYS_17" Nullable="false" />
+    <Property Type="Int32" Name="QTY_18" Nullable="true" />
+    <Property Type="Int32" Name="SLA_DAYS_18" Nullable="false" />
+    <Property Type="Int32" Name="MAX_DAYS_18" Nullable="false" />
+    <Property Type="Int32" Name="MIN_DAYS_18" Nullable="false" />
+    <Property Type="Int32" Name="QTY_10" Nullable="true" />
+    <Property Type="Int32" Name="SLA_DAYS_10" Nullable="false" />
+    <Property Type="Int32" Name="MAX_DAYS_10" Nullable="false" />
+    <Property Type="Int32" Name="MIN_DAYS_10" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_TIPOIMPRESORA_Result">
+    <Property Type="String" Name="PERIODO" Nullable="true" MaxLength="7" />
+    <Property Type="Int32" Name="QTY_SinAsignar" Nullable="true" />
+    <Property Type="Int32" Name="QTY_Flexo" Nullable="true" />
+    <Property Type="Int32" Name="QTY_Hueco" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT_Result">
+    <Property Type="String" Name="Cod_Producto" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="Nro_Version" Nullable="false" />
+    <Property Type="String" Name="OT_Bolsapel" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="EnvioHabilitado" Nullable="false" />
+    <Property Type="Boolean" Name="Solicitado" Nullable="false" />
+    <Property Type="DateTime" Name="FechaPreparacion" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaEnvioAProveedor" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaDeseada" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaCompromiso" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaRealEntrega" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaReprogramacion" Nullable="false" Precision="23" />
+    <Property Type="String" Name="OrdCompra" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="RemitoRetiro" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="RemitoEntrada" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Recibo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Cod_Facturacion" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Notas" Nullable="false" MaxLength="2000" />
+    <Property Type="String" Name="OT_Proveedor" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="9" />
+    <Property Type="Int32" Name="CantColores" Nullable="false" />
+    <Property Type="String" Name="Fotocromista" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Causa" Nullable="false" MaxLength="19" />
+    <Property Type="String" Name="Anexos" Nullable="false" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="CSP_INDICADOR_TOTAL_SCRAP_X_OP_Result">
+    <Property Type="String" Name="NUMORDEM" Nullable="true" MaxLength="14" />
+    <Property Type="Int32" Name="IdAtiv" Nullable="true" />
+    <Property Type="String" Name="DescripcionOP" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CodAtiv" Nullable="true" MaxLength="200" />
+    <Property Type="Double" Name="QtdProduzidaMts" Nullable="true" />
+    <Property Type="Double" Name="QtdProduzidaKg" Nullable="true" />
+    <Property Type="Decimal" Name="KGTOTALSCRAP" Nullable="false" Precision="38" Scale="4" />
+    <Property Type="Double" Name="porcentajescrap" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_INDICADORES_IMPRESORAS_X_MES_Result">
+    <Property Type="String" Name="DTPRODUCAO" Nullable="true" MaxLength="7" />
+    <Property Type="Decimal" Name="HELIOSTAR" Nullable="false" Precision="38" Scale="3" />
+    <Property Type="Decimal" Name="FISCHER" Nullable="false" Precision="38" Scale="3" />
+    <Property Type="Decimal" Name="ROTOMEC" Nullable="false" Precision="38" Scale="3" />
+    <Property Type="Decimal" Name="ALLSTEIN" Nullable="false" Precision="38" Scale="3" />
+  </ComplexType>
+  <ComplexType Name="CSP_INDICADORES_LAMINADORAS_ULT7_DIAS_Result">
+    <Property Type="DateTime" Name="DTPRODUCAO" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="LAMINADORA_2" Nullable="false" Precision="38" Scale="4" />
+    <Property Type="Decimal" Name="LAMINADORA_3" Nullable="false" Precision="38" Scale="4" />
+    <Property Type="Decimal" Name="LAMINADORA_4" Nullable="false" Precision="38" Scale="4" />
+    <Property Type="Decimal" Name="LAMINADORA_5" Nullable="false" Precision="38" Scale="4" />
+  </ComplexType>
+  <ComplexType Name="CSP_INDICADORES_LAMINADORAS_X_MES_Result">
+    <Property Type="String" Name="DTPRODUCAO" Nullable="true" MaxLength="7" />
+    <Property Type="Decimal" Name="LAMINADORA_2" Nullable="false" Precision="38" Scale="3" />
+    <Property Type="Decimal" Name="LAMINADORA_3" Nullable="false" Precision="38" Scale="3" />
+    <Property Type="Decimal" Name="LAMINADORA_4" Nullable="false" Precision="38" Scale="3" />
+    <Property Type="Decimal" Name="LAMINADORA_5" Nullable="false" Precision="38" Scale="3" />
+  </ComplexType>
+  <ComplexType Name="CSP_INDICADORES_PORCENTAJE_POR_AREA_Result">
+    <Property Type="Int32" Name="IDAREA" Nullable="true" />
+    <Property Type="Int32" Name="PRODUCCION_MTS" Nullable="true" />
+    <Property Type="Double" Name="PRODUCCION_KGS" Nullable="true" />
+    <Property Type="Decimal" Name="SCRAP_KGS" Nullable="true" Precision="18" Scale="3" />
+    <Property Type="Double" Name="PORCENTAJE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA_Result">
+    <Property Type="Int32" Name="PRODUCCION_MTS" Nullable="true" />
+    <Property Type="Double" Name="PRODUCCION_KGS" Nullable="true" />
+    <Property Type="Decimal" Name="SCRAP_KGS" Nullable="true" Precision="18" Scale="3" />
+    <Property Type="Double" Name="PORCENTAJE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA_OP_CERRADAS_Result">
+    <Property Type="Int32" Name="PRODUCCION_MTS" Nullable="true" />
+    <Property Type="Double" Name="PRODUCCION_KGS" Nullable="true" />
+    <Property Type="Decimal" Name="SCRAP_KGS" Nullable="true" Precision="18" Scale="3" />
+    <Property Type="Double" Name="PORCENTAJE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_INDICADORES_SCRAP_PRODUCCION_Result">
+    <Property Type="String" Name="DTPRODUCAO" Nullable="true" MaxLength="7" />
+    <Property Type="Double" Name="SCRAP" Nullable="true" />
+    <Property Type="Double" Name="PRODUCCION_KGS" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_INDICADORES_TOTALES_OP_X_MES_Result">
+    <Property Type="String" Name="DTPRODUCAO" Nullable="true" MaxLength="7" />
+    <Property Type="Double" Name="Cerradas" Nullable="true" />
+    <Property Type="Double" Name="Todas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_LISTAR_REGISTROS_SCRAP_X_AREA_Result">
+    <Property Type="Int32" Name="IdRegScrap" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="NumOP" Nullable="false" />
+    <Property Type="String" Name="Máquina_actividad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Máquina_impute" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Actividad" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Operador" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="Tipo_de_material" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Origen_de_scrap" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result">
+    <Property Type="String" Name="Cod_Producto" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="300" />
+    <Property Type="String" Name="Unid_Medida" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Tipo_Adm" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="Fecha_Inicial" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Fecha_Final" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="Dias" Nullable="true" />
+    <Property Type="Int32" Name="DiasStandby" Nullable="true" />
+    <Property Type="Int32" Name="SemaforoCustomer" Nullable="true" />
+    <Property Type="String" Name="MensajeSemaforoCustomer" Nullable="true" MaxLength="2000" />
+    <Property Type="Int32" Name="SemaforoIngenieria" Nullable="true" />
+    <Property Type="String" Name="MensajeSemaforoIngenieria" Nullable="true" MaxLength="2000" />
+    <Property Type="Int32" Name="SemaforoPreprensa" Nullable="true" />
+    <Property Type="String" Name="MensajeSemaforoPreprensa" Nullable="true" MaxLength="2000" />
+    <Property Type="Int32" Name="SemaforoHerramental" Nullable="true" />
+    <Property Type="String" Name="MensajeSemaforoHerramental" Nullable="true" MaxLength="2000" />
+    <Property Type="Int32" Name="SemaforoGeneral" Nullable="true" />
+    <Property Type="String" Name="MensajeSemaforoGeneral" Nullable="true" MaxLength="2000" />
+    <Property Type="Boolean" Name="RushOrder" Nullable="false" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="12" />
+    <Property Type="DateTime" Name="FechaRecepcionHerramental" Nullable="false" Precision="23" />
+    <Property Type="String" Name="TipoImpresora" Nullable="true" MaxLength="11" />
+    <Property Type="Int32" Name="CumpleSLA" Nullable="false" />
+    <Property Type="String" Name="LeyendaSLA" Nullable="false" MaxLength="23" />
+    <Property Type="DateTime" Name="Fecha_Creacion" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Reemplazo_Prod" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Cilindros" Nullable="false" MaxLength="300" />
+    <Property Type="String" Name="Referencia_Item" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Liberacion" Nullable="true" MaxLength="101" />
+    <Property Type="DateTime" Name="Fecha_Liberacion" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Nro_Pedido_Original" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Fecha_Pedido_Original" Nullable="false" Precision="23" />
+    <Property Type="String" Name="CodCliente" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Nombre_Cliente" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="OC_Cliente" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Cod_Producto_Cliente" Nullable="false" MaxLength="200" />
+    <Property Type="DateTime" Name="Fecha_Deseada_Cliente" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ResponsableComercial" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="ResponsableCustomer" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="Categoria" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="ResponsableConfeccionIng" Nullable="true" MaxLength="101" />
+    <Property Type="DateTime" Name="FechaConfeccionIng" Nullable="false" Precision="23" />
+    <Property Type="String" Name="IdentificadorCierreIng" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="HabilitaCierreLet" Nullable="false" />
+    <Property Type="String" Name="ResponsableLiberacionLet" Nullable="true" MaxLength="101" />
+    <Property Type="DateTime" Name="FechaLiberacionLet" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ResponsableLiberacionFinalIng" Nullable="true" MaxLength="101" />
+    <Property Type="DateTime" Name="FechaLiberacionFinalIng" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ObservacionesIng" Nullable="false" MaxLength="2000" />
+    <Property Type="Boolean" Name="CerradoIng" Nullable="false" />
+    <Property Type="Boolean" Name="ReChequeoProducto" Nullable="false" />
+    <Property Type="Int32" Name="Impresora" Nullable="false" />
+    <Property Type="String" Name="Proveedor" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="ResponsablePrePrensa" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="EstadoPrePrensa" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ObservacionesPrePrensa" Nullable="false" MaxLength="2000" />
+    <Property Type="DateTime" Name="FechaRecepcionArte" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaEnvioArte_ET" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaPDFModulo" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaAprobacionPDFCliente" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaEnvioCromalin" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaAprobacionCromalin" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaPDFArmado" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaLiberadoAGrabado" Nullable="false" Precision="23" />
+    <Property Type="String" Name="PerfilImpresion" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Colores" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ComentariosColores" Nullable="false" MaxLength="2000" />
+    <Property Type="Boolean" Name="CerradoPrePrensa" Nullable="false" />
+    <Property Type="DateTime" Name="FechaDocumento" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaStandBy" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ObsProducto" Nullable="false" MaxLength="2000" />
+    <Property Type="DateTime" Name="FechaFinStandBy" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastRefreshDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ObsPerfiles" Nullable="false" MaxLength="2000" />
+    <Property Type="Boolean" Name="ArteModificado" Nullable="false" />
+    <Property Type="DateTime" Name="FechaArteOriginal" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="NoUsaPrePrensa" Nullable="false" />
+    <Property Type="String" Name="OT" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TipoCilindros" Nullable="false" MaxLength="8" />
+    <Property Type="DateTime" Name="FechaEntregaNuevosCilindros" Nullable="false" Precision="23" />
+    <Property Type="String" Name="CodigosCilindros" Nullable="false" MaxLength="2000" />
+    <Property Type="DateTime" Name="FechaRecepcionCodigosCilindros" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaPreparacionCilindros" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaLiberacionMontaje" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaRetiroCilindro" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaPromesaProveedorGrabado" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaSacaPrueba" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaAprobacionSacaPrueba" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ObsHerramental" Nullable="false" MaxLength="2000" />
+  </ComplexType>
+  <ComplexType Name="CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO_Result">
+    <Property Type="String" Name="NumOrdem" Nullable="false" MaxLength="14" />
+    <Property Type="String" Name="CodEstrutura" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="Descricao" Nullable="true" MaxLength="105" />
+    <Property Type="DateTime" Name="DtEmissao" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DtMinimaInicio" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DtEntrega" Nullable="true" Precision="23" />
+    <Property Type="String" Name="NumPedido" Nullable="true" MaxLength="16" />
+    <Property Type="Int32" Name="CodCliente" Nullable="true" />
+    <Property Type="String" Name="NomeCliente" Nullable="true" MaxLength="60" />
+    <Property Type="Int32" Name="Prioridade" Nullable="true" />
+    <Property Type="String" Name="Classificacao1" Nullable="true" MaxLength="16" />
+    <Property Type="String" Name="Classificacao2" Nullable="true" MaxLength="16" />
+    <Property Type="String" Name="TipoProduto" Nullable="true" MaxLength="32" />
+    <Property Type="String" Name="User1" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="User2" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="User3" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="User4" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="User5" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UserG1" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UserG2" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UserG3" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UserG4" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UserG5" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Observacoes" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Liberacao" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Situacao" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="DtInclusao" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CodUsuarioInc" Nullable="true" MaxLength="32" />
+    <Property Type="DateTime" Name="DtAlteracao" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CodUsuarioAlt" Nullable="true" MaxLength="32" />
+    <Property Type="Int32" Name="Version" Nullable="true" />
+    <Property Type="String" Name="TextoOP_Excluir" Nullable="true" />
+    <Property Type="Int32" Name="LastIdAtivUsed" Nullable="true" />
+    <Property Type="Binary" Name="TextoOP" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="GanttColor" Nullable="true" />
+    <Property Type="DateTime" Name="DtRefCustos" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="VersaoOp" Nullable="true" />
+    <Property Type="String" Name="CodPlanta" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="Usr_Presupuesto" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Usr_Tecnico" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Usr_Edicao" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NumOrcamento" Nullable="true" MaxLength="12" />
+    <Property Type="Int32" Name="SitComercial" Nullable="true" />
+    <Property Type="Int32" Name="Cancelado" Nullable="true" />
+    <Property Type="DateTime" Name="DtRefACR" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="CodEmpresa" Nullable="true" />
+    <Property Type="String" Name="Edicao" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="ObjIDProjeto" Nullable="true" />
+    <Property Type="String" Name="ObsReabertura" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="OrigemOP" Nullable="true" />
+    <Property Type="DateTime" Name="dtencerramento" Nullable="true" Precision="23" />
+    <Property Type="String" Name="OPExterna" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="OPRetrabalho" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="NumOPOrigem" Nullable="true" MaxLength="14" />
+    <Property Type="String" Name="CodEstruturaOrigem" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="NumOrdemCompra" Nullable="true" MaxLength="50" />
+    <Property Type="Int16" Name="IDWOStatus" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_METRICS_ORDENDESPRODUCCION_GetProductListXOP_Result">
+    <Property Type="String" Name="CodProducto" Nullable="true" MaxLength="14" />
+    <Property Type="String" Name="DescProducto" Nullable="true" MaxLength="119" />
+  </ComplexType>
+  <ComplexType Name="CSP_METRICS_SCRAP_ULT_7_DIAS_X_AREA_Result">
+    <Property Type="String" Name="CODRECURSO" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="IDArea" Nullable="true" />
+    <Property Type="DateTime" Name="DTPRODUCAO" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="PRODUCCION_MTS" Nullable="true" />
+    <Property Type="Double" Name="PRODUCCION_KGS" Nullable="true" />
+    <Property Type="Decimal" Name="SCRAPKG" Nullable="true" Precision="18" Scale="3" />
+    <Property Type="Decimal" Name="INCIDENCIA" Nullable="true" Precision="18" Scale="3" />
+  </ComplexType>
+  <ComplexType Name="CSP_METRICS_TRAE_ACTIVIDADES_ORDEN_Result">
+    <Property Type="Int32" Name="IdActividad" Nullable="true" />
+    <Property Type="String" Name="CodAtiv" Nullable="true" MaxLength="12" />
+  </ComplexType>
+  <ComplexType Name="CSP_METRIS_GET_PRODUCT_PARAMS_Result">
+    <Property Type="String" Name="CodEstrutura" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="DistaeTocasmm" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="USR_DistaeTacos1m" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CodAtiv" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="AnchoFinal" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="CSP_METRIS_GET_PRODUCT_PARAMS_X_OP_Result">
+    <Property Type="String" Name="CodEstrutura" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="DistaeTocasmm" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="USR_DistaeTacos1m" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CodAtiv" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="AnchoFinal" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="CSP_METRIS_GET_PRODUCT_PARAMS_X_STRUCT_Result">
+    <Property Type="String" Name="CodEstrutura" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="DistaeTocasmm" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="USR_DistaeTacos1m" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CodAtiv" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="AnchoFinal" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSACTIVIDADES_TRAE_ACTIVIDAD_REPROCESO_Result">
+    <Property Type="Int32" Name="IDACTIViDAD" Nullable="false" />
+    <Property Type="String" Name="CodAtiv" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSACTIVIDADESMAQUINAS_CHECK_REPROCESO_ENABLED_Result">
+    <Property Type="Int32" Name="IDMaq" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Recurso" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="IDArea" Nullable="false" />
+    <Property Type="Int32" Name="IdActividad" Nullable="false" />
+    <Property Type="String" Name="Desc_Actividad" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET_Result">
+    <Property Type="Int32" Name="IDJobTrack" Nullable="true" />
+    <Property Type="String" Name="NUMOF" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="NUMPALLET" Nullable="false" />
+    <Property Type="DateTime" Name="TIMESTAMP" Nullable="false" Precision="23" />
+    <Property Type="String" Name="JOBTRACKNAME" Nullable="true" MaxLength="103" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSJOBTRACKS_GET_PRINTERS_Result">
+    <Property Type="String" Name="PrinterDefault" Nullable="false" MaxLength="400" />
+    <Property Type="String" Name="PrinterEtiquetas" Nullable="false" MaxLength="400" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSMAQUINAS_LISTAR_X_JOBTRACK_X_OPERADOR_Result">
+    <Property Type="Int32" Name="IdMaq" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSOPERADORES_GET_DETALLE_Result">
+    <Property Type="Int32" Name="IdOperador" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Habilitado" Nullable="false" />
+    <Property Type="Int32" Name="Legajo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSOPERADORES_GET_DETALLE_X_LEGAJO_Result">
+    <Property Type="Int32" Name="IdOperador" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Habilitado" Nullable="false" />
+    <Property Type="Int32" Name="Legajo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSOPERADORES_GETALL_Result">
+    <Property Type="Int32" Name="IdOperador" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Habilitado" Nullable="false" />
+    <Property Type="Int32" Name="Legajo" Nullable="true" />
+    <Property Type="String" Name="NOMBREAPELLIDO" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSOPERARIOS_HABILITADOS_EMPAQUE_X_MAQUINA_Result">
+    <Property Type="Int32" Name="IdMaq" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSORIGENSCRAP_REPROCESO_Result">
+    <Property Type="Int32" Name="IDOrigen" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IdMaquina" Nullable="true" />
+    <Property Type="Boolean" Name="Habilitado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSROMANEO_PRINT_CARTEL_Result">
+    <Property Type="String" Name="id_etiqueta" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CartelLeyenda" Nullable="true" />
+    <Property Type="String" Name="CartelFragil" Nullable="true" />
+    <Property Type="String" Name="CartelVersion" Nullable="true" />
+    <Property Type="String" Name="CartelAprobado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSROMANEO_PRINT_CARTEL_ALIMENTO_Result">
+    <Property Type="String" Name="id_etiqueta" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Descripcion" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSROMANEO_PRINT_COLDSEAL_Result">
+    <Property Type="String" Name="id_etiqueta" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ColdSealTitle" Nullable="true" />
+    <Property Type="String" Name="ColdSealVersion" Nullable="true" />
+    <Property Type="String" Name="ColdSealTitle2" Nullable="true" />
+    <Property Type="String" Name="ColdSealItem1" Nullable="true" />
+    <Property Type="String" Name="ColdSealItem2" Nullable="true" />
+    <Property Type="String" Name="ColdSealItem3" Nullable="true" />
+    <Property Type="String" Name="ColdSealItem4" Nullable="true" />
+    <Property Type="String" Name="ColdSealItem5" Nullable="true" />
+    <Property Type="String" Name="ColdSealItem6" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSRROMANEO_DELETE_X_OF_X_PALLET_Result">
+    <Property Type="Int32" Name="IdRomaneo" Nullable="false" />
+    <Property Type="Int32" Name="NroBulto" Nullable="false" />
+    <Property Type="Int32" Name="Unidades" Nullable="false" />
+    <Property Type="Int32" Name="Bobinas" Nullable="false" />
+    <Property Type="Double" Name="Mts" Nullable="false" />
+    <Property Type="Double" Name="PesoBruto" Nullable="false" />
+    <Property Type="Double" Name="PesoNeto" Nullable="false" />
+    <Property Type="Int32" Name="EtiquetasXBobina" Nullable="false" />
+    <Property Type="Double" Name="Mts2" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CSP_PSSSCRAP_LISTAR_X_JOBTRACK_Result">
+    <Property Type="Int32" Name="IdRegScrap" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="NumOP" Nullable="false" />
+    <Property Type="String" Name="Máquina_actividad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Actividad" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Operador" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="Origen_Scrap" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Tipo_Material" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Peso" Nullable="false" Precision="18" Scale="4" />
+    <Property Type="String" Name="Observaciones" Nullable="false" MaxLength="2000" />
+  </ComplexType>
+  <ComplexType Name="CSP_REPORTE_EFICIENCIA_X_FECHAS_NUMOREDEN_CERRADAS_Result">
+    <Property Type="String" Name="NUMOP" Nullable="true" MaxLength="14" />
+    <Property Type="Double" Name="TotalKgProducidos" Nullable="false" />
+    <Property Type="Decimal" Name="TotalScrap" Nullable="false" Precision="38" Scale="4" />
+    <Property Type="Double" Name="PorcentajeTotalScrap" Nullable="false" />
+    <Property Type="String" Name="IMPRESION_H" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="IMPRESION_F" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="CORTE_N1" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="CORTE_N2" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="CORTE_N3" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="LAMINACION_1" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="LAMINACION_2" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="LAMINACION_3" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REVISADO_N1" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REVISADO_N2" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REVISADO_N3" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REVISADO_N4" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="MANGAS_COR" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="MANGAS_PEG" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="MANGAS_REV" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="PLIEGOS_COR" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="PLIEGOS_EMB" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="PLIEGOS_TROQ" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="DOYPACK" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="EMBOSSING" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="CSP_REPORTE_EFICIENCIA_X_NUMORDEN_CERRADA_Result">
+    <Property Type="String" Name="NUMORDEM" Nullable="true" MaxLength="14" />
+    <Property Type="String" Name="DescripcionOP" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CodRecurso" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="CodAtiv" Nullable="true" MaxLength="200" />
+    <Property Type="Double" Name="QtdProduzidaMts" Nullable="true" />
+    <Property Type="Double" Name="FatorPesoProducao" Nullable="true" />
+    <Property Type="Double" Name="QtdProduzidaKg" Nullable="true" />
+    <Property Type="Double" Name="KGScrap" Nullable="true" />
+    <Property Type="Double" Name="incidencia" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_REPORTE_ROMANEO_Result">
+    <Property Type="Int32" Name="IdRomaneo" Nullable="true" />
+    <Property Type="Int32" Name="NroOf" Nullable="true" />
+    <Property Type="String" Name="CodProducto" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="DescProducto" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="Legajo" Nullable="true" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Turno" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="TipoRomaneo" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="NroPallet" Nullable="true" />
+    <Property Type="Int32" Name="CantBultos" Nullable="true" />
+    <Property Type="Int32" Name="Unidades" Nullable="true" />
+    <Property Type="Int32" Name="Bobinas" Nullable="true" />
+    <Property Type="Double" Name="MTS" Nullable="true" />
+    <Property Type="Double" Name="MTS2" Nullable="true" />
+    <Property Type="Double" Name="PesoBruto" Nullable="true" />
+    <Property Type="Double" Name="PesoNeto" Nullable="true" />
+    <Property Type="String" Name="Obs" Nullable="true" MaxLength="4000" />
+  </ComplexType>
+  <ComplexType Name="CSP_REPORTE_SCRAP_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="DateTime" Name="FECHA" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="OP" Nullable="false" />
+    <Property Type="String" Name="PRODUCTO" Nullable="true" MaxLength="105" />
+    <Property Type="String" Name="MAQUINA" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MAQUINA_IMPUTA" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ACTIVIDAD" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="OPERADOR" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="ORIGEN_SCRAP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TIPO_MATERIAL" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="PESO" Nullable="false" Precision="18" Scale="4" />
+    <Property Type="String" Name="OBSERVACIONES" Nullable="false" MaxLength="2000" />
+  </ComplexType>
+  <ComplexType Name="CSP_RPT_SCRAP_IMPRESORA_Result">
+    <Property Type="String" Name="TITULO" Nullable="true" MaxLength="66" />
+    <Property Type="String" Name="TIPOMAT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ORIGENSCRAP" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="NumOP" Nullable="false" />
+    <Property Type="String" Name="DescripcionOP" Nullable="true" MaxLength="105" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Operador" Nullable="true" MaxLength="101" />
+    <Property Type="Decimal" Name="Peso" Nullable="false" Precision="18" Scale="4" />
+    <Property Type="String" Name="Observaciones" Nullable="false" MaxLength="2000" />
+  </ComplexType>
+  <ComplexType Name="CSP_SCRAP_MOTIVOS_TABLE1_Result">
+    <Property Type="Int32" Name="CRITERIO" Nullable="false" />
+    <Property Type="Int32" Name="ID_MOTIVO" Nullable="false" />
+    <Property Type="String" Name="DESC_MOTIVO_SCRAP" Nullable="true" MaxLength="200" />
+    <Property Type="Double" Name="C1" Nullable="true" />
+    <Property Type="Double" Name="C2" Nullable="true" />
+    <Property Type="Double" Name="C3" Nullable="true" />
+    <Property Type="Double" Name="C4" Nullable="true" />
+    <Property Type="Double" Name="C5" Nullable="true" />
+    <Property Type="Double" Name="C6" Nullable="true" />
+    <Property Type="Double" Name="C7" Nullable="true" />
+    <Property Type="Double" Name="C8" Nullable="true" />
+    <Property Type="Double" Name="C9" Nullable="true" />
+    <Property Type="Double" Name="C10" Nullable="true" />
+    <Property Type="Double" Name="C11" Nullable="true" />
+    <Property Type="Double" Name="C12" Nullable="true" />
+    <Property Type="Double" Name="TOTAL_GENERAL" Nullable="true" />
+    <Property Type="Double" Name="PERC_SCRAP_TOT" Nullable="true" />
+    <Property Type="Double" Name="PERC_SCRAP_MES_ACTUAL" Nullable="true" />
+    <Property Type="Double" Name="MEJORADEFINIDA" Nullable="true" />
+    <Property Type="Double" Name="MES_ANO_PROX" Nullable="true" />
+    <Property Type="Double" Name="PERC_MEJORA" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CSP_SCRAP_MOTIVOS_TABLE2_Result">
+    <Property Type="String" Name="DESC_MOTIVO_SCRAP" Nullable="true" MaxLength="200" />
+    <Property Type="Double" Name="C1" Nullable="true" />
+    <Property Type="String" Name="COLOR1" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="C2" Nullable="true" />
+    <Property Type="String" Name="COLOR2" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="C3" Nullable="true" />
+    <Property Type="String" Name="COLOR3" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="C4" Nullable="true" />
+    <Property Type="String" Name="COLOR4" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="C5" Nullable="true" />
+    <Property Type="String" Name="COLOR5" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="C6" Nullable="true" />
+    <Property Type="String" Name="COLOR6" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="C7" Nullable="true" />
+    <Property Type="String" Name="COLOR7" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="C8" Nullable="true" />
+    <Property Type="String" Name="COLOR8" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="C9" Nullable="true" />
+    <Property Type="String" Name="COLOR9" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="C10" Nullable="true" />
+    <Property Type="String" Name="COLOR10" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="C11" Nullable="true" />
+    <Property Type="String" Name="COLOR11" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="C12" Nullable="true" />
+    <Property Type="String" Name="COLOR12" Nullable="true" MaxLength="10" />
+    <Property Type="Double" Name="INICIO" Nullable="false" />
+    <Property Type="Double" Name="OBJETIVO" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result">
+    <Property Type="String" Name="NumOrdem" Nullable="true" MaxLength="14" />
+    <Property Type="DateTime" Name="LastPrintDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

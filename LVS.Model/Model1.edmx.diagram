@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fba1a1b8a4d54bbcb1933dcaff285a15" Name="Diagram1">
+        <EntityTypeShape EntityType="LAFScrapModel.Action" Width="1.5" PointX="7.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.APPGridActionParams" Width="1.5" PointX="22" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.APPGridActions" Width="1.5" PointX="19.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.APPMenu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.APPParametros" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.APPWebPrintDirectFiles" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.Clientes" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.GPEstadosPrePrensa" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.GPEstadosProductos" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.GPImpresoras" Width="1.5" PointX="16.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.GPModulosProductos" Width="1.5" PointX="12.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.GPModulosResponsables" Width="1.5" PointX="15" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.GPPerfilesPrePrensa" Width="1.5" PointX="19" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.GPProductos" Width="1.5" PointX="17.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.GPResponsables" Width="1.5" PointX="12.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.GPTipoMaterial" Width="1.5" PointX="16.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.GPTrabajosCilindros" Width="1.5" PointX="19.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.Metrics_Indicadores_Historico_Totales_OP" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.Metrics_Recursos_Habilitados" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSS_CIERRE_MENSUAL_HIST" Width="1.5" PointX="9.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSActividades" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSAreas" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSEtiquetas" Width="1.5" PointX="9.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSJobTrack" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSJobtrackModulos" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSMaquinas" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSMotivosScrap" Width="1.5" PointX="5.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSMotivosScrapObjetivos" Width="1.5" PointX="7.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSMotivosScrapVinculos" Width="1.5" PointX="7.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSOperadores" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSOrigenesScrap" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSProductos" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSRomaneo" Width="1.5" PointX="18.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSRomaneoItems" Width="1.5" PointX="21" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSScrap" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSScrapValoresPorPeriodoMensual" Width="1.5" PointX="9.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSTabacoBobinas" Width="1.5" PointX="11.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSTabacoPallets" Width="1.5" PointX="13.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSTiposMaterial" Width="1.5" PointX="10.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.Role" Width="1.5" PointX="10" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.sysdiagrams" Width="1.5" PointX="21.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.Trazabilidad" Width="1.5" PointX="0.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.Trazabilidad_Det" Width="1.5" PointX="21.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.User" Width="1.5" PointX="12.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.Metrics_Indicadores_Scrap" Width="1.5" PointX="21.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.Metrics_Indicadores_Scrap_Laminadoras" Width="1.5" PointX="21.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.Metrics_Indicadores_Scrap_OP_Cerradas" Width="1.5" PointX="2.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.PSSJobtracksActivePallets" Width="1.5" PointX="4.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.UserClaim" Width="1.5" PointX="14.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.UserLogin" Width="1.5" PointX="14.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.VIEW_USR_M3_ORDATIVIDADES_AC_test" Width="1.5" PointX="23.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_LLENA_DATOS_LAMINADORAS" Width="1.5" PointX="23.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_LLENA_DATOS_LAMINADORAS_OP_CERRADAS" Width="1.5" PointX="6.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_METRICS_MAX_CANT_UNIDADES_X_ORDEN" Width="1.5" PointX="8.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_METRICS_OP_ACTIVIDADES" Width="1.5" PointX="23.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS" Width="1.5" PointX="23.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS_CERRADAS" Width="1.5" PointX="24.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_METRICS_VIEW_REL_RECURSOS_ACTIVIDADES" Width="1.5" PointX="23.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_METRICSPROD_DATOSPESO_X_ATIV" Width="1.5" PointX="25.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_METRICSPROD_LISTAR_MAXIDATIV" Width="1.5" PointX="25.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_IMPUTE_X_FECHA" Width="1.5" PointX="10.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_X_FECHA" Width="1.5" PointX="25.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_PSSSCRAP_TOTAL_SCRAP_X_OP" Width="1.5" PointX="25.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS" Width="1.5" PointX="25.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS_CERRADAS" Width="1.5" PointX="19.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_PSSSCRAP_TOTAL_X_ORDEN_X_ACTIVIDAD" Width="1.5" PointX="25.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.CV_SCRAP_PORCENTAJE_TOTAL_X_OP" Width="1.5" PointX="25.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.V_SCRAP_MOTIVOS_TBL1" Width="1.5" PointX="0.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.V_SCRAP_MOTIVOS_TBL1_AÑO_ANT" Width="1.5" PointX="2.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.V_SCRAP_NO_CONSIDERADO_TBL1" Width="1.5" PointX="4.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.V_SCRAP_NO_CONSIDERADO_TBL1_AÑO_ANT" Width="1.5" PointX="6.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.V_TONS_PRODUCIDAS_TBL1" Width="1.5" PointX="26.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAFScrapModel.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT" Width="1.5" PointX="12.75" PointY="26.75" IsExpanded="true" />
+        <AssociationConnector Association="LAFScrapModel.FK_AFSGridActionParams_AFSGridActions" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_GPPerfilesPrePrensa_GPImpresoras" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_GPModulosResponsables_GPModulosProductos" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_GPModulosResponsables_GPResponsables" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_GPProductos_GPModulosResponsables" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_GPPerfilesPrePrensa_GPTipoMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_GPTrabajosCilindros_GPProductos" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSMotivosScrapVinculos_Metrics_Recursos_Habilitados" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSScrap_PSSActividades" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSMaquinas_PSSAreas" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSJobtrackModulos_PSSJobTrack" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSMotivosScrapVinculos_PSSMaquinas" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSScrap_PSSMaquinas" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSMotivosScrapObjetivos_PSSMotivosScrap" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSMotivosScrapVinculos_PSSMotivosScrap" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSMotivosScrapVinculos_PSSOrigenesScrap" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSMotivosScrapVinculos_PSSTiposMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSScrap_PSSOperadores" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSScrap_PSSOrigenesScrap" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSRomaneoItems_PSSRomaneo" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_PSSScrap_PSSTiposMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_UserClaim_User" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.FK_UserLogin_User" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.PSSActividadesMaquinas" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.PSSJobTrackMaquinas" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.PSSMaquinasOperadores" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.PSSOrigenesScrapMaquinas" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.PSSOrigenesTipos" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.PSSTiposMaterialMaquinas" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.UserRole" ManuallyRouted="false" />
+        <AssociationConnector Association="LAFScrapModel.RoleAction" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,2268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LAFScrapModelStoreContainer" CdmEntityContainer="LAFScrapEntities">
+    <EntitySetMapping Name="Action">
+      <EntityTypeMapping TypeName="LAFScrapModel.Action">
+        <MappingFragment StoreEntitySet="Action">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPGridActionParams">
+      <EntityTypeMapping TypeName="LAFScrapModel.APPGridActionParams">
+        <MappingFragment StoreEntitySet="APPGridActionParams">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GridActionId" ColumnName="GridActionId" />
+          <ScalarProperty Name="ParamName" ColumnName="ParamName" />
+          <ScalarProperty Name="ParamHasFixedValue" ColumnName="ParamHasFixedValue" />
+          <ScalarProperty Name="ParamValueField" ColumnName="ParamValueField" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPGridActions">
+      <EntityTypeMapping TypeName="LAFScrapModel.APPGridActions">
+        <MappingFragment StoreEntitySet="APPGridActions">
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="GridObject" ColumnName="GridObject" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="ImgSource" ColumnName="ImgSource" />
+          <ScalarProperty Name="NewPage" ColumnName="NewPage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPMenu">
+      <EntityTypeMapping TypeName="LAFScrapModel.APPMenu">
+        <MappingFragment StoreEntitySet="APPMenu">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="ImgClass" ColumnName="ImgClass" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="FatherId" ColumnName="FatherId" />
+          <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+          <ScalarProperty Name="HasChilds" ColumnName="HasChilds" />
+          <ScalarProperty Name="Objeto" ColumnName="Objeto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPParametros">
+      <EntityTypeMapping TypeName="LAFScrapModel.APPParametros">
+        <MappingFragment StoreEntitySet="APPParametros">
+          <ScalarProperty Name="IDParam" ColumnName="IDParam" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPWebPrintDirectFiles">
+      <EntityTypeMapping TypeName="LAFScrapModel.APPWebPrintDirectFiles">
+        <MappingFragment StoreEntitySet="APPWebPrintDirectFiles">
+          <ScalarProperty Name="RegId" ColumnName="RegId" />
+          <ScalarProperty Name="JobtrackName" ColumnName="JobtrackName" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FechaReg" ColumnName="FechaReg" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Impreso" ColumnName="Impreso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="LAFScrapModel.Clientes">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Visual" ColumnName="Id_Visual" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="RespDefaultComercial" ColumnName="RespDefaultComercial" />
+          <ScalarProperty Name="RespDefaultCustomer" ColumnName="RespDefaultCustomer" />
+          <ScalarProperty Name="RespDefaultLibTecnica" ColumnName="RespDefaultLibTecnica" />
+          <ScalarProperty Name="RespDefaultPreprensa" ColumnName="RespDefaultPreprensa" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPEstadosPrePrensa">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPEstadosPrePrensa">
+        <MappingFragment StoreEntitySet="GPEstadosPrePrensa">
+          <ScalarProperty Name="IdEstadoPrePrensa" ColumnName="IdEstadoPrePrensa" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Orden" ColumnName="Orden" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPEstadosProductos">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPEstadosProductos">
+        <MappingFragment StoreEntitySet="GPEstadosProductos">
+          <ScalarProperty Name="IDEstadoProducto" ColumnName="IDEstadoProducto" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPImpresoras">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPImpresoras">
+        <MappingFragment StoreEntitySet="GPImpresoras">
+          <ScalarProperty Name="IdImpresora" ColumnName="IdImpresora" />
+          <ScalarProperty Name="IdTipoImpresora" ColumnName="IdTipoImpresora" />
+          <ScalarProperty Name="NombreImpresora" ColumnName="NombreImpresora" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPModulosProductos">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPModulosProductos">
+        <MappingFragment StoreEntitySet="GPModulosProductos">
+          <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPModulosResponsables">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPModulosResponsables">
+        <MappingFragment StoreEntitySet="GPModulosResponsables">
+          <ScalarProperty Name="IdModuloProducto" ColumnName="IdModuloProducto" />
+          <ScalarProperty Name="IdResponsable" ColumnName="IdResponsable" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPPerfilesPrePrensa">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPPerfilesPrePrensa">
+        <MappingFragment StoreEntitySet="GPPerfilesPrePrensa">
+          <ScalarProperty Name="IdPerfilPrePrensa" ColumnName="IdPerfilPrePrensa" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdImpresora" ColumnName="IdImpresora" />
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+          <ScalarProperty Name="IdTipoMaterial" ColumnName="IdTipoMaterial" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPProductos">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPProductos">
+        <MappingFragment StoreEntitySet="GPProductos">
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Unid_Medida" ColumnName="Unid_Medida" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Tipo_Adm" ColumnName="Tipo_Adm" />
+          <ScalarProperty Name="Reemplazo_Prod" ColumnName="Reemplazo_Prod" />
+          <ScalarProperty Name="Cilindros" ColumnName="Cilindros" />
+          <ScalarProperty Name="Referencia_Item" ColumnName="Referencia_Item" />
+          <ScalarProperty Name="Liberacion" ColumnName="Liberacion" />
+          <ScalarProperty Name="Fecha_Liberacion" ColumnName="Fecha_Liberacion" />
+          <ScalarProperty Name="Nro_Pedido_Original" ColumnName="Nro_Pedido_Original" />
+          <ScalarProperty Name="Fecha_Pedido_Original" ColumnName="Fecha_Pedido_Original" />
+          <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="OC_Cliente" ColumnName="OC_Cliente" />
+          <ScalarProperty Name="Cod_Producto_Cliente" ColumnName="Cod_Producto_Cliente" />
+          <ScalarProperty Name="Fecha_Deseada_Cliente" ColumnName="Fecha_Deseada_Cliente" />
+          <ScalarProperty Name="ResponsableComercial" ColumnName="ResponsableComercial" />
+          <ScalarProperty Name="ResponsableCustomer" ColumnName="ResponsableCustomer" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="ResponsableConfeccionIng" ColumnName="ResponsableConfeccionIng" />
+          <ScalarProperty Name="FechaConfeccionIng" ColumnName="FechaConfeccionIng" />
+          <ScalarProperty Name="IdentificadorCierreIng" ColumnName="IdentificadorCierreIng" />
+          <ScalarProperty Name="HabilitaCierreLet" ColumnName="HabilitaCierreLet" />
+          <ScalarProperty Name="ResponsableLiberacionLet" ColumnName="ResponsableLiberacionLet" />
+          <ScalarProperty Name="FechaLiberacionLet" ColumnName="FechaLiberacionLet" />
+          <ScalarProperty Name="ResponsableLiberacionFinalIng" ColumnName="ResponsableLiberacionFinalIng" />
+          <ScalarProperty Name="FechaLiberacionFinalIng" ColumnName="FechaLiberacionFinalIng" />
+          <ScalarProperty Name="ObservacionesIng" ColumnName="ObservacionesIng" />
+          <ScalarProperty Name="CerradoIng" ColumnName="CerradoIng" />
+          <ScalarProperty Name="RushOrder" ColumnName="RushOrder" />
+          <ScalarProperty Name="ReChequeoProducto" ColumnName="ReChequeoProducto" />
+          <ScalarProperty Name="TipoImpresora" ColumnName="TipoImpresora" />
+          <ScalarProperty Name="Impresora" ColumnName="Impresora" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="ResponsablePrePrensa" ColumnName="ResponsablePrePrensa" />
+          <ScalarProperty Name="EstadoPrePrensa" ColumnName="EstadoPrePrensa" />
+          <ScalarProperty Name="ObservacionesPrePrensa" ColumnName="ObservacionesPrePrensa" />
+          <ScalarProperty Name="FechaRecepcionArte" ColumnName="FechaRecepcionArte" />
+          <ScalarProperty Name="FechaEnvioArte_ET" ColumnName="FechaEnvioArte_ET" />
+          <ScalarProperty Name="FechaPDFModulo" ColumnName="FechaPDFModulo" />
+          <ScalarProperty Name="FechaAprobacionPDFCliente" ColumnName="FechaAprobacionPDFCliente" />
+          <ScalarProperty Name="FechaEnvioCromalin" ColumnName="FechaEnvioCromalin" />
+          <ScalarProperty Name="FechaAprobacionCromalin" ColumnName="FechaAprobacionCromalin" />
+          <ScalarProperty Name="FechaPDFArmado" ColumnName="FechaPDFArmado" />
+          <ScalarProperty Name="FechaLiberadoAGrabado" ColumnName="FechaLiberadoAGrabado" />
+          <ScalarProperty Name="FechaSacaPrueba" ColumnName="FechaSacaPrueba" />
+          <ScalarProperty Name="FechaAprobacionSacaPrueba" ColumnName="FechaAprobacionSacaPrueba" />
+          <ScalarProperty Name="TipoMaterialPerfil" ColumnName="TipoMaterialPerfil" />
+          <ScalarProperty Name="PerfilImpresion" ColumnName="PerfilImpresion" />
+          <ScalarProperty Name="Colores" ColumnName="Colores" />
+          <ScalarProperty Name="ComentariosColores" ColumnName="ComentariosColores" />
+          <ScalarProperty Name="CerradoPrePrensa" ColumnName="CerradoPrePrensa" />
+          <ScalarProperty Name="FechaDocumento" ColumnName="FechaDocumento" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaStandBy" ColumnName="FechaStandBy" />
+          <ScalarProperty Name="ObsProducto" ColumnName="ObsProducto" />
+          <ScalarProperty Name="FechaFinStandBy" ColumnName="FechaFinStandBy" />
+          <ScalarProperty Name="LastRefreshDate" ColumnName="LastRefreshDate" />
+          <ScalarProperty Name="ObsPerfiles" ColumnName="ObsPerfiles" />
+          <ScalarProperty Name="ArteModificado" ColumnName="ArteModificado" />
+          <ScalarProperty Name="FechaArteOriginal" ColumnName="FechaArteOriginal" />
+          <ScalarProperty Name="OT" ColumnName="OT" />
+          <ScalarProperty Name="TipoCilindros" ColumnName="TipoCilindros" />
+          <ScalarProperty Name="FechaEntregaNuevosCilindros" ColumnName="FechaEntregaNuevosCilindros" />
+          <ScalarProperty Name="CodigosCilindros" ColumnName="CodigosCilindros" />
+          <ScalarProperty Name="FechaRecepcionCodigosCilindros" ColumnName="FechaRecepcionCodigosCilindros" />
+          <ScalarProperty Name="FechaPreparacionCilindros" ColumnName="FechaPreparacionCilindros" />
+          <ScalarProperty Name="FechaLiberacionMontaje" ColumnName="FechaLiberacionMontaje" />
+          <ScalarProperty Name="FechaRetiroCilindro" ColumnName="FechaRetiroCilindro" />
+          <ScalarProperty Name="FechaPromesaProveedorGrabado" ColumnName="FechaPromesaProveedorGrabado" />
+          <ScalarProperty Name="FechaRecepcionHerramental" ColumnName="FechaRecepcionHerramental" />
+          <ScalarProperty Name="ObsHerramental" ColumnName="ObsHerramental" />
+          <ScalarProperty Name="NoUsaPrePrensa" ColumnName="NoUsaPrePrensa" />
+          <ScalarProperty Name="AcuerdoDirectoProveedor" ColumnName="AcuerdoDirectoProveedor" />
+          <ScalarProperty Name="OC_Proveedor" ColumnName="OC_Proveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPResponsables">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPResponsables">
+        <MappingFragment StoreEntitySet="GPResponsables">
+          <ScalarProperty Name="IdResponsable" ColumnName="IdResponsable" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPTipoMaterial">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPTipoMaterial">
+        <MappingFragment StoreEntitySet="GPTipoMaterial">
+          <ScalarProperty Name="IdTipoMaterial" ColumnName="IdTipoMaterial" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPTrabajosCilindros">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPTrabajosCilindros">
+        <MappingFragment StoreEntitySet="GPTrabajosCilindros">
+          <ScalarProperty Name="IdTrabajo" ColumnName="IdTrabajo" />
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Nro_Version" ColumnName="Nro_Version" />
+          <ScalarProperty Name="OT_Bolsapel" ColumnName="OT_Bolsapel" />
+          <ScalarProperty Name="EnvioHabilitado" ColumnName="EnvioHabilitado" />
+          <ScalarProperty Name="Solicitado" ColumnName="Solicitado" />
+          <ScalarProperty Name="Enviado" ColumnName="Enviado" />
+          <ScalarProperty Name="OrdCompra" ColumnName="OrdCompra" />
+          <ScalarProperty Name="FechaPreparacion" ColumnName="FechaPreparacion" />
+          <ScalarProperty Name="FechaEnvioAProveedor" ColumnName="FechaEnvioAProveedor" />
+          <ScalarProperty Name="RemitoRetiro" ColumnName="RemitoRetiro" />
+          <ScalarProperty Name="FechaDeseada" ColumnName="FechaDeseada" />
+          <ScalarProperty Name="FechaCompromiso" ColumnName="FechaCompromiso" />
+          <ScalarProperty Name="FechaRealEntrega" ColumnName="FechaRealEntrega" />
+          <ScalarProperty Name="RemitoEntrada" ColumnName="RemitoEntrada" />
+          <ScalarProperty Name="Recibo" ColumnName="Recibo" />
+          <ScalarProperty Name="Cod_Facturacion" ColumnName="Cod_Facturacion" />
+          <ScalarProperty Name="Notas" ColumnName="Notas" />
+          <ScalarProperty Name="OT_Proveedor" ColumnName="OT_Proveedor" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CantColores" ColumnName="CantColores" />
+          <ScalarProperty Name="Fotocromista" ColumnName="Fotocromista" />
+          <ScalarProperty Name="Causa" ColumnName="Causa" />
+          <ScalarProperty Name="Anexos" ColumnName="Anexos" />
+          <ScalarProperty Name="FechaReprogramacion" ColumnName="FechaReprogramacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Metrics_Indicadores_Historico_Totales_OP">
+      <EntityTypeMapping TypeName="LAFScrapModel.Metrics_Indicadores_Historico_Totales_OP">
+        <MappingFragment StoreEntitySet="Metrics_Indicadores_Historico_Totales_OP">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+          <ScalarProperty Name="SCRAP_KGS" ColumnName="SCRAP_KGS" />
+          <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+          <ScalarProperty Name="SCRAP_CONSIDERADO_PRD" ColumnName="SCRAP_CONSIDERADO_PRD" />
+          <ScalarProperty Name="SCRAP_NO_CONSIDERADO_PRD" ColumnName="SCRAP_NO_CONSIDERADO_PRD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Metrics_Recursos_Habilitados">
+      <EntityTypeMapping TypeName="LAFScrapModel.Metrics_Recursos_Habilitados">
+        <MappingFragment StoreEntitySet="Metrics_Recursos_Habilitados">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSS_CIERRE_MENSUAL_HIST">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSS_CIERRE_MENSUAL_HIST">
+        <MappingFragment StoreEntitySet="PSS_CIERRE_MENSUAL_HIST">
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+          <ScalarProperty Name="SCRAP" ColumnName="SCRAP" />
+          <ScalarProperty Name="PRODUCCION" ColumnName="PRODUCCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSActividades">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSActividades">
+        <MappingFragment StoreEntitySet="PSSActividades">
+          <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Habilitada" ColumnName="Habilitada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSAreas">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSAreas">
+        <MappingFragment StoreEntitySet="PSSAreas">
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSEtiquetas">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSEtiquetas">
+        <MappingFragment StoreEntitySet="PSSEtiquetas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_etiqueta" ColumnName="id_etiqueta" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSJobTrack">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSJobTrack">
+        <MappingFragment StoreEntitySet="PSSJobTrack">
+          <ScalarProperty Name="IDJobTrack" ColumnName="IDJobTrack" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="JobTrack" ColumnName="JobTrack" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+          <ScalarProperty Name="PrinterDefault" ColumnName="PrinterDefault" />
+          <ScalarProperty Name="PrinterEtiquetas" ColumnName="PrinterEtiquetas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSJobtrackModulos">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSJobtrackModulos">
+        <MappingFragment StoreEntitySet="PSSJobtrackModulos">
+          <ScalarProperty Name="IdJobtrack" ColumnName="IdJobtrack" />
+          <ScalarProperty Name="IdModuloApp" ColumnName="IdModuloApp" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSMaquinas">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSMaquinas">
+        <MappingFragment StoreEntitySet="PSSMaquinas">
+          <ScalarProperty Name="IDMaq" ColumnName="IDMaq" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Recurso" ColumnName="Recurso" />
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSMotivosScrap">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSMotivosScrap">
+        <MappingFragment StoreEntitySet="PSSMotivosScrap">
+          <ScalarProperty Name="Id_Motivo" ColumnName="Id_Motivo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+          <ScalarProperty Name="PorcentajeSimulacionMejora" ColumnName="PorcentajeSimulacionMejora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSMotivosScrapObjetivos">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSMotivosScrapObjetivos">
+        <MappingFragment StoreEntitySet="PSSMotivosScrapObjetivos">
+          <ScalarProperty Name="Id_Objetivo" ColumnName="Id_Objetivo" />
+          <ScalarProperty Name="Id_Motivo" ColumnName="Id_Motivo" />
+          <ScalarProperty Name="Indicador_Inicio" ColumnName="Indicador_Inicio" />
+          <ScalarProperty Name="Indicador_Objetivo" ColumnName="Indicador_Objetivo" />
+          <ScalarProperty Name="Vigencia_Desde" ColumnName="Vigencia_Desde" />
+          <ScalarProperty Name="Vigencia_Hasta" ColumnName="Vigencia_Hasta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSMotivosScrapVinculos">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSMotivosScrapVinculos">
+        <MappingFragment StoreEntitySet="PSSMotivosScrapVinculos">
+          <ScalarProperty Name="Id_Motivo" ColumnName="Id_Motivo" />
+          <ScalarProperty Name="Id_Recurso" ColumnName="Id_Recurso" />
+          <ScalarProperty Name="Id_Origen" ColumnName="Id_Origen" />
+          <ScalarProperty Name="Id_MaquinaImpute" ColumnName="Id_MaquinaImpute" />
+          <ScalarProperty Name="Id_TipoMaterial" ColumnName="Id_TipoMaterial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSOperadores">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSOperadores">
+        <MappingFragment StoreEntitySet="PSSOperadores">
+          <ScalarProperty Name="IdOperador" ColumnName="IdOperador" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+          <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSOrigenesScrap">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSOrigenesScrap">
+        <MappingFragment StoreEntitySet="PSSOrigenesScrap">
+          <ScalarProperty Name="IDOrigen" ColumnName="IDOrigen" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdMaquina" ColumnName="IdMaquina" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSProductos">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSProductos">
+        <MappingFragment StoreEntitySet="PSSProductos">
+          <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+          <ScalarProperty Name="TiempoColdSeal" ColumnName="TiempoColdSeal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSRomaneo">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSRomaneo">
+        <MappingFragment StoreEntitySet="PSSRomaneo">
+          <ScalarProperty Name="IdRomaneo" ColumnName="IdRomaneo" />
+          <ScalarProperty Name="NroOf" ColumnName="NroOf" />
+          <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+          <ScalarProperty Name="DescProducto" ColumnName="DescProducto" />
+          <ScalarProperty Name="NroPallet" ColumnName="NroPallet" />
+          <ScalarProperty Name="TipoRomaneo" ColumnName="TipoRomaneo" />
+          <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Turno" ColumnName="Turno" />
+          <ScalarProperty Name="Obs" ColumnName="Obs" />
+          <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
+          <ScalarProperty Name="PesoNeto" ColumnName="PesoNeto" />
+          <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+          <ScalarProperty Name="NomCliente" ColumnName="NomCliente" />
+          <ScalarProperty Name="TaraBuje" ColumnName="TaraBuje" />
+          <ScalarProperty Name="DistTacos" ColumnName="DistTacos" />
+          <ScalarProperty Name="Ancho" ColumnName="Ancho" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSRomaneoItems">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSRomaneoItems">
+        <MappingFragment StoreEntitySet="PSSRomaneoItems">
+          <ScalarProperty Name="IdRomaneo" ColumnName="IdRomaneo" />
+          <ScalarProperty Name="NroBulto" ColumnName="NroBulto" />
+          <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+          <ScalarProperty Name="Bobinas" ColumnName="Bobinas" />
+          <ScalarProperty Name="Mts" ColumnName="Mts" />
+          <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
+          <ScalarProperty Name="PesoNeto" ColumnName="PesoNeto" />
+          <ScalarProperty Name="EtiquetasXBobina" ColumnName="EtiquetasXBobina" />
+          <ScalarProperty Name="Mts2" ColumnName="Mts2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSScrap">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSScrap">
+        <MappingFragment StoreEntitySet="PSSScrap">
+          <ScalarProperty Name="IdRegScrap" ColumnName="IdRegScrap" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="NumOP" ColumnName="NumOP" />
+          <ScalarProperty Name="IdMaq" ColumnName="IdMaq" />
+          <ScalarProperty Name="IdOperador" ColumnName="IdOperador" />
+          <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+          <ScalarProperty Name="IdTipoMat" ColumnName="IdTipoMat" />
+          <ScalarProperty Name="IdOrigenScrap" ColumnName="IdOrigenScrap" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdMaqImputaScrap" ColumnName="IdMaqImputaScrap" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSScrapValoresPorPeriodoMensual">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSScrapValoresPorPeriodoMensual">
+        <MappingFragment StoreEntitySet="PSSScrapValoresPorPeriodoMensual">
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="TonsProducidas" ColumnName="TonsProducidas" />
+          <ScalarProperty Name="ScrapNoRegistrado" ColumnName="ScrapNoRegistrado" />
+          <ScalarProperty Name="Record_Id" ColumnName="Record_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSTabacoBobinas">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSTabacoBobinas">
+        <MappingFragment StoreEntitySet="PSSTabacoBobinas">
+          <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+          <ScalarProperty Name="NroOF" ColumnName="NroOF" />
+          <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+          <ScalarProperty Name="DescProducto" ColumnName="DescProducto" />
+          <ScalarProperty Name="CodItemPMI" ColumnName="CodItemPMI" />
+          <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+          <ScalarProperty Name="FechaProd" ColumnName="FechaProd" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaVto" ColumnName="FechaVto" />
+          <ScalarProperty Name="Largo" ColumnName="Largo" />
+          <ScalarProperty Name="NroBobina" ColumnName="NroBobina" />
+          <ScalarProperty Name="Obs" ColumnName="Obs" />
+          <ScalarProperty Name="D_E_L_E_T_E_D" ColumnName="D_E_L_E_T_E_D" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSTabacoPallets">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSTabacoPallets">
+        <MappingFragment StoreEntitySet="PSSTabacoPallets">
+          <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+          <ScalarProperty Name="NroOf" ColumnName="NroOf" />
+          <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+          <ScalarProperty Name="DescProducto" ColumnName="DescProducto" />
+          <ScalarProperty Name="NroOrdenPMI" ColumnName="NroOrdenPMI" />
+          <ScalarProperty Name="NroIdentificador" ColumnName="NroIdentificador" />
+          <ScalarProperty Name="CodItemPMI" ColumnName="CodItemPMI" />
+          <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+          <ScalarProperty Name="FechaProd" ColumnName="FechaProd" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaVto" ColumnName="FechaVto" />
+          <ScalarProperty Name="NroPallet" ColumnName="NroPallet" />
+          <ScalarProperty Name="TotalPallets" ColumnName="TotalPallets" />
+          <ScalarProperty Name="CantBobinas" ColumnName="CantBobinas" />
+          <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
+          <ScalarProperty Name="PesoNeto" ColumnName="PesoNeto" />
+          <ScalarProperty Name="Obs" ColumnName="Obs" />
+          <ScalarProperty Name="D_E_L_E_T_E_D" ColumnName="D_E_L_E_T_E_D" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSTiposMaterial">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSTiposMaterial">
+        <MappingFragment StoreEntitySet="PSSTiposMaterial">
+          <ScalarProperty Name="IDTipoMat" ColumnName="IDTipoMat" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="LAFScrapModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="LAFScrapModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trazabilidad">
+      <EntityTypeMapping TypeName="LAFScrapModel.Trazabilidad">
+        <MappingFragment StoreEntitySet="Trazabilidad">
+          <ScalarProperty Name="IdTrazabilidad" ColumnName="IdTrazabilidad" />
+          <ScalarProperty Name="NroOP" ColumnName="NroOP" />
+          <ScalarProperty Name="TipoTrazabilidad" ColumnName="TipoTrazabilidad" />
+          <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+          <ScalarProperty Name="CantidadGenerada" ColumnName="CantidadGenerada" />
+          <ScalarProperty Name="Desde" ColumnName="Desde" />
+          <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="CantidadElementos" ColumnName="CantidadElementos" />
+          <ScalarProperty Name="Metros" ColumnName="Metros" />
+          <ScalarProperty Name="Muestra" ColumnName="Muestra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trazabilidad_Det">
+      <EntityTypeMapping TypeName="LAFScrapModel.Trazabilidad_Det">
+        <MappingFragment StoreEntitySet="Trazabilidad_Det">
+          <ScalarProperty Name="IdTrazabilidad" ColumnName="IdTrazabilidad" />
+          <ScalarProperty Name="NroImpresion" ColumnName="NroImpresion" />
+          <ScalarProperty Name="IndicadorElemento" ColumnName="IndicadorElemento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="LAFScrapModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreationUser" ColumnName="CreationUser" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModificationUser" ColumnName="LastModificationUser" />
+          <ScalarProperty Name="LastModificationDate" ColumnName="LastModificationDate" />
+          <ScalarProperty Name="ProfileImagePath" ColumnName="ProfileImagePath" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Metrics_Indicadores_Scrap">
+      <EntityTypeMapping TypeName="LAFScrapModel.Metrics_Indicadores_Scrap">
+        <MappingFragment StoreEntitySet="Metrics_Indicadores_Scrap">
+          <ScalarProperty Name="CODRECURSO" ColumnName="CODRECURSO" />
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="DTPRODUCAO" ColumnName="DTPRODUCAO" />
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+          <ScalarProperty Name="SCRAPKG" ColumnName="SCRAPKG" />
+          <ScalarProperty Name="INCIDENCIA" ColumnName="INCIDENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Metrics_Indicadores_Scrap_Laminadoras">
+      <EntityTypeMapping TypeName="LAFScrapModel.Metrics_Indicadores_Scrap_Laminadoras">
+        <MappingFragment StoreEntitySet="Metrics_Indicadores_Scrap_Laminadoras">
+          <ScalarProperty Name="CODRECURSO" ColumnName="CODRECURSO" />
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="DTPRODUCAO" ColumnName="DTPRODUCAO" />
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+          <ScalarProperty Name="SCRAPKG" ColumnName="SCRAPKG" />
+          <ScalarProperty Name="INCIDENCIA" ColumnName="INCIDENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Metrics_Indicadores_Scrap_OP_Cerradas">
+      <EntityTypeMapping TypeName="LAFScrapModel.Metrics_Indicadores_Scrap_OP_Cerradas">
+        <MappingFragment StoreEntitySet="Metrics_Indicadores_Scrap_OP_Cerradas">
+          <ScalarProperty Name="CODRECURSO" ColumnName="CODRECURSO" />
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="DTPRODUCAO" ColumnName="DTPRODUCAO" />
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+          <ScalarProperty Name="SCRAPKG" ColumnName="SCRAPKG" />
+          <ScalarProperty Name="INCIDENCIA" ColumnName="INCIDENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PSSJobtracksActivePallets">
+      <EntityTypeMapping TypeName="LAFScrapModel.PSSJobtracksActivePallets">
+        <MappingFragment StoreEntitySet="PSSJobtracksActivePallets">
+          <ScalarProperty Name="IdJobtrack" ColumnName="IdJobtrack" />
+          <ScalarProperty Name="NumOf" ColumnName="NumOf" />
+          <ScalarProperty Name="NumPallet" ColumnName="NumPallet" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="D_E_L_E_T_" ColumnName="D_E_L_E_T_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserClaim">
+      <EntityTypeMapping TypeName="LAFScrapModel.UserClaim">
+        <MappingFragment StoreEntitySet="UserClaim">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogin">
+      <EntityTypeMapping TypeName="LAFScrapModel.UserLogin">
+        <MappingFragment StoreEntitySet="UserLogin">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_USR_M3_ORDATIVIDADES_AC_test">
+      <EntityTypeMapping TypeName="LAFScrapModel.VIEW_USR_M3_ORDATIVIDADES_AC_test">
+        <MappingFragment StoreEntitySet="VIEW_USR_M3_ORDATIVIDADES_AC_test">
+          <ScalarProperty Name="NumOrdem" ColumnName="NumOrdem" />
+          <ScalarProperty Name="NomeCliente" ColumnName="NomeCliente" />
+          <ScalarProperty Name="idAtiv" ColumnName="idAtiv" />
+          <ScalarProperty Name="Idprocesso" ColumnName="Idprocesso" />
+          <ScalarProperty Name="obs" ColumnName="obs" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="QtdPlanejada" ColumnName="QtdPlanejada" />
+          <ScalarProperty Name="QtdProduzida" ColumnName="QtdProduzida" />
+          <ScalarProperty Name="QtdRepeticoes" ColumnName="QtdRepeticoes" />
+          <ScalarProperty Name="QtdEntradas" ColumnName="QtdEntradas" />
+          <ScalarProperty Name="GrupoAtivOP" ColumnName="GrupoAtivOP" />
+          <ScalarProperty Name="ProducaoHora" ColumnName="ProducaoHora" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+          <ScalarProperty Name="PerdaFixa" ColumnName="PerdaFixa" />
+          <ScalarProperty Name="PerdaPorEntrada" ColumnName="PerdaPorEntrada" />
+          <ScalarProperty Name="CodRecurso" ColumnName="CodRecurso" />
+          <ScalarProperty Name="FatorPeso" ColumnName="FatorPeso" />
+          <ScalarProperty Name="FatorComprimento" ColumnName="FatorComprimento" />
+          <ScalarProperty Name="FatorUnidade" ColumnName="FatorUnidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_LLENA_DATOS_LAMINADORAS">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_LLENA_DATOS_LAMINADORAS">
+        <MappingFragment StoreEntitySet="CV_LLENA_DATOS_LAMINADORAS">
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="CodRecurso" ColumnName="CodRecurso" />
+          <ScalarProperty Name="DTPRODUCAO" ColumnName="DTPRODUCAO" />
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+          <ScalarProperty Name="SCRAP_KGS" ColumnName="SCRAP_KGS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_LLENA_DATOS_LAMINADORAS_OP_CERRADAS">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_LLENA_DATOS_LAMINADORAS_OP_CERRADAS">
+        <MappingFragment StoreEntitySet="CV_LLENA_DATOS_LAMINADORAS_OP_CERRADAS">
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="CodRecurso" ColumnName="CodRecurso" />
+          <ScalarProperty Name="DTPRODUCAO" ColumnName="DTPRODUCAO" />
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+          <ScalarProperty Name="SCRAP_KGS" ColumnName="SCRAP_KGS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_METRICS_MAX_CANT_UNIDADES_X_ORDEN">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_METRICS_MAX_CANT_UNIDADES_X_ORDEN">
+        <MappingFragment StoreEntitySet="CV_METRICS_MAX_CANT_UNIDADES_X_ORDEN">
+          <ScalarProperty Name="numordem" ColumnName="numordem" />
+          <ScalarProperty Name="MAXFATORUN" ColumnName="MAXFATORUN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_METRICS_OP_ACTIVIDADES">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_METRICS_OP_ACTIVIDADES">
+        <MappingFragment StoreEntitySet="CV_METRICS_OP_ACTIVIDADES">
+          <ScalarProperty Name="NumOrdem" ColumnName="NumOrdem" />
+          <ScalarProperty Name="TituloOP" ColumnName="TituloOP" />
+          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+          <ScalarProperty Name="CodEstrutura" ColumnName="CodEstrutura" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+          <ScalarProperty Name="Processo" ColumnName="Processo" />
+          <ScalarProperty Name="GramajeFInal" ColumnName="GramajeFInal" />
+          <ScalarProperty Name="CodGrupoProd" ColumnName="CodGrupoProd" />
+          <ScalarProperty Name="QtdPlanejadaMT" ColumnName="QtdPlanejadaMT" />
+          <ScalarProperty Name="QtdPlanejadaKG" ColumnName="QtdPlanejadaKG" />
+          <ScalarProperty Name="QtdProduzidoMT" ColumnName="QtdProduzidoMT" />
+          <ScalarProperty Name="ScrapProductionMT" ColumnName="ScrapProductionMT" />
+          <ScalarProperty Name="ScrapMakeReadyMT" ColumnName="ScrapMakeReadyMT" />
+          <ScalarProperty Name="QtdProduzidoKG" ColumnName="QtdProduzidoKG" />
+          <ScalarProperty Name="ScrapProductionKG" ColumnName="ScrapProductionKG" />
+          <ScalarProperty Name="ScrapMakeReadyKG" ColumnName="ScrapMakeReadyKG" />
+          <ScalarProperty Name="FatorKG" ColumnName="FatorKG" />
+          <ScalarProperty Name="FatorMT" ColumnName="FatorMT" />
+          <ScalarProperty Name="FatorUN" ColumnName="FatorUN" />
+          <ScalarProperty Name="Unidade" ColumnName="Unidade" />
+          <ScalarProperty Name="SeqProcesso" ColumnName="SeqProcesso" />
+          <ScalarProperty Name="SeqDefault" ColumnName="SeqDefault" />
+          <ScalarProperty Name="FatorComprimentoProducao" ColumnName="FatorComprimentoProducao" />
+          <ScalarProperty Name="FatorPesoProducao" ColumnName="FatorPesoProducao" />
+          <ScalarProperty Name="USR_DistaeTacosmm" ColumnName="USR_DistaeTacosmm" />
+          <ScalarProperty Name="USR_DistaeTacos1m" ColumnName="USR_DistaeTacos1m" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS">
+        <MappingFragment StoreEntitySet="CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS">
+          <ScalarProperty Name="NUMORDEM" ColumnName="NUMORDEM" />
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS_CERRADAS">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS_CERRADAS">
+        <MappingFragment StoreEntitySet="CV_METRICS_TRAE_PRODUCCION_TOTAL_ULT30_DIAS_CERRADAS">
+          <ScalarProperty Name="NUMORDEM" ColumnName="NUMORDEM" />
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_METRICS_VIEW_REL_RECURSOS_ACTIVIDADES">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_METRICS_VIEW_REL_RECURSOS_ACTIVIDADES">
+        <MappingFragment StoreEntitySet="CV_METRICS_VIEW_REL_RECURSOS_ACTIVIDADES">
+          <ScalarProperty Name="NumOrdem" ColumnName="NumOrdem" />
+          <ScalarProperty Name="IdAtiv" ColumnName="IdAtiv" />
+          <ScalarProperty Name="IdAtivProcess" ColumnName="IdAtivProcess" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+          <ScalarProperty Name="CodRecurso" ColumnName="CodRecurso" />
+          <ScalarProperty Name="BONS" ColumnName="BONS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_METRICSPROD_DATOSPESO_X_ATIV">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_METRICSPROD_DATOSPESO_X_ATIV">
+        <MappingFragment StoreEntitySet="CV_METRICSPROD_DATOSPESO_X_ATIV">
+          <ScalarProperty Name="NumOrdem" ColumnName="NumOrdem" />
+          <ScalarProperty Name="idativ" ColumnName="idativ" />
+          <ScalarProperty Name="Idprocesso" ColumnName="Idprocesso" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+          <ScalarProperty Name="fatorpeso" ColumnName="fatorpeso" />
+          <ScalarProperty Name="FatorComprimento" ColumnName="FatorComprimento" />
+          <ScalarProperty Name="FatorUnidade" ColumnName="FatorUnidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_METRICSPROD_LISTAR_MAXIDATIV">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_METRICSPROD_LISTAR_MAXIDATIV">
+        <MappingFragment StoreEntitySet="CV_METRICSPROD_LISTAR_MAXIDATIV">
+          <ScalarProperty Name="NUMORDEM" ColumnName="NUMORDEM" />
+          <ScalarProperty Name="MaxIdAtiv" ColumnName="MaxIdAtiv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_IMPUTE_X_FECHA">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_IMPUTE_X_FECHA">
+        <MappingFragment StoreEntitySet="CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_IMPUTE_X_FECHA">
+          <ScalarProperty Name="IdMaqImputaScrap" ColumnName="IdMaqImputaScrap" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="PESO" ColumnName="PESO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_X_FECHA">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_X_FECHA">
+        <MappingFragment StoreEntitySet="CV_PSSSCRAP_PESOS_TOTALES_X_MAQUINA_X_FECHA">
+          <ScalarProperty Name="IdMaq" ColumnName="IdMaq" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="PESO" ColumnName="PESO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_PSSSCRAP_TOTAL_SCRAP_X_OP">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_PSSSCRAP_TOTAL_SCRAP_X_OP">
+        <MappingFragment StoreEntitySet="CV_PSSSCRAP_TOTAL_SCRAP_X_OP">
+          <ScalarProperty Name="NumOP" ColumnName="NumOP" />
+          <ScalarProperty Name="KGSCRAP" ColumnName="KGSCRAP" />
+          <ScalarProperty Name="KGSCRAP_CONSIDERADO_PRD" ColumnName="KGSCRAP_CONSIDERADO_PRD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS">
+        <MappingFragment StoreEntitySet="CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS">
+          <ScalarProperty Name="NumOP" ColumnName="NumOP" />
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="KGSCRAP" ColumnName="KGSCRAP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS_CERRADAS">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS_CERRADAS">
+        <MappingFragment StoreEntitySet="CV_PSSSCRAP_TOTAL_SCRAP_X_OP_ULT30DIAS_CERRADAS">
+          <ScalarProperty Name="NumOP" ColumnName="NumOP" />
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="KGSCRAP" ColumnName="KGSCRAP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_PSSSCRAP_TOTAL_X_ORDEN_X_ACTIVIDAD">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_PSSSCRAP_TOTAL_X_ORDEN_X_ACTIVIDAD">
+        <MappingFragment StoreEntitySet="CV_PSSSCRAP_TOTAL_X_ORDEN_X_ACTIVIDAD">
+          <ScalarProperty Name="NUMOP" ColumnName="NUMOP" />
+          <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+          <ScalarProperty Name="Recurso" ColumnName="Recurso" />
+          <ScalarProperty Name="PESO" ColumnName="PESO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CV_SCRAP_PORCENTAJE_TOTAL_X_OP">
+      <EntityTypeMapping TypeName="LAFScrapModel.CV_SCRAP_PORCENTAJE_TOTAL_X_OP">
+        <MappingFragment StoreEntitySet="CV_SCRAP_PORCENTAJE_TOTAL_X_OP">
+          <ScalarProperty Name="NUMORDEM" ColumnName="NUMORDEM" />
+          <ScalarProperty Name="IdAtiv" ColumnName="IdAtiv" />
+          <ScalarProperty Name="DescripcionOP" ColumnName="DescripcionOP" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+          <ScalarProperty Name="QtdProduzidaMts" ColumnName="QtdProduzidaMts" />
+          <ScalarProperty Name="QtdProduzidaKg" ColumnName="QtdProduzidaKg" />
+          <ScalarProperty Name="KGTOTALSCRAP" ColumnName="KGTOTALSCRAP" />
+          <ScalarProperty Name="porcentajescrap" ColumnName="porcentajescrap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_SCRAP_MOTIVOS_TBL1">
+      <EntityTypeMapping TypeName="LAFScrapModel.V_SCRAP_MOTIVOS_TBL1">
+        <MappingFragment StoreEntitySet="V_SCRAP_MOTIVOS_TBL1">
+          <ScalarProperty Name="ID_MOTIVO" ColumnName="ID_MOTIVO" />
+          <ScalarProperty Name="DESC_MOTIVO_SCRAP" ColumnName="DESC_MOTIVO_SCRAP" />
+          <ScalarProperty Name="C1" ColumnName="1" />
+          <ScalarProperty Name="C2" ColumnName="2" />
+          <ScalarProperty Name="C3" ColumnName="3" />
+          <ScalarProperty Name="C4" ColumnName="4" />
+          <ScalarProperty Name="C5" ColumnName="5" />
+          <ScalarProperty Name="C6" ColumnName="6" />
+          <ScalarProperty Name="C7" ColumnName="7" />
+          <ScalarProperty Name="C8" ColumnName="8" />
+          <ScalarProperty Name="C9" ColumnName="9" />
+          <ScalarProperty Name="C10" ColumnName="10" />
+          <ScalarProperty Name="C11" ColumnName="11" />
+          <ScalarProperty Name="C12" ColumnName="12" />
+          <ScalarProperty Name="TOTAL_GENERAL" ColumnName="TOTAL_GENERAL" />
+          <ScalarProperty Name="PORCENTAJESIMULACIONMEJORA" ColumnName="PORCENTAJESIMULACIONMEJORA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_SCRAP_MOTIVOS_TBL1_AÑO_ANT">
+      <EntityTypeMapping TypeName="LAFScrapModel.V_SCRAP_MOTIVOS_TBL1_AÑO_ANT">
+        <MappingFragment StoreEntitySet="V_SCRAP_MOTIVOS_TBL1_AÑO_ANT">
+          <ScalarProperty Name="ID_MOTIVO" ColumnName="ID_MOTIVO" />
+          <ScalarProperty Name="DESC_MOTIVO_SCRAP" ColumnName="DESC_MOTIVO_SCRAP" />
+          <ScalarProperty Name="C1" ColumnName="1" />
+          <ScalarProperty Name="C2" ColumnName="2" />
+          <ScalarProperty Name="C3" ColumnName="3" />
+          <ScalarProperty Name="C4" ColumnName="4" />
+          <ScalarProperty Name="C5" ColumnName="5" />
+          <ScalarProperty Name="C6" ColumnName="6" />
+          <ScalarProperty Name="C7" ColumnName="7" />
+          <ScalarProperty Name="C8" ColumnName="8" />
+          <ScalarProperty Name="C9" ColumnName="9" />
+          <ScalarProperty Name="C10" ColumnName="10" />
+          <ScalarProperty Name="C11" ColumnName="11" />
+          <ScalarProperty Name="C12" ColumnName="12" />
+          <ScalarProperty Name="TOTAL_GENERAL" ColumnName="TOTAL_GENERAL" />
+          <ScalarProperty Name="PORCENTAJESIMULACIONMEJORA" ColumnName="PORCENTAJESIMULACIONMEJORA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_SCRAP_NO_CONSIDERADO_TBL1">
+      <EntityTypeMapping TypeName="LAFScrapModel.V_SCRAP_NO_CONSIDERADO_TBL1">
+        <MappingFragment StoreEntitySet="V_SCRAP_NO_CONSIDERADO_TBL1">
+          <ScalarProperty Name="ID_MOTIVO" ColumnName="ID_MOTIVO" />
+          <ScalarProperty Name="DESCR" ColumnName="DESCR" />
+          <ScalarProperty Name="C1" ColumnName="1" />
+          <ScalarProperty Name="C2" ColumnName="2" />
+          <ScalarProperty Name="C3" ColumnName="3" />
+          <ScalarProperty Name="C4" ColumnName="4" />
+          <ScalarProperty Name="C5" ColumnName="5" />
+          <ScalarProperty Name="C6" ColumnName="6" />
+          <ScalarProperty Name="C7" ColumnName="7" />
+          <ScalarProperty Name="C8" ColumnName="8" />
+          <ScalarProperty Name="C9" ColumnName="9" />
+          <ScalarProperty Name="C10" ColumnName="10" />
+          <ScalarProperty Name="C11" ColumnName="11" />
+          <ScalarProperty Name="C12" ColumnName="12" />
+          <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_SCRAP_NO_CONSIDERADO_TBL1_AÑO_ANT">
+      <EntityTypeMapping TypeName="LAFScrapModel.V_SCRAP_NO_CONSIDERADO_TBL1_AÑO_ANT">
+        <MappingFragment StoreEntitySet="V_SCRAP_NO_CONSIDERADO_TBL1_AÑO_ANT">
+          <ScalarProperty Name="ID_MOTIVO" ColumnName="ID_MOTIVO" />
+          <ScalarProperty Name="DESCR" ColumnName="DESCR" />
+          <ScalarProperty Name="C1" ColumnName="1" />
+          <ScalarProperty Name="C2" ColumnName="2" />
+          <ScalarProperty Name="C3" ColumnName="3" />
+          <ScalarProperty Name="C4" ColumnName="4" />
+          <ScalarProperty Name="C5" ColumnName="5" />
+          <ScalarProperty Name="C6" ColumnName="6" />
+          <ScalarProperty Name="C7" ColumnName="7" />
+          <ScalarProperty Name="C8" ColumnName="8" />
+          <ScalarProperty Name="C9" ColumnName="9" />
+          <ScalarProperty Name="C10" ColumnName="10" />
+          <ScalarProperty Name="C11" ColumnName="11" />
+          <ScalarProperty Name="C12" ColumnName="12" />
+          <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_TONS_PRODUCIDAS_TBL1">
+      <EntityTypeMapping TypeName="LAFScrapModel.V_TONS_PRODUCIDAS_TBL1">
+        <MappingFragment StoreEntitySet="V_TONS_PRODUCIDAS_TBL1">
+          <ScalarProperty Name="ID_MOTIVO" ColumnName="ID_MOTIVO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="C1" ColumnName="1" />
+          <ScalarProperty Name="C2" ColumnName="2" />
+          <ScalarProperty Name="C3" ColumnName="3" />
+          <ScalarProperty Name="C4" ColumnName="4" />
+          <ScalarProperty Name="C5" ColumnName="5" />
+          <ScalarProperty Name="C6" ColumnName="6" />
+          <ScalarProperty Name="C7" ColumnName="7" />
+          <ScalarProperty Name="C8" ColumnName="8" />
+          <ScalarProperty Name="C9" ColumnName="9" />
+          <ScalarProperty Name="C10" ColumnName="10" />
+          <ScalarProperty Name="C11" ColumnName="11" />
+          <ScalarProperty Name="C12" ColumnName="12" />
+          <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_TONS_PRODUCIDAS_TBL1_AÑO_ANT">
+      <EntityTypeMapping TypeName="LAFScrapModel.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT">
+        <MappingFragment StoreEntitySet="V_TONS_PRODUCIDAS_TBL1_AÑO_ANT">
+          <ScalarProperty Name="ID_MOTIVO" ColumnName="ID_MOTIVO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="C1" ColumnName="1" />
+          <ScalarProperty Name="C2" ColumnName="2" />
+          <ScalarProperty Name="C3" ColumnName="3" />
+          <ScalarProperty Name="C4" ColumnName="4" />
+          <ScalarProperty Name="C5" ColumnName="5" />
+          <ScalarProperty Name="C6" ColumnName="6" />
+          <ScalarProperty Name="C7" ColumnName="7" />
+          <ScalarProperty Name="C8" ColumnName="8" />
+          <ScalarProperty Name="C9" ColumnName="9" />
+          <ScalarProperty Name="C10" ColumnName="10" />
+          <ScalarProperty Name="C11" ColumnName="11" />
+          <ScalarProperty Name="C12" ColumnName="12" />
+          <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PSSActividadesMaquinas" TypeName="LAFScrapModel.PSSActividadesMaquinas" StoreEntitySet="PSSActividadesMaquinas">
+      <EndProperty Name="PSSActividades">
+        <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+      </EndProperty>
+      <EndProperty Name="PSSMaquinas">
+        <ScalarProperty Name="IDMaq" ColumnName="IDMaq" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PSSJobTrackMaquinas" TypeName="LAFScrapModel.PSSJobTrackMaquinas" StoreEntitySet="PSSJobTrackMaquinas">
+      <EndProperty Name="PSSJobTrack">
+        <ScalarProperty Name="IDJobTrack" ColumnName="IDJobTrack" />
+      </EndProperty>
+      <EndProperty Name="PSSMaquinas">
+        <ScalarProperty Name="IDMaq" ColumnName="IDMaq" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PSSMaquinasOperadores" TypeName="LAFScrapModel.PSSMaquinasOperadores" StoreEntitySet="PSSMaquinasOperadores">
+      <EndProperty Name="PSSMaquinas">
+        <ScalarProperty Name="IDMaq" ColumnName="IdMaq" />
+      </EndProperty>
+      <EndProperty Name="PSSOperadores">
+        <ScalarProperty Name="IdOperador" ColumnName="IdOperador" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PSSOrigenesScrapMaquinas" TypeName="LAFScrapModel.PSSOrigenesScrapMaquinas" StoreEntitySet="PSSOrigenesScrapMaquinas">
+      <EndProperty Name="PSSMaquinas">
+        <ScalarProperty Name="IDMaq" ColumnName="IDMaq" />
+      </EndProperty>
+      <EndProperty Name="PSSOrigenesScrap">
+        <ScalarProperty Name="IDOrigen" ColumnName="IDOrigen" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PSSOrigenesTipos" TypeName="LAFScrapModel.PSSOrigenesTipos" StoreEntitySet="PSSOrigenesTipos">
+      <EndProperty Name="PSSOrigenesScrap">
+        <ScalarProperty Name="IDOrigen" ColumnName="IdOrigen" />
+      </EndProperty>
+      <EndProperty Name="PSSTiposMaterial">
+        <ScalarProperty Name="IDTipoMat" ColumnName="IdTipoMat" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PSSTiposMaterialMaquinas" TypeName="LAFScrapModel.PSSTiposMaterialMaquinas" StoreEntitySet="PSSTiposMaterialMaquinas">
+      <EndProperty Name="PSSMaquinas">
+        <ScalarProperty Name="IDMaq" ColumnName="IDMaq" />
+      </EndProperty>
+      <EndProperty Name="PSSTiposMaterial">
+        <ScalarProperty Name="IDTipoMat" ColumnName="IDTipoMat" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserRole" TypeName="LAFScrapModel.UserRole" StoreEntitySet="UserRole">
+      <EndProperty Name="Role">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoleAction" TypeName="LAFScrapModel.RoleAction" StoreEntitySet="RoleAction">
+      <EndProperty Name="Action">
+        <ScalarProperty Name="Id" ColumnName="ActionId" />
+      </EndProperty>
+      <EndProperty Name="Role">
+        <ScalarProperty Name="Id" ColumnName="RoleID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="CPS_TRAZABILIDAD_INSERT" FunctionName="LAFScrapModel.Store.CPS_TRAZABILIDAD_INSERT" />
+    <FunctionImportMapping FunctionImportName="CSP_APP_WEBPRINTDIRECTFILES_INSERT" FunctionName="LAFScrapModel.Store.CSP_APP_WEBPRINTDIRECTFILES_INSERT" />
+    <FunctionImportMapping FunctionImportName="CSP_APPGRIDACTIONPARAMS_X_ACTIONID" FunctionName="LAFScrapModel.Store.CSP_APPGRIDACTIONPARAMS_X_ACTIONID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_APPGRIDACTIONPARAMS_X_ACTIONID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GridActionId" ColumnName="GridActionId" />
+          <ScalarProperty Name="ParamName" ColumnName="ParamName" />
+          <ScalarProperty Name="ParamHasFixedValue" ColumnName="ParamHasFixedValue" />
+          <ScalarProperty Name="ParamValueField" ColumnName="ParamValueField" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_APPGRIDACTIONS_X_GRIDOBJECTNAME" FunctionName="LAFScrapModel.Store.CSP_APPGRIDACTIONS_X_GRIDOBJECTNAME">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_APPGRIDACTIONS_X_GRIDOBJECTNAME_Result">
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="GridObject" ColumnName="GridObject" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="ImgSource" ColumnName="ImgSource" />
+          <ScalarProperty Name="NewPage" ColumnName="NewPage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_APPMENU_LISTAR" FunctionName="LAFScrapModel.Store.CSP_APPMENU_LISTAR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_APPMENU_LISTAR_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="ImgClass" ColumnName="ImgClass" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="FatherId" ColumnName="FatherId" />
+          <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+          <ScalarProperty Name="HasChilds" ColumnName="HasChilds" />
+          <ScalarProperty Name="Objeto" ColumnName="Objeto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_APPPARAMS_GET_VALUE" FunctionName="LAFScrapModel.Store.CSP_APPPARAMS_GET_VALUE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_APPPARAMS_GET_VALUE_Result">
+          <ScalarProperty Name="IDParam" ColumnName="IDParam" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_CHEQUEA_PALLET_GENERADO" FunctionName="LAFScrapModel.Store.CSP_CHEQUEA_PALLET_GENERADO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_CHEQUEA_PALLET_GENERADO_Result">
+          <ScalarProperty Name="NroOf" ColumnName="NroOf" />
+          <ScalarProperty Name="NroPallet" ColumnName="NroPallet" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_DASHBOARD_SLA_PRODUCTOS" FunctionName="LAFScrapModel.Store.CSP_DASHBOARD_SLA_PRODUCTOS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_DASHBOARD_SLA_PRODUCTOS_Result">
+          <ScalarProperty Name="TipoImpresora" ColumnName="TipoImpresora" />
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+          <ScalarProperty Name="SLA_SNP" ColumnName="SLA_SNP" />
+          <ScalarProperty Name="QTY_SNP" ColumnName="QTY_SNP" />
+          <ScalarProperty Name="BEST_SNP" ColumnName="BEST_SNP" />
+          <ScalarProperty Name="WORST_SNP" ColumnName="WORST_SNP" />
+          <ScalarProperty Name="SLA_SND" ColumnName="SLA_SND" />
+          <ScalarProperty Name="QTY_SND" ColumnName="QTY_SND" />
+          <ScalarProperty Name="BEST_SND" ColumnName="BEST_SND" />
+          <ScalarProperty Name="WORST_SND" ColumnName="WORST_SND" />
+          <ScalarProperty Name="SLA_SNPS" ColumnName="SLA_SNPS" />
+          <ScalarProperty Name="QTY_SNPS" ColumnName="QTY_SNPS" />
+          <ScalarProperty Name="BEST_SNPS" ColumnName="BEST_SNPS" />
+          <ScalarProperty Name="WORST_SNPS" ColumnName="WORST_SNPS" />
+          <ScalarProperty Name="SLA_SCP" ColumnName="SLA_SCP" />
+          <ScalarProperty Name="QTY_SCP" ColumnName="QTY_SCP" />
+          <ScalarProperty Name="BEST_SCP" ColumnName="BEST_SCP" />
+          <ScalarProperty Name="WORST_SCP" ColumnName="WORST_SCP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_DASHBOARD_SLA_PRODUCTOS_TOTAL" FunctionName="LAFScrapModel.Store.CSP_DASHBOARD_SLA_PRODUCTOS_TOTAL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_DASHBOARD_SLA_PRODUCTOS_TOTAL_Result">
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+          <ScalarProperty Name="SLA_FLEXO" ColumnName="SLA_FLEXO" />
+          <ScalarProperty Name="QTY_FLEXO" ColumnName="QTY_FLEXO" />
+          <ScalarProperty Name="BEST_FLEXO" ColumnName="BEST_FLEXO" />
+          <ScalarProperty Name="WORST_FLEXO" ColumnName="WORST_FLEXO" />
+          <ScalarProperty Name="SLA_HUECO" ColumnName="SLA_HUECO" />
+          <ScalarProperty Name="QTY_HUECO" ColumnName="QTY_HUECO" />
+          <ScalarProperty Name="BEST_HUECO" ColumnName="BEST_HUECO" />
+          <ScalarProperty Name="WORST_HUECO" ColumnName="WORST_HUECO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GET_ALL_TREE_NODES" FunctionName="LAFScrapModel.Store.CSP_GET_ALL_TREE_NODES" />
+    <FunctionImportMapping FunctionImportName="CSP_GET_CUSTOMER_OC_BY_NUMOF" FunctionName="LAFScrapModel.Store.CSP_GET_CUSTOMER_OC_BY_NUMOF">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GET_CUSTOMER_OC_BY_NUMOF_Result">
+          <ScalarProperty Name="NumOrdemCompra" ColumnName="NumOrdemCompra" />
+          <ScalarProperty Name="NumOrcamento" ColumnName="NumOrcamento" />
+          <ScalarProperty Name="NumOrdem" ColumnName="NumOrdem" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GET_MAQUINAS_X_AREA" FunctionName="LAFScrapModel.Store.CSP_GET_MAQUINAS_X_AREA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GET_MAQUINAS_X_AREA_Result">
+          <ScalarProperty Name="IDMaq" ColumnName="IDMaq" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Recurso" ColumnName="Recurso" />
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GET_ORIGENESSCRAP_X_MAQUINA" FunctionName="LAFScrapModel.Store.CSP_GET_ORIGENESSCRAP_X_MAQUINA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GET_ORIGENESSCRAP_X_MAQUINA_Result">
+          <ScalarProperty Name="IDMAQ" ColumnName="IDMAQ" />
+          <ScalarProperty Name="IDOrigen" ColumnName="IDOrigen" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GET_SEGUIMIENTO_PRODUCTO_X_CODIGO" FunctionName="LAFScrapModel.Store.CSP_GET_SEGUIMIENTO_PRODUCTO_X_CODIGO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GET_SEGUIMIENTO_PRODUCTO_X_CODIGO_Result">
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Tipo_Adm" ColumnName="Tipo_Adm" />
+          <ScalarProperty Name="SemaforoCustomer" ColumnName="SemaforoCustomer" />
+          <ScalarProperty Name="DiasCustomer" ColumnName="DiasCustomer" />
+          <ScalarProperty Name="SemaforoIngenieria" ColumnName="SemaforoIngenieria" />
+          <ScalarProperty Name="DiasIngenieria" ColumnName="DiasIngenieria" />
+          <ScalarProperty Name="SemaforoPreprensa" ColumnName="SemaforoPreprensa" />
+          <ScalarProperty Name="DiasPrePrensa" ColumnName="DiasPrePrensa" />
+          <ScalarProperty Name="SemaforoHerramental" ColumnName="SemaforoHerramental" />
+          <ScalarProperty Name="DiasHerramental" ColumnName="DiasHerramental" />
+          <ScalarProperty Name="SemaforoGeneral" ColumnName="SemaforoGeneral" />
+          <ScalarProperty Name="DiasGeneral" ColumnName="DiasGeneral" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GET_TIPOSMATERIAL_X_MAQUINA" FunctionName="LAFScrapModel.Store.CSP_GET_TIPOSMATERIAL_X_MAQUINA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GET_TIPOSMATERIAL_X_MAQUINA_Result">
+          <ScalarProperty Name="IDMAQ" ColumnName="IDMAQ" />
+          <ScalarProperty Name="IDTIPOMAT" ColumnName="IDTIPOMAT" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GET_TIPOSMATERIAL_X_MAQUINA_X_ORIGENSCRAP" FunctionName="LAFScrapModel.Store.CSP_GET_TIPOSMATERIAL_X_MAQUINA_X_ORIGENSCRAP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GET_TIPOSMATERIAL_X_MAQUINA_X_ORIGENSCRAP_Result">
+          <ScalarProperty Name="IdTipoMat" ColumnName="IdTipoMat" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_EXCEL_EXPORT" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_EXCEL_EXPORT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GPPRODUCTOS_EXCEL_EXPORT_Result">
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="ObsProducto" ColumnName="ObsProducto" />
+          <ScalarProperty Name="FechaStandBy" ColumnName="FechaStandBy" />
+          <ScalarProperty Name="FechaFinStandBy" ColumnName="FechaFinStandBy" />
+          <ScalarProperty Name="Unid_Medida" ColumnName="Unid_Medida" />
+          <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Nro_Pedido_Original" ColumnName="Nro_Pedido_Original" />
+          <ScalarProperty Name="Fecha_Pedido_Original" ColumnName="Fecha_Pedido_Original" />
+          <ScalarProperty Name="OC_Cliente" ColumnName="OC_Cliente" />
+          <ScalarProperty Name="Cod_Producto_Cliente" ColumnName="Cod_Producto_Cliente" />
+          <ScalarProperty Name="Fecha_Deseada_Cliente" ColumnName="Fecha_Deseada_Cliente" />
+          <ScalarProperty Name="ResponsableComercial" ColumnName="ResponsableComercial" />
+          <ScalarProperty Name="ResponsableCustomer" ColumnName="ResponsableCustomer" />
+          <ScalarProperty Name="Tipo_Adm" ColumnName="Tipo_Adm" />
+          <ScalarProperty Name="Reemplazo_Prod" ColumnName="Reemplazo_Prod" />
+          <ScalarProperty Name="Referencia_Item" ColumnName="Referencia_Item" />
+          <ScalarProperty Name="Cilindros" ColumnName="Cilindros" />
+          <ScalarProperty Name="RushOrder" ColumnName="RushOrder" />
+          <ScalarProperty Name="ReChequeoProducto" ColumnName="ReChequeoProducto" />
+          <ScalarProperty Name="LastRefreshDate" ColumnName="LastRefreshDate" />
+          <ScalarProperty Name="FechaDocumento" ColumnName="FechaDocumento" />
+          <ScalarProperty Name="Fecha_Liberacion" ColumnName="Fecha_Liberacion" />
+          <ScalarProperty Name="Liberacion" ColumnName="Liberacion" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="ResponsableConfeccionIng" ColumnName="ResponsableConfeccionIng" />
+          <ScalarProperty Name="FechaConfeccionIng" ColumnName="FechaConfeccionIng" />
+          <ScalarProperty Name="HabilitaCierreLet" ColumnName="HabilitaCierreLet" />
+          <ScalarProperty Name="ResponsableLiberacionLet" ColumnName="ResponsableLiberacionLet" />
+          <ScalarProperty Name="FechaLiberacionLet" ColumnName="FechaLiberacionLet" />
+          <ScalarProperty Name="ResponsableLiberacionFinalIng" ColumnName="ResponsableLiberacionFinalIng" />
+          <ScalarProperty Name="FechaLiberacionFinalIng" ColumnName="FechaLiberacionFinalIng" />
+          <ScalarProperty Name="ObservacionesIng" ColumnName="ObservacionesIng" />
+          <ScalarProperty Name="CerradoIng" ColumnName="CerradoIng" />
+          <ScalarProperty Name="NoUsaPrePrensa" ColumnName="NoUsaPrePrensa" />
+          <ScalarProperty Name="TipoImpresora" ColumnName="TipoImpresora" />
+          <ScalarProperty Name="Impresora" ColumnName="Impresora" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="ResponsablePrePrensa" ColumnName="ResponsablePrePrensa" />
+          <ScalarProperty Name="TipoMaterial" ColumnName="TipoMaterial" />
+          <ScalarProperty Name="PerfilImpresion" ColumnName="PerfilImpresion" />
+          <ScalarProperty Name="EstadoPrePrensa" ColumnName="EstadoPrePrensa" />
+          <ScalarProperty Name="Colores" ColumnName="Colores" />
+          <ScalarProperty Name="ArteModificado" ColumnName="ArteModificado" />
+          <ScalarProperty Name="FechaArteOriginal" ColumnName="FechaArteOriginal" />
+          <ScalarProperty Name="AcuerdoDirectoProveedor" ColumnName="AcuerdoDirectoProveedor" />
+          <ScalarProperty Name="OC_PROVEEDOR" ColumnName="OC_PROVEEDOR" />
+          <ScalarProperty Name="FechaRecepcionArte" ColumnName="FechaRecepcionArte" />
+          <ScalarProperty Name="FechaEnvioArte_ET" ColumnName="FechaEnvioArte_ET" />
+          <ScalarProperty Name="FechaPDFModulo" ColumnName="FechaPDFModulo" />
+          <ScalarProperty Name="FechaAprobacionPDFCliente" ColumnName="FechaAprobacionPDFCliente" />
+          <ScalarProperty Name="FechaEnvioCromalin" ColumnName="FechaEnvioCromalin" />
+          <ScalarProperty Name="FechaAprobacionCromalin" ColumnName="FechaAprobacionCromalin" />
+          <ScalarProperty Name="FechaPDFArmado" ColumnName="FechaPDFArmado" />
+          <ScalarProperty Name="FechaLiberadoAGrabado" ColumnName="FechaLiberadoAGrabado" />
+          <ScalarProperty Name="ObsPerfiles" ColumnName="ObsPerfiles" />
+          <ScalarProperty Name="ComentariosColores" ColumnName="ComentariosColores" />
+          <ScalarProperty Name="ObservacionesPrePrensa" ColumnName="ObservacionesPrePrensa" />
+          <ScalarProperty Name="CerradoPrePrensa" ColumnName="CerradoPrePrensa" />
+          <ScalarProperty Name="OT" ColumnName="OT" />
+          <ScalarProperty Name="TipoCilindros" ColumnName="TipoCilindros" />
+          <ScalarProperty Name="FechaEntregaNuevosCilindros" ColumnName="FechaEntregaNuevosCilindros" />
+          <ScalarProperty Name="CodigosCilindros" ColumnName="CodigosCilindros" />
+          <ScalarProperty Name="CantCodigosCilindros" ColumnName="CantCodigosCilindros" />
+          <ScalarProperty Name="FechaRecepcionCodigosCilindros" ColumnName="FechaRecepcionCodigosCilindros" />
+          <ScalarProperty Name="FechaPreparacionCilindros" ColumnName="FechaPreparacionCilindros" />
+          <ScalarProperty Name="FechaLiberacionMontaje" ColumnName="FechaLiberacionMontaje" />
+          <ScalarProperty Name="FechaRetiroCilindro" ColumnName="FechaRetiroCilindro" />
+          <ScalarProperty Name="FechaPromesaProveedorGrabado" ColumnName="FechaPromesaProveedorGrabado" />
+          <ScalarProperty Name="FechaSacaPrueba" ColumnName="FechaSacaPrueba" />
+          <ScalarProperty Name="FechaAprobacionSacaPrueba" ColumnName="FechaAprobacionSacaPrueba" />
+          <ScalarProperty Name="FechaRecepcionHerramental" ColumnName="FechaRecepcionHerramental" />
+          <ScalarProperty Name="ObsHerramental" ColumnName="ObsHerramental" />
+          <ScalarProperty Name="Dif_FechaCreacion_FechaPedido" ColumnName="Dif_FechaCreacion_FechaPedido" />
+          <ScalarProperty Name="Dif_FechaPedido_FechaDocumento" ColumnName="Dif_FechaPedido_FechaDocumento" />
+          <ScalarProperty Name="Dif_FechaDocumento_FechaLiberacion" ColumnName="Dif_FechaDocumento_FechaLiberacion" />
+          <ScalarProperty Name="Dif_FechaLiberacion_FechaConfeccion" ColumnName="Dif_FechaLiberacion_FechaConfeccion" />
+          <ScalarProperty Name="Dif_FechaLiberacion_FechaLibFinal" ColumnName="Dif_FechaLiberacion_FechaLibFinal" />
+          <ScalarProperty Name="Dif_FechaDocArte_FechaEnvioET" ColumnName="Dif_FechaDocArte_FechaEnvioET" />
+          <ScalarProperty Name="Dif_FechaPDF_FechaRespCliente" ColumnName="Dif_FechaPDF_FechaRespCliente" />
+          <ScalarProperty Name="Dif_FechaEnvCroma_FechaAprobCroma" ColumnName="Dif_FechaEnvCroma_FechaAprobCroma" />
+          <ScalarProperty Name="Dif_FechaAprobCroma_FechaPDFArmado" ColumnName="Dif_FechaAprobCroma_FechaPDFArmado" />
+          <ScalarProperty Name="Dif_FechaPDFArmado_FechaLibGrabado" ColumnName="Dif_FechaPDFArmado_FechaLibGrabado" />
+          <ScalarProperty Name="Dif_FechaLibGrabado_FechaHerramental" ColumnName="Dif_FechaLibGrabado_FechaHerramental" />
+          <ScalarProperty Name="Dif_FechaSacaPrueba_FechaAprobSacaPrueba" ColumnName="Dif_FechaSacaPrueba_FechaAprobSacaPrueba" />
+          <ScalarProperty Name="Dif_FechaPrepCil_FechaLibMonaje" ColumnName="Dif_FechaPrepCil_FechaLibMonaje" />
+          <ScalarProperty Name="Dif_FechaLibMontaje_FechaRetiro" ColumnName="Dif_FechaLibMontaje_FechaRetiro" />
+          <ScalarProperty Name="Dif_FechaPromesaProv_FechaRecepHerra" ColumnName="Dif_FechaPromesaProv_FechaRecepHerra" />
+          <ScalarProperty Name="Dif_FechaPedido_FechaRecepHerra" ColumnName="Dif_FechaPedido_FechaRecepHerra" />
+          <ScalarProperty Name="Dif_FechaArte_FechaRecepHerra" ColumnName="Dif_FechaArte_FechaRecepHerra" />
+          <ScalarProperty Name="Dif_Nivel_Servicio" ColumnName="Dif_Nivel_Servicio" />
+          <ScalarProperty Name="Dif_LiberacionLet_FechaPedido" ColumnName="Dif_LiberacionLet_FechaPedido" />
+          <ScalarProperty Name="Dif_LiberadoAGrabado_FechaArte" ColumnName="Dif_LiberadoAGrabado_FechaArte" />
+          <ScalarProperty Name="Dif_RecepcionHerramental_LiberadoAGrabado" ColumnName="Dif_RecepcionHerramental_LiberadoAGrabado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_EXCEL_GRABADOS_EXPORT" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_EXCEL_GRABADOS_EXPORT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GPPRODUCTOS_EXCEL_GRABADOS_EXPORT_Result">
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Producto_Entregado" ColumnName="Producto_Entregado" />
+          <ScalarProperty Name="Pedido_Pendiente" ColumnName="Pedido_Pendiente" />
+          <ScalarProperty Name="Apariciones" ColumnName="Apariciones" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Pedido" ColumnName="Pedido" />
+          <ScalarProperty Name="Fecha_Pedido" ColumnName="Fecha_Pedido" />
+          <ScalarProperty Name="TipoImpresora" ColumnName="TipoImpresora" />
+          <ScalarProperty Name="Cant_Almas" ColumnName="Cant_Almas" />
+          <ScalarProperty Name="Cant_Colores" ColumnName="Cant_Colores" />
+          <ScalarProperty Name="Cant_Colores_Facturados" ColumnName="Cant_Colores_Facturados" />
+          <ScalarProperty Name="Valor_Unit_Grabado_Cilindro" ColumnName="Valor_Unit_Grabado_Cilindro" />
+          <ScalarProperty Name="Valor_Unit_Fotopolimero_Color" ColumnName="Valor_Unit_Fotopolimero_Color" />
+          <ScalarProperty Name="Se_Factura" ColumnName="Se_Factura" />
+          <ScalarProperty Name="OC_NRO" ColumnName="OC_NRO" />
+          <ScalarProperty Name="Nro_Factura" ColumnName="Nro_Factura" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_INSERT_NEW_PRODUCTS" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_INSERT_NEW_PRODUCTS" />
+    <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_KPI_INGENIERIA_GENERAL" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_KPI_INGENIERIA_GENERAL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GPPRODUCTOS_KPI_INGENIERIA_GENERAL_Result">
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+          <ScalarProperty Name="AVG_DAYS_DocumentoVSPedido" ColumnName="AVG_DAYS_DocumentoVSPedido" />
+          <ScalarProperty Name="MAX_DAYS_DocumentoVSPedido" ColumnName="MAX_DAYS_DocumentoVSPedido" />
+          <ScalarProperty Name="MIN_DAYS_DocumentoVSPedido" ColumnName="MIN_DAYS_DocumentoVSPedido" />
+          <ScalarProperty Name="QTY_DocumentoVSPedido" ColumnName="QTY_DocumentoVSPedido" />
+          <ScalarProperty Name="AVG_DAYS_FechaConfeccionVSLiberacionTec" ColumnName="AVG_DAYS_FechaConfeccionVSLiberacionTec" />
+          <ScalarProperty Name="MAX_DAYS_FechaConfeccionVSLiberacionTec" ColumnName="MAX_DAYS_FechaConfeccionVSLiberacionTec" />
+          <ScalarProperty Name="MIN_DAYS_FechaConfeccionVSLiberacionTec" ColumnName="MIN_DAYS_FechaConfeccionVSLiberacionTec" />
+          <ScalarProperty Name="QTY_FechaConfeccionVSLiberacionTec" ColumnName="QTY_FechaConfeccionVSLiberacionTec" />
+          <ScalarProperty Name="AVG_DAYS_LiberacionTecVsDocumento" ColumnName="AVG_DAYS_LiberacionTecVsDocumento" />
+          <ScalarProperty Name="MAX_DAYS_LiberacionTecVsDocumento" ColumnName="MAX_DAYS_LiberacionTecVsDocumento" />
+          <ScalarProperty Name="MIN_DAYS_LiberacionTecVsDocumento" ColumnName="MIN_DAYS_LiberacionTecVsDocumento" />
+          <ScalarProperty Name="QTY_LiberacionTecVsDocumento" ColumnName="QTY_LiberacionTecVsDocumento" />
+          <ScalarProperty Name="AVG_DAYS_LiberacionFinalVsLiberacionTec" ColumnName="AVG_DAYS_LiberacionFinalVsLiberacionTec" />
+          <ScalarProperty Name="MAX_DAYS_LiberacionFinalVsLiberacionTec" ColumnName="MAX_DAYS_LiberacionFinalVsLiberacionTec" />
+          <ScalarProperty Name="MIN_DAYS_LiberacionFinalVsLiberacionTec" ColumnName="MIN_DAYS_LiberacionFinalVsLiberacionTec" />
+          <ScalarProperty Name="QTY_LiberacionFinalVsLiberacionTec" ColumnName="QTY_LiberacionFinalVsLiberacionTec" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_KPI_PREPRENSA_DIAS_ENVIOET" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_KPI_PREPRENSA_DIAS_ENVIOET">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_DIAS_ENVIOET_Result">
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="QTY_DIAS_EnvioArteET" ColumnName="QTY_DIAS_EnvioArteET" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_PROVEEDOR" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_PROVEEDOR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_PROVEEDOR_Result">
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+          <ScalarProperty Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" ColumnName="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" />
+          <ScalarProperty Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" ColumnName="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" />
+          <ScalarProperty Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" ColumnName="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" />
+          <ScalarProperty Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" ColumnName="QTY_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Flexo" />
+          <ScalarProperty Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" ColumnName="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" />
+          <ScalarProperty Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" ColumnName="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" />
+          <ScalarProperty Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" ColumnName="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" />
+          <ScalarProperty Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" ColumnName="QTY_LiberadoGrabadoVsRecepcionHerramental_Bosisio_Hueco" />
+          <ScalarProperty Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" ColumnName="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" />
+          <ScalarProperty Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" ColumnName="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" />
+          <ScalarProperty Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" ColumnName="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" />
+          <ScalarProperty Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" ColumnName="QTY_LiberadoGrabadoVsRecepcionHerramental_Lynch_Flexo" />
+          <ScalarProperty Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" ColumnName="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" />
+          <ScalarProperty Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" ColumnName="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" />
+          <ScalarProperty Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" ColumnName="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" />
+          <ScalarProperty Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" ColumnName="QTY_LiberadoGrabadoVsRecepcionHerramental_Lynch_Hueco" />
+          <ScalarProperty Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" ColumnName="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" />
+          <ScalarProperty Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" ColumnName="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" />
+          <ScalarProperty Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" ColumnName="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" />
+          <ScalarProperty Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" ColumnName="QTY_LiberadoGrabadoVsRecepcionHerramental_Longo_Flexo" />
+          <ScalarProperty Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" ColumnName="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" />
+          <ScalarProperty Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" ColumnName="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" />
+          <ScalarProperty Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" ColumnName="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" />
+          <ScalarProperty Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" ColumnName="QTY_LiberadoGrabadoVsRecepcionHerramental_Longo_Hueco" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_TIPOIMPRESORA" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_TIPOIMPRESORA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_LIBGRABADOVSRECEPCIONHERRAMENTAL_X_TIPOIMPRESORA_Result">
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+          <ScalarProperty Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" ColumnName="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" />
+          <ScalarProperty Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" ColumnName="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" />
+          <ScalarProperty Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" ColumnName="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" />
+          <ScalarProperty Name="QTY_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" ColumnName="QTY_LiberadoGrabadoVsRecepcionHerramental_SinAsignar" />
+          <ScalarProperty Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Flexo" ColumnName="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Flexo" />
+          <ScalarProperty Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Flexo" ColumnName="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Flexo" />
+          <ScalarProperty Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Flexo" ColumnName="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Flexo" />
+          <ScalarProperty Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Flexo" ColumnName="QTY_LiberadoGrabadoVsRecepcionHerramental_Flexo" />
+          <ScalarProperty Name="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Hueco" ColumnName="AVG_DAYS_LiberadoGrabadoVsRecepcionHerramental_Hueco" />
+          <ScalarProperty Name="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Hueco" ColumnName="MAX_DAYS_LiberadoGrabadoVsRecepcionHerramental_Hueco" />
+          <ScalarProperty Name="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Hueco" ColumnName="MIN_DAYS_LiberadoGrabadoVsRecepcionHerramental_Hueco" />
+          <ScalarProperty Name="QTY_LiberadoGrabadoVsRecepcionHerramental_Hueco" ColumnName="QTY_LiberadoGrabadoVsRecepcionHerramental_Hueco" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_PROVEEDOR" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_PROVEEDOR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_PROVEEDOR_Result">
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+          <ScalarProperty Name="QTY_SinAsignar" ColumnName="QTY_SinAsignar" />
+          <ScalarProperty Name="QTY_Bosisio" ColumnName="QTY_Bosisio" />
+          <ScalarProperty Name="QTY_Lynch" ColumnName="QTY_Lynch" />
+          <ScalarProperty Name="QTY_Longo" ColumnName="QTY_Longo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_RESPONSABLE" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_RESPONSABLE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_RESPONSABLE_Result">
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+          <ScalarProperty Name="QTY_17" ColumnName="QTY_17" />
+          <ScalarProperty Name="SLA_DAYS_17" ColumnName="SLA_DAYS_17" />
+          <ScalarProperty Name="MAX_DAYS_17" ColumnName="MAX_DAYS_17" />
+          <ScalarProperty Name="MIN_DAYS_17" ColumnName="MIN_DAYS_17" />
+          <ScalarProperty Name="QTY_18" ColumnName="QTY_18" />
+          <ScalarProperty Name="SLA_DAYS_18" ColumnName="SLA_DAYS_18" />
+          <ScalarProperty Name="MAX_DAYS_18" ColumnName="MAX_DAYS_18" />
+          <ScalarProperty Name="MIN_DAYS_18" ColumnName="MIN_DAYS_18" />
+          <ScalarProperty Name="QTY_10" ColumnName="QTY_10" />
+          <ScalarProperty Name="SLA_DAYS_10" ColumnName="SLA_DAYS_10" />
+          <ScalarProperty Name="MAX_DAYS_10" ColumnName="MAX_DAYS_10" />
+          <ScalarProperty Name="MIN_DAYS_10" ColumnName="MIN_DAYS_10" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_TIPOIMPRESORA" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_TIPOIMPRESORA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_TIPOIMPRESORA_Result">
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+          <ScalarProperty Name="QTY_SinAsignar" ColumnName="QTY_SinAsignar" />
+          <ScalarProperty Name="QTY_Flexo" ColumnName="QTY_Flexo" />
+          <ScalarProperty Name="QTY_Hueco" ColumnName="QTY_Hueco" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION" />
+    <FunctionImportMapping FunctionImportName="CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT" FunctionName="LAFScrapModel.Store.CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT_Result">
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Nro_Version" ColumnName="Nro_Version" />
+          <ScalarProperty Name="OT_Bolsapel" ColumnName="OT_Bolsapel" />
+          <ScalarProperty Name="EnvioHabilitado" ColumnName="EnvioHabilitado" />
+          <ScalarProperty Name="Solicitado" ColumnName="Solicitado" />
+          <ScalarProperty Name="FechaPreparacion" ColumnName="FechaPreparacion" />
+          <ScalarProperty Name="FechaEnvioAProveedor" ColumnName="FechaEnvioAProveedor" />
+          <ScalarProperty Name="FechaDeseada" ColumnName="FechaDeseada" />
+          <ScalarProperty Name="FechaCompromiso" ColumnName="FechaCompromiso" />
+          <ScalarProperty Name="FechaRealEntrega" ColumnName="FechaRealEntrega" />
+          <ScalarProperty Name="FechaReprogramacion" ColumnName="FechaReprogramacion" />
+          <ScalarProperty Name="OrdCompra" ColumnName="OrdCompra" />
+          <ScalarProperty Name="RemitoRetiro" ColumnName="RemitoRetiro" />
+          <ScalarProperty Name="RemitoEntrada" ColumnName="RemitoEntrada" />
+          <ScalarProperty Name="Recibo" ColumnName="Recibo" />
+          <ScalarProperty Name="Cod_Facturacion" ColumnName="Cod_Facturacion" />
+          <ScalarProperty Name="Notas" ColumnName="Notas" />
+          <ScalarProperty Name="OT_Proveedor" ColumnName="OT_Proveedor" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CantColores" ColumnName="CantColores" />
+          <ScalarProperty Name="Fotocromista" ColumnName="Fotocromista" />
+          <ScalarProperty Name="Causa" ColumnName="Causa" />
+          <ScalarProperty Name="Anexos" ColumnName="Anexos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_HISTORIZA_CIERRE_MES_OP" FunctionName="LAFScrapModel.Store.CSP_HISTORIZA_CIERRE_MES_OP" />
+    <FunctionImportMapping FunctionImportName="CSP_INDICADOR_TOTAL_SCRAP_X_OP" FunctionName="LAFScrapModel.Store.CSP_INDICADOR_TOTAL_SCRAP_X_OP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_INDICADOR_TOTAL_SCRAP_X_OP_Result">
+          <ScalarProperty Name="NUMORDEM" ColumnName="NUMORDEM" />
+          <ScalarProperty Name="IdAtiv" ColumnName="IdAtiv" />
+          <ScalarProperty Name="DescripcionOP" ColumnName="DescripcionOP" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+          <ScalarProperty Name="QtdProduzidaMts" ColumnName="QtdProduzidaMts" />
+          <ScalarProperty Name="QtdProduzidaKg" ColumnName="QtdProduzidaKg" />
+          <ScalarProperty Name="KGTOTALSCRAP" ColumnName="KGTOTALSCRAP" />
+          <ScalarProperty Name="porcentajescrap" ColumnName="porcentajescrap" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_INDICADORES_IMPRESORAS_ULT7_DIAS" FunctionName="LAFScrapModel.Store.CSP_INDICADORES_IMPRESORAS_ULT7_DIAS" />
+    <FunctionImportMapping FunctionImportName="CSP_INDICADORES_IMPRESORAS_X_MES" FunctionName="LAFScrapModel.Store.CSP_INDICADORES_IMPRESORAS_X_MES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_INDICADORES_IMPRESORAS_X_MES_Result">
+          <ScalarProperty Name="DTPRODUCAO" ColumnName="DTPRODUCAO" />
+          <ScalarProperty Name="HELIOSTAR" ColumnName="HELIOSTAR" />
+          <ScalarProperty Name="FISCHER" ColumnName="FISCHER" />
+          <ScalarProperty Name="ROTOMEC" ColumnName="ROTOMEC" />
+          <ScalarProperty Name="ALLSTEIN" ColumnName="ALLSTEIN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_INDICADORES_LAMINADORAS_ULT7_DIAS" FunctionName="LAFScrapModel.Store.CSP_INDICADORES_LAMINADORAS_ULT7_DIAS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_INDICADORES_LAMINADORAS_ULT7_DIAS_Result">
+          <ScalarProperty Name="DTPRODUCAO" ColumnName="DTPRODUCAO" />
+          <ScalarProperty Name="LAMINADORA_2" ColumnName="LAMINADORA 2" />
+          <ScalarProperty Name="LAMINADORA_3" ColumnName="LAMINADORA 3" />
+          <ScalarProperty Name="LAMINADORA_4" ColumnName="LAMINADORA 4" />
+          <ScalarProperty Name="LAMINADORA_5" ColumnName="LAMINADORA 5" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_INDICADORES_LAMINADORAS_X_MES" FunctionName="LAFScrapModel.Store.CSP_INDICADORES_LAMINADORAS_X_MES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_INDICADORES_LAMINADORAS_X_MES_Result">
+          <ScalarProperty Name="DTPRODUCAO" ColumnName="DTPRODUCAO" />
+          <ScalarProperty Name="LAMINADORA_2" ColumnName="LAMINADORA 2" />
+          <ScalarProperty Name="LAMINADORA_3" ColumnName="LAMINADORA 3" />
+          <ScalarProperty Name="LAMINADORA_4" ColumnName="LAMINADORA 4" />
+          <ScalarProperty Name="LAMINADORA_5" ColumnName="LAMINADORA 5" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_INDICADORES_PORCENTAJE_POR_AREA" FunctionName="LAFScrapModel.Store.CSP_INDICADORES_PORCENTAJE_POR_AREA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_INDICADORES_PORCENTAJE_POR_AREA_Result">
+          <ScalarProperty Name="IDAREA" ColumnName="IDAREA" />
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+          <ScalarProperty Name="SCRAP_KGS" ColumnName="SCRAP_KGS" />
+          <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA" FunctionName="LAFScrapModel.Store.CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA_Result">
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+          <ScalarProperty Name="SCRAP_KGS" ColumnName="SCRAP_KGS" />
+          <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA_OP_CERRADAS" FunctionName="LAFScrapModel.Store.CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA_OP_CERRADAS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_INDICADORES_PORCENTAJE_TOTAL_PLANTA_OP_CERRADAS_Result">
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+          <ScalarProperty Name="SCRAP_KGS" ColumnName="SCRAP_KGS" />
+          <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_INDICADORES_SCRAP_PRODUCCION" FunctionName="LAFScrapModel.Store.CSP_INDICADORES_SCRAP_PRODUCCION">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_INDICADORES_SCRAP_PRODUCCION_Result">
+          <ScalarProperty Name="DTPRODUCAO" ColumnName="DTPRODUCAO" />
+          <ScalarProperty Name="SCRAP" ColumnName="SCRAP" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_INDICADORES_TOTALES_OP_X_MES" FunctionName="LAFScrapModel.Store.CSP_INDICADORES_TOTALES_OP_X_MES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_INDICADORES_TOTALES_OP_X_MES_Result">
+          <ScalarProperty Name="DTPRODUCAO" ColumnName="DTPRODUCAO" />
+          <ScalarProperty Name="Cerradas" ColumnName="Cerradas" />
+          <ScalarProperty Name="Todas" ColumnName="Todas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_LISTAR_REGISTROS_SCRAP_X_AREA" FunctionName="LAFScrapModel.Store.CSP_LISTAR_REGISTROS_SCRAP_X_AREA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_LISTAR_REGISTROS_SCRAP_X_AREA_Result">
+          <ScalarProperty Name="IdRegScrap" ColumnName="IdRegScrap" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="NumOP" ColumnName="NumOP" />
+          <ScalarProperty Name="Máquina_actividad" ColumnName="Máquina actividad" />
+          <ScalarProperty Name="Máquina_impute" ColumnName="Máquina impute" />
+          <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+          <ScalarProperty Name="Operador" ColumnName="Operador" />
+          <ScalarProperty Name="Tipo_de_material" ColumnName="Tipo de material" />
+          <ScalarProperty Name="Origen_de_scrap" ColumnName="Origen de scrap" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_LISTAR_SEGUMIENTO_PRODUCTO" FunctionName="LAFScrapModel.Store.CSP_LISTAR_SEGUMIENTO_PRODUCTO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result">
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Unid_Medida" ColumnName="Unid_Medida" />
+          <ScalarProperty Name="Tipo_Adm" ColumnName="Tipo_Adm" />
+          <ScalarProperty Name="Fecha_Inicial" ColumnName="Fecha_Inicial" />
+          <ScalarProperty Name="Fecha_Final" ColumnName="Fecha_Final" />
+          <ScalarProperty Name="Dias" ColumnName="Dias" />
+          <ScalarProperty Name="DiasStandby" ColumnName="DiasStandby" />
+          <ScalarProperty Name="SemaforoCustomer" ColumnName="SemaforoCustomer" />
+          <ScalarProperty Name="MensajeSemaforoCustomer" ColumnName="MensajeSemaforoCustomer" />
+          <ScalarProperty Name="SemaforoIngenieria" ColumnName="SemaforoIngenieria" />
+          <ScalarProperty Name="MensajeSemaforoIngenieria" ColumnName="MensajeSemaforoIngenieria" />
+          <ScalarProperty Name="SemaforoPreprensa" ColumnName="SemaforoPreprensa" />
+          <ScalarProperty Name="MensajeSemaforoPreprensa" ColumnName="MensajeSemaforoPreprensa" />
+          <ScalarProperty Name="SemaforoHerramental" ColumnName="SemaforoHerramental" />
+          <ScalarProperty Name="MensajeSemaforoHerramental" ColumnName="MensajeSemaforoHerramental" />
+          <ScalarProperty Name="SemaforoGeneral" ColumnName="SemaforoGeneral" />
+          <ScalarProperty Name="MensajeSemaforoGeneral" ColumnName="MensajeSemaforoGeneral" />
+          <ScalarProperty Name="RushOrder" ColumnName="RushOrder" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaRecepcionHerramental" ColumnName="FechaRecepcionHerramental" />
+          <ScalarProperty Name="TipoImpresora" ColumnName="TipoImpresora" />
+          <ScalarProperty Name="CumpleSLA" ColumnName="CumpleSLA" />
+          <ScalarProperty Name="LeyendaSLA" ColumnName="LeyendaSLA" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Reemplazo_Prod" ColumnName="Reemplazo_Prod" />
+          <ScalarProperty Name="Cilindros" ColumnName="Cilindros" />
+          <ScalarProperty Name="Referencia_Item" ColumnName="Referencia_Item" />
+          <ScalarProperty Name="Liberacion" ColumnName="Liberacion" />
+          <ScalarProperty Name="Fecha_Liberacion" ColumnName="Fecha_Liberacion" />
+          <ScalarProperty Name="Nro_Pedido_Original" ColumnName="Nro_Pedido_Original" />
+          <ScalarProperty Name="Fecha_Pedido_Original" ColumnName="Fecha_Pedido_Original" />
+          <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="OC_Cliente" ColumnName="OC_Cliente" />
+          <ScalarProperty Name="Cod_Producto_Cliente" ColumnName="Cod_Producto_Cliente" />
+          <ScalarProperty Name="Fecha_Deseada_Cliente" ColumnName="Fecha_Deseada_Cliente" />
+          <ScalarProperty Name="ResponsableComercial" ColumnName="ResponsableComercial" />
+          <ScalarProperty Name="ResponsableCustomer" ColumnName="ResponsableCustomer" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="ResponsableConfeccionIng" ColumnName="ResponsableConfeccionIng" />
+          <ScalarProperty Name="FechaConfeccionIng" ColumnName="FechaConfeccionIng" />
+          <ScalarProperty Name="IdentificadorCierreIng" ColumnName="IdentificadorCierreIng" />
+          <ScalarProperty Name="HabilitaCierreLet" ColumnName="HabilitaCierreLet" />
+          <ScalarProperty Name="ResponsableLiberacionLet" ColumnName="ResponsableLiberacionLet" />
+          <ScalarProperty Name="FechaLiberacionLet" ColumnName="FechaLiberacionLet" />
+          <ScalarProperty Name="ResponsableLiberacionFinalIng" ColumnName="ResponsableLiberacionFinalIng" />
+          <ScalarProperty Name="FechaLiberacionFinalIng" ColumnName="FechaLiberacionFinalIng" />
+          <ScalarProperty Name="ObservacionesIng" ColumnName="ObservacionesIng" />
+          <ScalarProperty Name="CerradoIng" ColumnName="CerradoIng" />
+          <ScalarProperty Name="ReChequeoProducto" ColumnName="ReChequeoProducto" />
+          <ScalarProperty Name="Impresora" ColumnName="Impresora" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="ResponsablePrePrensa" ColumnName="ResponsablePrePrensa" />
+          <ScalarProperty Name="EstadoPrePrensa" ColumnName="EstadoPrePrensa" />
+          <ScalarProperty Name="ObservacionesPrePrensa" ColumnName="ObservacionesPrePrensa" />
+          <ScalarProperty Name="FechaRecepcionArte" ColumnName="FechaRecepcionArte" />
+          <ScalarProperty Name="FechaEnvioArte_ET" ColumnName="FechaEnvioArte_ET" />
+          <ScalarProperty Name="FechaPDFModulo" ColumnName="FechaPDFModulo" />
+          <ScalarProperty Name="FechaAprobacionPDFCliente" ColumnName="FechaAprobacionPDFCliente" />
+          <ScalarProperty Name="FechaEnvioCromalin" ColumnName="FechaEnvioCromalin" />
+          <ScalarProperty Name="FechaAprobacionCromalin" ColumnName="FechaAprobacionCromalin" />
+          <ScalarProperty Name="FechaPDFArmado" ColumnName="FechaPDFArmado" />
+          <ScalarProperty Name="FechaLiberadoAGrabado" ColumnName="FechaLiberadoAGrabado" />
+          <ScalarProperty Name="PerfilImpresion" ColumnName="PerfilImpresion" />
+          <ScalarProperty Name="Colores" ColumnName="Colores" />
+          <ScalarProperty Name="ComentariosColores" ColumnName="ComentariosColores" />
+          <ScalarProperty Name="CerradoPrePrensa" ColumnName="CerradoPrePrensa" />
+          <ScalarProperty Name="FechaDocumento" ColumnName="FechaDocumento" />
+          <ScalarProperty Name="FechaStandBy" ColumnName="FechaStandBy" />
+          <ScalarProperty Name="ObsProducto" ColumnName="ObsProducto" />
+          <ScalarProperty Name="FechaFinStandBy" ColumnName="FechaFinStandBy" />
+          <ScalarProperty Name="LastRefreshDate" ColumnName="LastRefreshDate" />
+          <ScalarProperty Name="ObsPerfiles" ColumnName="ObsPerfiles" />
+          <ScalarProperty Name="ArteModificado" ColumnName="ArteModificado" />
+          <ScalarProperty Name="FechaArteOriginal" ColumnName="FechaArteOriginal" />
+          <ScalarProperty Name="NoUsaPrePrensa" ColumnName="NoUsaPrePrensa" />
+          <ScalarProperty Name="OT" ColumnName="OT" />
+          <ScalarProperty Name="TipoCilindros" ColumnName="TipoCilindros" />
+          <ScalarProperty Name="FechaEntregaNuevosCilindros" ColumnName="FechaEntregaNuevosCilindros" />
+          <ScalarProperty Name="CodigosCilindros" ColumnName="CodigosCilindros" />
+          <ScalarProperty Name="FechaRecepcionCodigosCilindros" ColumnName="FechaRecepcionCodigosCilindros" />
+          <ScalarProperty Name="FechaPreparacionCilindros" ColumnName="FechaPreparacionCilindros" />
+          <ScalarProperty Name="FechaLiberacionMontaje" ColumnName="FechaLiberacionMontaje" />
+          <ScalarProperty Name="FechaRetiroCilindro" ColumnName="FechaRetiroCilindro" />
+          <ScalarProperty Name="FechaPromesaProveedorGrabado" ColumnName="FechaPromesaProveedorGrabado" />
+          <ScalarProperty Name="FechaSacaPrueba" ColumnName="FechaSacaPrueba" />
+          <ScalarProperty Name="FechaAprobacionSacaPrueba" ColumnName="FechaAprobacionSacaPrueba" />
+          <ScalarProperty Name="ObsHerramental" ColumnName="ObsHerramental" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_LLENA_METRICS_INDICADORES_SCRAP_DIA_ANTERIOR" FunctionName="LAFScrapModel.Store.CSP_LLENA_METRICS_INDICADORES_SCRAP_DIA_ANTERIOR" />
+    <FunctionImportMapping FunctionImportName="CSP_LLENA_METRICS_INDICADORES_SCRAP_OP_CERRADAS_DIA_ANTERIOR" FunctionName="LAFScrapModel.Store.CSP_LLENA_METRICS_INDICADORES_SCRAP_OP_CERRADAS_DIA_ANTERIOR" />
+    <FunctionImportMapping FunctionImportName="CSP_METRICS_JOB_LLENA_TABLA_HISTORICO_OP" FunctionName="LAFScrapModel.Store.CSP_METRICS_JOB_LLENA_TABLA_HISTORICO_OP" />
+    <FunctionImportMapping FunctionImportName="CSP_METRICS_ORDENDESPRODUCCION_GETALL" FunctionName="LAFScrapModel.Store.CSP_METRICS_ORDENDESPRODUCCION_GETALL" />
+    <FunctionImportMapping FunctionImportName="CSP_METRICS_ORDENDESPRODUCCION_GETALL_ABIERTAS" FunctionName="LAFScrapModel.Store.CSP_METRICS_ORDENDESPRODUCCION_GETALL_ABIERTAS" />
+    <FunctionImportMapping FunctionImportName="CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO" FunctionName="LAFScrapModel.Store.CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO_Result">
+          <ScalarProperty Name="NumOrdem" ColumnName="NumOrdem" />
+          <ScalarProperty Name="CodEstrutura" ColumnName="CodEstrutura" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="DtEmissao" ColumnName="DtEmissao" />
+          <ScalarProperty Name="DtMinimaInicio" ColumnName="DtMinimaInicio" />
+          <ScalarProperty Name="DtEntrega" ColumnName="DtEntrega" />
+          <ScalarProperty Name="NumPedido" ColumnName="NumPedido" />
+          <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+          <ScalarProperty Name="NomeCliente" ColumnName="NomeCliente" />
+          <ScalarProperty Name="Prioridade" ColumnName="Prioridade" />
+          <ScalarProperty Name="Classificacao1" ColumnName="Classificacao1" />
+          <ScalarProperty Name="Classificacao2" ColumnName="Classificacao2" />
+          <ScalarProperty Name="TipoProduto" ColumnName="TipoProduto" />
+          <ScalarProperty Name="User1" ColumnName="User1" />
+          <ScalarProperty Name="User2" ColumnName="User2" />
+          <ScalarProperty Name="User3" ColumnName="User3" />
+          <ScalarProperty Name="User4" ColumnName="User4" />
+          <ScalarProperty Name="User5" ColumnName="User5" />
+          <ScalarProperty Name="UserG1" ColumnName="UserG1" />
+          <ScalarProperty Name="UserG2" ColumnName="UserG2" />
+          <ScalarProperty Name="UserG3" ColumnName="UserG3" />
+          <ScalarProperty Name="UserG4" ColumnName="UserG4" />
+          <ScalarProperty Name="UserG5" ColumnName="UserG5" />
+          <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+          <ScalarProperty Name="Liberacao" ColumnName="Liberacao" />
+          <ScalarProperty Name="Situacao" ColumnName="Situacao" />
+          <ScalarProperty Name="DtInclusao" ColumnName="DtInclusao" />
+          <ScalarProperty Name="CodUsuarioInc" ColumnName="CodUsuarioInc" />
+          <ScalarProperty Name="DtAlteracao" ColumnName="DtAlteracao" />
+          <ScalarProperty Name="CodUsuarioAlt" ColumnName="CodUsuarioAlt" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="TextoOP_Excluir" ColumnName="TextoOP_Excluir" />
+          <ScalarProperty Name="LastIdAtivUsed" ColumnName="LastIdAtivUsed" />
+          <ScalarProperty Name="TextoOP" ColumnName="TextoOP" />
+          <ScalarProperty Name="GanttColor" ColumnName="GanttColor" />
+          <ScalarProperty Name="DtRefCustos" ColumnName="DtRefCustos" />
+          <ScalarProperty Name="VersaoOp" ColumnName="VersaoOp" />
+          <ScalarProperty Name="CodPlanta" ColumnName="CodPlanta" />
+          <ScalarProperty Name="Usr_Presupuesto" ColumnName="Usr_Presupuesto" />
+          <ScalarProperty Name="Usr_Tecnico" ColumnName="Usr_Tecnico" />
+          <ScalarProperty Name="Usr_Edicao" ColumnName="Usr_Edicao" />
+          <ScalarProperty Name="NumOrcamento" ColumnName="NumOrcamento" />
+          <ScalarProperty Name="SitComercial" ColumnName="SitComercial" />
+          <ScalarProperty Name="Cancelado" ColumnName="Cancelado" />
+          <ScalarProperty Name="DtRefACR" ColumnName="DtRefACR" />
+          <ScalarProperty Name="CodEmpresa" ColumnName="CodEmpresa" />
+          <ScalarProperty Name="Edicao" ColumnName="Edicao" />
+          <ScalarProperty Name="ObjIDProjeto" ColumnName="ObjIDProjeto" />
+          <ScalarProperty Name="ObsReabertura" ColumnName="ObsReabertura" />
+          <ScalarProperty Name="OrigemOP" ColumnName="OrigemOP" />
+          <ScalarProperty Name="dtencerramento" ColumnName="dtencerramento" />
+          <ScalarProperty Name="OPExterna" ColumnName="OPExterna" />
+          <ScalarProperty Name="OPRetrabalho" ColumnName="OPRetrabalho" />
+          <ScalarProperty Name="NumOPOrigem" ColumnName="NumOPOrigem" />
+          <ScalarProperty Name="CodEstruturaOrigem" ColumnName="CodEstruturaOrigem" />
+          <ScalarProperty Name="NumOrdemCompra" ColumnName="NumOrdemCompra" />
+          <ScalarProperty Name="IDWOStatus" ColumnName="IDWOStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_METRICS_ORDENDESPRODUCCION_GetProductListXOP" FunctionName="LAFScrapModel.Store.CSP_METRICS_ORDENDESPRODUCCION_GetProductListXOP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_METRICS_ORDENDESPRODUCCION_GetProductListXOP_Result">
+          <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+          <ScalarProperty Name="DescProducto" ColumnName="DescProducto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_METRICS_SCRAP_ULT_7_DIAS_X_AREA" FunctionName="LAFScrapModel.Store.CSP_METRICS_SCRAP_ULT_7_DIAS_X_AREA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_METRICS_SCRAP_ULT_7_DIAS_X_AREA_Result">
+          <ScalarProperty Name="CODRECURSO" ColumnName="CODRECURSO" />
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="DTPRODUCAO" ColumnName="DTPRODUCAO" />
+          <ScalarProperty Name="PRODUCCION_MTS" ColumnName="PRODUCCION_MTS" />
+          <ScalarProperty Name="PRODUCCION_KGS" ColumnName="PRODUCCION_KGS" />
+          <ScalarProperty Name="SCRAPKG" ColumnName="SCRAPKG" />
+          <ScalarProperty Name="INCIDENCIA" ColumnName="INCIDENCIA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_METRICS_TRAE_ACTIVIDADES_ORDEN" FunctionName="LAFScrapModel.Store.CSP_METRICS_TRAE_ACTIVIDADES_ORDEN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_METRICS_TRAE_ACTIVIDADES_ORDEN_Result">
+          <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_METRIS_GET_PRODUCT_PARAMS" FunctionName="LAFScrapModel.Store.CSP_METRIS_GET_PRODUCT_PARAMS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_METRIS_GET_PRODUCT_PARAMS_Result">
+          <ScalarProperty Name="CodEstrutura" ColumnName="CodEstrutura" />
+          <ScalarProperty Name="DistaeTocasmm" ColumnName="DistaeTocasmm" />
+          <ScalarProperty Name="USR_DistaeTacos1m" ColumnName="USR_DistaeTacos1m" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+          <ScalarProperty Name="AnchoFinal" ColumnName="AnchoFinal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_METRIS_GET_PRODUCT_PARAMS_X_OP" FunctionName="LAFScrapModel.Store.CSP_METRIS_GET_PRODUCT_PARAMS_X_OP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_METRIS_GET_PRODUCT_PARAMS_X_OP_Result">
+          <ScalarProperty Name="CodEstrutura" ColumnName="CodEstrutura" />
+          <ScalarProperty Name="DistaeTocasmm" ColumnName="DistaeTocasmm" />
+          <ScalarProperty Name="USR_DistaeTacos1m" ColumnName="USR_DistaeTacos1m" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+          <ScalarProperty Name="AnchoFinal" ColumnName="AnchoFinal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_METRIS_GET_PRODUCT_PARAMS_X_STRUCT" FunctionName="LAFScrapModel.Store.CSP_METRIS_GET_PRODUCT_PARAMS_X_STRUCT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_METRIS_GET_PRODUCT_PARAMS_X_STRUCT_Result">
+          <ScalarProperty Name="CodEstrutura" ColumnName="CodEstrutura" />
+          <ScalarProperty Name="DistaeTocasmm" ColumnName="DistaeTocasmm" />
+          <ScalarProperty Name="USR_DistaeTacos1m" ColumnName="USR_DistaeTacos1m" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+          <ScalarProperty Name="AnchoFinal" ColumnName="AnchoFinal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSACTIVIDADES_TRAE_ACTIVIDAD_REPROCESO" FunctionName="LAFScrapModel.Store.CSP_PSSACTIVIDADES_TRAE_ACTIVIDAD_REPROCESO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSACTIVIDADES_TRAE_ACTIVIDAD_REPROCESO_Result">
+          <ScalarProperty Name="IDACTIViDAD" ColumnName="IDACTIViDAD" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSACTIVIDADESMAQUINAS_CHECK_REPROCESO_ENABLED" FunctionName="LAFScrapModel.Store.CSP_PSSACTIVIDADESMAQUINAS_CHECK_REPROCESO_ENABLED">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSACTIVIDADESMAQUINAS_CHECK_REPROCESO_ENABLED_Result">
+          <ScalarProperty Name="IDMaq" ColumnName="IDMaq" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Recurso" ColumnName="Recurso" />
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+          <ScalarProperty Name="Desc_Actividad" ColumnName="Desc_Actividad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSJOBTRACK_ACTIVE_PALLETS_CLEAN_JOBTRACK" FunctionName="LAFScrapModel.Store.CSP_PSSJOBTRACK_ACTIVE_PALLETS_CLEAN_JOBTRACK" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSJOBTRACK_ACTIVE_PALLETS_INSERT" FunctionName="LAFScrapModel.Store.CSP_PSSJOBTRACK_ACTIVE_PALLETS_INSERT" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSJOBTRACK_DISABLE_PALLETS" FunctionName="LAFScrapModel.Store.CSP_PSSJOBTRACK_DISABLE_PALLETS" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET" FunctionName="LAFScrapModel.Store.CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET_Result">
+          <ScalarProperty Name="IDJobTrack" ColumnName="IDJobTrack" />
+          <ScalarProperty Name="NUMOF" ColumnName="NUMOF" />
+          <ScalarProperty Name="NUMPALLET" ColumnName="NUMPALLET" />
+          <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+          <ScalarProperty Name="JOBTRACKNAME" ColumnName="JOBTRACKNAME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSJOBTRACKS_GET_PRINTERS" FunctionName="LAFScrapModel.Store.CSP_PSSJOBTRACKS_GET_PRINTERS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSJOBTRACKS_GET_PRINTERS_Result">
+          <ScalarProperty Name="PrinterDefault" ColumnName="PrinterDefault" />
+          <ScalarProperty Name="PrinterEtiquetas" ColumnName="PrinterEtiquetas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSMAQUINAS_LISTAR_X_JOBTRACK_X_OPERADOR" FunctionName="LAFScrapModel.Store.CSP_PSSMAQUINAS_LISTAR_X_JOBTRACK_X_OPERADOR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSMAQUINAS_LISTAR_X_JOBTRACK_X_OPERADOR_Result">
+          <ScalarProperty Name="IdMaq" ColumnName="IdMaq" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSOPERADORES_GET_DETALLE" FunctionName="LAFScrapModel.Store.CSP_PSSOPERADORES_GET_DETALLE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSOPERADORES_GET_DETALLE_Result">
+          <ScalarProperty Name="IdOperador" ColumnName="IdOperador" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+          <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSOPERADORES_GET_DETALLE_X_LEGAJO" FunctionName="LAFScrapModel.Store.CSP_PSSOPERADORES_GET_DETALLE_X_LEGAJO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSOPERADORES_GET_DETALLE_X_LEGAJO_Result">
+          <ScalarProperty Name="IdOperador" ColumnName="IdOperador" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+          <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSOPERADORES_GETALL" FunctionName="LAFScrapModel.Store.CSP_PSSOPERADORES_GETALL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSOPERADORES_GETALL_Result">
+          <ScalarProperty Name="IdOperador" ColumnName="IdOperador" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+          <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+          <ScalarProperty Name="NOMBREAPELLIDO" ColumnName="NOMBREAPELLIDO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSOPERARIOS_HABILITADOS_EMPAQUE_X_MAQUINA" FunctionName="LAFScrapModel.Store.CSP_PSSOPERARIOS_HABILITADOS_EMPAQUE_X_MAQUINA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSOPERARIOS_HABILITADOS_EMPAQUE_X_MAQUINA_Result">
+          <ScalarProperty Name="IdMaq" ColumnName="IdMaq" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSORDENDESPRODUCCION_GETALL" FunctionName="LAFScrapModel.Store.CSP_PSSORDENDESPRODUCCION_GETALL" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSORDENDESPRODUCCION_GetOPxNUMERO" FunctionName="LAFScrapModel.Store.CSP_PSSORDENDESPRODUCCION_GetOPxNUMERO" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSORIGENSCRAP_REPROCESO" FunctionName="LAFScrapModel.Store.CSP_PSSORIGENSCRAP_REPROCESO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSORIGENSCRAP_REPROCESO_Result">
+          <ScalarProperty Name="IDOrigen" ColumnName="IDOrigen" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdMaquina" ColumnName="IdMaquina" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSROMANEO_INSERT" FunctionName="LAFScrapModel.Store.CSP_PSSROMANEO_INSERT" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSROMANEO_PRINT_CARTEL" FunctionName="LAFScrapModel.Store.CSP_PSSROMANEO_PRINT_CARTEL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSROMANEO_PRINT_CARTEL_Result">
+          <ScalarProperty Name="id_etiqueta" ColumnName="id_etiqueta" />
+          <ScalarProperty Name="CartelLeyenda" ColumnName="CartelLeyenda" />
+          <ScalarProperty Name="CartelFragil" ColumnName="CartelFragil" />
+          <ScalarProperty Name="CartelVersion" ColumnName="CartelVersion" />
+          <ScalarProperty Name="CartelAprobado" ColumnName="CartelAprobado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSROMANEO_PRINT_CARTEL_ALIMENTO" FunctionName="LAFScrapModel.Store.CSP_PSSROMANEO_PRINT_CARTEL_ALIMENTO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSROMANEO_PRINT_CARTEL_ALIMENTO_Result">
+          <ScalarProperty Name="id_etiqueta" ColumnName="id_etiqueta" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSROMANEO_PRINT_COLDSEAL" FunctionName="LAFScrapModel.Store.CSP_PSSROMANEO_PRINT_COLDSEAL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSROMANEO_PRINT_COLDSEAL_Result">
+          <ScalarProperty Name="id_etiqueta" ColumnName="id_etiqueta" />
+          <ScalarProperty Name="ColdSealTitle" ColumnName="ColdSealTitle" />
+          <ScalarProperty Name="ColdSealVersion" ColumnName="ColdSealVersion" />
+          <ScalarProperty Name="ColdSealTitle2" ColumnName="ColdSealTitle2" />
+          <ScalarProperty Name="ColdSealItem1" ColumnName="ColdSealItem1" />
+          <ScalarProperty Name="ColdSealItem2" ColumnName="ColdSealItem2" />
+          <ScalarProperty Name="ColdSealItem3" ColumnName="ColdSealItem3" />
+          <ScalarProperty Name="ColdSealItem4" ColumnName="ColdSealItem4" />
+          <ScalarProperty Name="ColdSealItem5" ColumnName="ColdSealItem5" />
+          <ScalarProperty Name="ColdSealItem6" ColumnName="ColdSealItem6" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSROMANEOITEMS_INSERT" FunctionName="LAFScrapModel.Store.CSP_PSSROMANEOITEMS_INSERT" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSRROMANEO_DELETE_X_OF_X_PALLET" FunctionName="LAFScrapModel.Store.CSP_PSSRROMANEO_DELETE_X_OF_X_PALLET">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSRROMANEO_DELETE_X_OF_X_PALLET_Result">
+          <ScalarProperty Name="IdRomaneo" ColumnName="IdRomaneo" />
+          <ScalarProperty Name="NroBulto" ColumnName="NroBulto" />
+          <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+          <ScalarProperty Name="Bobinas" ColumnName="Bobinas" />
+          <ScalarProperty Name="Mts" ColumnName="Mts" />
+          <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
+          <ScalarProperty Name="PesoNeto" ColumnName="PesoNeto" />
+          <ScalarProperty Name="EtiquetasXBobina" ColumnName="EtiquetasXBobina" />
+          <ScalarProperty Name="Mts2" ColumnName="Mts2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSRROMANEO_GET_LAST_OF_PRINTED" FunctionName="LAFScrapModel.Store.CSP_PSSRROMANEO_GET_LAST_OF_PRINTED" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSRROMANEO_GET_NEXT_PALLET_NUMBER" FunctionName="LAFScrapModel.Store.CSP_PSSRROMANEO_GET_NEXT_PALLET_NUMBER" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSRROMANEO_GET_NEXT_PALLET_NUMBER_BK_20221028" FunctionName="LAFScrapModel.Store.CSP_PSSRROMANEO_GET_NEXT_PALLET_NUMBER_BK_20221028" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSSCRAP_DELETE" FunctionName="LAFScrapModel.Store.CSP_PSSSCRAP_DELETE" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSSCRAP_LISTAR_X_JOBTRACK" FunctionName="LAFScrapModel.Store.CSP_PSSSCRAP_LISTAR_X_JOBTRACK">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSSCRAP_LISTAR_X_JOBTRACK_Result">
+          <ScalarProperty Name="IdRegScrap" ColumnName="IdRegScrap" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="NumOP" ColumnName="NumOP" />
+          <ScalarProperty Name="Máquina_actividad" ColumnName="Máquina actividad" />
+          <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+          <ScalarProperty Name="Operador" ColumnName="Operador" />
+          <ScalarProperty Name="Origen_Scrap" ColumnName="Origen Scrap" />
+          <ScalarProperty Name="Tipo_Material" ColumnName="Tipo Material" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_PSSTABACOBOBINAS_GET_PROX_BOBINA_X_OF" FunctionName="LAFScrapModel.Store.CSP_PSSTABACOBOBINAS_GET_PROX_BOBINA_X_OF" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSTABACOBOBINAS_GET_PROX_PALLET_X_OF" FunctionName="LAFScrapModel.Store.CSP_PSSTABACOBOBINAS_GET_PROX_PALLET_X_OF" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSTABACOBOBINAS_INSERT" FunctionName="LAFScrapModel.Store.CSP_PSSTABACOBOBINAS_INSERT" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSTABACOPALLETS_GET_LASTTOTALPALLETNUMBER" FunctionName="LAFScrapModel.Store.CSP_PSSTABACOPALLETS_GET_LASTTOTALPALLETNUMBER" />
+    <FunctionImportMapping FunctionImportName="CSP_PSSTABACOPALLETS_INSERT" FunctionName="LAFScrapModel.Store.CSP_PSSTABACOPALLETS_INSERT" />
+    <FunctionImportMapping FunctionImportName="CSP_REPORTE_EFICIENCIA_X_FECHAS_NUMOREDEN_CERRADAS" FunctionName="LAFScrapModel.Store.CSP_REPORTE_EFICIENCIA_X_FECHAS_NUMOREDEN_CERRADAS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_REPORTE_EFICIENCIA_X_FECHAS_NUMOREDEN_CERRADAS_Result">
+          <ScalarProperty Name="NUMOP" ColumnName="NUMOP" />
+          <ScalarProperty Name="TotalKgProducidos" ColumnName="TotalKgProducidos" />
+          <ScalarProperty Name="TotalScrap" ColumnName="TotalScrap" />
+          <ScalarProperty Name="PorcentajeTotalScrap" ColumnName="PorcentajeTotalScrap" />
+          <ScalarProperty Name="IMPRESION_H" ColumnName="IMPRESION H" />
+          <ScalarProperty Name="IMPRESION_F" ColumnName="IMPRESION F" />
+          <ScalarProperty Name="CORTE_N1" ColumnName="CORTE N1" />
+          <ScalarProperty Name="CORTE_N2" ColumnName="CORTE N2" />
+          <ScalarProperty Name="CORTE_N3" ColumnName="CORTE N3" />
+          <ScalarProperty Name="LAMINACION_1" ColumnName="LAMINACION 1" />
+          <ScalarProperty Name="LAMINACION_2" ColumnName="LAMINACION 2" />
+          <ScalarProperty Name="LAMINACION_3" ColumnName="LAMINACION 3" />
+          <ScalarProperty Name="REVISADO_N1" ColumnName="REVISADO N1" />
+          <ScalarProperty Name="REVISADO_N2" ColumnName="REVISADO N2" />
+          <ScalarProperty Name="REVISADO_N3" ColumnName="REVISADO N3" />
+          <ScalarProperty Name="REVISADO_N4" ColumnName="REVISADO N4" />
+          <ScalarProperty Name="MANGAS_COR" ColumnName="MANGAS COR" />
+          <ScalarProperty Name="MANGAS_PEG" ColumnName="MANGAS PEG" />
+          <ScalarProperty Name="MANGAS_REV" ColumnName="MANGAS REV" />
+          <ScalarProperty Name="PLIEGOS_COR" ColumnName="PLIEGOS COR" />
+          <ScalarProperty Name="PLIEGOS_EMB" ColumnName="PLIEGOS EMB" />
+          <ScalarProperty Name="PLIEGOS_TROQ" ColumnName="PLIEGOS TROQ" />
+          <ScalarProperty Name="DOYPACK" ColumnName="DOYPACK" />
+          <ScalarProperty Name="EMBOSSING" ColumnName="EMBOSSING" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_REPORTE_EFICIENCIA_X_NUMORDEN_CERRADA" FunctionName="LAFScrapModel.Store.CSP_REPORTE_EFICIENCIA_X_NUMORDEN_CERRADA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_REPORTE_EFICIENCIA_X_NUMORDEN_CERRADA_Result">
+          <ScalarProperty Name="NUMORDEM" ColumnName="NUMORDEM" />
+          <ScalarProperty Name="DescripcionOP" ColumnName="DescripcionOP" />
+          <ScalarProperty Name="CodRecurso" ColumnName="CodRecurso" />
+          <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+          <ScalarProperty Name="QtdProduzidaMts" ColumnName="QtdProduzidaMts" />
+          <ScalarProperty Name="FatorPesoProducao" ColumnName="FatorPesoProducao" />
+          <ScalarProperty Name="QtdProduzidaKg" ColumnName="QtdProduzidaKg" />
+          <ScalarProperty Name="KGScrap" ColumnName="KGScrap" />
+          <ScalarProperty Name="incidencia" ColumnName="incidencia" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_REPORTE_ROMANEO" FunctionName="LAFScrapModel.Store.CSP_REPORTE_ROMANEO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_REPORTE_ROMANEO_Result">
+          <ScalarProperty Name="IdRomaneo" ColumnName="IdRomaneo" />
+          <ScalarProperty Name="NroOf" ColumnName="NroOf" />
+          <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+          <ScalarProperty Name="DescProducto" ColumnName="DescProducto" />
+          <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Turno" ColumnName="Turno" />
+          <ScalarProperty Name="TipoRomaneo" ColumnName="TipoRomaneo" />
+          <ScalarProperty Name="NroPallet" ColumnName="NroPallet" />
+          <ScalarProperty Name="CantBultos" ColumnName="CantBultos" />
+          <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+          <ScalarProperty Name="Bobinas" ColumnName="Bobinas" />
+          <ScalarProperty Name="MTS" ColumnName="MTS" />
+          <ScalarProperty Name="MTS2" ColumnName="MTS2" />
+          <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
+          <ScalarProperty Name="PesoNeto" ColumnName="PesoNeto" />
+          <ScalarProperty Name="Obs" ColumnName="Obs" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_REPORTE_SCRAP" FunctionName="LAFScrapModel.Store.CSP_REPORTE_SCRAP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_REPORTE_SCRAP_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="OP" ColumnName="OP" />
+          <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+          <ScalarProperty Name="MAQUINA" ColumnName="MAQUINA" />
+          <ScalarProperty Name="MAQUINA_IMPUTA" ColumnName="MAQUINA_IMPUTA" />
+          <ScalarProperty Name="ACTIVIDAD" ColumnName="ACTIVIDAD" />
+          <ScalarProperty Name="OPERADOR" ColumnName="OPERADOR" />
+          <ScalarProperty Name="ORIGEN_SCRAP" ColumnName="ORIGEN_SCRAP" />
+          <ScalarProperty Name="TIPO_MATERIAL" ColumnName="TIPO_MATERIAL" />
+          <ScalarProperty Name="PESO" ColumnName="PESO" />
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_RPT_SCRAP_IMPRESORA" FunctionName="LAFScrapModel.Store.CSP_RPT_SCRAP_IMPRESORA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_RPT_SCRAP_IMPRESORA_Result">
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="TIPOMAT" ColumnName="TIPOMAT" />
+          <ScalarProperty Name="ORIGENSCRAP" ColumnName="ORIGENSCRAP" />
+          <ScalarProperty Name="NumOP" ColumnName="NumOP" />
+          <ScalarProperty Name="DescripcionOP" ColumnName="DescripcionOP" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Operador" ColumnName="Operador" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_SCRAP_INSERT" FunctionName="LAFScrapModel.Store.CSP_SCRAP_INSERT" />
+    <FunctionImportMapping FunctionImportName="CSP_SCRAP_MOTIVOS_TABLE_TOTAL_AÑO_ANT" FunctionName="LAFScrapModel.Store.CSP_SCRAP_MOTIVOS_TABLE_TOTAL_AÑO_ANT" />
+    <FunctionImportMapping FunctionImportName="CSP_SCRAP_MOTIVOS_TABLE1" FunctionName="LAFScrapModel.Store.CSP_SCRAP_MOTIVOS_TABLE1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_SCRAP_MOTIVOS_TABLE1_Result">
+          <ScalarProperty Name="CRITERIO" ColumnName="CRITERIO" />
+          <ScalarProperty Name="ID_MOTIVO" ColumnName="ID_MOTIVO" />
+          <ScalarProperty Name="DESC_MOTIVO_SCRAP" ColumnName="DESC_MOTIVO_SCRAP" />
+          <ScalarProperty Name="C1" ColumnName="1" />
+          <ScalarProperty Name="C2" ColumnName="2" />
+          <ScalarProperty Name="C3" ColumnName="3" />
+          <ScalarProperty Name="C4" ColumnName="4" />
+          <ScalarProperty Name="C5" ColumnName="5" />
+          <ScalarProperty Name="C6" ColumnName="6" />
+          <ScalarProperty Name="C7" ColumnName="7" />
+          <ScalarProperty Name="C8" ColumnName="8" />
+          <ScalarProperty Name="C9" ColumnName="9" />
+          <ScalarProperty Name="C10" ColumnName="10" />
+          <ScalarProperty Name="C11" ColumnName="11" />
+          <ScalarProperty Name="C12" ColumnName="12" />
+          <ScalarProperty Name="TOTAL_GENERAL" ColumnName="TOTAL_GENERAL" />
+          <ScalarProperty Name="PERC_SCRAP_TOT" ColumnName="PERC_SCRAP_TOT" />
+          <ScalarProperty Name="PERC_SCRAP_MES_ACTUAL" ColumnName="PERC_SCRAP_MES_ACTUAL" />
+          <ScalarProperty Name="MEJORADEFINIDA" ColumnName="MEJORADEFINIDA" />
+          <ScalarProperty Name="MES_ANO_PROX" ColumnName="MES_ANO_PROX" />
+          <ScalarProperty Name="PERC_MEJORA" ColumnName="PERC_MEJORA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_SCRAP_MOTIVOS_TABLE2" FunctionName="LAFScrapModel.Store.CSP_SCRAP_MOTIVOS_TABLE2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_SCRAP_MOTIVOS_TABLE2_Result">
+          <ScalarProperty Name="DESC_MOTIVO_SCRAP" ColumnName="DESC_MOTIVO_SCRAP" />
+          <ScalarProperty Name="C1" ColumnName="1" />
+          <ScalarProperty Name="COLOR1" ColumnName="COLOR1" />
+          <ScalarProperty Name="C2" ColumnName="2" />
+          <ScalarProperty Name="COLOR2" ColumnName="COLOR2" />
+          <ScalarProperty Name="C3" ColumnName="3" />
+          <ScalarProperty Name="COLOR3" ColumnName="COLOR3" />
+          <ScalarProperty Name="C4" ColumnName="4" />
+          <ScalarProperty Name="COLOR4" ColumnName="COLOR4" />
+          <ScalarProperty Name="C5" ColumnName="5" />
+          <ScalarProperty Name="COLOR5" ColumnName="COLOR5" />
+          <ScalarProperty Name="C6" ColumnName="6" />
+          <ScalarProperty Name="COLOR6" ColumnName="COLOR6" />
+          <ScalarProperty Name="C7" ColumnName="7" />
+          <ScalarProperty Name="COLOR7" ColumnName="COLOR7" />
+          <ScalarProperty Name="C8" ColumnName="8" />
+          <ScalarProperty Name="COLOR8" ColumnName="COLOR8" />
+          <ScalarProperty Name="C9" ColumnName="9" />
+          <ScalarProperty Name="COLOR9" ColumnName="COLOR9" />
+          <ScalarProperty Name="C10" ColumnName="10" />
+          <ScalarProperty Name="COLOR10" ColumnName="COLOR10" />
+          <ScalarProperty Name="C11" ColumnName="11" />
+          <ScalarProperty Name="COLOR11" ColumnName="COLOR11" />
+          <ScalarProperty Name="C12" ColumnName="12" />
+          <ScalarProperty Name="COLOR12" ColumnName="COLOR12" />
+          <ScalarProperty Name="INICIO" ColumnName="INICIO" />
+          <ScalarProperty Name="OBJETIVO" ColumnName="OBJETIVO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP" FunctionName="LAFScrapModel.Store.CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result">
+          <ScalarProperty Name="NumOrdem" ColumnName="NumOrdem" />
+          <ScalarProperty Name="LastPrintDate" ColumnName="LastPrintDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CSP_TABACO_GET_VISUAL_OC_INFO" FunctionName="LAFScrapModel.Store.CSP_TABACO_GET_VISUAL_OC_INFO" />
+    <FunctionImportMapping FunctionImportName="CSP_TRAZABILIDAD_GET_PROX_DESDE" FunctionName="LAFScrapModel.Store.CSP_TRAZABILIDAD_GET_PROX_DESDE" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="LAFScrapModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="LAFScrapModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="LAFScrapModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="LAFScrapModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="LAFScrapModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="LAFScrapModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="LAFScrapModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" />
+  </EntityContainerMapping>
+</Mapping>
