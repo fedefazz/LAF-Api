@@ -302,6 +302,15 @@ namespace LVS.Api.Controllers
 
             ScrapDto scrap = Mapper.Map<ScrapDto>(pSSScrap);
 
+            PSSMaquinasController maquinas = new PSSMaquinasController();
+            MaquinasDto maquinaActiva = maquinas.GetPSSMaquinasPorID(scrap.IdMaqImputaScrap);
+
+            if (maquinaActiva != null)
+            {
+                scrap.IdMaqImputaScrapName = maquinaActiva.Descripcion;
+
+            }
+
 
             return Ok(scrap);
         }
