@@ -381,7 +381,21 @@ namespace LVS.Api.Controllers
                 GPPerfilesPrePrensa = perfilesPrePrensaForSelect,
                 NoUsaPrePrensa = GpProducto.NoUsaPrePrensa,
                 AcuerdoDirectoProveedor = GpProducto.AcuerdoDirectoProveedor,
-                OC_Proveedor = GpProducto.OC_Proveedor
+                OC_Proveedor = GpProducto.OC_Proveedor,
+
+                // NUEVOS: datos de empaque ahora en producto
+                PosicionTaco = GpProducto.PosicionTaco,
+                LlevaBolsa = GpProducto.LlevaBolsa,
+                EtiquetaEnBolsa = GpProducto.EtiquetaEnBolsa,
+                TipoPaletizacion = GpProducto.TipoPaletizacion,
+                TipoPallet = GpProducto.TipoPallet,
+                FilmSuperior = GpProducto.FilmSuperior,
+                FilmInferior = GpProducto.FilmInferior,
+                RomaneosPorCara = GpProducto.RomaneosPorCara,
+                CartonSuperior = GpProducto.CartonSuperior,
+                TapaMadera = GpProducto.TapaMadera,
+                IdGrupoEmpaque = GpProducto.IdGrupoEmpaque,
+                FreqCartonXPiso = GpProducto.FreqCartonXPiso
             };
 
 

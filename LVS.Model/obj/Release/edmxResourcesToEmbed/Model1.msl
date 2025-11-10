@@ -139,6 +139,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="GPPGruposEmpaque">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPPGruposEmpaque">
+        <MappingFragment StoreEntitySet="GPPGruposEmpaque">
+          <ScalarProperty Name="IDGrupoEmpaque" ColumnName="IDGrupoEmpaque" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="EtiquetaInterna" ColumnName="EtiquetaInterna" />
+          <ScalarProperty Name="TipoEtiquetaInterna" ColumnName="TipoEtiquetaInterna" />
+          <ScalarProperty Name="EtiquetaExterna" ColumnName="EtiquetaExterna" />
+          <ScalarProperty Name="TipoEtiquetaExterna" ColumnName="TipoEtiquetaExterna" />
+          <ScalarProperty Name="TipoEtiquetaPallet" ColumnName="TipoEtiquetaPallet" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="GPProductos">
       <EntityTypeMapping TypeName="LAFScrapModel.GPProductos">
         <MappingFragment StoreEntitySet="GPProductos">
@@ -218,6 +232,18 @@
           <ScalarProperty Name="NoUsaPrePrensa" ColumnName="NoUsaPrePrensa" />
           <ScalarProperty Name="AcuerdoDirectoProveedor" ColumnName="AcuerdoDirectoProveedor" />
           <ScalarProperty Name="OC_Proveedor" ColumnName="OC_Proveedor" />
+          <ScalarProperty Name="PosicionTaco" ColumnName="PosicionTaco" />
+          <ScalarProperty Name="LlevaBolsa" ColumnName="LlevaBolsa" />
+          <ScalarProperty Name="EtiquetaEnBolsa" ColumnName="EtiquetaEnBolsa" />
+          <ScalarProperty Name="TipoPaletizacion" ColumnName="TipoPaletizacion" />
+          <ScalarProperty Name="TipoPallet" ColumnName="TipoPallet" />
+          <ScalarProperty Name="FilmSuperior" ColumnName="FilmSuperior" />
+          <ScalarProperty Name="FilmInferior" ColumnName="FilmInferior" />
+          <ScalarProperty Name="RomaneosPorCara" ColumnName="RomaneosPorCara" />
+          <ScalarProperty Name="CartonSuperior" ColumnName="CartonSuperior" />
+          <ScalarProperty Name="TapaMadera" ColumnName="TapaMadera" />
+          <ScalarProperty Name="IdGrupoEmpaque" ColumnName="IdGrupoEmpaque" />
+          <ScalarProperty Name="FreqCartonXPiso" ColumnName="FreqCartonXPiso" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2227,7 +2253,20 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="CSP_TABACO_GET_VISUAL_OC_INFO" FunctionName="LAFScrapModel.Store.CSP_TABACO_GET_VISUAL_OC_INFO" />
+    <FunctionImportMapping FunctionImportName="CSP_TABACO_GET_VISUAL_OC_INFO" FunctionName="LAFScrapModel.Store.CSP_TABACO_GET_VISUAL_OC_INFO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LAFScrapModel.CSP_TABACO_GET_VISUAL_OC_INFO_Result">
+          <ScalarProperty Name="CUSTOMER_ORDER" ColumnName="CUSTOMER_ORDER" />
+          <ScalarProperty Name="CUSTOMER_PO_REF" ColumnName="CUSTOMER_PO_REF" />
+          <ScalarProperty Name="SHIP_TO_ADDR_NO" ColumnName="SHIP_TO_ADDR_NO" />
+          <ScalarProperty Name="CUSTOMER" ColumnName="CUSTOMER" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+          <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+          <ScalarProperty Name="CUSTOMER_PRODUCT" ColumnName="CUSTOMER_PRODUCT" />
+          <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="CSP_TRAZABILIDAD_GET_PROX_DESDE" FunctionName="LAFScrapModel.Store.CSP_TRAZABILIDAD_GET_PROX_DESDE" />
     <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="LAFScrapModel.Store.sp_alterdiagram" />
     <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="LAFScrapModel.Store.sp_creatediagram" />
@@ -2253,16 +2292,19 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="LAFScrapModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="LAFScrapModel.Store.sp_upgraddiagrams" />
-    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863" />
-    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d" />
     <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" />
-    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c" />
-    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e" />
-    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c" />
     <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" />
     <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" />
     <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493" />
     <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b" />
     <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" />
+    <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9" />
   </EntityContainerMapping>
 </Mapping>

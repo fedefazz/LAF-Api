@@ -102,5 +102,19 @@ namespace LVS.Dtos
         public string OC_Proveedor { get; set; }
 
         public List<GpModulosResponsablesDto> responsables { get; set; }
+
+        // Nuevos campos de empaque (ahora en GPProductos)
+        public bool PosicionTaco { get; set; }
+        public bool LlevaBolsa { get; set; }
+        public bool EtiquetaEnBolsa { get; set; }
+        public bool TipoPaletizacion { get; set; }
+        public bool TipoPallet { get; set; }
+        public bool FilmSuperior { get; set; }
+        public bool FilmInferior { get; set; }
+        public bool RomaneosPorCara { get; set; }
+        public bool CartonSuperior { get; set; }
+        public bool TapaMadera { get; set; }
+        public int IdGrupoEmpaque { get; set; }
+        public int FreqCartonXPiso { get; set; }
     }
 }

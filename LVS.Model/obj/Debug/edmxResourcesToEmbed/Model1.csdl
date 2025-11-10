@@ -135,6 +135,20 @@
     <NavigationProperty Name="GPImpresoras" Relationship="Self.FK_GPPerfilesPrePrensa_GPImpresoras" FromRole="GPPerfilesPrePrensa" ToRole="GPImpresoras" />
     <NavigationProperty Name="GPTipoMaterial" Relationship="Self.FK_GPPerfilesPrePrensa_GPTipoMaterial" FromRole="GPPerfilesPrePrensa" ToRole="GPTipoMaterial" />
   </EntityType>
+  <EntityType Name="GPPGruposEmpaque">
+    <Key>
+      <PropertyRef Name="IDGrupoEmpaque" />
+    </Key>
+    <Property Name="IDGrupoEmpaque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EtiquetaInterna" Type="Boolean" Nullable="false" />
+    <Property Name="TipoEtiquetaInterna" Type="Int32" Nullable="false" />
+    <Property Name="EtiquetaExterna" Type="Boolean" Nullable="false" />
+    <Property Name="TipoEtiquetaExterna" Type="Int32" Nullable="false" />
+    <Property Name="TipoEtiquetaPallet" Type="Int32" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="GPProductos" Relationship="Self.FK_GPProductos_GPPGruposEmpaque" FromRole="GPPGruposEmpaque" ToRole="GPProductos" />
+  </EntityType>
   <EntityType Name="GPProductos">
     <Key>
       <PropertyRef Name="Cod_Producto" />
@@ -215,7 +229,20 @@
     <Property Name="NoUsaPrePrensa" Type="Boolean" Nullable="false" />
     <Property Name="AcuerdoDirectoProveedor" Type="Boolean" Nullable="false" />
     <Property Name="OC_Proveedor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PosicionTaco" Type="Boolean" Nullable="false" />
+    <Property Name="LlevaBolsa" Type="Boolean" Nullable="false" />
+    <Property Name="EtiquetaEnBolsa" Type="Boolean" Nullable="false" />
+    <Property Name="TipoPaletizacion" Type="Boolean" Nullable="false" />
+    <Property Name="TipoPallet" Type="Boolean" Nullable="false" />
+    <Property Name="FilmSuperior" Type="Boolean" Nullable="false" />
+    <Property Name="FilmInferior" Type="Boolean" Nullable="false" />
+    <Property Name="RomaneosPorCara" Type="Boolean" Nullable="false" />
+    <Property Name="CartonSuperior" Type="Boolean" Nullable="false" />
+    <Property Name="TapaMadera" Type="Boolean" Nullable="false" />
+    <Property Name="IdGrupoEmpaque" Type="Int32" Nullable="false" />
+    <Property Name="FreqCartonXPiso" Type="Int32" Nullable="false" />
     <NavigationProperty Name="GPModulosResponsables" Relationship="Self.FK_GPProductos_GPModulosResponsables" FromRole="GPProductos" ToRole="GPModulosResponsables" />
+    <NavigationProperty Name="GPPGruposEmpaque" Relationship="Self.FK_GPProductos_GPPGruposEmpaque" FromRole="GPProductos" ToRole="GPPGruposEmpaque" />
     <NavigationProperty Name="GPTrabajosCilindros" Relationship="Self.FK_GPTrabajosCilindros_GPProductos" FromRole="GPProductos" ToRole="GPTrabajosCilindros" />
   </EntityType>
   <EntityType Name="GPResponsables">
@@ -1205,6 +1232,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_GPProductos_GPPGruposEmpaque">
+    <End Role="GPPGruposEmpaque" Type="Self.GPPGruposEmpaque" Multiplicity="1" />
+    <End Role="GPProductos" Type="Self.GPProductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPPGruposEmpaque">
+        <PropertyRef Name="IDGrupoEmpaque" />
+      </Principal>
+      <Dependent Role="GPProductos">
+        <PropertyRef Name="IdGrupoEmpaque" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GPTrabajosCilindros_GPProductos">
     <End Role="GPProductos" Type="Self.GPProductos" Multiplicity="1" />
     <End Role="GPTrabajosCilindros" Type="Self.GPTrabajosCilindros" Multiplicity="*" />
@@ -1455,6 +1494,7 @@
     <EntitySet Name="GPModulosProductos" EntityType="Self.GPModulosProductos" />
     <EntitySet Name="GPModulosResponsables" EntityType="Self.GPModulosResponsables" />
     <EntitySet Name="GPPerfilesPrePrensa" EntityType="Self.GPPerfilesPrePrensa" />
+    <EntitySet Name="GPPGruposEmpaque" EntityType="Self.GPPGruposEmpaque" />
     <EntitySet Name="GPProductos" EntityType="Self.GPProductos" />
     <EntitySet Name="GPResponsables" EntityType="Self.GPResponsables" />
     <EntitySet Name="GPTipoMaterial" EntityType="Self.GPTipoMaterial" />
@@ -1538,6 +1578,10 @@
     <AssociationSet Name="FK_GPPerfilesPrePrensa_GPTipoMaterial" Association="Self.FK_GPPerfilesPrePrensa_GPTipoMaterial">
       <End Role="GPTipoMaterial" EntitySet="GPTipoMaterial" />
       <End Role="GPPerfilesPrePrensa" EntitySet="GPPerfilesPrePrensa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPProductos_GPPGruposEmpaque" Association="Self.FK_GPProductos_GPPGruposEmpaque">
+      <End Role="GPPGruposEmpaque" EntitySet="GPPGruposEmpaque" />
+      <End Role="GPProductos" EntitySet="GPProductos" />
     </AssociationSet>
     <AssociationSet Name="FK_GPTrabajosCilindros_GPProductos" Association="Self.FK_GPTrabajosCilindros_GPProductos">
       <End Role="GPProductos" EntitySet="GPProductos" />
@@ -1934,7 +1978,7 @@
     <FunctionImport Name="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP" ReturnType="Collection(LAFScrapModel.CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result)">
       <Parameter Name="pNroOf" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="CSP_TABACO_GET_VISUAL_OC_INFO">
+    <FunctionImport Name="CSP_TABACO_GET_VISUAL_OC_INFO" ReturnType="Collection(LAFScrapModel.CSP_TABACO_GET_VISUAL_OC_INFO_Result)">
       <Parameter Name="PO_REF" Mode="In" Type="String" />
       <Parameter Name="PART_ID" Mode="In" Type="String" />
     </FunctionImport>
@@ -1972,17 +2016,20 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <FunctionImport Name="SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863" ReturnType="Collection(Guid)" />
-    <FunctionImport Name="SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d" ReturnType="Collection(Guid)" />
     <FunctionImport Name="SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" ReturnType="Collection(Guid)" />
-    <FunctionImport Name="SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c" ReturnType="Collection(Guid)" />
-    <FunctionImport Name="SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e" ReturnType="Collection(Guid)" />
-    <FunctionImport Name="SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c" ReturnType="Collection(Guid)" />
     <FunctionImport Name="SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" ReturnType="Collection(Guid)" />
     <FunctionImport Name="SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" ReturnType="Collection(Guid)" />
     <FunctionImport Name="SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493" ReturnType="Collection(Guid)" />
     <FunctionImport Name="SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b" ReturnType="Collection(Guid)" />
     <FunctionImport Name="SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9" ReturnType="Collection(Guid)" />
   </EntityContainer>
   <ComplexType Name="CSP_APPGRIDACTIONPARAMS_X_ACTIONID_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -2830,6 +2877,16 @@
   <ComplexType Name="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result">
     <Property Type="String" Name="NumOrdem" Nullable="true" MaxLength="14" />
     <Property Type="DateTime" Name="LastPrintDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="CSP_TABACO_GET_VISUAL_OC_INFO_Result">
+    <Property Type="String" Name="CUSTOMER_ORDER" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="CUSTOMER_PO_REF" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="SHIP_TO_ADDR_NO" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CUSTOMER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CITY" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="COUNTRY" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CUSTOMER_PRODUCT" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PART_ID" Nullable="true" MaxLength="30" />
   </ComplexType>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />

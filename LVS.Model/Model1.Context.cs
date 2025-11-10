@@ -40,6 +40,7 @@ namespace LVS.Model
         public virtual DbSet<GPModulosProductos> GPModulosProductos { get; set; }
         public virtual DbSet<GPModulosResponsables> GPModulosResponsables { get; set; }
         public virtual DbSet<GPPerfilesPrePrensa> GPPerfilesPrePrensa { get; set; }
+        public virtual DbSet<GPPGruposEmpaque> GPPGruposEmpaque { get; set; }
         public virtual DbSet<GPProductos> GPProductos { get; set; }
         public virtual DbSet<GPResponsables> GPResponsables { get; set; }
         public virtual DbSet<GPTipoMaterial> GPTipoMaterial { get; set; }
@@ -1151,7 +1152,7 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result>("CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP", pNroOfParameter);
         }
     
-        public virtual int CSP_TABACO_GET_VISUAL_OC_INFO(string pO_REF, string pART_ID)
+        public virtual ObjectResult<CSP_TABACO_GET_VISUAL_OC_INFO_Result> CSP_TABACO_GET_VISUAL_OC_INFO(string pO_REF, string pART_ID)
         {
             var pO_REFParameter = pO_REF != null ?
                 new ObjectParameter("PO_REF", pO_REF) :
@@ -1161,7 +1162,7 @@ namespace LVS.Model
                 new ObjectParameter("PART_ID", pART_ID) :
                 new ObjectParameter("PART_ID", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_TABACO_GET_VISUAL_OC_INFO", pO_REFParameter, pART_IDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_TABACO_GET_VISUAL_OC_INFO_Result>("CSP_TABACO_GET_VISUAL_OC_INFO", pO_REFParameter, pART_IDParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> CSP_TRAZABILIDAD_GET_PROX_DESDE(Nullable<int> nROOF, Nullable<int> tIPO)
@@ -1280,14 +1281,19 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863()
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e");
         }
     
-        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f()
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f");
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d");
         }
     
         public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e()
@@ -1295,19 +1301,14 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e");
         }
     
-        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c()
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716");
         }
     
-        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e()
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e");
-        }
-    
-        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c");
         }
     
         public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced()
@@ -1325,14 +1326,29 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73");
         }
     
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493");
+        }
+    
         public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27");
         }
     
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b");
+        }
+    
         public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91");
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9");
         }
     }
 }

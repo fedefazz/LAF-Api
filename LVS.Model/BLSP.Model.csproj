@@ -270,6 +270,9 @@
     <Compile Include="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="CSP_TABACO_GET_VISUAL_OC_INFO_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="CV_LLENA_DATOS_LAMINADORAS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -334,6 +337,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GPPerfilesPrePrensa.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GPPGruposEmpaque.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GPProductos.cs">

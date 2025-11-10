@@ -261,6 +261,7 @@
     <Compile Include="Controllers\BranchesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EtiquetasController.cs" />
+    <Compile Include="Controllers\GPPGruposEmpaquesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PSSActividadesController.cs" />
     <Compile Include="Controllers\PSSAreasController.cs" />

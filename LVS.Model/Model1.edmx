@@ -130,6 +130,19 @@
           <Property Name="IdTipoMaterial" Type="int" Nullable="false" />
           <Property Name="Habilitado" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="GPPGruposEmpaque">
+          <Key>
+            <PropertyRef Name="IDGrupoEmpaque" />
+          </Key>
+          <Property Name="IDGrupoEmpaque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EtiquetaInterna" Type="bit" Nullable="false" />
+          <Property Name="TipoEtiquetaInterna" Type="int" Nullable="false" />
+          <Property Name="EtiquetaExterna" Type="bit" Nullable="false" />
+          <Property Name="TipoEtiquetaExterna" Type="int" Nullable="false" />
+          <Property Name="TipoEtiquetaPallet" Type="int" Nullable="false" />
+          <Property Name="Habilitado" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="GPProductos">
           <Key>
             <PropertyRef Name="Cod_Producto" />
@@ -210,6 +223,18 @@
           <Property Name="NoUsaPrePrensa" Type="bit" Nullable="false" />
           <Property Name="AcuerdoDirectoProveedor" Type="bit" Nullable="false" />
           <Property Name="OC_Proveedor" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PosicionTaco" Type="bit" Nullable="false" />
+          <Property Name="LlevaBolsa" Type="bit" Nullable="false" />
+          <Property Name="EtiquetaEnBolsa" Type="bit" Nullable="false" />
+          <Property Name="TipoPaletizacion" Type="bit" Nullable="false" />
+          <Property Name="TipoPallet" Type="bit" Nullable="false" />
+          <Property Name="FilmSuperior" Type="bit" Nullable="false" />
+          <Property Name="FilmInferior" Type="bit" Nullable="false" />
+          <Property Name="RomaneosPorCara" Type="bit" Nullable="false" />
+          <Property Name="CartonSuperior" Type="bit" Nullable="false" />
+          <Property Name="TapaMadera" Type="bit" Nullable="false" />
+          <Property Name="IdGrupoEmpaque" Type="int" Nullable="false" />
+          <Property Name="FreqCartonXPiso" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="GPResponsables">
           <Key>
@@ -1335,6 +1360,18 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GPProductos_GPPGruposEmpaque">
+          <End Role="GPPGruposEmpaque" Type="Self.GPPGruposEmpaque" Multiplicity="1" />
+          <End Role="GPProductos" Type="Self.GPProductos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPPGruposEmpaque">
+              <PropertyRef Name="IDGrupoEmpaque" />
+            </Principal>
+            <Dependent Role="GPProductos">
+              <PropertyRef Name="IdGrupoEmpaque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GPTrabajosCilindros_GPProductos">
           <End Role="GPProductos" Type="Self.GPProductos" Multiplicity="1" />
           <End Role="GPTrabajosCilindros" Type="Self.GPTrabajosCilindros" Multiplicity="*" />
@@ -2136,17 +2173,20 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-154f00f8-e3d5-49d2-8cf2-12cd5bad5863" />
-        <Function Name="SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-16d32cc3-e8b0-4f29-b65b-8e437f94188f" />
+        <Function Name="SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-01e6d30f-ac20-4596-a00d-bcf7aec43e5e" />
+        <Function Name="SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-02b8ebd3-032f-4669-9ee2-18320638a48f" />
+        <Function Name="SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-14f89d0f-7b93-4678-8520-77a267cc6a4d" />
         <Function Name="SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-39a7623c-1082-459d-a4bf-3bc992a73d3e" />
-        <Function Name="SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-4a920ba5-d26e-4e4f-aa41-bb0b68bc457c" />
-        <Function Name="SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-6ffbdbf3-8efc-4293-af11-e35bd166148e" />
-        <Function Name="SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-9d17e98e-f0a9-4763-9e34-b7126298eddc" />
+        <Function Name="SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-4682292e-01f9-440d-8a52-ae40ea4ce716" />
+        <Function Name="SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-926fa08e-a0cb-4761-8a00-e9fb0a6c3b2c" />
         <Function Name="SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-9dadaad6-0463-4844-8bd0-05f4a392aced" />
         <Function Name="SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-a9dd2b45-93ba-42ec-957e-c56ec28aec45" />
         <Function Name="SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-cc217855-33d3-4350-b0ef-9686b11dae73" />
+        <Function Name="SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-cd8ea333-7470-4172-a231-7986fc942493" />
         <Function Name="SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-de3b0173-8e28-4ecc-a4cd-de9318c4fd27" />
+        <Function Name="SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-e84ccd28-f127-452c-b0a3-a31e52943b3b" />
         <Function Name="SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-e9ad8ab2-5a30-411e-8587-3613f9110a91" />
+        <Function Name="SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-eaffc4bb-3e96-40ad-bfda-222e2ebad2f9" />
         <EntityContainer Name="LAFScrapModelStoreContainer">
           <EntitySet Name="Action" EntityType="Self.Action" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="APPGridActionParams" EntityType="Self.APPGridActionParams" Schema="dbo" store:Type="Tables" />
@@ -2161,6 +2201,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <EntitySet Name="GPModulosProductos" EntityType="Self.GPModulosProductos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GPModulosResponsables" EntityType="Self.GPModulosResponsables" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GPPerfilesPrePrensa" EntityType="Self.GPPerfilesPrePrensa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPPGruposEmpaque" EntityType="Self.GPPGruposEmpaque" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GPProductos" EntityType="Self.GPProductos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GPResponsables" EntityType="Self.GPResponsables" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GPTipoMaterial" EntityType="Self.GPTipoMaterial" Schema="dbo" store:Type="Tables" />
@@ -2578,6 +2619,10 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             <End Role="GPModulosResponsables" EntitySet="GPModulosResponsables" />
             <End Role="GPProductos" EntitySet="GPProductos" />
           </AssociationSet>
+          <AssociationSet Name="FK_GPProductos_GPPGruposEmpaque" Association="Self.FK_GPProductos_GPPGruposEmpaque">
+            <End Role="GPPGruposEmpaque" EntitySet="GPPGruposEmpaque" />
+            <End Role="GPProductos" EntitySet="GPProductos" />
+          </AssociationSet>
           <AssociationSet Name="FK_GPTrabajosCilindros_GPProductos" Association="Self.FK_GPTrabajosCilindros_GPProductos">
             <End Role="GPProductos" EntitySet="GPProductos" />
             <End Role="GPTrabajosCilindros" EntitySet="GPTrabajosCilindros" />
@@ -2851,6 +2896,20 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <NavigationProperty Name="GPImpresoras" Relationship="Self.FK_GPPerfilesPrePrensa_GPImpresoras" FromRole="GPPerfilesPrePrensa" ToRole="GPImpresoras" />
           <NavigationProperty Name="GPTipoMaterial" Relationship="Self.FK_GPPerfilesPrePrensa_GPTipoMaterial" FromRole="GPPerfilesPrePrensa" ToRole="GPTipoMaterial" />
         </EntityType>
+        <EntityType Name="GPPGruposEmpaque">
+          <Key>
+            <PropertyRef Name="IDGrupoEmpaque" />
+          </Key>
+          <Property Name="IDGrupoEmpaque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EtiquetaInterna" Type="Boolean" Nullable="false" />
+          <Property Name="TipoEtiquetaInterna" Type="Int32" Nullable="false" />
+          <Property Name="EtiquetaExterna" Type="Boolean" Nullable="false" />
+          <Property Name="TipoEtiquetaExterna" Type="Int32" Nullable="false" />
+          <Property Name="TipoEtiquetaPallet" Type="Int32" Nullable="false" />
+          <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="GPProductos" Relationship="Self.FK_GPProductos_GPPGruposEmpaque" FromRole="GPPGruposEmpaque" ToRole="GPProductos" />
+        </EntityType>
         <EntityType Name="GPProductos">
           <Key>
             <PropertyRef Name="Cod_Producto" />
@@ -2931,7 +2990,20 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Property Name="NoUsaPrePrensa" Type="Boolean" Nullable="false" />
           <Property Name="AcuerdoDirectoProveedor" Type="Boolean" Nullable="false" />
           <Property Name="OC_Proveedor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PosicionTaco" Type="Boolean" Nullable="false" />
+          <Property Name="LlevaBolsa" Type="Boolean" Nullable="false" />
+          <Property Name="EtiquetaEnBolsa" Type="Boolean" Nullable="false" />
+          <Property Name="TipoPaletizacion" Type="Boolean" Nullable="false" />
+          <Property Name="TipoPallet" Type="Boolean" Nullable="false" />
+          <Property Name="FilmSuperior" Type="Boolean" Nullable="false" />
+          <Property Name="FilmInferior" Type="Boolean" Nullable="false" />
+          <Property Name="RomaneosPorCara" Type="Boolean" Nullable="false" />
+          <Property Name="CartonSuperior" Type="Boolean" Nullable="false" />
+          <Property Name="TapaMadera" Type="Boolean" Nullable="false" />
+          <Property Name="IdGrupoEmpaque" Type="Int32" Nullable="false" />
+          <Property Name="FreqCartonXPiso" Type="Int32" Nullable="false" />
           <NavigationProperty Name="GPModulosResponsables" Relationship="Self.FK_GPProductos_GPModulosResponsables" FromRole="GPProductos" ToRole="GPModulosResponsables" />
+          <NavigationProperty Name="GPPGruposEmpaque" Relationship="Self.FK_GPProductos_GPPGruposEmpaque" FromRole="GPProductos" ToRole="GPPGruposEmpaque" />
           <NavigationProperty Name="GPTrabajosCilindros" Relationship="Self.FK_GPTrabajosCilindros_GPProductos" FromRole="GPProductos" ToRole="GPTrabajosCilindros" />
         </EntityType>
         <EntityType Name="GPResponsables">
@@ -3921,6 +3993,18 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GPProductos_GPPGruposEmpaque">
+          <End Role="GPPGruposEmpaque" Type="Self.GPPGruposEmpaque" Multiplicity="1" />
+          <End Role="GPProductos" Type="Self.GPProductos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPPGruposEmpaque">
+              <PropertyRef Name="IDGrupoEmpaque" />
+            </Principal>
+            <Dependent Role="GPProductos">
+              <PropertyRef Name="IdGrupoEmpaque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GPTrabajosCilindros_GPProductos">
           <End Role="GPProductos" Type="Self.GPProductos" Multiplicity="1" />
           <End Role="GPTrabajosCilindros" Type="Self.GPTrabajosCilindros" Multiplicity="*" />
@@ -4171,6 +4255,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <EntitySet Name="GPModulosProductos" EntityType="Self.GPModulosProductos" />
           <EntitySet Name="GPModulosResponsables" EntityType="Self.GPModulosResponsables" />
           <EntitySet Name="GPPerfilesPrePrensa" EntityType="Self.GPPerfilesPrePrensa" />
+          <EntitySet Name="GPPGruposEmpaque" EntityType="Self.GPPGruposEmpaque" />
           <EntitySet Name="GPProductos" EntityType="Self.GPProductos" />
           <EntitySet Name="GPResponsables" EntityType="Self.GPResponsables" />
           <EntitySet Name="GPTipoMaterial" EntityType="Self.GPTipoMaterial" />
@@ -4254,6 +4339,10 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <AssociationSet Name="FK_GPPerfilesPrePrensa_GPTipoMaterial" Association="Self.FK_GPPerfilesPrePrensa_GPTipoMaterial">
             <End Role="GPTipoMaterial" EntitySet="GPTipoMaterial" />
             <End Role="GPPerfilesPrePrensa" EntitySet="GPPerfilesPrePrensa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPProductos_GPPGruposEmpaque" Association="Self.FK_GPProductos_GPPGruposEmpaque">
+            <End Role="GPPGruposEmpaque" EntitySet="GPPGruposEmpaque" />
+            <End Role="GPProductos" EntitySet="GPProductos" />
           </AssociationSet>
           <AssociationSet Name="FK_GPTrabajosCilindros_GPProductos" Association="Self.FK_GPTrabajosCilindros_GPProductos">
             <End Role="GPProductos" EntitySet="GPProductos" />
@@ -4650,7 +4739,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <FunctionImport Name="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP" ReturnType="Collection(LAFScrapModel.CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result)">
             <Parameter Name="pNroOf" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="CSP_TABACO_GET_VISUAL_OC_INFO">
+          <FunctionImport Name="CSP_TABACO_GET_VISUAL_OC_INFO" ReturnType="Collection(LAFScrapModel.CSP_TABACO_GET_VISUAL_OC_INFO_Result)">
             <Parameter Name="PO_REF" Mode="In" Type="String" />
             <Parameter Name="PART_ID" Mode="In" Type="String" />
           </FunctionImport>
@@ -4688,17 +4777,20 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863" ReturnType="Collection(Guid)" />
-          <FunctionImport Name="SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" ReturnType="Collection(Guid)" />
-          <FunctionImport Name="SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c" ReturnType="Collection(Guid)" />
-          <FunctionImport Name="SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e" ReturnType="Collection(Guid)" />
-          <FunctionImport Name="SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9" ReturnType="Collection(Guid)" />
         </EntityContainer>
         <ComplexType Name="CSP_APPGRIDACTIONPARAMS_X_ACTIONID_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -5547,6 +5639,16 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Property Type="String" Name="NumOrdem" Nullable="true" MaxLength="14" />
           <Property Type="DateTime" Name="LastPrintDate" Nullable="true" Precision="23" />
         </ComplexType>
+        <ComplexType Name="CSP_TABACO_GET_VISUAL_OC_INFO_Result">
+          <Property Type="String" Name="CUSTOMER_ORDER" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="CUSTOMER_PO_REF" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="SHIP_TO_ADDR_NO" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CUSTOMER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CITY" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="COUNTRY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CUSTOMER_PRODUCT" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="PART_ID" Nullable="true" MaxLength="30" />
+        </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -5702,6 +5804,20 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="GPPGruposEmpaque">
+            <EntityTypeMapping TypeName="LAFScrapModel.GPPGruposEmpaque">
+              <MappingFragment StoreEntitySet="GPPGruposEmpaque">
+                <ScalarProperty Name="IDGrupoEmpaque" ColumnName="IDGrupoEmpaque" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="EtiquetaInterna" ColumnName="EtiquetaInterna" />
+                <ScalarProperty Name="TipoEtiquetaInterna" ColumnName="TipoEtiquetaInterna" />
+                <ScalarProperty Name="EtiquetaExterna" ColumnName="EtiquetaExterna" />
+                <ScalarProperty Name="TipoEtiquetaExterna" ColumnName="TipoEtiquetaExterna" />
+                <ScalarProperty Name="TipoEtiquetaPallet" ColumnName="TipoEtiquetaPallet" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="GPProductos">
             <EntityTypeMapping TypeName="LAFScrapModel.GPProductos">
               <MappingFragment StoreEntitySet="GPProductos">
@@ -5781,6 +5897,18 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
                 <ScalarProperty Name="NoUsaPrePrensa" ColumnName="NoUsaPrePrensa" />
                 <ScalarProperty Name="AcuerdoDirectoProveedor" ColumnName="AcuerdoDirectoProveedor" />
                 <ScalarProperty Name="OC_Proveedor" ColumnName="OC_Proveedor" />
+                <ScalarProperty Name="PosicionTaco" ColumnName="PosicionTaco" />
+                <ScalarProperty Name="LlevaBolsa" ColumnName="LlevaBolsa" />
+                <ScalarProperty Name="EtiquetaEnBolsa" ColumnName="EtiquetaEnBolsa" />
+                <ScalarProperty Name="TipoPaletizacion" ColumnName="TipoPaletizacion" />
+                <ScalarProperty Name="TipoPallet" ColumnName="TipoPallet" />
+                <ScalarProperty Name="FilmSuperior" ColumnName="FilmSuperior" />
+                <ScalarProperty Name="FilmInferior" ColumnName="FilmInferior" />
+                <ScalarProperty Name="RomaneosPorCara" ColumnName="RomaneosPorCara" />
+                <ScalarProperty Name="CartonSuperior" ColumnName="CartonSuperior" />
+                <ScalarProperty Name="TapaMadera" ColumnName="TapaMadera" />
+                <ScalarProperty Name="IdGrupoEmpaque" ColumnName="IdGrupoEmpaque" />
+                <ScalarProperty Name="FreqCartonXPiso" ColumnName="FreqCartonXPiso" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7790,7 +7918,20 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="CSP_TABACO_GET_VISUAL_OC_INFO" FunctionName="LAFScrapModel.Store.CSP_TABACO_GET_VISUAL_OC_INFO" />
+          <FunctionImportMapping FunctionImportName="CSP_TABACO_GET_VISUAL_OC_INFO" FunctionName="LAFScrapModel.Store.CSP_TABACO_GET_VISUAL_OC_INFO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LAFScrapModel.CSP_TABACO_GET_VISUAL_OC_INFO_Result">
+                <ScalarProperty Name="CUSTOMER_ORDER" ColumnName="CUSTOMER_ORDER" />
+                <ScalarProperty Name="CUSTOMER_PO_REF" ColumnName="CUSTOMER_PO_REF" />
+                <ScalarProperty Name="SHIP_TO_ADDR_NO" ColumnName="SHIP_TO_ADDR_NO" />
+                <ScalarProperty Name="CUSTOMER" ColumnName="CUSTOMER" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="CUSTOMER_PRODUCT" ColumnName="CUSTOMER_PRODUCT" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CSP_TRAZABILIDAD_GET_PROX_DESDE" FunctionName="LAFScrapModel.Store.CSP_TRAZABILIDAD_GET_PROX_DESDE" />
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="LAFScrapModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="LAFScrapModel.Store.sp_creatediagram" />
@@ -7816,17 +7957,20 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="LAFScrapModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="LAFScrapModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_154f00f8_e3d5_49d2_8cf2_12cd5bad5863" />
-          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_16d32cc3_e8b0_4f29_b65b_8e437f94188f" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" />
-          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_4a920ba5_d26e_4e4f_aa41_bb0b68bc457c" />
-          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_6ffbdbf3_8efc_4293_af11_e35bd166148e" />
-          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_9d17e98e_f0a9_4763_9e34_b7126298eddc" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
