@@ -117,5 +117,110 @@ namespace LVS.Api.Controllers
         {
             return db.GPPGruposEmpaque.Count(e => e.IDGrupoEmpaque == id) > 0;
         }
+
+        // ========== ENDPOINTS PARA TIPOS DE ETIQUETAS ==========
+
+        // GET: api/GPPGruposEmpaques/TiposEtiquetas
+        [HttpGet]
+        [Route("api/GPPGruposEmpaques/TiposEtiquetas")]
+        public List<GPPTiposEtiquetasDto> GetTiposEtiquetas()
+        {
+            var list = db.GPPTiposEtiquetas.Where(x => x.Habilitado == true).ToList();
+            return Mapper.Map<List<GPPTiposEtiquetas>, List<GPPTiposEtiquetasDto>>(list);
+        }
+
+        // GET: api/GPPGruposEmpaques/TiposEtiquetas/5
+        [HttpGet]
+        [Route("api/GPPGruposEmpaques/TiposEtiquetas/{id}")]
+        [ResponseType(typeof(GPPTiposEtiquetasDto))]
+        public IHttpActionResult GetTipoEtiqueta(int id)
+        {
+            var entity = db.GPPTiposEtiquetas.Find(id);
+            if (entity == null)
+                return NotFound();
+
+            return Ok(Mapper.Map<GPPTiposEtiquetas, GPPTiposEtiquetasDto>(entity));
+        }
+
+        // PUT: api/GPPGruposEmpaques/TiposEtiquetas/5
+        [HttpPut]
+        [Route("api/GPPGruposEmpaques/TiposEtiquetas/{id}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutTipoEtiqueta(int id, GPPTiposEtiquetas entity)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            if (id != entity.IdEtiqueta)
+                return BadRequest();
+
+            entity.Descripcion = entity.Descripcion ?? string.Empty;
+
+            db.Entry(entity).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TipoEtiquetaExists(id))
+                    return NotFound();
+                else
+                    throw;
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // POST: api/GPPGruposEmpaques/TiposEtiquetas
+        [HttpPost]
+        [Route("api/GPPGruposEmpaques/TiposEtiquetas")]
+        [ResponseType(typeof(GPPTiposEtiquetasDto))]
+        public IHttpActionResult PostTipoEtiqueta(GPPTiposEtiquetas entity)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            entity.Habilitado = true;
+            entity.Descripcion = entity.Descripcion ?? string.Empty;
+
+            db.GPPTiposEtiquetas.Add(entity);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (TipoEtiquetaExists(entity.IdEtiqueta))
+                    return Conflict();
+                else
+                    throw;
+            }
+
+            var dto = Mapper.Map<GPPTiposEtiquetas, GPPTiposEtiquetasDto>(entity);
+            return CreatedAtRoute("DefaultApi", new { id = entity.IdEtiqueta }, dto);
+        }
+
+        // DELETE: api/GPPGruposEmpaques/TiposEtiquetas/5
+        [HttpDelete]
+        [Route("api/GPPGruposEmpaques/TiposEtiquetas/{id}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult DeleteTipoEtiqueta(int id)
+        {
+            var entity = db.GPPTiposEtiquetas.Find(id);
+            if (entity == null)
+                return NotFound();
+
+            entity.Habilitado = false; // soft delete
+            db.SaveChanges();
+            return Ok();
+        }
+
+        private bool TipoEtiquetaExists(int id)
+        {
+            return db.GPPTiposEtiquetas.Count(e => e.IdEtiqueta == id) > 0;
+        }
     }
 }

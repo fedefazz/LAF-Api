@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -16,6 +16,8 @@ using System.Linq.Dynamic;
 using System.Web.Http.Results;
 using LVS.Api.Models;
 using System.Data.Entity.Validation;
+using Newtonsoft.Json;
+using System.Configuration;
 
 namespace LVS.Api.Controllers
 {
@@ -283,6 +285,21 @@ namespace LVS.Api.Controllers
 
             }
 
+            // Cargar tamaños de pallet para el selector del front
+            List<GPTamañoPallets> tamanoPallets = db.GPTamañoPallets.ToList();
+            List<GPTamanoPalletsDto> tamanoPalletsForSelect = new List<GPTamanoPalletsDto>();
+            foreach (var _tamanoPallet in tamanoPallets)
+            {
+                var tamanoPallet = new GPTamanoPalletsDto
+                {
+                    IdTamañoPallet = _tamanoPallet.IdTamañoPallet,
+                    Descripcion = _tamanoPallet.Descripcion,
+                    Habilitado = _tamanoPallet.Habilitado,
+                };
+
+                tamanoPalletsForSelect.Add(tamanoPallet);
+            }
+
             ProductoDto producto = new ProductoDto
             {
                 Cod_Producto = GpProducto.Cod_Producto,
@@ -302,6 +319,7 @@ namespace LVS.Api.Controllers
                 OC_Cliente = GpProducto.OC_Cliente,
                 impresoras = impresorasForSelect,
                 materiales = materialesForSelect,
+                tamanoPallets = tamanoPalletsForSelect,
                 Cod_Producto_Cliente = GpProducto.Cod_Producto_Cliente,
                 Fecha_Deseada_Cliente = GpProducto.Fecha_Deseada_Cliente,
                 ResponsableCustomer = GpProducto.ResponsableCustomer,
@@ -395,7 +413,9 @@ namespace LVS.Api.Controllers
                 CartonSuperior = GpProducto.CartonSuperior,
                 TapaMadera = GpProducto.TapaMadera,
                 IdGrupoEmpaque = GpProducto.IdGrupoEmpaque,
-                FreqCartonXPiso = GpProducto.FreqCartonXPiso
+                FreqCartonXPiso = GpProducto.FreqCartonXPiso,
+                ModoPattern = GpProducto.ModoPattern,
+                TipoPattern = GpProducto.TipoPattern
             };
 
 
@@ -495,7 +515,8 @@ namespace LVS.Api.Controllers
             }
             catch (Exception ex)
             {
-                // Maneja la excepciÃ³n aquÃ­ (puedes registrarla, devolver un cÃ³digo de estado especÃ­fico, etc.)
+                // Maneja la excepción aquí (puedes registrarla, devolver un código de estado específico, etc.)
+                
                 
                 
                 
@@ -513,7 +534,7 @@ namespace LVS.Api.Controllers
 
         private DateTime EnsureValidDateTime(DateTime dateTime)
         {
-            // Ajusta DateTimeKind segÃºn tu configuraciÃ³n (ejemplo con DateTimeKind.Utc)
+            // Ajusta DateTimeKind según tu configuración (ejemplo con DateTimeKind.Utc)
             return dateTime == DateTime.MinValue ? DateTime.UtcNow : DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);
         }
 
@@ -881,6 +902,7 @@ namespace LVS.Api.Controllers
                 PerfilImpresion = z.PerfilImpresion,
                 Proveedor = z.Proveedor,
                 ReChequeoProducto = z.ReChequeoProducto,
+                Reemplazo_Prod = z.Reemplazo_Prod,
                 Referencia_Item = z.Referencia_Item,
                 ResponsableComercial = z.ResponsableComercial,
                 ResponsableConfeccionIng = z.ResponsableConfeccionIng,
@@ -915,7 +937,6 @@ namespace LVS.Api.Controllers
                 FechaDocumento = z.FechaDocumento,
                 Fecha_Pedido_Original = z.Fecha_Pedido_Original,
                 ObsProducto = z.ObsProducto,
-                Reemplazo_Prod = z.Reemplazo_Prod,
                 AcuerdoDirectoProveedor = z.AcuerdoDirectoProveedor,
                 Dif_FechaAprobCroma_FechaPDFArmado = z.Dif_FechaAprobCroma_FechaPDFArmado,
                 Dif_FechaArte_FechaRecepHerra = z.Dif_FechaArte_FechaRecepHerra,
@@ -951,6 +972,7 @@ namespace LVS.Api.Controllers
             }).ToList();
             return Ok(scrapExcel);
         }
+
 
         [HttpGet]
         [ResponseType(typeof(CSP_GPPRODUCTOS_EXCEL_GRABADOS_EXPORT_Result))]
@@ -991,7 +1013,7 @@ namespace LVS.Api.Controllers
         [Route("api/PSSProductos/getTrabajosCilindros/")]
         public async Task<IHttpActionResult> getTrabajosCilindros()
         {
-            // ProyecciÃ³n directamente a un DTO
+            // Proyección directamente a un DTO
             var productos = await db.GPTrabajosCilindros
                 .Select(z => new GpTrabajoCilindrosDto
                 {
@@ -1050,7 +1072,7 @@ namespace LVS.Api.Controllers
             .Where(z => z.Cod_Producto == codProd)
             .Select(z => z.Nro_Version)
             .DefaultIfEmpty()  // En caso de que no haya registros, devuelve un valor por defecto
-            .MaxAsync();  // Obtiene el valor mÃ¡ximo de Nro_Version
+            .MaxAsync();  // Obtiene el valor máximo de Nro_Version
 
             return Ok(maxVersion);
         }
@@ -1268,6 +1290,49 @@ namespace LVS.Api.Controllers
 
             }).ToList();
             return Ok(scrapExcel);
+        }
+
+
+        // GET: api/PSSProductos/getPatterns - Proxy para servicio externo
+        [HttpGet]
+        [ResponseType(typeof(object))]
+        [Route("api/PSSProductos/getPatterns")]
+        public async Task<IHttpActionResult> getPatterns()
+        {
+            try
+            {
+                // Leer la URL base desde web.config (compatible C# 6)
+                string baseUrl = ConfigurationManager.AppSettings["ZncWebApi.BaseUrl"] ?? "http://93.41.138.207:88/";
+
+                int timeout; // C# 6: variable explícita
+                int timeoutSeconds = int.TryParse(ConfigurationManager.AppSettings["ZncWebApi.Timeout.Seconds"], out timeout)
+                    ? timeout
+                    : 30;
+
+                using (var httpClient = new HttpClient())
+                {
+                    httpClient.Timeout = TimeSpan.FromSeconds(timeoutSeconds);
+
+                    string fullUrl = baseUrl.TrimEnd('/') + "/ZncWebApi/LineStatus/GetPatterns";
+                    var response = await httpClient.GetAsync(fullUrl);
+
+                    if (!response.IsSuccessStatusCode)
+                        return InternalServerError(new Exception($"Error al obtener patterns del servicio externo. Status: {response.StatusCode}"));
+
+                    var content = await response.Content.ReadAsStringAsync();
+                    var patterns = JsonConvert.DeserializeObject(content);
+
+                    return Ok(patterns);
+                }
+            }
+            catch (HttpRequestException httpEx)
+            {
+                return InternalServerError(new Exception($"Error de conexión al servicio externo: {httpEx.Message}", httpEx));
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception($"Error al obtener patterns: {ex.Message}", ex));
+            }
         }
 
 

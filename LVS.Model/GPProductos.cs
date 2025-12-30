@@ -100,7 +100,7 @@ namespace LVS.Model
         public bool LlevaBolsa { get; set; }
         public bool EtiquetaEnBolsa { get; set; }
         public bool TipoPaletizacion { get; set; }
-        public bool TipoPallet { get; set; }
+        public int TipoPallet { get; set; }
         public bool FilmSuperior { get; set; }
         public bool FilmInferior { get; set; }
         public bool RomaneosPorCara { get; set; }
@@ -108,9 +108,12 @@ namespace LVS.Model
         public bool TapaMadera { get; set; }
         public int IdGrupoEmpaque { get; set; }
         public int FreqCartonXPiso { get; set; }
+        public bool ModoPattern { get; set; }
+        public string TipoPattern { get; set; }
     
         public virtual GPModulosResponsables GPModulosResponsables { get; set; }
         public virtual GPPGruposEmpaque GPPGruposEmpaque { get; set; }
+        public virtual GPTamañoPallets GPTamañoPallets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GPTrabajosCilindros> GPTrabajosCilindros { get; set; }
     }

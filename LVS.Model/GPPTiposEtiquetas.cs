@@ -12,27 +12,25 @@ namespace LVS.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class GPPGruposEmpaque
+    public partial class GPPTiposEtiquetas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GPPGruposEmpaque()
+        public GPPTiposEtiquetas()
         {
-            this.GPProductos = new HashSet<GPProductos>();
+            this.GPPGruposEmpaque = new HashSet<GPPGruposEmpaque>();
+            this.GPPGruposEmpaque1 = new HashSet<GPPGruposEmpaque>();
+            this.GPPGruposEmpaque2 = new HashSet<GPPGruposEmpaque>();
         }
     
-        public int IDGrupoEmpaque { get; set; }
+        public int IdEtiqueta { get; set; }
         public string Descripcion { get; set; }
-        public bool EtiquetaInterna { get; set; }
-        public int TipoEtiquetaInterna { get; set; }
-        public bool EtiquetaExterna { get; set; }
-        public int TipoEtiquetaExterna { get; set; }
-        public int TipoEtiquetaPallet { get; set; }
         public bool Habilitado { get; set; }
     
-        public virtual GPPTiposEtiquetas GPPTiposEtiquetas { get; set; }
-        public virtual GPPTiposEtiquetas GPPTiposEtiquetas1 { get; set; }
-        public virtual GPPTiposEtiquetas GPPTiposEtiquetas2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GPProductos> GPProductos { get; set; }
+        public virtual ICollection<GPPGruposEmpaque> GPPGruposEmpaque { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GPPGruposEmpaque> GPPGruposEmpaque1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GPPGruposEmpaque> GPPGruposEmpaque2 { get; set; }
     }
 }

@@ -22,4 +22,12 @@ namespace LVS.Dtos
         public int TipoEtiquetaPallet { get; set; }
         public bool Habilitado { get; set; }
     }
+
+    // DTO para Tipos de Etiquetas
+    public partial class GPPTiposEtiquetasDto
+    {
+        public int IdEtiqueta { get; set; }
+        public string Descripcion { get; set; }
+        public bool Habilitado { get; set; }
+    }
 }

@@ -147,6 +147,9 @@
     <Property Name="TipoEtiquetaExterna" Type="Int32" Nullable="false" />
     <Property Name="TipoEtiquetaPallet" Type="Int32" Nullable="false" />
     <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="GPPTiposEtiquetas" Relationship="Self.FK_Empaque_Externa" FromRole="GPPGruposEmpaque" ToRole="GPPTiposEtiquetas" />
+    <NavigationProperty Name="GPPTiposEtiquetas1" Relationship="Self.FK_Empaque_Interna" FromRole="GPPGruposEmpaque" ToRole="GPPTiposEtiquetas" />
+    <NavigationProperty Name="GPPTiposEtiquetas2" Relationship="Self.FK_Empaque_Pallet" FromRole="GPPGruposEmpaque" ToRole="GPPTiposEtiquetas" />
     <NavigationProperty Name="GPProductos" Relationship="Self.FK_GPProductos_GPPGruposEmpaque" FromRole="GPPGruposEmpaque" ToRole="GPProductos" />
   </EntityType>
   <EntityType Name="GPProductos">
@@ -233,7 +236,7 @@
     <Property Name="LlevaBolsa" Type="Boolean" Nullable="false" />
     <Property Name="EtiquetaEnBolsa" Type="Boolean" Nullable="false" />
     <Property Name="TipoPaletizacion" Type="Boolean" Nullable="false" />
-    <Property Name="TipoPallet" Type="Boolean" Nullable="false" />
+    <Property Name="TipoPallet" Type="Int32" Nullable="false" />
     <Property Name="FilmSuperior" Type="Boolean" Nullable="false" />
     <Property Name="FilmInferior" Type="Boolean" Nullable="false" />
     <Property Name="RomaneosPorCara" Type="Boolean" Nullable="false" />
@@ -241,9 +244,23 @@
     <Property Name="TapaMadera" Type="Boolean" Nullable="false" />
     <Property Name="IdGrupoEmpaque" Type="Int32" Nullable="false" />
     <Property Name="FreqCartonXPiso" Type="Int32" Nullable="false" />
+    <Property Name="ModoPattern" Type="Boolean" Nullable="false" />
+    <Property Name="TipoPattern" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="GPModulosResponsables" Relationship="Self.FK_GPProductos_GPModulosResponsables" FromRole="GPProductos" ToRole="GPModulosResponsables" />
     <NavigationProperty Name="GPPGruposEmpaque" Relationship="Self.FK_GPProductos_GPPGruposEmpaque" FromRole="GPProductos" ToRole="GPPGruposEmpaque" />
+    <NavigationProperty Name="GPTamañoPallets" Relationship="Self.FK_GPProductos_TipoPallet" FromRole="GPProductos" ToRole="GPTamañoPallets" />
     <NavigationProperty Name="GPTrabajosCilindros" Relationship="Self.FK_GPTrabajosCilindros_GPProductos" FromRole="GPProductos" ToRole="GPTrabajosCilindros" />
+  </EntityType>
+  <EntityType Name="GPPTiposEtiquetas">
+    <Key>
+      <PropertyRef Name="IdEtiqueta" />
+    </Key>
+    <Property Name="IdEtiqueta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="GPPGruposEmpaque" Relationship="Self.FK_Empaque_Externa" FromRole="GPPTiposEtiquetas" ToRole="GPPGruposEmpaque" />
+    <NavigationProperty Name="GPPGruposEmpaque1" Relationship="Self.FK_Empaque_Interna" FromRole="GPPTiposEtiquetas" ToRole="GPPGruposEmpaque" />
+    <NavigationProperty Name="GPPGruposEmpaque2" Relationship="Self.FK_Empaque_Pallet" FromRole="GPPTiposEtiquetas" ToRole="GPPGruposEmpaque" />
   </EntityType>
   <EntityType Name="GPResponsables">
     <Key>
@@ -254,6 +271,15 @@
     <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Habilitado" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="GPModulosResponsables" Relationship="Self.FK_GPModulosResponsables_GPResponsables" FromRole="GPResponsables" ToRole="GPModulosResponsables" />
+  </EntityType>
+  <EntityType Name="GPTamañoPallets">
+    <Key>
+      <PropertyRef Name="IdTamañoPallet" />
+    </Key>
+    <Property Name="IdTamañoPallet" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Habilitado" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="GPProductos" Relationship="Self.FK_GPProductos_TipoPallet" FromRole="GPTamañoPallets" ToRole="GPProductos" />
   </EntityType>
   <EntityType Name="GPTipoMaterial">
     <Key>
@@ -1232,6 +1258,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Empaque_Externa">
+    <End Role="GPPTiposEtiquetas" Type="Self.GPPTiposEtiquetas" Multiplicity="1" />
+    <End Role="GPPGruposEmpaque" Type="Self.GPPGruposEmpaque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPPTiposEtiquetas">
+        <PropertyRef Name="IdEtiqueta" />
+      </Principal>
+      <Dependent Role="GPPGruposEmpaque">
+        <PropertyRef Name="TipoEtiquetaExterna" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empaque_Interna">
+    <End Role="GPPTiposEtiquetas" Type="Self.GPPTiposEtiquetas" Multiplicity="1" />
+    <End Role="GPPGruposEmpaque" Type="Self.GPPGruposEmpaque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPPTiposEtiquetas">
+        <PropertyRef Name="IdEtiqueta" />
+      </Principal>
+      <Dependent Role="GPPGruposEmpaque">
+        <PropertyRef Name="TipoEtiquetaInterna" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empaque_Pallet">
+    <End Role="GPPTiposEtiquetas" Type="Self.GPPTiposEtiquetas" Multiplicity="1" />
+    <End Role="GPPGruposEmpaque" Type="Self.GPPGruposEmpaque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPPTiposEtiquetas">
+        <PropertyRef Name="IdEtiqueta" />
+      </Principal>
+      <Dependent Role="GPPGruposEmpaque">
+        <PropertyRef Name="TipoEtiquetaPallet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GPProductos_GPPGruposEmpaque">
     <End Role="GPPGruposEmpaque" Type="Self.GPPGruposEmpaque" Multiplicity="1" />
     <End Role="GPProductos" Type="Self.GPProductos" Multiplicity="*" />
@@ -1241,6 +1303,18 @@
       </Principal>
       <Dependent Role="GPProductos">
         <PropertyRef Name="IdGrupoEmpaque" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GPProductos_TipoPallet">
+    <End Role="GPTamañoPallets" Type="Self.GPTamañoPallets" Multiplicity="1" />
+    <End Role="GPProductos" Type="Self.GPProductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPTamañoPallets">
+        <PropertyRef Name="IdTamañoPallet" />
+      </Principal>
+      <Dependent Role="GPProductos">
+        <PropertyRef Name="TipoPallet" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1496,7 +1570,9 @@
     <EntitySet Name="GPPerfilesPrePrensa" EntityType="Self.GPPerfilesPrePrensa" />
     <EntitySet Name="GPPGruposEmpaque" EntityType="Self.GPPGruposEmpaque" />
     <EntitySet Name="GPProductos" EntityType="Self.GPProductos" />
+    <EntitySet Name="GPPTiposEtiquetas" EntityType="Self.GPPTiposEtiquetas" />
     <EntitySet Name="GPResponsables" EntityType="Self.GPResponsables" />
+    <EntitySet Name="GPTamañoPallets" EntityType="Self.GPTamañoPallets" />
     <EntitySet Name="GPTipoMaterial" EntityType="Self.GPTipoMaterial" />
     <EntitySet Name="GPTrabajosCilindros" EntityType="Self.GPTrabajosCilindros" />
     <EntitySet Name="Metrics_Indicadores_Historico_Totales_OP" EntityType="Self.Metrics_Indicadores_Historico_Totales_OP" />
@@ -1579,8 +1655,24 @@
       <End Role="GPTipoMaterial" EntitySet="GPTipoMaterial" />
       <End Role="GPPerfilesPrePrensa" EntitySet="GPPerfilesPrePrensa" />
     </AssociationSet>
+    <AssociationSet Name="FK_Empaque_Externa" Association="Self.FK_Empaque_Externa">
+      <End Role="GPPTiposEtiquetas" EntitySet="GPPTiposEtiquetas" />
+      <End Role="GPPGruposEmpaque" EntitySet="GPPGruposEmpaque" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empaque_Interna" Association="Self.FK_Empaque_Interna">
+      <End Role="GPPTiposEtiquetas" EntitySet="GPPTiposEtiquetas" />
+      <End Role="GPPGruposEmpaque" EntitySet="GPPGruposEmpaque" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empaque_Pallet" Association="Self.FK_Empaque_Pallet">
+      <End Role="GPPTiposEtiquetas" EntitySet="GPPTiposEtiquetas" />
+      <End Role="GPPGruposEmpaque" EntitySet="GPPGruposEmpaque" />
+    </AssociationSet>
     <AssociationSet Name="FK_GPProductos_GPPGruposEmpaque" Association="Self.FK_GPProductos_GPPGruposEmpaque">
       <End Role="GPPGruposEmpaque" EntitySet="GPPGruposEmpaque" />
+      <End Role="GPProductos" EntitySet="GPProductos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPProductos_TipoPallet" Association="Self.FK_GPProductos_TipoPallet">
+      <End Role="GPTamañoPallets" EntitySet="GPTamañoPallets" />
       <End Role="GPProductos" EntitySet="GPProductos" />
     </AssociationSet>
     <AssociationSet Name="FK_GPTrabajosCilindros_GPProductos" Association="Self.FK_GPTrabajosCilindros_GPProductos">

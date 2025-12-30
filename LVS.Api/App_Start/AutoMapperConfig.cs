@@ -61,8 +61,9 @@ namespace LVS.Api.App_Start
                 config.CreateMap<GPModulosResponsables, GpModulosResponsablesDto>().ForSourceMember(x => x.GPResponsables, y => y.Ignore());
                 config.CreateMap<GPResponsables, GpResponsablesDto>().ForSourceMember(x => x.GPModulosResponsables, y => y.Ignore());
 
-                // Nuevo: mapear grupos de empaque
+                // Mapear grupos de empaque y tipos de etiquetas
                 config.CreateMap<GPPGruposEmpaque, GPPGruposEmpaqueDto>();
+                config.CreateMap<GPPTiposEtiquetas, GPPTiposEtiquetasDto>();
 
 
             });

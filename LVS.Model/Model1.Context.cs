@@ -42,7 +42,9 @@ namespace LVS.Model
         public virtual DbSet<GPPerfilesPrePrensa> GPPerfilesPrePrensa { get; set; }
         public virtual DbSet<GPPGruposEmpaque> GPPGruposEmpaque { get; set; }
         public virtual DbSet<GPProductos> GPProductos { get; set; }
+        public virtual DbSet<GPPTiposEtiquetas> GPPTiposEtiquetas { get; set; }
         public virtual DbSet<GPResponsables> GPResponsables { get; set; }
+        public virtual DbSet<GPTamañoPallets> GPTamañoPallets { get; set; }
         public virtual DbSet<GPTipoMaterial> GPTipoMaterial { get; set; }
         public virtual DbSet<GPTrabajosCilindros> GPTrabajosCilindros { get; set; }
         public virtual DbSet<Metrics_Indicadores_Historico_Totales_OP> Metrics_Indicadores_Historico_Totales_OP { get; set; }

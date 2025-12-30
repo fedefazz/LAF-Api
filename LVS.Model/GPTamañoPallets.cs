@@ -12,26 +12,18 @@ namespace LVS.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class GPPGruposEmpaque
+    public partial class GPTamañoPallets
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GPPGruposEmpaque()
+        public GPTamañoPallets()
         {
             this.GPProductos = new HashSet<GPProductos>();
         }
     
-        public int IDGrupoEmpaque { get; set; }
+        public int IdTamañoPallet { get; set; }
         public string Descripcion { get; set; }
-        public bool EtiquetaInterna { get; set; }
-        public int TipoEtiquetaInterna { get; set; }
-        public bool EtiquetaExterna { get; set; }
-        public int TipoEtiquetaExterna { get; set; }
-        public int TipoEtiquetaPallet { get; set; }
-        public bool Habilitado { get; set; }
+        public long Habilitado { get; set; }
     
-        public virtual GPPTiposEtiquetas GPPTiposEtiquetas { get; set; }
-        public virtual GPPTiposEtiquetas GPPTiposEtiquetas1 { get; set; }
-        public virtual GPPTiposEtiquetas GPPTiposEtiquetas2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GPProductos> GPProductos { get; set; }
     }

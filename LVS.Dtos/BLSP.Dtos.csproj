@@ -52,6 +52,7 @@
     <Compile Include="GpEstadoProductoDto.cs" />
     <Compile Include="GpModulosProductosDto.cs" />
     <Compile Include="GPPGruposEmpaqueDto.cs" />
+    <Compile Include="GPTamañoPalletsDto.cs" />
     <Compile Include="GpTrabajoCilindros.cs" />
     <Compile Include="GPTipoMaterialDto.cs" />
     <Compile Include="GpResponsablesDto.cs" />

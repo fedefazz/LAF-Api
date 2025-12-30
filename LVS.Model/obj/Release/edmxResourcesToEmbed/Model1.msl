@@ -244,6 +244,17 @@
           <ScalarProperty Name="TapaMadera" ColumnName="TapaMadera" />
           <ScalarProperty Name="IdGrupoEmpaque" ColumnName="IdGrupoEmpaque" />
           <ScalarProperty Name="FreqCartonXPiso" ColumnName="FreqCartonXPiso" />
+          <ScalarProperty Name="ModoPattern" ColumnName="ModoPattern" />
+          <ScalarProperty Name="TipoPattern" ColumnName="TipoPattern" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPPTiposEtiquetas">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPPTiposEtiquetas">
+        <MappingFragment StoreEntitySet="GPPTiposEtiquetas">
+          <ScalarProperty Name="IdEtiqueta" ColumnName="IdEtiqueta" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -253,6 +264,15 @@
           <ScalarProperty Name="IdResponsable" ColumnName="IdResponsable" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPTamañoPallets">
+      <EntityTypeMapping TypeName="LAFScrapModel.GPTamañoPallets">
+        <MappingFragment StoreEntitySet="GPTamañoPallets">
+          <ScalarProperty Name="IdTamañoPallet" ColumnName="IdTamañoPallet" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
         </MappingFragment>
       </EntityTypeMapping>
