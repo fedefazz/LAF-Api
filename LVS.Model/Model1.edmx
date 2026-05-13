@@ -46,6 +46,16 @@
           <Property Name="HasChilds" Type="bit" Nullable="false" />
           <Property Name="Objeto" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="AppNotifications">
+          <Key>
+            <PropertyRef Name="IdNotificacion" />
+          </Key>
+          <Property Name="IdNotificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdJobtrackRecepcion" Type="int" Nullable="false" />
+          <Property Name="Mensaje" Type="varchar" MaxLength="5000" Nullable="false" />
+          <Property Name="Leido" Type="bit" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="APPParametros">
           <Key>
             <PropertyRef Name="IDParam" />
@@ -225,18 +235,29 @@
           <Property Name="OC_Proveedor" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="PosicionTaco" Type="bit" Nullable="false" />
           <Property Name="LlevaBolsa" Type="bit" Nullable="false" />
-          <Property Name="EtiquetaEnBolsa" Type="bit" Nullable="false" />
           <Property Name="TipoPaletizacion" Type="bit" Nullable="false" />
           <Property Name="TipoPallet" Type="int" Nullable="false" />
           <Property Name="FilmSuperior" Type="bit" Nullable="false" />
           <Property Name="FilmInferior" Type="bit" Nullable="false" />
-          <Property Name="RomaneosPorCara" Type="bit" Nullable="false" />
           <Property Name="CartonSuperior" Type="bit" Nullable="false" />
           <Property Name="TapaMadera" Type="bit" Nullable="false" />
           <Property Name="IdGrupoEmpaque" Type="int" Nullable="false" />
           <Property Name="FreqCartonXPiso" Type="int" Nullable="false" />
           <Property Name="ModoPattern" Type="bit" Nullable="false" />
           <Property Name="TipoPattern" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PalletLabel" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="GPProductoSeguimientoMail">
+          <Key>
+            <PropertyRef Name="CodProducto" />
+          </Key>
+          <Property Name="CodProducto" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DailyLastRefreshDate" Type="datetime" Nullable="false" />
+          <Property Name="DailyRefreshExecuted" Type="bit" Nullable="false" />
+          <Property Name="MailSinPreprensaSent" Type="bit" Nullable="false" />
+          <Property Name="MailSinPreprensaSentDatetime" Type="datetime" Nullable="false" />
+          <Property Name="MailNuevoCilindroSent" Type="bit" Nullable="false" />
+          <Property Name="MailNuevoCilindroSentDatetime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="GPPTiposEtiquetas">
           <Key>
@@ -682,6 +703,45 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.RoleAction' no tiene definida n
           </Key>
           <Property Name="RoleID" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="ActionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SolicitudTintas">
+          <Key>
+            <PropertyRef Name="IdSolicitud" />
+          </Key>
+          <Property Name="IdSolicitud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaSolicitud" Type="datetime" Nullable="false" />
+          <Property Name="NroOf" Type="int" Nullable="false" />
+          <Property Name="CodProducto" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Legajo" Type="int" Nullable="false" />
+          <Property Name="FechaRequerida" Type="datetime" Nullable="false" />
+          <Property Name="Secat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tinta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Viscosidad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MtsImpresos" Type="float" Nullable="false" />
+          <Property Name="MtsRestantes" Type="float" Nullable="false" />
+          <Property Name="KgSolicitados" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Obs" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="IdMaquina" Type="int" Nullable="false" />
+          <Property Name="IdJobtrack" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SolicitudTintasEstados">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Habilitado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SolicitudTintasTrazabilidad">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="RecordId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSolicitud" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Legajo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1786,6 +1846,18 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SolicitudTintas_SolicitudTintasEstados">
+          <End Role="SolicitudTintasEstados" Type="Self.SolicitudTintasEstados" Multiplicity="1" />
+          <End Role="SolicitudTintas" Type="Self.SolicitudTintas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SolicitudTintasEstados">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="SolicitudTintas">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserClaim_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="UserClaim" Type="Self.UserClaim" Multiplicity="*" />
@@ -1856,6 +1928,12 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Parameter Name="PGRIDOBJNAME" Type="varchar" Mode="In" />
         </Function>
         <Function Name="CSP_APPMENU_LISTAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDJOBTRACK" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CSP_APPNOTIFICATIONS_READ_NOTIFICATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDNOTICICATION" Type="int" Mode="In" />
+        </Function>
         <Function Name="CSP_APPPARAMS_GET_VALUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="P_IDPARAM" Type="varchar" Mode="In" />
         </Function>
@@ -1868,6 +1946,9 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
         <Function Name="CSP_GET_ALL_TREE_NODES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_GET_CUSTOMER_OC_BY_NUMOF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NUMOF" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JOBTRACKNAME" Type="varchar" Mode="In" />
         </Function>
         <Function Name="CSP_GET_MAQUINAS_X_AREA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PIDAREA" Type="int" Mode="In" />
@@ -1900,6 +1981,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
         <Function Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_RESPONSABLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_TIPOIMPRESORA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION_DAILY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_HISTORIZA_CIERRE_MES_OP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_INDICADOR_TOTAL_SCRAP_X_OP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1919,10 +2001,17 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
         <Function Name="CSP_LISTAR_REGISTROS_SCRAP_X_AREA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PAREA" Type="int" Mode="In" />
         </Function>
-        <Function Name="CSP_LISTAR_SEGUMIENTO_PRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CSP_LISTAR_SEGUMIENTO_PRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="estado" Type="int" Mode="In" />
+        </Function>
         <Function Name="CSP_LLENA_METRICS_INDICADORES_SCRAP_DIA_ANTERIOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_LLENA_METRICS_INDICADORES_SCRAP_OP_CERRADAS_DIA_ANTERIOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CSP_MAIL_SEGUIMIENTO_PRODUCTOS_NUEVOS_CILINDROS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CSP_MAIL_SEGUIMIENTO_PRODUCTOS_SIN_PREPRENSA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_METRICS_JOB_LLENA_TABLA_HISTORICO_OP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CSP_METRICS_OF_GET_DATOS_IMPRESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NROOF" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="CSP_METRICS_ORDENDESPRODUCCION_GETALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_METRICS_ORDENDESPRODUCCION_GETALL_ABIERTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1964,6 +2053,9 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Parameter Name="JOBTRACKNAME" Type="varchar" Mode="In" />
           <Parameter Name="NUMOF" Type="varchar" Mode="In" />
           <Parameter Name="NUMPALLET" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CSP_PSSJOBTRACK_GET_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pJobtrackDNSName" Type="varchar" Mode="In" />
         </Function>
         <Function Name="CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JOBTRACKNAME" Type="varchar" Mode="In" />
@@ -2126,6 +2218,33 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
         <Function Name="CSP_SCRAP_MOTIVOS_TABLE_TOTAL_AÑO_ANT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_SCRAP_MOTIVOS_TABLE1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_SCRAP_MOTIVOS_TABLE2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CSP_SOLICITUDTINTAS_ACTUALIZA_ESTADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDSOLICITUD" Type="int" Mode="In" />
+          <Parameter Name="ESTADO" Type="int" Mode="In" />
+          <Parameter Name="LEGAJO" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CSP_SOLICITUDTINTAS_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NroOf" Type="int" Mode="In" />
+          <Parameter Name="CodProducto" Type="varchar" Mode="In" />
+          <Parameter Name="Legajo" Type="int" Mode="In" />
+          <Parameter Name="FechaSolicitud" Type="datetime" Mode="In" />
+          <Parameter Name="FechaRequerida" Type="datetime" Mode="In" />
+          <Parameter Name="MtsImpresos" Type="float" Mode="In" />
+          <Parameter Name="MtsRestantes" Type="float" Mode="In" />
+          <Parameter Name="KgSolicitados" Type="varchar" Mode="In" />
+          <Parameter Name="Obs" Type="varchar" Mode="In" />
+          <Parameter Name="Secat" Type="varchar" Mode="In" />
+          <Parameter Name="Tinta" Type="varchar" Mode="In" />
+          <Parameter Name="Viscosidad" Type="varchar" Mode="In" />
+          <Parameter Name="Estado" Type="int" Mode="In" />
+          <Parameter Name="IdMaquina" Type="int" Mode="In" />
+          <Parameter Name="IdJobtrack" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CSP_SOLICITUDTINTAS_SEGUIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NROOF" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CSP_SOLICITUDTINTASESTADOS_GET_ALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pNroOf" Type="int" Mode="In" />
         </Function>
@@ -2239,18 +2358,19 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-01e6d30f-ac20-4596-a00d-bcf7aec43e5e" />
         <Function Name="SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-02b8ebd3-032f-4669-9ee2-18320638a48f" />
-        <Function Name="SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-14f89d0f-7b93-4678-8520-77a267cc6a4d" />
+        <Function Name="SqlQueryNotificationStoredProcedure_1c758127_a341_49ad_83b7_e6dae2cc6bc3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-1c758127-a341-49ad-83b7-e6dae2cc6bc3" />
         <Function Name="SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-39a7623c-1082-459d-a4bf-3bc992a73d3e" />
-        <Function Name="SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-4682292e-01f9-440d-8a52-ae40ea4ce716" />
+        <Function Name="SqlQueryNotificationStoredProcedure_5a767d81_be6e_4add_8eef_c48e1be3a43d" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-5a767d81-be6e-4add-8eef-c48e1be3a43d" />
+        <Function Name="SqlQueryNotificationStoredProcedure_7803184f_1acd_443a_9cd4_13f4286e8975" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-7803184f-1acd-443a-9cd4-13f4286e8975" />
         <Function Name="SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-926fa08e-a0cb-4761-8a00-e9fb0a6c3b2c" />
         <Function Name="SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-9dadaad6-0463-4844-8bd0-05f4a392aced" />
         <Function Name="SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-a9dd2b45-93ba-42ec-957e-c56ec28aec45" />
         <Function Name="SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-cc217855-33d3-4350-b0ef-9686b11dae73" />
         <Function Name="SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-cd8ea333-7470-4172-a231-7986fc942493" />
+        <Function Name="SqlQueryNotificationStoredProcedure_d14a83b7_0329_4779_9c7a_c09607f71dbd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-d14a83b7-0329-4779-9c7a-c09607f71dbd" />
+        <Function Name="SqlQueryNotificationStoredProcedure_d81e37ea_49cb_4b5c_8e8a_435f448f82cd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-d81e37ea-49cb-4b5c-8e8a-435f448f82cd" />
         <Function Name="SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-de3b0173-8e28-4ecc-a4cd-de9318c4fd27" />
-        <Function Name="SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-e84ccd28-f127-452c-b0a3-a31e52943b3b" />
         <Function Name="SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-e9ad8ab2-5a30-411e-8587-3613f9110a91" />
         <Function Name="SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SqlQueryNotificationStoredProcedure-eaffc4bb-3e96-40ad-bfda-222e2ebad2f9" />
         <EntityContainer Name="LAFScrapModelStoreContainer">
@@ -2258,6 +2378,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <EntitySet Name="APPGridActionParams" EntityType="Self.APPGridActionParams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="APPGridActions" EntityType="Self.APPGridActions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="APPMenu" EntityType="Self.APPMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppNotifications" EntityType="Self.AppNotifications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="APPParametros" EntityType="Self.APPParametros" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="APPWebPrintDirectFiles" EntityType="Self.APPWebPrintDirectFiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
@@ -2269,6 +2390,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <EntitySet Name="GPPerfilesPrePrensa" EntityType="Self.GPPerfilesPrePrensa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GPPGruposEmpaque" EntityType="Self.GPPGruposEmpaque" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GPProductos" EntityType="Self.GPProductos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPProductoSeguimientoMail" EntityType="Self.GPProductoSeguimientoMail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GPPTiposEtiquetas" EntityType="Self.GPPTiposEtiquetas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GPResponsables" EntityType="Self.GPResponsables" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GPTamañoPallets" EntityType="Self.GPTamañoPallets" Schema="dbo" store:Type="Tables" />
@@ -2303,6 +2425,9 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <EntitySet Name="PSSTiposMaterial" EntityType="Self.PSSTiposMaterial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PSSTiposMaterialMaquinas" EntityType="Self.PSSTiposMaterialMaquinas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SolicitudTintas" EntityType="Self.SolicitudTintas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SolicitudTintasEstados" EntityType="Self.SolicitudTintasEstados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SolicitudTintasTrazabilidad" EntityType="Self.SolicitudTintasTrazabilidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trazabilidad" EntityType="Self.Trazabilidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trazabilidad_Det" EntityType="Self.Trazabilidad_Det" Schema="dbo" store:Type="Tables" />
@@ -2823,6 +2948,10 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             <End Role="Role" EntitySet="Role" />
             <End Role="RoleAction" EntitySet="RoleAction" />
           </AssociationSet>
+          <AssociationSet Name="FK_SolicitudTintas_SolicitudTintasEstados" Association="Self.FK_SolicitudTintas_SolicitudTintasEstados">
+            <End Role="SolicitudTintasEstados" EntitySet="SolicitudTintasEstados" />
+            <End Role="SolicitudTintas" EntitySet="SolicitudTintas" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserClaim_User" Association="Self.FK_UserClaim_User">
             <End Role="User" EntitySet="User" />
             <End Role="UserClaim" EntitySet="UserClaim" />
@@ -2888,6 +3017,16 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Property Name="Nivel" Type="Int32" Nullable="false" />
           <Property Name="HasChilds" Type="Boolean" Nullable="false" />
           <Property Name="Objeto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppNotifications">
+          <Key>
+            <PropertyRef Name="IdNotificacion" />
+          </Key>
+          <Property Name="IdNotificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdJobtrackRecepcion" Type="Int32" Nullable="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Leido" Type="Boolean" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="APPParametros">
           <Key>
@@ -3079,22 +3218,33 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Property Name="OC_Proveedor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PosicionTaco" Type="Boolean" Nullable="false" />
           <Property Name="LlevaBolsa" Type="Boolean" Nullable="false" />
-          <Property Name="EtiquetaEnBolsa" Type="Boolean" Nullable="false" />
           <Property Name="TipoPaletizacion" Type="Boolean" Nullable="false" />
           <Property Name="TipoPallet" Type="Int32" Nullable="false" />
           <Property Name="FilmSuperior" Type="Boolean" Nullable="false" />
           <Property Name="FilmInferior" Type="Boolean" Nullable="false" />
-          <Property Name="RomaneosPorCara" Type="Boolean" Nullable="false" />
           <Property Name="CartonSuperior" Type="Boolean" Nullable="false" />
           <Property Name="TapaMadera" Type="Boolean" Nullable="false" />
           <Property Name="IdGrupoEmpaque" Type="Int32" Nullable="false" />
           <Property Name="FreqCartonXPiso" Type="Int32" Nullable="false" />
           <Property Name="ModoPattern" Type="Boolean" Nullable="false" />
           <Property Name="TipoPattern" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PalletLabel" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="GPModulosResponsables" Relationship="Self.FK_GPProductos_GPModulosResponsables" FromRole="GPProductos" ToRole="GPModulosResponsables" />
           <NavigationProperty Name="GPPGruposEmpaque" Relationship="Self.FK_GPProductos_GPPGruposEmpaque" FromRole="GPProductos" ToRole="GPPGruposEmpaque" />
           <NavigationProperty Name="GPTamañoPallets" Relationship="Self.FK_GPProductos_TipoPallet" FromRole="GPProductos" ToRole="GPTamañoPallets" />
           <NavigationProperty Name="GPTrabajosCilindros" Relationship="Self.FK_GPTrabajosCilindros_GPProductos" FromRole="GPProductos" ToRole="GPTrabajosCilindros" />
+        </EntityType>
+        <EntityType Name="GPProductoSeguimientoMail">
+          <Key>
+            <PropertyRef Name="CodProducto" />
+          </Key>
+          <Property Name="CodProducto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DailyLastRefreshDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DailyRefreshExecuted" Type="Boolean" Nullable="false" />
+          <Property Name="MailSinPreprensaSent" Type="Boolean" Nullable="false" />
+          <Property Name="MailSinPreprensaSentDatetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MailNuevoCilindroSent" Type="Boolean" Nullable="false" />
+          <Property Name="MailNuevoCilindroSentDatetime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="GPPTiposEtiquetas">
           <Key>
@@ -3473,6 +3623,47 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.UserRole" FromRole="Role" ToRole="User" />
           <NavigationProperty Name="Action" Relationship="Self.RoleAction" FromRole="Role" ToRole="Action" />
+        </EntityType>
+        <EntityType Name="SolicitudTintas">
+          <Key>
+            <PropertyRef Name="IdSolicitud" />
+          </Key>
+          <Property Name="IdSolicitud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaSolicitud" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NroOf" Type="Int32" Nullable="false" />
+          <Property Name="CodProducto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Legajo" Type="Int32" Nullable="false" />
+          <Property Name="FechaRequerida" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Secat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tinta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Viscosidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MtsImpresos" Type="Double" Nullable="false" />
+          <Property Name="MtsRestantes" Type="Double" Nullable="false" />
+          <Property Name="KgSolicitados" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Obs" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="IdMaquina" Type="Int32" Nullable="false" />
+          <Property Name="IdJobtrack" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SolicitudTintasEstados" Relationship="Self.FK_SolicitudTintas_SolicitudTintasEstados" FromRole="SolicitudTintas" ToRole="SolicitudTintasEstados" />
+        </EntityType>
+        <EntityType Name="SolicitudTintasEstados">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SolicitudTintas" Relationship="Self.FK_SolicitudTintas_SolicitudTintasEstados" FromRole="SolicitudTintasEstados" ToRole="SolicitudTintas" />
+        </EntityType>
+        <EntityType Name="SolicitudTintasTrazabilidad">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="RecordId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSolicitud" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Legajo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -4343,6 +4534,18 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SolicitudTintas_SolicitudTintasEstados">
+          <End Role="SolicitudTintasEstados" Type="Self.SolicitudTintasEstados" Multiplicity="1" />
+          <End Role="SolicitudTintas" Type="Self.SolicitudTintas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SolicitudTintasEstados">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="SolicitudTintas">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserClaim_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="UserClaim" Type="Self.UserClaim" Multiplicity="*" />
@@ -4404,6 +4607,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <EntitySet Name="APPGridActionParams" EntityType="Self.APPGridActionParams" />
           <EntitySet Name="APPGridActions" EntityType="Self.APPGridActions" />
           <EntitySet Name="APPMenu" EntityType="Self.APPMenu" />
+          <EntitySet Name="AppNotifications" EntityType="Self.AppNotifications" />
           <EntitySet Name="APPParametros" EntityType="Self.APPParametros" />
           <EntitySet Name="APPWebPrintDirectFiles" EntityType="Self.APPWebPrintDirectFiles" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" />
@@ -4415,6 +4619,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <EntitySet Name="GPPerfilesPrePrensa" EntityType="Self.GPPerfilesPrePrensa" />
           <EntitySet Name="GPPGruposEmpaque" EntityType="Self.GPPGruposEmpaque" />
           <EntitySet Name="GPProductos" EntityType="Self.GPProductos" />
+          <EntitySet Name="GPProductoSeguimientoMail" EntityType="Self.GPProductoSeguimientoMail" />
           <EntitySet Name="GPPTiposEtiquetas" EntityType="Self.GPPTiposEtiquetas" />
           <EntitySet Name="GPResponsables" EntityType="Self.GPResponsables" />
           <EntitySet Name="GPTamañoPallets" EntityType="Self.GPTamañoPallets" />
@@ -4443,6 +4648,9 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <EntitySet Name="PSSTabacoPallets" EntityType="Self.PSSTabacoPallets" />
           <EntitySet Name="PSSTiposMaterial" EntityType="Self.PSSTiposMaterial" />
           <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="SolicitudTintas" EntityType="Self.SolicitudTintas" />
+          <EntitySet Name="SolicitudTintasEstados" EntityType="Self.SolicitudTintasEstados" />
+          <EntitySet Name="SolicitudTintasTrazabilidad" EntityType="Self.SolicitudTintasTrazabilidad" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Trazabilidad" EntityType="Self.Trazabilidad" />
           <EntitySet Name="Trazabilidad_Det" EntityType="Self.Trazabilidad_Det" />
@@ -4580,6 +4788,10 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             <End Role="PSSTiposMaterial" EntitySet="PSSTiposMaterial" />
             <End Role="PSSScrap" EntitySet="PSSScrap" />
           </AssociationSet>
+          <AssociationSet Name="FK_SolicitudTintas_SolicitudTintasEstados" Association="Self.FK_SolicitudTintas_SolicitudTintasEstados">
+            <End Role="SolicitudTintasEstados" EntitySet="SolicitudTintasEstados" />
+            <End Role="SolicitudTintas" EntitySet="SolicitudTintas" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserClaim_User" Association="Self.FK_UserClaim_User">
             <End Role="User" EntitySet="User" />
             <End Role="UserClaim" EntitySet="UserClaim" />
@@ -4642,6 +4854,12 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             <Parameter Name="PGRIDOBJNAME" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="CSP_APPMENU_LISTAR" ReturnType="Collection(LAFScrapModel.CSP_APPMENU_LISTAR_Result)" />
+          <FunctionImport Name="CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES" ReturnType="Collection(LAFScrapModel.CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES_Result)">
+            <Parameter Name="IDJOBTRACK" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CSP_APPNOTIFICATIONS_READ_NOTIFICATION">
+            <Parameter Name="IDNOTICICATION" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="CSP_APPPARAMS_GET_VALUE" ReturnType="Collection(LAFScrapModel.CSP_APPPARAMS_GET_VALUE_Result)">
             <Parameter Name="P_IDPARAM" Mode="In" Type="String" />
           </FunctionImport>
@@ -4654,6 +4872,9 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <FunctionImport Name="CSP_GET_ALL_TREE_NODES" />
           <FunctionImport Name="CSP_GET_CUSTOMER_OC_BY_NUMOF" ReturnType="Collection(LAFScrapModel.CSP_GET_CUSTOMER_OC_BY_NUMOF_Result)">
             <Parameter Name="NUMOF" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK" ReturnType="Collection(LAFScrapModel.CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK_Result)">
+            <Parameter Name="JOBTRACKNAME" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="CSP_GET_MAQUINAS_X_AREA" ReturnType="Collection(LAFScrapModel.CSP_GET_MAQUINAS_X_AREA_Result)">
             <Parameter Name="PIDAREA" Mode="In" Type="Int32" />
@@ -4686,6 +4907,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <FunctionImport Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_RESPONSABLE" ReturnType="Collection(LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_RESPONSABLE_Result)" />
           <FunctionImport Name="CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_TIPOIMPRESORA" ReturnType="Collection(LAFScrapModel.CSP_GPPRODUCTOS_KPI_PREPRENSA_QTY_X_TIPOIMPRESORA_Result)" />
           <FunctionImport Name="CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION" />
+          <FunctionImport Name="CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION_DAILY" />
           <FunctionImport Name="CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT" ReturnType="Collection(LAFScrapModel.CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT_Result)" />
           <FunctionImport Name="CSP_HISTORIZA_CIERRE_MES_OP" ReturnType="Collection(DateTime)" />
           <FunctionImport Name="CSP_INDICADOR_TOTAL_SCRAP_X_OP" ReturnType="Collection(LAFScrapModel.CSP_INDICADOR_TOTAL_SCRAP_X_OP_Result)">
@@ -4705,10 +4927,17 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <FunctionImport Name="CSP_LISTAR_REGISTROS_SCRAP_X_AREA" ReturnType="Collection(LAFScrapModel.CSP_LISTAR_REGISTROS_SCRAP_X_AREA_Result)">
             <Parameter Name="PAREA" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="CSP_LISTAR_SEGUMIENTO_PRODUCTO" ReturnType="Collection(LAFScrapModel.CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result)" />
+          <FunctionImport Name="CSP_LISTAR_SEGUMIENTO_PRODUCTO" ReturnType="Collection(LAFScrapModel.CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result)">
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="CSP_LLENA_METRICS_INDICADORES_SCRAP_DIA_ANTERIOR" />
           <FunctionImport Name="CSP_LLENA_METRICS_INDICADORES_SCRAP_OP_CERRADAS_DIA_ANTERIOR" />
+          <FunctionImport Name="CSP_MAIL_SEGUIMIENTO_PRODUCTOS_NUEVOS_CILINDROS" />
+          <FunctionImport Name="CSP_MAIL_SEGUIMIENTO_PRODUCTOS_SIN_PREPRENSA" />
           <FunctionImport Name="CSP_METRICS_JOB_LLENA_TABLA_HISTORICO_OP" />
+          <FunctionImport Name="CSP_METRICS_OF_GET_DATOS_IMPRESION" ReturnType="Collection(LAFScrapModel.CSP_METRICS_OF_GET_DATOS_IMPRESION_Result)">
+            <Parameter Name="NROOF" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="CSP_METRICS_ORDENDESPRODUCCION_GETALL" />
           <FunctionImport Name="CSP_METRICS_ORDENDESPRODUCCION_GETALL_ABIERTAS" />
           <FunctionImport Name="CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO" ReturnType="Collection(LAFScrapModel.CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO_Result)">
@@ -4750,6 +4979,9 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             <Parameter Name="JOBTRACKNAME" Mode="In" Type="String" />
             <Parameter Name="NUMOF" Mode="In" Type="String" />
             <Parameter Name="NUMPALLET" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CSP_PSSJOBTRACK_GET_ID" ReturnType="Collection(Int32)">
+            <Parameter Name="pJobtrackDNSName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET" ReturnType="Collection(LAFScrapModel.CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET_Result)">
             <Parameter Name="JOBTRACKNAME" Mode="In" Type="String" />
@@ -4912,10 +5144,37 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <FunctionImport Name="CSP_SCRAP_MOTIVOS_TABLE_TOTAL_AÑO_ANT" />
           <FunctionImport Name="CSP_SCRAP_MOTIVOS_TABLE1" ReturnType="Collection(LAFScrapModel.CSP_SCRAP_MOTIVOS_TABLE1_Result)" />
           <FunctionImport Name="CSP_SCRAP_MOTIVOS_TABLE2" ReturnType="Collection(LAFScrapModel.CSP_SCRAP_MOTIVOS_TABLE2_Result)" />
+          <FunctionImport Name="CSP_SOLICITUDTINTAS_ACTUALIZA_ESTADO">
+            <Parameter Name="IDSOLICITUD" Mode="In" Type="Int32" />
+            <Parameter Name="ESTADO" Mode="In" Type="Int32" />
+            <Parameter Name="LEGAJO" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CSP_SOLICITUDTINTAS_INSERT">
+            <Parameter Name="NroOf" Mode="In" Type="Int32" />
+            <Parameter Name="CodProducto" Mode="In" Type="String" />
+            <Parameter Name="Legajo" Mode="In" Type="Int32" />
+            <Parameter Name="FechaSolicitud" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaRequerida" Mode="In" Type="DateTime" />
+            <Parameter Name="MtsImpresos" Mode="In" Type="Double" />
+            <Parameter Name="MtsRestantes" Mode="In" Type="Double" />
+            <Parameter Name="KgSolicitados" Mode="In" Type="String" />
+            <Parameter Name="Obs" Mode="In" Type="String" />
+            <Parameter Name="Secat" Mode="In" Type="String" />
+            <Parameter Name="Tinta" Mode="In" Type="String" />
+            <Parameter Name="Viscosidad" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Int32" />
+            <Parameter Name="IdMaquina" Mode="In" Type="Int32" />
+            <Parameter Name="IdJobtrack" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CSP_SOLICITUDTINTAS_SEGUIMIENTO" ReturnType="Collection(LAFScrapModel.CSP_SOLICITUDTINTAS_SEGUIMIENTO_Result)" />
+          <FunctionImport Name="CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF" ReturnType="Collection(LAFScrapModel.CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF_Result)">
+            <Parameter Name="NROOF" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CSP_SOLICITUDTINTASESTADOS_GET_ALL" ReturnType="Collection(LAFScrapModel.CSP_SOLICITUDTINTASESTADOS_GET_ALL_Result)" />
           <FunctionImport Name="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP" ReturnType="Collection(LAFScrapModel.CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result)">
             <Parameter Name="pNroOf" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="CSP_TABACO_GET_VISUAL_OC_INFO" ReturnType="Collection(LAFScrapModel.CSP_TABACO_GET_VISUAL_OC_INFO_Result)">
+          <FunctionImport Name="CSP_TABACO_GET_VISUAL_OC_INFO">
             <Parameter Name="PO_REF" Mode="In" Type="String" />
             <Parameter Name="PART_ID" Mode="In" Type="String" />
           </FunctionImport>
@@ -4953,18 +5212,19 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f" ReturnType="Collection(Guid)" />
-          <FunctionImport Name="SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_1c758127_a341_49ad_83b7_e6dae2cc6bc3" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" ReturnType="Collection(Guid)" />
-          <FunctionImport Name="SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_5a767d81_be6e_4add_8eef_c48e1be3a43d" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_7803184f_1acd_443a_9cd4_13f4286e8975" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_d14a83b7_0329_4779_9c7a_c09607f71dbd" ReturnType="Collection(Guid)" />
+          <FunctionImport Name="SqlQueryNotificationStoredProcedure_d81e37ea_49cb_4b5c_8e8a_435f448f82cd" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" ReturnType="Collection(Guid)" />
-          <FunctionImport Name="SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" ReturnType="Collection(Guid)" />
           <FunctionImport Name="SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9" ReturnType="Collection(Guid)" />
         </EntityContainer>
@@ -4991,6 +5251,13 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Property Type="Int32" Name="Nivel" Nullable="false" />
           <Property Type="Boolean" Name="HasChilds" Nullable="false" />
           <Property Type="String" Name="Objeto" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES_Result">
+          <Property Type="Int32" Name="IdNotificacion" Nullable="false" />
+          <Property Type="Int32" Name="IdJobtrackRecepcion" Nullable="false" />
+          <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="5000" />
+          <Property Type="Boolean" Name="Leido" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
         </ComplexType>
         <ComplexType Name="CSP_APPPARAMS_GET_VALUE_Result">
           <Property Type="String" Name="IDParam" Nullable="false" MaxLength="50" />
@@ -5037,6 +5304,10 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Property Type="String" Name="NumOrdemCompra" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="NumOrcamento" Nullable="true" MaxLength="12" />
           <Property Type="String" Name="NumOrdem" Nullable="false" MaxLength="14" />
+        </ComplexType>
+        <ComplexType Name="CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK_Result">
+          <Property Type="Int32" Name="IDMaq" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="CSP_GET_MAQUINAS_X_AREA_Result">
           <Property Type="Int32" Name="IDMaq" Nullable="false" />
@@ -5475,6 +5746,15 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Property Type="DateTime" Name="FechaAprobacionSacaPrueba" Nullable="false" Precision="23" />
           <Property Type="String" Name="ObsHerramental" Nullable="false" MaxLength="2000" />
         </ComplexType>
+        <ComplexType Name="CSP_METRICS_OF_GET_DATOS_IMPRESION_Result">
+          <Property Type="String" Name="NumOrdem" Nullable="false" MaxLength="14" />
+          <Property Type="String" Name="CodAtiv" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Processo" Nullable="false" MaxLength="250" />
+          <Property Type="Double" Name="QtdPlanejadaMT" Nullable="true" />
+          <Property Type="Double" Name="QtdProduzidoMT" Nullable="true" />
+          <Property Type="Decimal" Name="QtdPlanejadaKG" Nullable="true" Precision="13" Scale="3" />
+          <Property Type="Decimal" Name="QtdProduzidoKG" Nullable="true" Precision="13" Scale="3" />
+        </ComplexType>
         <ComplexType Name="CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO_Result">
           <Property Type="String" Name="NumOrdem" Nullable="false" MaxLength="14" />
           <Property Type="String" Name="CodEstrutura" Nullable="false" MaxLength="12" />
@@ -5811,19 +6091,35 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <Property Type="Double" Name="INICIO" Nullable="false" />
           <Property Type="Double" Name="OBJETIVO" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="CSP_SOLICITUDTINTAS_SEGUIMIENTO_Result">
+          <Property Type="Int32" Name="IdSolicitud" Nullable="false" />
+          <Property Type="Int32" Name="NroOf" Nullable="false" />
+          <Property Type="Int32" Name="Legajo" Nullable="false" />
+          <Property Type="String" Name="Solicitante" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="CodProducto" Nullable="false" MaxLength="30" />
+          <Property Type="DateTime" Name="FechaSolicitud" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="FechaRequerida" Nullable="false" Precision="23" />
+          <Property Type="String" Name="TINTA" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Secat" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Viscosidad" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="KgSolicitados" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Estado" Nullable="false" />
+          <Property Type="String" Name="MAQUINA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Obs" Nullable="false" MaxLength="2000" />
+        </ComplexType>
+        <ComplexType Name="CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF_Result">
+          <Property Type="String" Name="Codigo_Item" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Descripcion_Item" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="CSP_SOLICITUDTINTASESTADOS_GET_ALL_Result">
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Habilitado" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result">
           <Property Type="String" Name="NumOrdem" Nullable="true" MaxLength="14" />
           <Property Type="DateTime" Name="LastPrintDate" Nullable="true" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="CSP_TABACO_GET_VISUAL_OC_INFO_Result">
-          <Property Type="String" Name="CUSTOMER_ORDER" Nullable="false" MaxLength="15" />
-          <Property Type="String" Name="CUSTOMER_PO_REF" Nullable="true" MaxLength="40" />
-          <Property Type="String" Name="SHIP_TO_ADDR_NO" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="CUSTOMER" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CITY" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="COUNTRY" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CUSTOMER_PRODUCT" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="PART_ID" Nullable="true" MaxLength="30" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -5884,6 +6180,17 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
                 <ScalarProperty Name="Nivel" ColumnName="Nivel" />
                 <ScalarProperty Name="HasChilds" ColumnName="HasChilds" />
                 <ScalarProperty Name="Objeto" ColumnName="Objeto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppNotifications">
+            <EntityTypeMapping TypeName="LAFScrapModel.AppNotifications">
+              <MappingFragment StoreEntitySet="AppNotifications">
+                <ScalarProperty Name="IdNotificacion" ColumnName="IdNotificacion" />
+                <ScalarProperty Name="IdJobtrackRecepcion" ColumnName="IdJobtrackRecepcion" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Leido" ColumnName="Leido" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -6075,18 +6382,30 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
                 <ScalarProperty Name="OC_Proveedor" ColumnName="OC_Proveedor" />
                 <ScalarProperty Name="PosicionTaco" ColumnName="PosicionTaco" />
                 <ScalarProperty Name="LlevaBolsa" ColumnName="LlevaBolsa" />
-                <ScalarProperty Name="EtiquetaEnBolsa" ColumnName="EtiquetaEnBolsa" />
                 <ScalarProperty Name="TipoPaletizacion" ColumnName="TipoPaletizacion" />
                 <ScalarProperty Name="TipoPallet" ColumnName="TipoPallet" />
                 <ScalarProperty Name="FilmSuperior" ColumnName="FilmSuperior" />
                 <ScalarProperty Name="FilmInferior" ColumnName="FilmInferior" />
-                <ScalarProperty Name="RomaneosPorCara" ColumnName="RomaneosPorCara" />
                 <ScalarProperty Name="CartonSuperior" ColumnName="CartonSuperior" />
                 <ScalarProperty Name="TapaMadera" ColumnName="TapaMadera" />
                 <ScalarProperty Name="IdGrupoEmpaque" ColumnName="IdGrupoEmpaque" />
                 <ScalarProperty Name="FreqCartonXPiso" ColumnName="FreqCartonXPiso" />
                 <ScalarProperty Name="ModoPattern" ColumnName="ModoPattern" />
                 <ScalarProperty Name="TipoPattern" ColumnName="TipoPattern" />
+                <ScalarProperty Name="PalletLabel" ColumnName="PalletLabel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPProductoSeguimientoMail">
+            <EntityTypeMapping TypeName="LAFScrapModel.GPProductoSeguimientoMail">
+              <MappingFragment StoreEntitySet="GPProductoSeguimientoMail">
+                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+                <ScalarProperty Name="DailyLastRefreshDate" ColumnName="DailyLastRefreshDate" />
+                <ScalarProperty Name="DailyRefreshExecuted" ColumnName="DailyRefreshExecuted" />
+                <ScalarProperty Name="MailSinPreprensaSent" ColumnName="MailSinPreprensaSent" />
+                <ScalarProperty Name="MailSinPreprensaSentDatetime" ColumnName="MailSinPreprensaSentDatetime" />
+                <ScalarProperty Name="MailNuevoCilindroSent" ColumnName="MailNuevoCilindroSent" />
+                <ScalarProperty Name="MailNuevoCilindroSentDatetime" ColumnName="MailNuevoCilindroSentDatetime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -6435,6 +6754,48 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SolicitudTintas">
+            <EntityTypeMapping TypeName="LAFScrapModel.SolicitudTintas">
+              <MappingFragment StoreEntitySet="SolicitudTintas">
+                <ScalarProperty Name="IdSolicitud" ColumnName="IdSolicitud" />
+                <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+                <ScalarProperty Name="NroOf" ColumnName="NroOf" />
+                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+                <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+                <ScalarProperty Name="FechaRequerida" ColumnName="FechaRequerida" />
+                <ScalarProperty Name="Secat" ColumnName="Secat" />
+                <ScalarProperty Name="Tinta" ColumnName="Tinta" />
+                <ScalarProperty Name="Viscosidad" ColumnName="Viscosidad" />
+                <ScalarProperty Name="MtsImpresos" ColumnName="MtsImpresos" />
+                <ScalarProperty Name="MtsRestantes" ColumnName="MtsRestantes" />
+                <ScalarProperty Name="KgSolicitados" ColumnName="KgSolicitados" />
+                <ScalarProperty Name="Obs" ColumnName="Obs" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdMaquina" ColumnName="IdMaquina" />
+                <ScalarProperty Name="IdJobtrack" ColumnName="IdJobtrack" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SolicitudTintasEstados">
+            <EntityTypeMapping TypeName="LAFScrapModel.SolicitudTintasEstados">
+              <MappingFragment StoreEntitySet="SolicitudTintasEstados">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SolicitudTintasTrazabilidad">
+            <EntityTypeMapping TypeName="LAFScrapModel.SolicitudTintasTrazabilidad">
+              <MappingFragment StoreEntitySet="SolicitudTintasTrazabilidad">
+                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+                <ScalarProperty Name="IdSolicitud" ColumnName="IdSolicitud" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Legajo" ColumnName="Legajo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7019,6 +7380,18 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES" FunctionName="LAFScrapModel.Store.CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LAFScrapModel.CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES_Result">
+                <ScalarProperty Name="IdNotificacion" ColumnName="IdNotificacion" />
+                <ScalarProperty Name="IdJobtrackRecepcion" ColumnName="IdJobtrackRecepcion" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Leido" ColumnName="Leido" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CSP_APPNOTIFICATIONS_READ_NOTIFICATION" FunctionName="LAFScrapModel.Store.CSP_APPNOTIFICATIONS_READ_NOTIFICATION" />
           <FunctionImportMapping FunctionImportName="CSP_APPPARAMS_GET_VALUE" FunctionName="LAFScrapModel.Store.CSP_APPPARAMS_GET_VALUE">
             <ResultMapping>
               <ComplexTypeMapping TypeName="LAFScrapModel.CSP_APPPARAMS_GET_VALUE_Result">
@@ -7083,6 +7456,14 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
                 <ScalarProperty Name="NumOrdemCompra" ColumnName="NumOrdemCompra" />
                 <ScalarProperty Name="NumOrcamento" ColumnName="NumOrcamento" />
                 <ScalarProperty Name="NumOrdem" ColumnName="NumOrdem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK" FunctionName="LAFScrapModel.Store.CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK_Result">
+                <ScalarProperty Name="IDMaq" ColumnName="IDMaq" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -7394,6 +7775,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION" />
+          <FunctionImportMapping FunctionImportName="CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION_DAILY" FunctionName="LAFScrapModel.Store.CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION_DAILY" />
           <FunctionImportMapping FunctionImportName="CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT" FunctionName="LAFScrapModel.Store.CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT">
             <ResultMapping>
               <ComplexTypeMapping TypeName="LAFScrapModel.CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT_Result">
@@ -7633,7 +8015,22 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CSP_LLENA_METRICS_INDICADORES_SCRAP_DIA_ANTERIOR" FunctionName="LAFScrapModel.Store.CSP_LLENA_METRICS_INDICADORES_SCRAP_DIA_ANTERIOR" />
           <FunctionImportMapping FunctionImportName="CSP_LLENA_METRICS_INDICADORES_SCRAP_OP_CERRADAS_DIA_ANTERIOR" FunctionName="LAFScrapModel.Store.CSP_LLENA_METRICS_INDICADORES_SCRAP_OP_CERRADAS_DIA_ANTERIOR" />
+          <FunctionImportMapping FunctionImportName="CSP_MAIL_SEGUIMIENTO_PRODUCTOS_NUEVOS_CILINDROS" FunctionName="LAFScrapModel.Store.CSP_MAIL_SEGUIMIENTO_PRODUCTOS_NUEVOS_CILINDROS" />
+          <FunctionImportMapping FunctionImportName="CSP_MAIL_SEGUIMIENTO_PRODUCTOS_SIN_PREPRENSA" FunctionName="LAFScrapModel.Store.CSP_MAIL_SEGUIMIENTO_PRODUCTOS_SIN_PREPRENSA" />
           <FunctionImportMapping FunctionImportName="CSP_METRICS_JOB_LLENA_TABLA_HISTORICO_OP" FunctionName="LAFScrapModel.Store.CSP_METRICS_JOB_LLENA_TABLA_HISTORICO_OP" />
+          <FunctionImportMapping FunctionImportName="CSP_METRICS_OF_GET_DATOS_IMPRESION" FunctionName="LAFScrapModel.Store.CSP_METRICS_OF_GET_DATOS_IMPRESION">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LAFScrapModel.CSP_METRICS_OF_GET_DATOS_IMPRESION_Result">
+                <ScalarProperty Name="NumOrdem" ColumnName="NumOrdem" />
+                <ScalarProperty Name="CodAtiv" ColumnName="CodAtiv" />
+                <ScalarProperty Name="Processo" ColumnName="Processo" />
+                <ScalarProperty Name="QtdPlanejadaMT" ColumnName="QtdPlanejadaMT" />
+                <ScalarProperty Name="QtdProduzidoMT" ColumnName="QtdProduzidoMT" />
+                <ScalarProperty Name="QtdPlanejadaKG" ColumnName="QtdPlanejadaKG" />
+                <ScalarProperty Name="QtdProduzidoKG" ColumnName="QtdProduzidoKG" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CSP_METRICS_ORDENDESPRODUCCION_GETALL" FunctionName="LAFScrapModel.Store.CSP_METRICS_ORDENDESPRODUCCION_GETALL" />
           <FunctionImportMapping FunctionImportName="CSP_METRICS_ORDENDESPRODUCCION_GETALL_ABIERTAS" FunctionName="LAFScrapModel.Store.CSP_METRICS_ORDENDESPRODUCCION_GETALL_ABIERTAS" />
           <FunctionImportMapping FunctionImportName="CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO" FunctionName="LAFScrapModel.Store.CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO">
@@ -7784,6 +8181,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           <FunctionImportMapping FunctionImportName="CSP_PSSJOBTRACK_ACTIVE_PALLETS_CLEAN_JOBTRACK" FunctionName="LAFScrapModel.Store.CSP_PSSJOBTRACK_ACTIVE_PALLETS_CLEAN_JOBTRACK" />
           <FunctionImportMapping FunctionImportName="CSP_PSSJOBTRACK_ACTIVE_PALLETS_INSERT" FunctionName="LAFScrapModel.Store.CSP_PSSJOBTRACK_ACTIVE_PALLETS_INSERT" />
           <FunctionImportMapping FunctionImportName="CSP_PSSJOBTRACK_DISABLE_PALLETS" FunctionName="LAFScrapModel.Store.CSP_PSSJOBTRACK_DISABLE_PALLETS" />
+          <FunctionImportMapping FunctionImportName="CSP_PSSJOBTRACK_GET_ID" FunctionName="LAFScrapModel.Store.CSP_PSSJOBTRACK_GET_ID" />
           <FunctionImportMapping FunctionImportName="CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET" FunctionName="LAFScrapModel.Store.CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET">
             <ResultMapping>
               <ComplexTypeMapping TypeName="LAFScrapModel.CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET_Result">
@@ -8106,6 +8504,46 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CSP_SOLICITUDTINTAS_ACTUALIZA_ESTADO" FunctionName="LAFScrapModel.Store.CSP_SOLICITUDTINTAS_ACTUALIZA_ESTADO" />
+          <FunctionImportMapping FunctionImportName="CSP_SOLICITUDTINTAS_INSERT" FunctionName="LAFScrapModel.Store.CSP_SOLICITUDTINTAS_INSERT" />
+          <FunctionImportMapping FunctionImportName="CSP_SOLICITUDTINTAS_SEGUIMIENTO" FunctionName="LAFScrapModel.Store.CSP_SOLICITUDTINTAS_SEGUIMIENTO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LAFScrapModel.CSP_SOLICITUDTINTAS_SEGUIMIENTO_Result">
+                <ScalarProperty Name="IdSolicitud" ColumnName="IdSolicitud" />
+                <ScalarProperty Name="NroOf" ColumnName="NroOf" />
+                <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+                <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+                <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+                <ScalarProperty Name="FechaRequerida" ColumnName="FechaRequerida" />
+                <ScalarProperty Name="TINTA" ColumnName="TINTA" />
+                <ScalarProperty Name="Secat" ColumnName="Secat" />
+                <ScalarProperty Name="Viscosidad" ColumnName="Viscosidad" />
+                <ScalarProperty Name="KgSolicitados" ColumnName="KgSolicitados" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="MAQUINA" ColumnName="MAQUINA" />
+                <ScalarProperty Name="Obs" ColumnName="Obs" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF" FunctionName="LAFScrapModel.Store.CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LAFScrapModel.CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF_Result">
+                <ScalarProperty Name="Codigo_Item" ColumnName="Codigo_Item" />
+                <ScalarProperty Name="Descripcion_Item" ColumnName="Descripcion_Item" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CSP_SOLICITUDTINTASESTADOS_GET_ALL" FunctionName="LAFScrapModel.Store.CSP_SOLICITUDTINTASESTADOS_GET_ALL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LAFScrapModel.CSP_SOLICITUDTINTASESTADOS_GET_ALL_Result">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP" FunctionName="LAFScrapModel.Store.CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP">
             <ResultMapping>
               <ComplexTypeMapping TypeName="LAFScrapModel.CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result">
@@ -8114,20 +8552,7 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="CSP_TABACO_GET_VISUAL_OC_INFO" FunctionName="LAFScrapModel.Store.CSP_TABACO_GET_VISUAL_OC_INFO">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="LAFScrapModel.CSP_TABACO_GET_VISUAL_OC_INFO_Result">
-                <ScalarProperty Name="CUSTOMER_ORDER" ColumnName="CUSTOMER_ORDER" />
-                <ScalarProperty Name="CUSTOMER_PO_REF" ColumnName="CUSTOMER_PO_REF" />
-                <ScalarProperty Name="SHIP_TO_ADDR_NO" ColumnName="SHIP_TO_ADDR_NO" />
-                <ScalarProperty Name="CUSTOMER" ColumnName="CUSTOMER" />
-                <ScalarProperty Name="CITY" ColumnName="CITY" />
-                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
-                <ScalarProperty Name="CUSTOMER_PRODUCT" ColumnName="CUSTOMER_PRODUCT" />
-                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CSP_TABACO_GET_VISUAL_OC_INFO" FunctionName="LAFScrapModel.Store.CSP_TABACO_GET_VISUAL_OC_INFO" />
           <FunctionImportMapping FunctionImportName="CSP_TRAZABILIDAD_GET_PROX_DESDE" FunctionName="LAFScrapModel.Store.CSP_TRAZABILIDAD_GET_PROX_DESDE" />
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="LAFScrapModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="LAFScrapModel.Store.sp_creatediagram" />
@@ -8153,18 +8578,19 @@ advertencia 6002: La tabla o vista 'LAFScrap.dbo.V_TONS_PRODUCIDAS_TBL1_AÑO_ANT
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="LAFScrapModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="LAFScrapModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f" />
-          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_1c758127_a341_49ad_83b7_e6dae2cc6bc3" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_1c758127_a341_49ad_83b7_e6dae2cc6bc3" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e" />
-          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_5a767d81_be6e_4add_8eef_c48e1be3a43d" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_5a767d81_be6e_4add_8eef_c48e1be3a43d" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_7803184f_1acd_443a_9cd4_13f4286e8975" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_7803184f_1acd_443a_9cd4_13f4286e8975" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_9dadaad6_0463_4844_8bd0_05f4a392aced" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_a9dd2b45_93ba_42ec_957e_c56ec28aec45" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_cc217855_33d3_4350_b0ef_9686b11dae73" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_d14a83b7_0329_4779_9c7a_c09607f71dbd" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_d14a83b7_0329_4779_9c7a_c09607f71dbd" />
+          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_d81e37ea_49cb_4b5c_8e8a_435f448f82cd" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_d81e37ea_49cb_4b5c_8e8a_435f448f82cd" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27" />
-          <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91" />
           <FunctionImportMapping FunctionImportName="SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9" FunctionName="LAFScrapModel.Store.SqlQueryNotificationStoredProcedure_eaffc4bb_3e96_40ad_bfda_222e2ebad2f9" />
         </EntityContainerMapping>

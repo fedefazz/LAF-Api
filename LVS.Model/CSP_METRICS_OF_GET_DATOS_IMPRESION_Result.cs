@@ -11,15 +11,14 @@ namespace LVS.Model
 {
     using System;
     
-    public partial class CSP_TABACO_GET_VISUAL_OC_INFO_Result
+    public partial class CSP_METRICS_OF_GET_DATOS_IMPRESION_Result
     {
-        public string CUSTOMER_ORDER { get; set; }
-        public string CUSTOMER_PO_REF { get; set; }
-        public string SHIP_TO_ADDR_NO { get; set; }
-        public string CUSTOMER { get; set; }
-        public string CITY { get; set; }
-        public string COUNTRY { get; set; }
-        public string CUSTOMER_PRODUCT { get; set; }
-        public string PART_ID { get; set; }
+        public string NumOrdem { get; set; }
+        public string CodAtiv { get; set; }
+        public string Processo { get; set; }
+        public Nullable<double> QtdPlanejadaMT { get; set; }
+        public Nullable<double> QtdProduzidoMT { get; set; }
+        public Nullable<decimal> QtdPlanejadaKG { get; set; }
+        public Nullable<decimal> QtdProduzidoKG { get; set; }
     }
 }

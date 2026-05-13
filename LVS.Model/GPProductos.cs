@@ -98,18 +98,17 @@ namespace LVS.Model
         public string OC_Proveedor { get; set; }
         public bool PosicionTaco { get; set; }
         public bool LlevaBolsa { get; set; }
-        public bool EtiquetaEnBolsa { get; set; }
         public bool TipoPaletizacion { get; set; }
         public int TipoPallet { get; set; }
         public bool FilmSuperior { get; set; }
         public bool FilmInferior { get; set; }
-        public bool RomaneosPorCara { get; set; }
         public bool CartonSuperior { get; set; }
         public bool TapaMadera { get; set; }
         public int IdGrupoEmpaque { get; set; }
         public int FreqCartonXPiso { get; set; }
         public bool ModoPattern { get; set; }
         public string TipoPattern { get; set; }
+        public string PalletLabel { get; set; }
     
         public virtual GPModulosResponsables GPModulosResponsables { get; set; }
         public virtual GPPGruposEmpaque GPPGruposEmpaque { get; set; }

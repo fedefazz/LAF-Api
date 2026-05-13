@@ -68,6 +68,9 @@
     <Compile Include="APPMenu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppNotifications.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="APPParametros.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -87,6 +90,9 @@
     <Compile Include="CSP_APPMENU_LISTAR_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="CSP_APPPARAMS_GET_VALUE_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -100,6 +106,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="CSP_GET_CUSTOMER_OC_BY_NUMOF_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="CSP_GET_MAQUINAS_X_AREA_Result.cs">
@@ -178,6 +187,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CSP_METRICS_OF_GET_DATOS_IMPRESION_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="CSP_METRICS_ORDENDESPRODUCCION_GetOPxNUMERO_Result.cs">
@@ -267,10 +279,16 @@
     <Compile Include="CSP_SCRAP_MOTIVOS_TABLE2_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result.cs">
+    <Compile Include="CSP_SOLICITUDTINTASESTADOS_GET_ALL_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="CSP_TABACO_GET_VISUAL_OC_INFO_Result.cs">
+    <Compile Include="CSP_SOLICITUDTINTAS_SEGUIMIENTO_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="CV_LLENA_DATOS_LAMINADORAS.cs">
@@ -343,6 +361,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GPProductos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GPProductoSeguimientoMail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GPPTiposEtiquetas.cs">
@@ -455,6 +476,15 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudTintas.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudTintasEstados.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudTintasTrazabilidad.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">

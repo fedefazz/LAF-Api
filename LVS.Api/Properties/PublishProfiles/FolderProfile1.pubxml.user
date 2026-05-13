@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\Fede\Desktop\LAF\DEPLOYS\API</_PublishTargetUrl>
-    <History>True|2025-11-11T01:12:33.3235721Z||;True|2025-11-10T20:04:40.5968622-03:00||;True|2025-11-04T19:22:39.8324071-03:00||;True|2025-10-14T11:43:51.8728238-03:00||;True|2025-04-24T16:52:28.7332992-03:00||;True|2025-04-09T10:24:15.6206013-03:00||;True|2025-03-20T10:42:15.1504280-03:00||;True|2025-03-19T09:58:30.4505609-03:00||;True|2025-03-17T13:58:21.5001370-03:00||;True|2025-01-23T11:08:39.5514433-03:00||;True|2024-12-26T18:55:09.2712678-03:00||;True|2024-10-21T10:31:20.6602481-03:00||;True|2024-09-30T09:08:31.7442105-03:00||;True|2024-09-22T11:40:42.5622902-03:00||;True|2024-09-06T16:31:13.7295668-03:00||;True|2024-09-02T16:23:48.7619120-03:00||;True|2024-08-29T19:24:23.0276245-03:00||;True|2024-08-29T15:23:39.8051978-03:00||;True|2024-08-23T09:35:39.4871665-03:00||;</History>
+    <History>True|2025-12-31T20:04:55.7534362Z||;True|2025-12-30T12:09:59.5556963-03:00||;True|2025-11-10T22:12:33.3235721-03:00||;True|2025-11-10T20:04:40.5968622-03:00||;True|2025-11-04T19:22:39.8324071-03:00||;True|2025-10-14T11:43:51.8728238-03:00||;True|2025-04-24T16:52:28.7332992-03:00||;True|2025-04-09T10:24:15.6206013-03:00||;True|2025-03-20T10:42:15.1504280-03:00||;True|2025-03-19T09:58:30.4505609-03:00||;True|2025-03-17T13:58:21.5001370-03:00||;True|2025-01-23T11:08:39.5514433-03:00||;True|2024-12-26T18:55:09.2712678-03:00||;True|2024-10-21T10:31:20.6602481-03:00||;True|2024-09-30T09:08:31.7442105-03:00||;True|2024-09-22T11:40:42.5622902-03:00||;True|2024-09-06T16:31:13.7295668-03:00||;True|2024-09-02T16:23:48.7619120-03:00||;True|2024-08-29T19:24:23.0276245-03:00||;True|2024-08-29T15:23:39.8051978-03:00||;True|2024-08-23T09:35:39.4871665-03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -103,25 +103,25 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/02/2015 06:32:26</publishTime>
     </File>
     <File Include="bin/LVS.Api.dll">
-      <publishTime>11/10/2025 21:47:07</publishTime>
+      <publishTime>12/31/2025 14:30:14</publishTime>
     </File>
     <File Include="bin/LVS.Api.pdb">
-      <publishTime>11/10/2025 21:47:07</publishTime>
+      <publishTime>12/31/2025 14:30:14</publishTime>
     </File>
     <File Include="bin/LVS.Dtos.dll">
-      <publishTime>11/10/2025 21:44:11</publishTime>
+      <publishTime>12/31/2025 14:30:09</publishTime>
     </File>
     <File Include="bin/LVS.Dtos.pdb">
-      <publishTime>11/10/2025 21:44:11</publishTime>
+      <publishTime>12/31/2025 14:30:09</publishTime>
     </File>
     <File Include="bin/LVS.Model.dll">
-      <publishTime>11/10/2025 21:44:11</publishTime>
+      <publishTime>12/31/2025 14:30:08</publishTime>
     </File>
     <File Include="bin/LVS.Model.dll.config">
-      <publishTime>11/10/2025 11:17:15</publishTime>
+      <publishTime>12/31/2025 14:27:24</publishTime>
     </File>
     <File Include="bin/LVS.Model.pdb">
-      <publishTime>11/10/2025 21:44:11</publishTime>
+      <publishTime>12/31/2025 14:30:08</publishTime>
     </File>
     <File Include="bin/LVS.Utils.dll">
       <publishTime>11/10/2025 21:44:10</publishTime>

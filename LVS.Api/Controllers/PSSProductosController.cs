@@ -28,7 +28,7 @@ namespace LVS.Api.Controllers
         [HttpGet]
         [ResponseType(typeof(CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result))]
         [Route("api/PSSProductos/getProductos/")]
-        public async Task<IHttpActionResult> getProductos(string filter = null)
+        public async Task<IHttpActionResult> getProductos(int? estado = null,string filter = null)
 
 
 
@@ -40,7 +40,7 @@ namespace LVS.Api.Controllers
 
 
 
-            List<CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result> productos = db.CSP_LISTAR_SEGUMIENTO_PRODUCTO().Select(z => new CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result
+            List<CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result> productos = db.CSP_LISTAR_SEGUMIENTO_PRODUCTO(estado).Select(z => new CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result
             {
                 Tipo_Adm = z.Tipo_Adm,
                 Cod_Producto = z.Cod_Producto,
@@ -404,12 +404,11 @@ namespace LVS.Api.Controllers
                 // NUEVOS: datos de empaque ahora en producto
                 PosicionTaco = GpProducto.PosicionTaco,
                 LlevaBolsa = GpProducto.LlevaBolsa,
-                EtiquetaEnBolsa = GpProducto.EtiquetaEnBolsa,
                 TipoPaletizacion = GpProducto.TipoPaletizacion,
                 TipoPallet = GpProducto.TipoPallet,
                 FilmSuperior = GpProducto.FilmSuperior,
                 FilmInferior = GpProducto.FilmInferior,
-                RomaneosPorCara = GpProducto.RomaneosPorCara,
+                PalletLabel = GpProducto.PalletLabel,
                 CartonSuperior = GpProducto.CartonSuperior,
                 TapaMadera = GpProducto.TapaMadera,
                 IdGrupoEmpaque = GpProducto.IdGrupoEmpaque,

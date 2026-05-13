@@ -31,6 +31,7 @@ namespace LVS.Model
         public virtual DbSet<APPGridActionParams> APPGridActionParams { get; set; }
         public virtual DbSet<APPGridActions> APPGridActions { get; set; }
         public virtual DbSet<APPMenu> APPMenu { get; set; }
+        public virtual DbSet<AppNotifications> AppNotifications { get; set; }
         public virtual DbSet<APPParametros> APPParametros { get; set; }
         public virtual DbSet<APPWebPrintDirectFiles> APPWebPrintDirectFiles { get; set; }
         public virtual DbSet<Clientes> Clientes { get; set; }
@@ -42,6 +43,7 @@ namespace LVS.Model
         public virtual DbSet<GPPerfilesPrePrensa> GPPerfilesPrePrensa { get; set; }
         public virtual DbSet<GPPGruposEmpaque> GPPGruposEmpaque { get; set; }
         public virtual DbSet<GPProductos> GPProductos { get; set; }
+        public virtual DbSet<GPProductoSeguimientoMail> GPProductoSeguimientoMail { get; set; }
         public virtual DbSet<GPPTiposEtiquetas> GPPTiposEtiquetas { get; set; }
         public virtual DbSet<GPResponsables> GPResponsables { get; set; }
         public virtual DbSet<GPTamañoPallets> GPTamañoPallets { get; set; }
@@ -70,6 +72,9 @@ namespace LVS.Model
         public virtual DbSet<PSSTabacoPallets> PSSTabacoPallets { get; set; }
         public virtual DbSet<PSSTiposMaterial> PSSTiposMaterial { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<SolicitudTintas> SolicitudTintas { get; set; }
+        public virtual DbSet<SolicitudTintasEstados> SolicitudTintasEstados { get; set; }
+        public virtual DbSet<SolicitudTintasTrazabilidad> SolicitudTintasTrazabilidad { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Trazabilidad> Trazabilidad { get; set; }
         public virtual DbSet<Trazabilidad_Det> Trazabilidad_Det { get; set; }
@@ -181,6 +186,24 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_APPMENU_LISTAR_Result>("CSP_APPMENU_LISTAR");
         }
     
+        public virtual ObjectResult<CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES_Result> CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES(Nullable<int> iDJOBTRACK)
+        {
+            var iDJOBTRACKParameter = iDJOBTRACK.HasValue ?
+                new ObjectParameter("IDJOBTRACK", iDJOBTRACK) :
+                new ObjectParameter("IDJOBTRACK", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES_Result>("CSP_APPNOTIFICATIONS_GET_UNREADED_MESSAGES", iDJOBTRACKParameter);
+        }
+    
+        public virtual int CSP_APPNOTIFICATIONS_READ_NOTIFICATION(Nullable<int> iDNOTICICATION)
+        {
+            var iDNOTICICATIONParameter = iDNOTICICATION.HasValue ?
+                new ObjectParameter("IDNOTICICATION", iDNOTICICATION) :
+                new ObjectParameter("IDNOTICICATION", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_APPNOTIFICATIONS_READ_NOTIFICATION", iDNOTICICATIONParameter);
+        }
+    
         public virtual ObjectResult<CSP_APPPARAMS_GET_VALUE_Result> CSP_APPPARAMS_GET_VALUE(string p_IDPARAM)
         {
             var p_IDPARAMParameter = p_IDPARAM != null ?
@@ -225,6 +248,15 @@ namespace LVS.Model
                 new ObjectParameter("NUMOF", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_GET_CUSTOMER_OC_BY_NUMOF_Result>("CSP_GET_CUSTOMER_OC_BY_NUMOF", nUMOFParameter);
+        }
+    
+        public virtual ObjectResult<CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK_Result> CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK(string jOBTRACKNAME)
+        {
+            var jOBTRACKNAMEParameter = jOBTRACKNAME != null ?
+                new ObjectParameter("JOBTRACKNAME", jOBTRACKNAME) :
+                new ObjectParameter("JOBTRACKNAME", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK_Result>("CSP_GET_MAQUINAS_IMPRESORAS_X_JOBTRACK", jOBTRACKNAMEParameter);
         }
     
         public virtual ObjectResult<CSP_GET_MAQUINAS_X_AREA_Result> CSP_GET_MAQUINAS_X_AREA(Nullable<int> pIDAREA)
@@ -343,6 +375,11 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION");
         }
     
+        public virtual int CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION_DAILY()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_GPPRODUCTOS_REFRESH_PRODUCT_INFORMATION_DAILY");
+        }
+    
         public virtual ObjectResult<CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT_Result> CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT_Result>("CSP_GPTRABAJOSCILINDROS_EXCEL_EXPORT");
@@ -420,9 +457,13 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_LISTAR_REGISTROS_SCRAP_X_AREA_Result>("CSP_LISTAR_REGISTROS_SCRAP_X_AREA", pAREAParameter);
         }
     
-        public virtual ObjectResult<CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result> CSP_LISTAR_SEGUMIENTO_PRODUCTO()
+        public virtual ObjectResult<CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result> CSP_LISTAR_SEGUMIENTO_PRODUCTO(Nullable<int> estado)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result>("CSP_LISTAR_SEGUMIENTO_PRODUCTO");
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("estado", estado) :
+                new ObjectParameter("estado", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_LISTAR_SEGUMIENTO_PRODUCTO_Result>("CSP_LISTAR_SEGUMIENTO_PRODUCTO", estadoParameter);
         }
     
         public virtual int CSP_LLENA_METRICS_INDICADORES_SCRAP_DIA_ANTERIOR()
@@ -435,9 +476,28 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_LLENA_METRICS_INDICADORES_SCRAP_OP_CERRADAS_DIA_ANTERIOR");
         }
     
+        public virtual int CSP_MAIL_SEGUIMIENTO_PRODUCTOS_NUEVOS_CILINDROS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_MAIL_SEGUIMIENTO_PRODUCTOS_NUEVOS_CILINDROS");
+        }
+    
+        public virtual int CSP_MAIL_SEGUIMIENTO_PRODUCTOS_SIN_PREPRENSA()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_MAIL_SEGUIMIENTO_PRODUCTOS_SIN_PREPRENSA");
+        }
+    
         public virtual int CSP_METRICS_JOB_LLENA_TABLA_HISTORICO_OP()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_METRICS_JOB_LLENA_TABLA_HISTORICO_OP");
+        }
+    
+        public virtual ObjectResult<CSP_METRICS_OF_GET_DATOS_IMPRESION_Result> CSP_METRICS_OF_GET_DATOS_IMPRESION(string nROOF)
+        {
+            var nROOFParameter = nROOF != null ?
+                new ObjectParameter("NROOF", nROOF) :
+                new ObjectParameter("NROOF", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_METRICS_OF_GET_DATOS_IMPRESION_Result>("CSP_METRICS_OF_GET_DATOS_IMPRESION", nROOFParameter);
         }
     
         public virtual int CSP_METRICS_ORDENDESPRODUCCION_GETALL()
@@ -576,6 +636,15 @@ namespace LVS.Model
                 new ObjectParameter("NUMPALLET", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_PSSJOBTRACK_DISABLE_PALLETS", jOBTRACKNAMEParameter, nUMOFParameter, nUMPALLETParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> CSP_PSSJOBTRACK_GET_ID(string pJobtrackDNSName)
+        {
+            var pJobtrackDNSNameParameter = pJobtrackDNSName != null ?
+                new ObjectParameter("pJobtrackDNSName", pJobtrackDNSName) :
+                new ObjectParameter("pJobtrackDNSName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CSP_PSSJOBTRACK_GET_ID", pJobtrackDNSNameParameter);
         }
     
         public virtual ObjectResult<CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET_Result> CSP_PSSJOBTRACKS_ACTIVE_PALLETS_OPENED_CHECK_OF_PALLET(string jOBTRACKNAME, Nullable<int> nUMOF, Nullable<int> nUMPALLET)
@@ -1145,6 +1214,107 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_SCRAP_MOTIVOS_TABLE2_Result>("CSP_SCRAP_MOTIVOS_TABLE2");
         }
     
+        public virtual int CSP_SOLICITUDTINTAS_ACTUALIZA_ESTADO(Nullable<int> iDSOLICITUD, Nullable<int> eSTADO, Nullable<int> lEGAJO)
+        {
+            var iDSOLICITUDParameter = iDSOLICITUD.HasValue ?
+                new ObjectParameter("IDSOLICITUD", iDSOLICITUD) :
+                new ObjectParameter("IDSOLICITUD", typeof(int));
+    
+            var eSTADOParameter = eSTADO.HasValue ?
+                new ObjectParameter("ESTADO", eSTADO) :
+                new ObjectParameter("ESTADO", typeof(int));
+    
+            var lEGAJOParameter = lEGAJO.HasValue ?
+                new ObjectParameter("LEGAJO", lEGAJO) :
+                new ObjectParameter("LEGAJO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_SOLICITUDTINTAS_ACTUALIZA_ESTADO", iDSOLICITUDParameter, eSTADOParameter, lEGAJOParameter);
+        }
+    
+        public virtual int CSP_SOLICITUDTINTAS_INSERT(Nullable<int> nroOf, string codProducto, Nullable<int> legajo, Nullable<System.DateTime> fechaSolicitud, Nullable<System.DateTime> fechaRequerida, Nullable<double> mtsImpresos, Nullable<double> mtsRestantes, string kgSolicitados, string obs, string secat, string tinta, string viscosidad, Nullable<int> estado, Nullable<int> idMaquina, Nullable<int> idJobtrack)
+        {
+            var nroOfParameter = nroOf.HasValue ?
+                new ObjectParameter("NroOf", nroOf) :
+                new ObjectParameter("NroOf", typeof(int));
+    
+            var codProductoParameter = codProducto != null ?
+                new ObjectParameter("CodProducto", codProducto) :
+                new ObjectParameter("CodProducto", typeof(string));
+    
+            var legajoParameter = legajo.HasValue ?
+                new ObjectParameter("Legajo", legajo) :
+                new ObjectParameter("Legajo", typeof(int));
+    
+            var fechaSolicitudParameter = fechaSolicitud.HasValue ?
+                new ObjectParameter("FechaSolicitud", fechaSolicitud) :
+                new ObjectParameter("FechaSolicitud", typeof(System.DateTime));
+    
+            var fechaRequeridaParameter = fechaRequerida.HasValue ?
+                new ObjectParameter("FechaRequerida", fechaRequerida) :
+                new ObjectParameter("FechaRequerida", typeof(System.DateTime));
+    
+            var mtsImpresosParameter = mtsImpresos.HasValue ?
+                new ObjectParameter("MtsImpresos", mtsImpresos) :
+                new ObjectParameter("MtsImpresos", typeof(double));
+    
+            var mtsRestantesParameter = mtsRestantes.HasValue ?
+                new ObjectParameter("MtsRestantes", mtsRestantes) :
+                new ObjectParameter("MtsRestantes", typeof(double));
+    
+            var kgSolicitadosParameter = kgSolicitados != null ?
+                new ObjectParameter("KgSolicitados", kgSolicitados) :
+                new ObjectParameter("KgSolicitados", typeof(string));
+    
+            var obsParameter = obs != null ?
+                new ObjectParameter("Obs", obs) :
+                new ObjectParameter("Obs", typeof(string));
+    
+            var secatParameter = secat != null ?
+                new ObjectParameter("Secat", secat) :
+                new ObjectParameter("Secat", typeof(string));
+    
+            var tintaParameter = tinta != null ?
+                new ObjectParameter("Tinta", tinta) :
+                new ObjectParameter("Tinta", typeof(string));
+    
+            var viscosidadParameter = viscosidad != null ?
+                new ObjectParameter("Viscosidad", viscosidad) :
+                new ObjectParameter("Viscosidad", typeof(string));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(int));
+    
+            var idMaquinaParameter = idMaquina.HasValue ?
+                new ObjectParameter("IdMaquina", idMaquina) :
+                new ObjectParameter("IdMaquina", typeof(int));
+    
+            var idJobtrackParameter = idJobtrack.HasValue ?
+                new ObjectParameter("IdJobtrack", idJobtrack) :
+                new ObjectParameter("IdJobtrack", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_SOLICITUDTINTAS_INSERT", nroOfParameter, codProductoParameter, legajoParameter, fechaSolicitudParameter, fechaRequeridaParameter, mtsImpresosParameter, mtsRestantesParameter, kgSolicitadosParameter, obsParameter, secatParameter, tintaParameter, viscosidadParameter, estadoParameter, idMaquinaParameter, idJobtrackParameter);
+        }
+    
+        public virtual ObjectResult<CSP_SOLICITUDTINTAS_SEGUIMIENTO_Result> CSP_SOLICITUDTINTAS_SEGUIMIENTO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_SOLICITUDTINTAS_SEGUIMIENTO_Result>("CSP_SOLICITUDTINTAS_SEGUIMIENTO");
+        }
+    
+        public virtual ObjectResult<CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF_Result> CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF(string nROOF)
+        {
+            var nROOFParameter = nROOF != null ?
+                new ObjectParameter("NROOF", nROOF) :
+                new ObjectParameter("NROOF", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF_Result>("CSP_SOLICITUDTINTAS_TRAE_TINTAS_X_OF", nROOFParameter);
+        }
+    
+        public virtual ObjectResult<CSP_SOLICITUDTINTASESTADOS_GET_ALL_Result> CSP_SOLICITUDTINTASESTADOS_GET_ALL()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_SOLICITUDTINTASESTADOS_GET_ALL_Result>("CSP_SOLICITUDTINTASESTADOS_GET_ALL");
+        }
+    
         public virtual ObjectResult<CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result> CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP(Nullable<int> pNroOf)
         {
             var pNroOfParameter = pNroOf.HasValue ?
@@ -1154,7 +1324,7 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP_Result>("CSP_TABACO_GET_LAST_PRINT_DATE_BY_OP", pNroOfParameter);
         }
     
-        public virtual ObjectResult<CSP_TABACO_GET_VISUAL_OC_INFO_Result> CSP_TABACO_GET_VISUAL_OC_INFO(string pO_REF, string pART_ID)
+        public virtual int CSP_TABACO_GET_VISUAL_OC_INFO(string pO_REF, string pART_ID)
         {
             var pO_REFParameter = pO_REF != null ?
                 new ObjectParameter("PO_REF", pO_REF) :
@@ -1164,7 +1334,7 @@ namespace LVS.Model
                 new ObjectParameter("PART_ID", pART_ID) :
                 new ObjectParameter("PART_ID", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CSP_TABACO_GET_VISUAL_OC_INFO_Result>("CSP_TABACO_GET_VISUAL_OC_INFO", pO_REFParameter, pART_IDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CSP_TABACO_GET_VISUAL_OC_INFO", pO_REFParameter, pART_IDParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> CSP_TRAZABILIDAD_GET_PROX_DESDE(Nullable<int> nROOF, Nullable<int> tIPO)
@@ -1283,19 +1453,14 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_01e6d30f_ac20_4596_a00d_bcf7aec43e5e");
-        }
-    
         public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_02b8ebd3_032f_4669_9ee2_18320638a48f");
         }
     
-        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d()
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_1c758127_a341_49ad_83b7_e6dae2cc6bc3()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_14f89d0f_7b93_4678_8520_77a267cc6a4d");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_1c758127_a341_49ad_83b7_e6dae2cc6bc3");
         }
     
         public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e()
@@ -1303,9 +1468,14 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_39a7623c_1082_459d_a4bf_3bc992a73d3e");
         }
     
-        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716()
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_5a767d81_be6e_4add_8eef_c48e1be3a43d()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_4682292e_01f9_440d_8a52_ae40ea4ce716");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_5a767d81_be6e_4add_8eef_c48e1be3a43d");
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_7803184f_1acd_443a_9cd4_13f4286e8975()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_7803184f_1acd_443a_9cd4_13f4286e8975");
         }
     
         public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_926fa08e_a0cb_4761_8a00_e9fb0a6c3b2c()
@@ -1333,14 +1503,19 @@ namespace LVS.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_cd8ea333_7470_4172_a231_7986fc942493");
         }
     
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_d14a83b7_0329_4779_9c7a_c09607f71dbd()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_d14a83b7_0329_4779_9c7a_c09607f71dbd");
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_d81e37ea_49cb_4b5c_8e8a_435f448f82cd()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_d81e37ea_49cb_4b5c_8e8a_435f448f82cd");
+        }
+    
         public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_de3b0173_8e28_4ecc_a4cd_de9318c4fd27");
-        }
-    
-        public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("SqlQueryNotificationStoredProcedure_e84ccd28_f127_452c_b0a3_a31e52943b3b");
         }
     
         public virtual ObjectResult<Nullable<System.Guid>> SqlQueryNotificationStoredProcedure_e9ad8ab2_5a30_411e_8587_3613f9110a91()
