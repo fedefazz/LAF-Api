@@ -4,7 +4,6 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 .vs/
 packages/
-LVS.Utils/
 LVS.Api/.gitignore
 LVS.Api/bin/
 LVS.Api/obj/
